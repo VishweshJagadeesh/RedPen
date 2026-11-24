@@ -3,7 +3,7 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   experimental: { serverActions: { bodySizeLimit: "8mb" } },
   outputFileTracingIncludes: {
-    "/**": ["./evals/reports/latest.json"],
+    "/**": ["./evals/reports/latest.json", "./evals/gold/*.json"],
   },
   webpack: (config, { dev }) => {
     if (dev) {
