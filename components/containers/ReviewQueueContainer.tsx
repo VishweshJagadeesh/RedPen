@@ -1,6 +1,6 @@
 "use client";
 import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { ReviewQueue } from "@/components/grading/ReviewQueue";
 import { api } from "@/lib/client/api";
 import type { ReviewQueueData } from "@/lib/queries/review";
@@ -12,20 +12,25 @@ export function ReviewQueueContainer({ data }: { data: ReviewQueueData }) {
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [notes, setNotes] = useState<string[] | null>(null);
-  useEffect(() => setItems(data.items), [data.items]);
+  // Writes run one after another; finalise waits for every queued write to land first.
+  const queue = useRef<Promise<unknown>>(Promise.resolve());
+  const inFlight = useRef(0);
+  useEffect(() => {
+    if (inFlight.current === 0) setItems(data.items);
+  }, [data.items]);
 
   const patch = (id: string, fn: (i: ReviewItem) => ReviewItem) => setItems((xs) => xs.map((x) => (x.id === id ? fn(x) : x)));
 
-  async function act(fn: () => Promise<unknown>, optimistic?: () => void) {
+  function act(fn: () => Promise<unknown>, optimistic?: () => void): Promise<void> {
     setError(null);
     optimistic?.();
-    try {
-      await fn();
-    } catch (e) {
-      setError(e instanceof Error ? e.message : String(e));
-    } finally {
-      router.refresh();
-    }
+    inFlight.current++;
+    const run = queue.current.then(fn).catch((e) => setError(e instanceof Error ? e.message : String(e)));
+    queue.current = run.finally(() => {
+      inFlight.current--;
+      if (inFlight.current === 0) router.refresh();
+    });
+    return queue.current.then(() => undefined);
   }
 
   const pendingHigh = items.filter((i) => i.status === "pending_review" && !i.needsRescan && i.band === "high").length;
@@ -90,6 +95,7 @@ export function ReviewQueueContainer({ data }: { data: ReviewQueueData }) {
         setBusy(true);
         setError(null);
         try {
+          await queue.current;
           const res = await api<{ followups: string[] }>(`/api/assessments/${data.assessment.id}/finalise`, { method: "POST" });
           setNotes(res.followups ?? []);
         } catch (e) {

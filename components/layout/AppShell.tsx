@@ -2,7 +2,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState, type ReactNode } from "react";
-import { BellRing, ClipboardCheck, FlaskConical, Home, Menu, Settings, Users, X } from "lucide-react";
+import { BellRing, ClipboardCheck, ClipboardList, FlaskConical, Home, Menu, Settings, Users, X } from "lucide-react";
 import { MockModeBadge } from "@/components/shared/MockModeBadge";
 import { cn } from "@/lib/utils";
 
@@ -23,6 +23,7 @@ export function AppShell({ teacherName, subject, mode, sections, openFlags, chil
     { href: "/dashboard", label: "Home", icon: Home, demoId: "nav-home" },
     { href: "/assessments", label: "Assessments", icon: ClipboardCheck, demoId: "nav-assessments" },
     { href: "/alerts", label: "Needs attention", icon: BellRing, demoId: "nav-alerts", count: openFlags },
+    { href: "/remedial", label: "Remedial sheets", icon: ClipboardList, demoId: "nav-remedial" },
     { href: "/evals", label: "Evals", icon: FlaskConical, demoId: "nav-evals" },
     { href: "/settings", label: "Settings", icon: Settings, demoId: "nav-settings" },
   ];
