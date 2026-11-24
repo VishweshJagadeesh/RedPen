@@ -1,0 +1,209 @@
+// RedPen data model.
+// The datasource provider is switched between "sqlite" (local) and "postgresql" (production)
+// by scripts/select-db-provider.mjs based on DATABASE_URL. JSON payloads are stored as
+// strings and validated with zod in lib/db/json.ts so the schema works on both providers.
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Teacher {
+  id        String    @id
+  name      String
+  subject   String
+  sections  Section[]
+  createdAt DateTime  @default(now())
+}
+
+model Section {
+  id           String               @id
+  teacherId    String
+  teacher      Teacher              @relation(fields: [teacherId], references: [id], onDelete: Cascade)
+  grade        Int
+  letter       String
+  name         String // e.g. "8B"
+  subject      String
+  academicYear String
+  students     Student[]
+  assessments  Assessment[]
+  lessonPlans  LessonPlan[]
+  remedials    RemedialAssignment[]
+  flags        Flag[]
+}
+
+model Student {
+  id          String       @id
+  sectionId   String
+  section     Section      @relation(fields: [sectionId], references: [id], onDelete: Cascade)
+  name        String
+  rollNumber  Int
+  parentName  String
+  parentPhone String // stored only; never rendered on parent-shareable views
+  shareToken  String       @unique
+  submissions Submission[]
+  flags       Flag[]
+
+  @@unique([sectionId, rollNumber])
+}
+
+model Concept {
+  id         String    @id
+  subject    String
+  gradeLevel Int
+  chapter    String
+  name       String
+  parentId   String?
+  parent     Concept?  @relation("ConceptTree", fields: [parentId], references: [id])
+  children   Concept[] @relation("ConceptTree")
+  order      Int       @default(0)
+}
+
+model Assessment {
+  id                   String       @id
+  sectionId            String
+  section              Section      @relation(fields: [sectionId], references: [id], onDelete: Cascade)
+  title                String
+  type                 String // weekly_test | periodic_test | term_exam | remedial | exit_ticket
+  date                 DateTime
+  questionPaperKeys    String       @default("[]") // JSON string[] of storage keys
+  answerKeyKeys        String       @default("[]") // JSON string[] of storage keys
+  // draft | questions_ready | sheets_uploaded | grading | in_review | final
+  status               String       @default("draft")
+  parseError           String?
+  fixtureKey           String? // links the assessment to mock-mode fixtures
+  lessonPlanId         String?
+  remedialAssignmentId String?
+  createdAt            DateTime     @default(now())
+  finalizedAt          DateTime?
+  questions            Question[]
+  submissions          Submission[]
+}
+
+model Question {
+  id             String        @id
+  assessmentId   String
+  assessment     Assessment    @relation(fields: [assessmentId], references: [id], onDelete: Cascade)
+  number         Int
+  text           String
+  maxMarks       Float
+  rubric         String // JSON [{step, marks}]
+  conceptIds     String // JSON string[]
+  answerKey      String
+  answerGrades   AnswerGrade[]
+
+  @@unique([assessmentId, number])
+}
+
+model Submission {
+  id               String        @id
+  assessmentId     String
+  assessment       Assessment    @relation(fields: [assessmentId], references: [id], onDelete: Cascade)
+  studentId        String?
+  student          Student?      @relation(fields: [studentId], references: [id], onDelete: SetNull)
+  // uploaded | matched | grading | graded | error | absent
+  status           String        @default("uploaded")
+  pageKeys         String        @default("[]") // JSON string[] of storage keys
+  sheetRef         String? // fixture sheet id used by mock mode
+  detectedName     String?
+  detectedRoll     Int?
+  matchConfidence  Float?
+  gradingError     String?
+  gradingStartedAt DateTime?
+  gradedAt         DateTime?
+  latencyMs        Int?
+  costUsd          Float?
+  createdAt        DateTime      @default(now())
+  answerGrades     AnswerGrade[]
+}
+
+model AnswerGrade {
+  id                String     @id @default(cuid())
+  submissionId      String
+  submission        Submission @relation(fields: [submissionId], references: [id], onDelete: Cascade)
+  questionId        String
+  question          Question   @relation(fields: [questionId], references: [id], onDelete: Cascade)
+  pageIndex         Int        @default(0)
+  crop              String     @default("{}") // JSON {x,y,w,h} normalised 0..1
+  transcription     String     @default("")
+  awardedMarks      Float
+  maxMarks          Float
+  steps             String     @default("[]") // JSON [{step, marks, awarded, note}]
+  // conceptual | procedural | calculation | incomplete | unattempted | illegible | none
+  mistakeType       String     @default("none")
+  misconception     String?
+  aiReasoning       String     @default("")
+  conceptIds        String     @default("[]")
+  confidence        Float
+  confidenceReasons String     @default("[]") // JSON string[]
+  signals           String     @default("{}") // JSON confidence signals
+  passes            String     @default("[]") // JSON summary of the two grading passes
+  // pending_review | accepted | overridden
+  status            String     @default("pending_review")
+  teacherMarks      Float?
+  teacherSteps      String?
+  teacherNote       String?
+  needsRescan       Boolean    @default(false)
+  reviewedAt        DateTime?
+
+  @@unique([submissionId, questionId])
+}
+
+model Flag {
+  id                  String   @id
+  studentId           String
+  student             Student  @relation(fields: [studentId], references: [id], onDelete: Cascade)
+  sectionId           String
+  section             Section  @relation(fields: [sectionId], references: [id], onDelete: Cascade)
+  type                String // sudden_drop | missed_submissions | concept_regression
+  evidence            String // JSON FlagEvidence
+  status              String   @default("open") // open | action_taken | improving | resolved
+  history             String   @default("[]") // JSON [{status, at, note, evidence?}]
+  triggerAssessmentId String?
+  createdAt           DateTime @default(now())
+  updatedAt           DateTime @updatedAt
+}
+
+model RemedialAssignment {
+  id           String   @id
+  sectionId    String
+  section      Section  @relation(fields: [sectionId], references: [id], onDelete: Cascade)
+  title        String
+  flagId       String?
+  studentIds   String // JSON string[]
+  conceptIds   String // JSON string[]
+  questions    String   @default("[]") // JSON RemedialQuestion[]
+  status       String   @default("draft") // draft | assigned | graded
+  assessmentId String?
+  createdAt    DateTime @default(now())
+  assignedAt   DateTime?
+}
+
+model LessonPlan {
+  id                     String    @id
+  sectionId              String
+  section                Section   @relation(fields: [sectionId], references: [id], onDelete: Cascade)
+  conceptId              String
+  evidence               String // JSON evidence snapshot
+  inputs                 String // JSON plan inputs
+  sections               String // JSON PlanSection[]
+  status                 String    @default("draft") // draft | ready | taught
+  taughtAt               DateTime?
+  exitTicketAssessmentId String?
+  createdAt              DateTime  @default(now())
+  updatedAt              DateTime  @updatedAt
+}
+
+model AuditLog {
+  id         String   @id @default(cuid())
+  actor      String // teacher | ai | system
+  action     String
+  entityType String
+  entityId   String
+  details    String   @default("{}")
+  createdAt  DateTime @default(now())
+}

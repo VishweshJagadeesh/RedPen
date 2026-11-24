@@ -1,0 +1,15 @@
+node_modules
+.next
+out
+.env
+.env.local
+*.db
+*.db-journal
+prisma/*.db*
+.data
+coverage
+playwright-report
+test-results
+next-env.d.ts
+.vercel
+*.tsbuildinfo
