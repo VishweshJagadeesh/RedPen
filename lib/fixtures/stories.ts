@@ -149,6 +149,8 @@ export interface Wt4Special {
   mixedLanguage?: boolean;
   injection?: boolean;
   faint?: boolean;
+  /** AI reasoning shown on the review card (defaults to a rubric summary). */
+  reasoning?: string;
   note: string;
 }
 
@@ -157,6 +159,7 @@ export const WT4_SPECIALS: Wt4Special[] = [
   {
     student: "Meera Krishnan", question: 4, band: "low", goldVariant: "messy",
     aiAwards: [1, 1, 0, 0], passBMarks: 3, legibility: 0.6, crossedOut: true,
+    reasoning: "The working is partly crossed out. It is unclear whether x = 38 or x = 36 is the final value, so the solve step is not credited; the third multiple is unreadable. Multiples written correctly (1/1); equation 24x + 24 = 888 formed (1/1); solve step — 0/1; final answer — 0/1.",
     note: "Messy, partly crossed-out working. AI reads the struck-out x = 38 and gives 2/4; the correct mark is 3/4.",
   },
   {
