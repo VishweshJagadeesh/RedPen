@@ -1,0 +1,8189 @@
+[
+  {
+    "id": "8B-WT4-R01:Q1",
+    "sheetRef": "8B-WT4-R01",
+    "paperKey": "c8-wt4",
+    "questionNumber": 1,
+    "image": {
+      "pageKey": "samples/8b-wt4/R01-p1.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.14,
+        "w": 0.9,
+        "h": 0.27999999999999997
+      }
+    },
+    "maxMarks": 3,
+    "goldMarks": 1,
+    "goldSteps": [
+      0,
+      1,
+      0
+    ],
+    "goldConcept": "c8-le-transposing",
+    "goldConceptIds": [
+      "c8-le-transposing"
+    ],
+    "goldMisconception": "Moves a term across \"=\" without changing its sign",
+    "goldMistakeType": "conceptual",
+    "tags": [
+      "partial"
+    ]
+  },
+  {
+    "id": "8B-WT4-R01:Q2",
+    "sheetRef": "8B-WT4-R01",
+    "paperKey": "c8-wt4",
+    "questionNumber": 2,
+    "image": {
+      "pageKey": "samples/8b-wt4/R01-p1.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.42,
+        "w": 0.9,
+        "h": 0.27999999999999997
+      }
+    },
+    "maxMarks": 3,
+    "goldMarks": 1,
+    "goldSteps": [
+      0,
+      1,
+      0
+    ],
+    "goldConcept": "c8-le-transposing",
+    "goldConceptIds": [
+      "c8-le-transposing"
+    ],
+    "goldMisconception": "Moves a term across \"=\" without changing its sign",
+    "goldMistakeType": "conceptual",
+    "tags": [
+      "partial"
+    ]
+  },
+  {
+    "id": "8B-WT4-R01:Q3",
+    "sheetRef": "8B-WT4-R01",
+    "paperKey": "c8-wt4",
+    "questionNumber": 3,
+    "image": {
+      "pageKey": "samples/8b-wt4/R01-p1.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.7,
+        "w": 0.9,
+        "h": 0.27
+      }
+    },
+    "maxMarks": 4,
+    "goldMarks": 0,
+    "goldSteps": [
+      0,
+      0,
+      0
+    ],
+    "goldConcept": "c8-le-bothsides",
+    "goldConceptIds": [
+      "c8-le-bothsides",
+      "c8-le-transposing"
+    ],
+    "goldMisconception": null,
+    "goldMistakeType": "unattempted",
+    "tags": [
+      "blank"
+    ]
+  },
+  {
+    "id": "8B-WT4-R01:Q4",
+    "sheetRef": "8B-WT4-R01",
+    "paperKey": "c8-wt4",
+    "questionNumber": 4,
+    "image": {
+      "pageKey": "samples/8b-wt4/R01-p2.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.03,
+        "w": 0.9,
+        "h": 0.44999999999999996
+      }
+    },
+    "maxMarks": 4,
+    "goldMarks": 2,
+    "goldSteps": [
+      1,
+      1,
+      0,
+      0
+    ],
+    "goldConcept": "c8-le-word",
+    "goldConceptIds": [
+      "c8-le-word"
+    ],
+    "goldMisconception": "Correct method, arithmetic slip",
+    "goldMistakeType": "calculation",
+    "tags": [
+      "partial"
+    ]
+  },
+  {
+    "id": "8B-WT4-R01:Q5",
+    "sheetRef": "8B-WT4-R01",
+    "paperKey": "c8-wt4",
+    "questionNumber": 5,
+    "image": {
+      "pageKey": "samples/8b-wt4/R01-p2.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.48,
+        "w": 0.9,
+        "h": 0.49
+      }
+    },
+    "maxMarks": 6,
+    "goldMarks": 3,
+    "goldSteps": [
+      1,
+      2,
+      0,
+      0
+    ],
+    "goldConcept": "c8-le-word",
+    "goldConceptIds": [
+      "c8-le-word"
+    ],
+    "goldMisconception": "Correct method, arithmetic slip",
+    "goldMistakeType": "calculation",
+    "tags": [
+      "partial"
+    ]
+  },
+  {
+    "id": "8B-WT4-R02:Q1",
+    "sheetRef": "8B-WT4-R02",
+    "paperKey": "c8-wt4",
+    "questionNumber": 1,
+    "image": {
+      "pageKey": "samples/8b-wt4/R02-p1.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.14,
+        "w": 0.9,
+        "h": 0.27999999999999997
+      }
+    },
+    "maxMarks": 3,
+    "goldMarks": 3,
+    "goldSteps": [
+      1,
+      1,
+      1
+    ],
+    "goldConcept": "c8-le-transposing",
+    "goldConceptIds": [
+      "c8-le-transposing"
+    ],
+    "goldMisconception": null,
+    "goldMistakeType": "none",
+    "tags": []
+  },
+  {
+    "id": "8B-WT4-R02:Q2",
+    "sheetRef": "8B-WT4-R02",
+    "paperKey": "c8-wt4",
+    "questionNumber": 2,
+    "image": {
+      "pageKey": "samples/8b-wt4/R02-p1.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.42,
+        "w": 0.9,
+        "h": 0.27999999999999997
+      }
+    },
+    "maxMarks": 3,
+    "goldMarks": 3,
+    "goldSteps": [
+      1,
+      1,
+      1
+    ],
+    "goldConcept": "c8-le-transposing",
+    "goldConceptIds": [
+      "c8-le-transposing"
+    ],
+    "goldMisconception": null,
+    "goldMistakeType": "none",
+    "tags": []
+  },
+  {
+    "id": "8B-WT4-R02:Q3",
+    "sheetRef": "8B-WT4-R02",
+    "paperKey": "c8-wt4",
+    "questionNumber": 3,
+    "image": {
+      "pageKey": "samples/8b-wt4/R02-p1.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.7,
+        "w": 0.9,
+        "h": 0.27
+      }
+    },
+    "maxMarks": 4,
+    "goldMarks": 3,
+    "goldSteps": [
+      2,
+      1,
+      0
+    ],
+    "goldConcept": "c8-le-bothsides",
+    "goldConceptIds": [
+      "c8-le-bothsides",
+      "c8-le-transposing"
+    ],
+    "goldMisconception": "Correct method, arithmetic slip",
+    "goldMistakeType": "calculation",
+    "tags": [
+      "partial"
+    ]
+  },
+  {
+    "id": "8B-WT4-R02:Q4",
+    "sheetRef": "8B-WT4-R02",
+    "paperKey": "c8-wt4",
+    "questionNumber": 4,
+    "image": {
+      "pageKey": "samples/8b-wt4/R02-p2.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.03,
+        "w": 0.9,
+        "h": 0.44999999999999996
+      }
+    },
+    "maxMarks": 4,
+    "goldMarks": 4,
+    "goldSteps": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "goldConcept": "c8-le-word",
+    "goldConceptIds": [
+      "c8-le-word"
+    ],
+    "goldMisconception": null,
+    "goldMistakeType": "none",
+    "tags": []
+  },
+  {
+    "id": "8B-WT4-R02:Q5",
+    "sheetRef": "8B-WT4-R02",
+    "paperKey": "c8-wt4",
+    "questionNumber": 5,
+    "image": {
+      "pageKey": "samples/8b-wt4/R02-p2.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.48,
+        "w": 0.9,
+        "h": 0.49
+      }
+    },
+    "maxMarks": 6,
+    "goldMarks": 5,
+    "goldSteps": [
+      1,
+      2,
+      2,
+      0
+    ],
+    "goldConcept": "c8-le-word",
+    "goldConceptIds": [
+      "c8-le-word"
+    ],
+    "goldMisconception": "Stopped before completing the solution",
+    "goldMistakeType": "incomplete",
+    "tags": [
+      "partial"
+    ]
+  },
+  {
+    "id": "8B-WT4-R03:Q1",
+    "sheetRef": "8B-WT4-R03",
+    "paperKey": "c8-wt4",
+    "questionNumber": 1,
+    "image": {
+      "pageKey": "samples/8b-wt4/R03-p1.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.14,
+        "w": 0.9,
+        "h": 0.27999999999999997
+      }
+    },
+    "maxMarks": 3,
+    "goldMarks": 1,
+    "goldSteps": [
+      0,
+      1,
+      0
+    ],
+    "goldConcept": "c8-le-transposing",
+    "goldConceptIds": [
+      "c8-le-transposing"
+    ],
+    "goldMisconception": "Moves a term across \"=\" without changing its sign",
+    "goldMistakeType": "conceptual",
+    "tags": [
+      "partial"
+    ]
+  },
+  {
+    "id": "8B-WT4-R03:Q2",
+    "sheetRef": "8B-WT4-R03",
+    "paperKey": "c8-wt4",
+    "questionNumber": 2,
+    "image": {
+      "pageKey": "samples/8b-wt4/R03-p1.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.42,
+        "w": 0.9,
+        "h": 0.27999999999999997
+      }
+    },
+    "maxMarks": 3,
+    "goldMarks": 1,
+    "goldSteps": [
+      0,
+      1,
+      0
+    ],
+    "goldConcept": "c8-le-transposing",
+    "goldConceptIds": [
+      "c8-le-transposing"
+    ],
+    "goldMisconception": "Moves a term across \"=\" without changing its sign",
+    "goldMistakeType": "conceptual",
+    "tags": [
+      "partial"
+    ]
+  },
+  {
+    "id": "8B-WT4-R03:Q3",
+    "sheetRef": "8B-WT4-R03",
+    "paperKey": "c8-wt4",
+    "questionNumber": 3,
+    "image": {
+      "pageKey": "samples/8b-wt4/R03-p1.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.7,
+        "w": 0.9,
+        "h": 0.27
+      }
+    },
+    "maxMarks": 4,
+    "goldMarks": 0,
+    "goldSteps": [
+      0,
+      0,
+      0
+    ],
+    "goldConcept": "c8-le-bothsides",
+    "goldConceptIds": [
+      "c8-le-bothsides",
+      "c8-le-transposing"
+    ],
+    "goldMisconception": null,
+    "goldMistakeType": "unattempted",
+    "tags": [
+      "blank"
+    ]
+  },
+  {
+    "id": "8B-WT4-R03:Q4",
+    "sheetRef": "8B-WT4-R03",
+    "paperKey": "c8-wt4",
+    "questionNumber": 4,
+    "image": {
+      "pageKey": "samples/8b-wt4/R03-p2.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.03,
+        "w": 0.9,
+        "h": 0.44999999999999996
+      }
+    },
+    "maxMarks": 4,
+    "goldMarks": 3,
+    "goldSteps": [
+      1,
+      1,
+      1,
+      0
+    ],
+    "goldConcept": "c8-le-word",
+    "goldConceptIds": [
+      "c8-le-word"
+    ],
+    "goldMisconception": "Stopped before completing the solution",
+    "goldMistakeType": "incomplete",
+    "tags": [
+      "partial"
+    ]
+  },
+  {
+    "id": "8B-WT4-R03:Q5",
+    "sheetRef": "8B-WT4-R03",
+    "paperKey": "c8-wt4",
+    "questionNumber": 5,
+    "image": {
+      "pageKey": "samples/8b-wt4/R03-p2.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.48,
+        "w": 0.9,
+        "h": 0.49
+      }
+    },
+    "maxMarks": 6,
+    "goldMarks": 3,
+    "goldSteps": [
+      1,
+      2,
+      0,
+      0
+    ],
+    "goldConcept": "c8-le-word",
+    "goldConceptIds": [
+      "c8-le-word"
+    ],
+    "goldMisconception": "Stopped before completing the solution",
+    "goldMistakeType": "incomplete",
+    "tags": [
+      "partial"
+    ]
+  },
+  {
+    "id": "8B-WT4-R04:Q1",
+    "sheetRef": "8B-WT4-R04",
+    "paperKey": "c8-wt4",
+    "questionNumber": 1,
+    "image": {
+      "pageKey": "samples/8b-wt4/R04-p1.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.14,
+        "w": 0.9,
+        "h": 0.27999999999999997
+      }
+    },
+    "maxMarks": 3,
+    "goldMarks": 1,
+    "goldSteps": [
+      0,
+      1,
+      0
+    ],
+    "goldConcept": "c8-le-transposing",
+    "goldConceptIds": [
+      "c8-le-transposing"
+    ],
+    "goldMisconception": "Moves a term across \"=\" without changing its sign",
+    "goldMistakeType": "conceptual",
+    "tags": [
+      "partial"
+    ]
+  },
+  {
+    "id": "8B-WT4-R04:Q2",
+    "sheetRef": "8B-WT4-R04",
+    "paperKey": "c8-wt4",
+    "questionNumber": 2,
+    "image": {
+      "pageKey": "samples/8b-wt4/R04-p1.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.42,
+        "w": 0.9,
+        "h": 0.27999999999999997
+      }
+    },
+    "maxMarks": 3,
+    "goldMarks": 1,
+    "goldSteps": [
+      0,
+      1,
+      0
+    ],
+    "goldConcept": "c8-le-transposing",
+    "goldConceptIds": [
+      "c8-le-transposing"
+    ],
+    "goldMisconception": "Moves a term across \"=\" without changing its sign",
+    "goldMistakeType": "conceptual",
+    "tags": [
+      "partial"
+    ]
+  },
+  {
+    "id": "8B-WT4-R04:Q3",
+    "sheetRef": "8B-WT4-R04",
+    "paperKey": "c8-wt4",
+    "questionNumber": 3,
+    "image": {
+      "pageKey": "samples/8b-wt4/R04-p1.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.7,
+        "w": 0.9,
+        "h": 0.27
+      }
+    },
+    "maxMarks": 4,
+    "goldMarks": 0,
+    "goldSteps": [
+      0,
+      0,
+      0
+    ],
+    "goldConcept": "c8-le-bothsides",
+    "goldConceptIds": [
+      "c8-le-bothsides",
+      "c8-le-transposing"
+    ],
+    "goldMisconception": null,
+    "goldMistakeType": "unattempted",
+    "tags": [
+      "blank"
+    ]
+  },
+  {
+    "id": "8B-WT4-R04:Q4",
+    "sheetRef": "8B-WT4-R04",
+    "paperKey": "c8-wt4",
+    "questionNumber": 4,
+    "image": {
+      "pageKey": "samples/8b-wt4/R04-p2.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.03,
+        "w": 0.9,
+        "h": 0.44999999999999996
+      }
+    },
+    "maxMarks": 4,
+    "goldMarks": 2,
+    "goldSteps": [
+      1,
+      1,
+      0,
+      0
+    ],
+    "goldConcept": "c8-le-word",
+    "goldConceptIds": [
+      "c8-le-word"
+    ],
+    "goldMisconception": "Stopped before completing the solution",
+    "goldMistakeType": "incomplete",
+    "tags": [
+      "partial"
+    ]
+  },
+  {
+    "id": "8B-WT4-R04:Q5",
+    "sheetRef": "8B-WT4-R04",
+    "paperKey": "c8-wt4",
+    "questionNumber": 5,
+    "image": {
+      "pageKey": "samples/8b-wt4/R04-p2.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.48,
+        "w": 0.9,
+        "h": 0.49
+      }
+    },
+    "maxMarks": 6,
+    "goldMarks": 5,
+    "goldSteps": [
+      1,
+      2,
+      2,
+      0
+    ],
+    "goldConcept": "c8-le-word",
+    "goldConceptIds": [
+      "c8-le-word"
+    ],
+    "goldMisconception": "Stopped before completing the solution",
+    "goldMistakeType": "incomplete",
+    "tags": [
+      "partial"
+    ]
+  },
+  {
+    "id": "8B-WT4-R05:Q1",
+    "sheetRef": "8B-WT4-R05",
+    "paperKey": "c8-wt4",
+    "questionNumber": 1,
+    "image": {
+      "pageKey": "samples/8b-wt4/R05-p1.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.14,
+        "w": 0.9,
+        "h": 0.27999999999999997
+      }
+    },
+    "maxMarks": 3,
+    "goldMarks": 2,
+    "goldSteps": [
+      1,
+      1,
+      0
+    ],
+    "goldConcept": "c8-le-transposing",
+    "goldConceptIds": [
+      "c8-le-transposing"
+    ],
+    "goldMisconception": "Correct method, arithmetic slip",
+    "goldMistakeType": "calculation",
+    "tags": [
+      "partial"
+    ]
+  },
+  {
+    "id": "8B-WT4-R05:Q2",
+    "sheetRef": "8B-WT4-R05",
+    "paperKey": "c8-wt4",
+    "questionNumber": 2,
+    "image": {
+      "pageKey": "samples/8b-wt4/R05-p1.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.42,
+        "w": 0.9,
+        "h": 0.27999999999999997
+      }
+    },
+    "maxMarks": 3,
+    "goldMarks": 2,
+    "goldSteps": [
+      1,
+      1,
+      0
+    ],
+    "goldConcept": "c8-le-transposing",
+    "goldConceptIds": [
+      "c8-le-transposing"
+    ],
+    "goldMisconception": "Correct method, arithmetic slip",
+    "goldMistakeType": "calculation",
+    "tags": [
+      "partial"
+    ]
+  },
+  {
+    "id": "8B-WT4-R05:Q3",
+    "sheetRef": "8B-WT4-R05",
+    "paperKey": "c8-wt4",
+    "questionNumber": 3,
+    "image": {
+      "pageKey": "samples/8b-wt4/R05-p1.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.7,
+        "w": 0.9,
+        "h": 0.27
+      }
+    },
+    "maxMarks": 4,
+    "goldMarks": 3,
+    "goldSteps": [
+      2,
+      1,
+      0
+    ],
+    "goldConcept": "c8-le-bothsides",
+    "goldConceptIds": [
+      "c8-le-bothsides",
+      "c8-le-transposing"
+    ],
+    "goldMisconception": "Correct method, arithmetic slip",
+    "goldMistakeType": "calculation",
+    "tags": [
+      "partial"
+    ]
+  },
+  {
+    "id": "8B-WT4-R05:Q4",
+    "sheetRef": "8B-WT4-R05",
+    "paperKey": "c8-wt4",
+    "questionNumber": 4,
+    "image": {
+      "pageKey": "samples/8b-wt4/R05-p2.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.03,
+        "w": 0.9,
+        "h": 0.44999999999999996
+      }
+    },
+    "maxMarks": 4,
+    "goldMarks": 3,
+    "goldSteps": [
+      1,
+      1,
+      1,
+      0
+    ],
+    "goldConcept": "c8-le-word",
+    "goldConceptIds": [
+      "c8-le-word"
+    ],
+    "goldMisconception": "Stopped before completing the solution",
+    "goldMistakeType": "incomplete",
+    "tags": [
+      "partial"
+    ]
+  },
+  {
+    "id": "8B-WT4-R05:Q5",
+    "sheetRef": "8B-WT4-R05",
+    "paperKey": "c8-wt4",
+    "questionNumber": 5,
+    "image": {
+      "pageKey": "samples/8b-wt4/R05-p2.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.48,
+        "w": 0.9,
+        "h": 0.49
+      }
+    },
+    "maxMarks": 6,
+    "goldMarks": 5,
+    "goldSteps": [
+      1,
+      2,
+      2,
+      0
+    ],
+    "goldConcept": "c8-le-word",
+    "goldConceptIds": [
+      "c8-le-word"
+    ],
+    "goldMisconception": "Stopped before completing the solution",
+    "goldMistakeType": "incomplete",
+    "tags": [
+      "partial"
+    ]
+  },
+  {
+    "id": "8B-WT4-R06:Q1",
+    "sheetRef": "8B-WT4-R06",
+    "paperKey": "c8-wt4",
+    "questionNumber": 1,
+    "image": {
+      "pageKey": "samples/8b-wt4/R06-p1.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.14,
+        "w": 0.9,
+        "h": 0.27999999999999997
+      }
+    },
+    "maxMarks": 3,
+    "goldMarks": 2,
+    "goldSteps": [
+      1,
+      1,
+      0
+    ],
+    "goldConcept": "c8-le-transposing",
+    "goldConceptIds": [
+      "c8-le-transposing"
+    ],
+    "goldMisconception": "Correct method, arithmetic slip",
+    "goldMistakeType": "calculation",
+    "tags": [
+      "partial"
+    ]
+  },
+  {
+    "id": "8B-WT4-R06:Q2",
+    "sheetRef": "8B-WT4-R06",
+    "paperKey": "c8-wt4",
+    "questionNumber": 2,
+    "image": {
+      "pageKey": "samples/8b-wt4/R06-p1.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.42,
+        "w": 0.9,
+        "h": 0.27999999999999997
+      }
+    },
+    "maxMarks": 3,
+    "goldMarks": 1,
+    "goldSteps": [
+      1,
+      0,
+      0
+    ],
+    "goldConcept": "c8-le-transposing",
+    "goldConceptIds": [
+      "c8-le-transposing"
+    ],
+    "goldMisconception": "Correct method, arithmetic slip",
+    "goldMistakeType": "calculation",
+    "tags": [
+      "partial"
+    ]
+  },
+  {
+    "id": "8B-WT4-R06:Q3",
+    "sheetRef": "8B-WT4-R06",
+    "paperKey": "c8-wt4",
+    "questionNumber": 3,
+    "image": {
+      "pageKey": "samples/8b-wt4/R06-p1.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.7,
+        "w": 0.9,
+        "h": 0.27
+      }
+    },
+    "maxMarks": 4,
+    "goldMarks": 3,
+    "goldSteps": [
+      2,
+      1,
+      0
+    ],
+    "goldConcept": "c8-le-bothsides",
+    "goldConceptIds": [
+      "c8-le-bothsides",
+      "c8-le-transposing"
+    ],
+    "goldMisconception": "Correct method, arithmetic slip",
+    "goldMistakeType": "calculation",
+    "tags": [
+      "partial"
+    ]
+  },
+  {
+    "id": "8B-WT4-R06:Q4",
+    "sheetRef": "8B-WT4-R06",
+    "paperKey": "c8-wt4",
+    "questionNumber": 4,
+    "image": {
+      "pageKey": "samples/8b-wt4/R06-p2.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.03,
+        "w": 0.9,
+        "h": 0.44999999999999996
+      }
+    },
+    "maxMarks": 4,
+    "goldMarks": 3,
+    "goldSteps": [
+      1,
+      1,
+      1,
+      0
+    ],
+    "goldConcept": "c8-le-word",
+    "goldConceptIds": [
+      "c8-le-word"
+    ],
+    "goldMisconception": "Stopped before completing the solution",
+    "goldMistakeType": "incomplete",
+    "tags": [
+      "partial"
+    ]
+  },
+  {
+    "id": "8B-WT4-R06:Q5",
+    "sheetRef": "8B-WT4-R06",
+    "paperKey": "c8-wt4",
+    "questionNumber": 5,
+    "image": {
+      "pageKey": "samples/8b-wt4/R06-p2.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.48,
+        "w": 0.9,
+        "h": 0.49
+      }
+    },
+    "maxMarks": 6,
+    "goldMarks": 3,
+    "goldSteps": [
+      1,
+      2,
+      0,
+      0
+    ],
+    "goldConcept": "c8-le-word",
+    "goldConceptIds": [
+      "c8-le-word"
+    ],
+    "goldMisconception": "Stopped before completing the solution",
+    "goldMistakeType": "incomplete",
+    "tags": [
+      "partial"
+    ]
+  },
+  {
+    "id": "8B-WT4-R07:Q1",
+    "sheetRef": "8B-WT4-R07",
+    "paperKey": "c8-wt4",
+    "questionNumber": 1,
+    "image": {
+      "pageKey": "samples/8b-wt4/R07-p1.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.14,
+        "w": 0.9,
+        "h": 0.27999999999999997
+      }
+    },
+    "maxMarks": 3,
+    "goldMarks": 1,
+    "goldSteps": [
+      0,
+      1,
+      0
+    ],
+    "goldConcept": "c8-le-transposing",
+    "goldConceptIds": [
+      "c8-le-transposing"
+    ],
+    "goldMisconception": "Moves a term across \"=\" without changing its sign",
+    "goldMistakeType": "conceptual",
+    "tags": [
+      "partial"
+    ]
+  },
+  {
+    "id": "8B-WT4-R07:Q2",
+    "sheetRef": "8B-WT4-R07",
+    "paperKey": "c8-wt4",
+    "questionNumber": 2,
+    "image": {
+      "pageKey": "samples/8b-wt4/R07-p1.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.42,
+        "w": 0.9,
+        "h": 0.27999999999999997
+      }
+    },
+    "maxMarks": 3,
+    "goldMarks": 1,
+    "goldSteps": [
+      0,
+      1,
+      0
+    ],
+    "goldConcept": "c8-le-transposing",
+    "goldConceptIds": [
+      "c8-le-transposing"
+    ],
+    "goldMisconception": "Moves a term across \"=\" without changing its sign",
+    "goldMistakeType": "conceptual",
+    "tags": [
+      "partial"
+    ]
+  },
+  {
+    "id": "8B-WT4-R07:Q3",
+    "sheetRef": "8B-WT4-R07",
+    "paperKey": "c8-wt4",
+    "questionNumber": 3,
+    "image": {
+      "pageKey": "samples/8b-wt4/R07-p1.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.7,
+        "w": 0.9,
+        "h": 0.27
+      }
+    },
+    "maxMarks": 4,
+    "goldMarks": 0,
+    "goldSteps": [
+      0,
+      0,
+      0
+    ],
+    "goldConcept": "c8-le-bothsides",
+    "goldConceptIds": [
+      "c8-le-bothsides",
+      "c8-le-transposing"
+    ],
+    "goldMisconception": null,
+    "goldMistakeType": "unattempted",
+    "tags": [
+      "blank"
+    ]
+  },
+  {
+    "id": "8B-WT4-R07:Q4",
+    "sheetRef": "8B-WT4-R07",
+    "paperKey": "c8-wt4",
+    "questionNumber": 4,
+    "image": {
+      "pageKey": "samples/8b-wt4/R07-p2.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.03,
+        "w": 0.9,
+        "h": 0.44999999999999996
+      }
+    },
+    "maxMarks": 4,
+    "goldMarks": 3,
+    "goldSteps": [
+      1,
+      1,
+      1,
+      0
+    ],
+    "goldConcept": "c8-le-word",
+    "goldConceptIds": [
+      "c8-le-word"
+    ],
+    "goldMisconception": "Stopped before completing the solution",
+    "goldMistakeType": "incomplete",
+    "tags": [
+      "partial"
+    ]
+  },
+  {
+    "id": "8B-WT4-R07:Q5",
+    "sheetRef": "8B-WT4-R07",
+    "paperKey": "c8-wt4",
+    "questionNumber": 5,
+    "image": {
+      "pageKey": "samples/8b-wt4/R07-p2.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.48,
+        "w": 0.9,
+        "h": 0.49
+      }
+    },
+    "maxMarks": 6,
+    "goldMarks": 5,
+    "goldSteps": [
+      1,
+      2,
+      2,
+      0
+    ],
+    "goldConcept": "c8-le-word",
+    "goldConceptIds": [
+      "c8-le-word"
+    ],
+    "goldMisconception": "Stopped before completing the solution",
+    "goldMistakeType": "incomplete",
+    "tags": [
+      "partial"
+    ]
+  },
+  {
+    "id": "8B-WT4-R08:Q1",
+    "sheetRef": "8B-WT4-R08",
+    "paperKey": "c8-wt4",
+    "questionNumber": 1,
+    "image": {
+      "pageKey": "samples/8b-wt4/R08-p1.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.14,
+        "w": 0.9,
+        "h": 0.27999999999999997
+      }
+    },
+    "maxMarks": 3,
+    "goldMarks": 2,
+    "goldSteps": [
+      1,
+      1,
+      0
+    ],
+    "goldConcept": "c8-le-transposing",
+    "goldConceptIds": [
+      "c8-le-transposing"
+    ],
+    "goldMisconception": "Correct method, arithmetic slip",
+    "goldMistakeType": "calculation",
+    "tags": [
+      "partial"
+    ]
+  },
+  {
+    "id": "8B-WT4-R08:Q2",
+    "sheetRef": "8B-WT4-R08",
+    "paperKey": "c8-wt4",
+    "questionNumber": 2,
+    "image": {
+      "pageKey": "samples/8b-wt4/R08-p1.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.42,
+        "w": 0.9,
+        "h": 0.27999999999999997
+      }
+    },
+    "maxMarks": 3,
+    "goldMarks": 1,
+    "goldSteps": [
+      1,
+      0,
+      0
+    ],
+    "goldConcept": "c8-le-transposing",
+    "goldConceptIds": [
+      "c8-le-transposing"
+    ],
+    "goldMisconception": "Correct method, arithmetic slip",
+    "goldMistakeType": "calculation",
+    "tags": [
+      "partial"
+    ]
+  },
+  {
+    "id": "8B-WT4-R08:Q3",
+    "sheetRef": "8B-WT4-R08",
+    "paperKey": "c8-wt4",
+    "questionNumber": 3,
+    "image": {
+      "pageKey": "samples/8b-wt4/R08-p1.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.7,
+        "w": 0.9,
+        "h": 0.27
+      }
+    },
+    "maxMarks": 4,
+    "goldMarks": 2,
+    "goldSteps": [
+      2,
+      0,
+      0
+    ],
+    "goldConcept": "c8-le-bothsides",
+    "goldConceptIds": [
+      "c8-le-bothsides",
+      "c8-le-transposing"
+    ],
+    "goldMisconception": "Correct method, arithmetic slip",
+    "goldMistakeType": "calculation",
+    "tags": [
+      "partial"
+    ]
+  },
+  {
+    "id": "8B-WT4-R08:Q4",
+    "sheetRef": "8B-WT4-R08",
+    "paperKey": "c8-wt4",
+    "questionNumber": 4,
+    "image": {
+      "pageKey": "samples/8b-wt4/R08-p2.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.03,
+        "w": 0.9,
+        "h": 0.44999999999999996
+      }
+    },
+    "maxMarks": 4,
+    "goldMarks": 3,
+    "goldSteps": [
+      1,
+      1,
+      1,
+      0
+    ],
+    "goldConcept": "c8-le-word",
+    "goldConceptIds": [
+      "c8-le-word"
+    ],
+    "goldMisconception": "Stopped before completing the solution",
+    "goldMistakeType": "incomplete",
+    "tags": [
+      "partial"
+    ]
+  },
+  {
+    "id": "8B-WT4-R08:Q5",
+    "sheetRef": "8B-WT4-R08",
+    "paperKey": "c8-wt4",
+    "questionNumber": 5,
+    "image": {
+      "pageKey": "samples/8b-wt4/R08-p2.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.48,
+        "w": 0.9,
+        "h": 0.49
+      }
+    },
+    "maxMarks": 6,
+    "goldMarks": 3,
+    "goldSteps": [
+      1,
+      2,
+      0,
+      0
+    ],
+    "goldConcept": "c8-le-word",
+    "goldConceptIds": [
+      "c8-le-word"
+    ],
+    "goldMisconception": "Stopped before completing the solution",
+    "goldMistakeType": "incomplete",
+    "tags": [
+      "partial"
+    ]
+  },
+  {
+    "id": "8B-WT4-R09:Q1",
+    "sheetRef": "8B-WT4-R09",
+    "paperKey": "c8-wt4",
+    "questionNumber": 1,
+    "image": {
+      "pageKey": "samples/8b-wt4/R09-p1.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.14,
+        "w": 0.9,
+        "h": 0.27999999999999997
+      }
+    },
+    "maxMarks": 3,
+    "goldMarks": 1,
+    "goldSteps": [
+      0,
+      1,
+      0
+    ],
+    "goldConcept": "c8-le-transposing",
+    "goldConceptIds": [
+      "c8-le-transposing"
+    ],
+    "goldMisconception": "Moves a term across \"=\" without changing its sign",
+    "goldMistakeType": "conceptual",
+    "tags": [
+      "partial"
+    ]
+  },
+  {
+    "id": "8B-WT4-R09:Q2",
+    "sheetRef": "8B-WT4-R09",
+    "paperKey": "c8-wt4",
+    "questionNumber": 2,
+    "image": {
+      "pageKey": "samples/8b-wt4/R09-p1.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.42,
+        "w": 0.9,
+        "h": 0.27999999999999997
+      }
+    },
+    "maxMarks": 3,
+    "goldMarks": 0,
+    "goldSteps": [
+      0,
+      0,
+      0
+    ],
+    "goldConcept": "c8-le-transposing",
+    "goldConceptIds": [
+      "c8-le-transposing"
+    ],
+    "goldMisconception": null,
+    "goldMistakeType": "unattempted",
+    "tags": [
+      "blank"
+    ]
+  },
+  {
+    "id": "8B-WT4-R09:Q3",
+    "sheetRef": "8B-WT4-R09",
+    "paperKey": "c8-wt4",
+    "questionNumber": 3,
+    "image": {
+      "pageKey": "samples/8b-wt4/R09-p1.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.7,
+        "w": 0.9,
+        "h": 0.27
+      }
+    },
+    "maxMarks": 4,
+    "goldMarks": 1,
+    "goldSteps": [
+      0,
+      1,
+      0
+    ],
+    "goldConcept": "c8-le-bothsides",
+    "goldConceptIds": [
+      "c8-le-bothsides",
+      "c8-le-transposing"
+    ],
+    "goldMisconception": "Moves a term across \"=\" without changing its sign",
+    "goldMistakeType": "conceptual",
+    "tags": [
+      "partial"
+    ]
+  },
+  {
+    "id": "8B-WT4-R09:Q4",
+    "sheetRef": "8B-WT4-R09",
+    "paperKey": "c8-wt4",
+    "questionNumber": 4,
+    "image": {
+      "pageKey": "samples/8b-wt4/R09-p2.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.03,
+        "w": 0.9,
+        "h": 0.44999999999999996
+      }
+    },
+    "maxMarks": 4,
+    "goldMarks": 3,
+    "goldSteps": [
+      1,
+      1,
+      1,
+      0
+    ],
+    "goldConcept": "c8-le-word",
+    "goldConceptIds": [
+      "c8-le-word"
+    ],
+    "goldMisconception": "Stopped before completing the solution",
+    "goldMistakeType": "incomplete",
+    "tags": [
+      "partial"
+    ]
+  },
+  {
+    "id": "8B-WT4-R09:Q5",
+    "sheetRef": "8B-WT4-R09",
+    "paperKey": "c8-wt4",
+    "questionNumber": 5,
+    "image": {
+      "pageKey": "samples/8b-wt4/R09-p2.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.48,
+        "w": 0.9,
+        "h": 0.49
+      }
+    },
+    "maxMarks": 6,
+    "goldMarks": 5,
+    "goldSteps": [
+      1,
+      2,
+      2,
+      0
+    ],
+    "goldConcept": "c8-le-word",
+    "goldConceptIds": [
+      "c8-le-word"
+    ],
+    "goldMisconception": "Stopped before completing the solution",
+    "goldMistakeType": "incomplete",
+    "tags": [
+      "partial"
+    ]
+  },
+  {
+    "id": "8B-WT4-R10:Q1",
+    "sheetRef": "8B-WT4-R10",
+    "paperKey": "c8-wt4",
+    "questionNumber": 1,
+    "image": {
+      "pageKey": "samples/8b-wt4/R10-p1.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.14,
+        "w": 0.9,
+        "h": 0.27999999999999997
+      }
+    },
+    "maxMarks": 3,
+    "goldMarks": 2,
+    "goldSteps": [
+      1,
+      1,
+      0
+    ],
+    "goldConcept": "c8-le-transposing",
+    "goldConceptIds": [
+      "c8-le-transposing"
+    ],
+    "goldMisconception": "Correct method, arithmetic slip",
+    "goldMistakeType": "calculation",
+    "tags": [
+      "partial"
+    ]
+  },
+  {
+    "id": "8B-WT4-R10:Q2",
+    "sheetRef": "8B-WT4-R10",
+    "paperKey": "c8-wt4",
+    "questionNumber": 2,
+    "image": {
+      "pageKey": "samples/8b-wt4/R10-p1.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.42,
+        "w": 0.9,
+        "h": 0.27999999999999997
+      }
+    },
+    "maxMarks": 3,
+    "goldMarks": 1,
+    "goldSteps": [
+      1,
+      0,
+      0
+    ],
+    "goldConcept": "c8-le-transposing",
+    "goldConceptIds": [
+      "c8-le-transposing"
+    ],
+    "goldMisconception": "Correct method, arithmetic slip",
+    "goldMistakeType": "calculation",
+    "tags": [
+      "partial"
+    ]
+  },
+  {
+    "id": "8B-WT4-R10:Q3",
+    "sheetRef": "8B-WT4-R10",
+    "paperKey": "c8-wt4",
+    "questionNumber": 3,
+    "image": {
+      "pageKey": "samples/8b-wt4/R10-p1.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.7,
+        "w": 0.9,
+        "h": 0.27
+      }
+    },
+    "maxMarks": 4,
+    "goldMarks": 3,
+    "goldSteps": [
+      2,
+      1,
+      0
+    ],
+    "goldConcept": "c8-le-bothsides",
+    "goldConceptIds": [
+      "c8-le-bothsides",
+      "c8-le-transposing"
+    ],
+    "goldMisconception": "Correct method, arithmetic slip",
+    "goldMistakeType": "calculation",
+    "tags": [
+      "partial"
+    ]
+  },
+  {
+    "id": "8B-WT4-R10:Q4",
+    "sheetRef": "8B-WT4-R10",
+    "paperKey": "c8-wt4",
+    "questionNumber": 4,
+    "image": {
+      "pageKey": "samples/8b-wt4/R10-p2.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.03,
+        "w": 0.9,
+        "h": 0.44999999999999996
+      }
+    },
+    "maxMarks": 4,
+    "goldMarks": 3,
+    "goldSteps": [
+      1,
+      1,
+      1,
+      0
+    ],
+    "goldConcept": "c8-le-word",
+    "goldConceptIds": [
+      "c8-le-word"
+    ],
+    "goldMisconception": "Stopped before completing the solution",
+    "goldMistakeType": "incomplete",
+    "tags": [
+      "partial"
+    ]
+  },
+  {
+    "id": "8B-WT4-R10:Q5",
+    "sheetRef": "8B-WT4-R10",
+    "paperKey": "c8-wt4",
+    "questionNumber": 5,
+    "image": {
+      "pageKey": "samples/8b-wt4/R10-p2.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.48,
+        "w": 0.9,
+        "h": 0.49
+      }
+    },
+    "maxMarks": 6,
+    "goldMarks": 3,
+    "goldSteps": [
+      1,
+      2,
+      0,
+      0
+    ],
+    "goldConcept": "c8-le-word",
+    "goldConceptIds": [
+      "c8-le-word"
+    ],
+    "goldMisconception": "Correct method, arithmetic slip",
+    "goldMistakeType": "calculation",
+    "tags": [
+      "partial"
+    ]
+  },
+  {
+    "id": "8B-WT4-R11:Q1",
+    "sheetRef": "8B-WT4-R11",
+    "paperKey": "c8-wt4",
+    "questionNumber": 1,
+    "image": {
+      "pageKey": "samples/8b-wt4/R11-p1.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.14,
+        "w": 0.9,
+        "h": 0.27999999999999997
+      }
+    },
+    "maxMarks": 3,
+    "goldMarks": 1,
+    "goldSteps": [
+      0,
+      1,
+      0
+    ],
+    "goldConcept": "c8-le-transposing",
+    "goldConceptIds": [
+      "c8-le-transposing"
+    ],
+    "goldMisconception": "Moves a term across \"=\" without changing its sign",
+    "goldMistakeType": "conceptual",
+    "tags": [
+      "partial"
+    ]
+  },
+  {
+    "id": "8B-WT4-R11:Q2",
+    "sheetRef": "8B-WT4-R11",
+    "paperKey": "c8-wt4",
+    "questionNumber": 2,
+    "image": {
+      "pageKey": "samples/8b-wt4/R11-p1.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.42,
+        "w": 0.9,
+        "h": 0.27999999999999997
+      }
+    },
+    "maxMarks": 3,
+    "goldMarks": 1,
+    "goldSteps": [
+      0,
+      1,
+      0
+    ],
+    "goldConcept": "c8-le-transposing",
+    "goldConceptIds": [
+      "c8-le-transposing"
+    ],
+    "goldMisconception": "Moves a term across \"=\" without changing its sign",
+    "goldMistakeType": "conceptual",
+    "tags": [
+      "partial"
+    ]
+  },
+  {
+    "id": "8B-WT4-R11:Q3",
+    "sheetRef": "8B-WT4-R11",
+    "paperKey": "c8-wt4",
+    "questionNumber": 3,
+    "image": {
+      "pageKey": "samples/8b-wt4/R11-p1.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.7,
+        "w": 0.9,
+        "h": 0.27
+      }
+    },
+    "maxMarks": 4,
+    "goldMarks": 0,
+    "goldSteps": [
+      0,
+      0,
+      0
+    ],
+    "goldConcept": "c8-le-bothsides",
+    "goldConceptIds": [
+      "c8-le-bothsides",
+      "c8-le-transposing"
+    ],
+    "goldMisconception": null,
+    "goldMistakeType": "unattempted",
+    "tags": [
+      "blank"
+    ]
+  },
+  {
+    "id": "8B-WT4-R11:Q4",
+    "sheetRef": "8B-WT4-R11",
+    "paperKey": "c8-wt4",
+    "questionNumber": 4,
+    "image": {
+      "pageKey": "samples/8b-wt4/R11-p2.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.03,
+        "w": 0.9,
+        "h": 0.44999999999999996
+      }
+    },
+    "maxMarks": 4,
+    "goldMarks": 2,
+    "goldSteps": [
+      1,
+      1,
+      0,
+      0
+    ],
+    "goldConcept": "c8-le-word",
+    "goldConceptIds": [
+      "c8-le-word"
+    ],
+    "goldMisconception": "Stopped before completing the solution",
+    "goldMistakeType": "incomplete",
+    "tags": [
+      "partial"
+    ]
+  },
+  {
+    "id": "8B-WT4-R11:Q5",
+    "sheetRef": "8B-WT4-R11",
+    "paperKey": "c8-wt4",
+    "questionNumber": 5,
+    "image": {
+      "pageKey": "samples/8b-wt4/R11-p2.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.48,
+        "w": 0.9,
+        "h": 0.49
+      }
+    },
+    "maxMarks": 6,
+    "goldMarks": 3,
+    "goldSteps": [
+      1,
+      2,
+      0,
+      0
+    ],
+    "goldConcept": "c8-le-word",
+    "goldConceptIds": [
+      "c8-le-word"
+    ],
+    "goldMisconception": "Stopped before completing the solution",
+    "goldMistakeType": "incomplete",
+    "tags": [
+      "partial"
+    ]
+  },
+  {
+    "id": "8B-WT4-R12:Q1",
+    "sheetRef": "8B-WT4-R12",
+    "paperKey": "c8-wt4",
+    "questionNumber": 1,
+    "image": {
+      "pageKey": "samples/8b-wt4/R12-p1.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.14,
+        "w": 0.9,
+        "h": 0.27999999999999997
+      }
+    },
+    "maxMarks": 3,
+    "goldMarks": 1,
+    "goldSteps": [
+      0,
+      0.5,
+      0.5
+    ],
+    "goldConcept": "c8-le-transposing",
+    "goldConceptIds": [
+      "c8-le-transposing"
+    ],
+    "goldMisconception": "Applies an operation to one side only",
+    "goldMistakeType": "conceptual",
+    "tags": [
+      "partial"
+    ]
+  },
+  {
+    "id": "8B-WT4-R12:Q2",
+    "sheetRef": "8B-WT4-R12",
+    "paperKey": "c8-wt4",
+    "questionNumber": 2,
+    "image": {
+      "pageKey": "samples/8b-wt4/R12-p1.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.42,
+        "w": 0.9,
+        "h": 0.27999999999999997
+      }
+    },
+    "maxMarks": 3,
+    "goldMarks": 1,
+    "goldSteps": [
+      0,
+      0.5,
+      0.5
+    ],
+    "goldConcept": "c8-le-transposing",
+    "goldConceptIds": [
+      "c8-le-transposing"
+    ],
+    "goldMisconception": "Applies an operation to one side only",
+    "goldMistakeType": "conceptual",
+    "tags": [
+      "partial"
+    ]
+  },
+  {
+    "id": "8B-WT4-R12:Q3",
+    "sheetRef": "8B-WT4-R12",
+    "paperKey": "c8-wt4",
+    "questionNumber": 3,
+    "image": {
+      "pageKey": "samples/8b-wt4/R12-p1.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.7,
+        "w": 0.9,
+        "h": 0.27
+      }
+    },
+    "maxMarks": 4,
+    "goldMarks": 0,
+    "goldSteps": [
+      0,
+      0,
+      0
+    ],
+    "goldConcept": "c8-le-bothsides",
+    "goldConceptIds": [
+      "c8-le-bothsides",
+      "c8-le-transposing"
+    ],
+    "goldMisconception": null,
+    "goldMistakeType": "unattempted",
+    "tags": [
+      "blank"
+    ]
+  },
+  {
+    "id": "8B-WT4-R12:Q4",
+    "sheetRef": "8B-WT4-R12",
+    "paperKey": "c8-wt4",
+    "questionNumber": 4,
+    "image": {
+      "pageKey": "samples/8b-wt4/R12-p2.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.03,
+        "w": 0.9,
+        "h": 0.44999999999999996
+      }
+    },
+    "maxMarks": 4,
+    "goldMarks": 2,
+    "goldSteps": [
+      1,
+      1,
+      0,
+      0
+    ],
+    "goldConcept": "c8-le-word",
+    "goldConceptIds": [
+      "c8-le-word"
+    ],
+    "goldMisconception": "Correct method, arithmetic slip",
+    "goldMistakeType": "calculation",
+    "tags": [
+      "partial"
+    ]
+  },
+  {
+    "id": "8B-WT4-R12:Q5",
+    "sheetRef": "8B-WT4-R12",
+    "paperKey": "c8-wt4",
+    "questionNumber": 5,
+    "image": {
+      "pageKey": "samples/8b-wt4/R12-p2.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.48,
+        "w": 0.9,
+        "h": 0.49
+      }
+    },
+    "maxMarks": 6,
+    "goldMarks": 3,
+    "goldSteps": [
+      1,
+      2,
+      0,
+      0
+    ],
+    "goldConcept": "c8-le-word",
+    "goldConceptIds": [
+      "c8-le-word"
+    ],
+    "goldMisconception": "Correct method, arithmetic slip",
+    "goldMistakeType": "calculation",
+    "tags": [
+      "partial"
+    ]
+  },
+  {
+    "id": "8B-WT4-R13:Q1",
+    "sheetRef": "8B-WT4-R13",
+    "paperKey": "c8-wt4",
+    "questionNumber": 1,
+    "image": {
+      "pageKey": "samples/8b-wt4/R13-p1.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.14,
+        "w": 0.9,
+        "h": 0.27999999999999997
+      }
+    },
+    "maxMarks": 3,
+    "goldMarks": 1,
+    "goldSteps": [
+      0,
+      1,
+      0
+    ],
+    "goldConcept": "c8-le-transposing",
+    "goldConceptIds": [
+      "c8-le-transposing"
+    ],
+    "goldMisconception": "Moves a term across \"=\" without changing its sign",
+    "goldMistakeType": "conceptual",
+    "tags": [
+      "partial"
+    ]
+  },
+  {
+    "id": "8B-WT4-R13:Q2",
+    "sheetRef": "8B-WT4-R13",
+    "paperKey": "c8-wt4",
+    "questionNumber": 2,
+    "image": {
+      "pageKey": "samples/8b-wt4/R13-p1.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.42,
+        "w": 0.9,
+        "h": 0.27999999999999997
+      }
+    },
+    "maxMarks": 3,
+    "goldMarks": 1,
+    "goldSteps": [
+      0,
+      1,
+      0
+    ],
+    "goldConcept": "c8-le-transposing",
+    "goldConceptIds": [
+      "c8-le-transposing"
+    ],
+    "goldMisconception": "Moves a term across \"=\" without changing its sign",
+    "goldMistakeType": "conceptual",
+    "tags": [
+      "partial"
+    ]
+  },
+  {
+    "id": "8B-WT4-R13:Q3",
+    "sheetRef": "8B-WT4-R13",
+    "paperKey": "c8-wt4",
+    "questionNumber": 3,
+    "image": {
+      "pageKey": "samples/8b-wt4/R13-p1.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.7,
+        "w": 0.9,
+        "h": 0.27
+      }
+    },
+    "maxMarks": 4,
+    "goldMarks": 0,
+    "goldSteps": [
+      0,
+      0,
+      0
+    ],
+    "goldConcept": "c8-le-bothsides",
+    "goldConceptIds": [
+      "c8-le-bothsides",
+      "c8-le-transposing"
+    ],
+    "goldMisconception": null,
+    "goldMistakeType": "unattempted",
+    "tags": [
+      "blank"
+    ]
+  },
+  {
+    "id": "8B-WT4-R13:Q4",
+    "sheetRef": "8B-WT4-R13",
+    "paperKey": "c8-wt4",
+    "questionNumber": 4,
+    "image": {
+      "pageKey": "samples/8b-wt4/R13-p2.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.03,
+        "w": 0.9,
+        "h": 0.44999999999999996
+      }
+    },
+    "maxMarks": 4,
+    "goldMarks": 3,
+    "goldSteps": [
+      1,
+      1,
+      1,
+      0
+    ],
+    "goldConcept": "c8-le-word",
+    "goldConceptIds": [
+      "c8-le-word"
+    ],
+    "goldMisconception": "Stopped before completing the solution",
+    "goldMistakeType": "incomplete",
+    "tags": [
+      "partial"
+    ]
+  },
+  {
+    "id": "8B-WT4-R13:Q5",
+    "sheetRef": "8B-WT4-R13",
+    "paperKey": "c8-wt4",
+    "questionNumber": 5,
+    "image": {
+      "pageKey": "samples/8b-wt4/R13-p2.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.48,
+        "w": 0.9,
+        "h": 0.49
+      }
+    },
+    "maxMarks": 6,
+    "goldMarks": 5,
+    "goldSteps": [
+      1,
+      2,
+      2,
+      0
+    ],
+    "goldConcept": "c8-le-word",
+    "goldConceptIds": [
+      "c8-le-word"
+    ],
+    "goldMisconception": "Stopped before completing the solution",
+    "goldMistakeType": "incomplete",
+    "tags": [
+      "partial"
+    ]
+  },
+  {
+    "id": "8B-WT4-R14:Q1",
+    "sheetRef": "8B-WT4-R14",
+    "paperKey": "c8-wt4",
+    "questionNumber": 1,
+    "image": {
+      "pageKey": "samples/8b-wt4/R14-p1.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.14,
+        "w": 0.9,
+        "h": 0.27999999999999997
+      }
+    },
+    "maxMarks": 3,
+    "goldMarks": 1,
+    "goldSteps": [
+      0,
+      1,
+      0
+    ],
+    "goldConcept": "c8-le-transposing",
+    "goldConceptIds": [
+      "c8-le-transposing"
+    ],
+    "goldMisconception": "Moves a term across \"=\" without changing its sign",
+    "goldMistakeType": "conceptual",
+    "tags": [
+      "partial"
+    ]
+  },
+  {
+    "id": "8B-WT4-R14:Q2",
+    "sheetRef": "8B-WT4-R14",
+    "paperKey": "c8-wt4",
+    "questionNumber": 2,
+    "image": {
+      "pageKey": "samples/8b-wt4/R14-p1.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.42,
+        "w": 0.9,
+        "h": 0.27999999999999997
+      }
+    },
+    "maxMarks": 3,
+    "goldMarks": 1,
+    "goldSteps": [
+      0,
+      1,
+      0
+    ],
+    "goldConcept": "c8-le-transposing",
+    "goldConceptIds": [
+      "c8-le-transposing"
+    ],
+    "goldMisconception": "Moves a term across \"=\" without changing its sign",
+    "goldMistakeType": "conceptual",
+    "tags": [
+      "partial"
+    ]
+  },
+  {
+    "id": "8B-WT4-R14:Q3",
+    "sheetRef": "8B-WT4-R14",
+    "paperKey": "c8-wt4",
+    "questionNumber": 3,
+    "image": {
+      "pageKey": "samples/8b-wt4/R14-p1.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.7,
+        "w": 0.9,
+        "h": 0.27
+      }
+    },
+    "maxMarks": 4,
+    "goldMarks": 0,
+    "goldSteps": [
+      0,
+      0,
+      0
+    ],
+    "goldConcept": "c8-le-bothsides",
+    "goldConceptIds": [
+      "c8-le-bothsides",
+      "c8-le-transposing"
+    ],
+    "goldMisconception": null,
+    "goldMistakeType": "unattempted",
+    "tags": [
+      "blank"
+    ]
+  },
+  {
+    "id": "8B-WT4-R14:Q4",
+    "sheetRef": "8B-WT4-R14",
+    "paperKey": "c8-wt4",
+    "questionNumber": 4,
+    "image": {
+      "pageKey": "samples/8b-wt4/R14-p2.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.03,
+        "w": 0.9,
+        "h": 0.44999999999999996
+      }
+    },
+    "maxMarks": 4,
+    "goldMarks": 2,
+    "goldSteps": [
+      1,
+      1,
+      0,
+      0
+    ],
+    "goldConcept": "c8-le-word",
+    "goldConceptIds": [
+      "c8-le-word"
+    ],
+    "goldMisconception": "Stopped before completing the solution",
+    "goldMistakeType": "incomplete",
+    "tags": [
+      "partial"
+    ]
+  },
+  {
+    "id": "8B-WT4-R14:Q5",
+    "sheetRef": "8B-WT4-R14",
+    "paperKey": "c8-wt4",
+    "questionNumber": 5,
+    "image": {
+      "pageKey": "samples/8b-wt4/R14-p2.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.48,
+        "w": 0.9,
+        "h": 0.49
+      }
+    },
+    "maxMarks": 6,
+    "goldMarks": 3,
+    "goldSteps": [
+      1,
+      2,
+      0,
+      0
+    ],
+    "goldConcept": "c8-le-word",
+    "goldConceptIds": [
+      "c8-le-word"
+    ],
+    "goldMisconception": "Correct method, arithmetic slip",
+    "goldMistakeType": "calculation",
+    "tags": [
+      "partial"
+    ]
+  },
+  {
+    "id": "8B-WT4-R15:Q1",
+    "sheetRef": "8B-WT4-R15",
+    "paperKey": "c8-wt4",
+    "questionNumber": 1,
+    "image": {
+      "pageKey": "samples/8b-wt4/R15-p1.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.14,
+        "w": 0.9,
+        "h": 0.27999999999999997
+      }
+    },
+    "maxMarks": 3,
+    "goldMarks": 3,
+    "goldSteps": [
+      1,
+      1,
+      1
+    ],
+    "goldConcept": "c8-le-transposing",
+    "goldConceptIds": [
+      "c8-le-transposing"
+    ],
+    "goldMisconception": null,
+    "goldMistakeType": "none",
+    "tags": []
+  },
+  {
+    "id": "8B-WT4-R15:Q2",
+    "sheetRef": "8B-WT4-R15",
+    "paperKey": "c8-wt4",
+    "questionNumber": 2,
+    "image": {
+      "pageKey": "samples/8b-wt4/R15-p1.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.42,
+        "w": 0.9,
+        "h": 0.27999999999999997
+      }
+    },
+    "maxMarks": 3,
+    "goldMarks": 3,
+    "goldSteps": [
+      1,
+      1,
+      1
+    ],
+    "goldConcept": "c8-le-transposing",
+    "goldConceptIds": [
+      "c8-le-transposing"
+    ],
+    "goldMisconception": null,
+    "goldMistakeType": "none",
+    "tags": []
+  },
+  {
+    "id": "8B-WT4-R15:Q3",
+    "sheetRef": "8B-WT4-R15",
+    "paperKey": "c8-wt4",
+    "questionNumber": 3,
+    "image": {
+      "pageKey": "samples/8b-wt4/R15-p1.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.7,
+        "w": 0.9,
+        "h": 0.27
+      }
+    },
+    "maxMarks": 4,
+    "goldMarks": 3,
+    "goldSteps": [
+      2,
+      1,
+      0
+    ],
+    "goldConcept": "c8-le-bothsides",
+    "goldConceptIds": [
+      "c8-le-bothsides",
+      "c8-le-transposing"
+    ],
+    "goldMisconception": "Correct method, arithmetic slip",
+    "goldMistakeType": "calculation",
+    "tags": [
+      "partial"
+    ]
+  },
+  {
+    "id": "8B-WT4-R15:Q4",
+    "sheetRef": "8B-WT4-R15",
+    "paperKey": "c8-wt4",
+    "questionNumber": 4,
+    "image": {
+      "pageKey": "samples/8b-wt4/R15-p2.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.03,
+        "w": 0.9,
+        "h": 0.44999999999999996
+      }
+    },
+    "maxMarks": 4,
+    "goldMarks": 4,
+    "goldSteps": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "goldConcept": "c8-le-word",
+    "goldConceptIds": [
+      "c8-le-word"
+    ],
+    "goldMisconception": null,
+    "goldMistakeType": "none",
+    "tags": []
+  },
+  {
+    "id": "8B-WT4-R15:Q5",
+    "sheetRef": "8B-WT4-R15",
+    "paperKey": "c8-wt4",
+    "questionNumber": 5,
+    "image": {
+      "pageKey": "samples/8b-wt4/R15-p2.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.48,
+        "w": 0.9,
+        "h": 0.49
+      }
+    },
+    "maxMarks": 6,
+    "goldMarks": 5,
+    "goldSteps": [
+      1,
+      2,
+      2,
+      0
+    ],
+    "goldConcept": "c8-le-word",
+    "goldConceptIds": [
+      "c8-le-word"
+    ],
+    "goldMisconception": "Stopped before completing the solution",
+    "goldMistakeType": "incomplete",
+    "tags": [
+      "partial"
+    ]
+  },
+  {
+    "id": "8B-WT4-R16:Q1",
+    "sheetRef": "8B-WT4-R16",
+    "paperKey": "c8-wt4",
+    "questionNumber": 1,
+    "image": {
+      "pageKey": "samples/8b-wt4/R16-p1.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.14,
+        "w": 0.9,
+        "h": 0.27999999999999997
+      }
+    },
+    "maxMarks": 3,
+    "goldMarks": 1,
+    "goldSteps": [
+      0,
+      0.5,
+      0.5
+    ],
+    "goldConcept": "c8-le-transposing",
+    "goldConceptIds": [
+      "c8-le-transposing"
+    ],
+    "goldMisconception": "Applies an operation to one side only",
+    "goldMistakeType": "conceptual",
+    "tags": [
+      "partial"
+    ]
+  },
+  {
+    "id": "8B-WT4-R16:Q2",
+    "sheetRef": "8B-WT4-R16",
+    "paperKey": "c8-wt4",
+    "questionNumber": 2,
+    "image": {
+      "pageKey": "samples/8b-wt4/R16-p1.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.42,
+        "w": 0.9,
+        "h": 0.27999999999999997
+      }
+    },
+    "maxMarks": 3,
+    "goldMarks": 1,
+    "goldSteps": [
+      0,
+      0.5,
+      0.5
+    ],
+    "goldConcept": "c8-le-transposing",
+    "goldConceptIds": [
+      "c8-le-transposing"
+    ],
+    "goldMisconception": "Applies an operation to one side only",
+    "goldMistakeType": "conceptual",
+    "tags": [
+      "partial"
+    ]
+  },
+  {
+    "id": "8B-WT4-R16:Q3",
+    "sheetRef": "8B-WT4-R16",
+    "paperKey": "c8-wt4",
+    "questionNumber": 3,
+    "image": {
+      "pageKey": "samples/8b-wt4/R16-p1.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.7,
+        "w": 0.9,
+        "h": 0.27
+      }
+    },
+    "maxMarks": 4,
+    "goldMarks": 0,
+    "goldSteps": [
+      0,
+      0,
+      0
+    ],
+    "goldConcept": "c8-le-bothsides",
+    "goldConceptIds": [
+      "c8-le-bothsides",
+      "c8-le-transposing"
+    ],
+    "goldMisconception": null,
+    "goldMistakeType": "unattempted",
+    "tags": [
+      "blank"
+    ]
+  },
+  {
+    "id": "8B-WT4-R16:Q4",
+    "sheetRef": "8B-WT4-R16",
+    "paperKey": "c8-wt4",
+    "questionNumber": 4,
+    "image": {
+      "pageKey": "samples/8b-wt4/R16-p2.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.03,
+        "w": 0.9,
+        "h": 0.44999999999999996
+      }
+    },
+    "maxMarks": 4,
+    "goldMarks": 3,
+    "goldSteps": [
+      1,
+      1,
+      1,
+      0
+    ],
+    "goldConcept": "c8-le-word",
+    "goldConceptIds": [
+      "c8-le-word"
+    ],
+    "goldMisconception": "Stopped before completing the solution",
+    "goldMistakeType": "incomplete",
+    "tags": [
+      "partial"
+    ]
+  },
+  {
+    "id": "8B-WT4-R16:Q5",
+    "sheetRef": "8B-WT4-R16",
+    "paperKey": "c8-wt4",
+    "questionNumber": 5,
+    "image": {
+      "pageKey": "samples/8b-wt4/R16-p2.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.48,
+        "w": 0.9,
+        "h": 0.49
+      }
+    },
+    "maxMarks": 6,
+    "goldMarks": 5,
+    "goldSteps": [
+      1,
+      2,
+      2,
+      0
+    ],
+    "goldConcept": "c8-le-word",
+    "goldConceptIds": [
+      "c8-le-word"
+    ],
+    "goldMisconception": "Stopped before completing the solution",
+    "goldMistakeType": "incomplete",
+    "tags": [
+      "partial"
+    ]
+  },
+  {
+    "id": "8B-WT4-R17:Q1",
+    "sheetRef": "8B-WT4-R17",
+    "paperKey": "c8-wt4",
+    "questionNumber": 1,
+    "image": {
+      "pageKey": "samples/8b-wt4/R17-p1.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.14,
+        "w": 0.9,
+        "h": 0.27999999999999997
+      }
+    },
+    "maxMarks": 3,
+    "goldMarks": 1,
+    "goldSteps": [
+      0,
+      0.5,
+      0.5
+    ],
+    "goldConcept": "c8-le-transposing",
+    "goldConceptIds": [
+      "c8-le-transposing"
+    ],
+    "goldMisconception": "Applies an operation to one side only",
+    "goldMistakeType": "conceptual",
+    "tags": [
+      "partial"
+    ]
+  },
+  {
+    "id": "8B-WT4-R17:Q2",
+    "sheetRef": "8B-WT4-R17",
+    "paperKey": "c8-wt4",
+    "questionNumber": 2,
+    "image": {
+      "pageKey": "samples/8b-wt4/R17-p1.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.42,
+        "w": 0.9,
+        "h": 0.27999999999999997
+      }
+    },
+    "maxMarks": 3,
+    "goldMarks": 1,
+    "goldSteps": [
+      0,
+      0.5,
+      0.5
+    ],
+    "goldConcept": "c8-le-transposing",
+    "goldConceptIds": [
+      "c8-le-transposing"
+    ],
+    "goldMisconception": "Applies an operation to one side only",
+    "goldMistakeType": "conceptual",
+    "tags": [
+      "partial"
+    ]
+  },
+  {
+    "id": "8B-WT4-R17:Q3",
+    "sheetRef": "8B-WT4-R17",
+    "paperKey": "c8-wt4",
+    "questionNumber": 3,
+    "image": {
+      "pageKey": "samples/8b-wt4/R17-p1.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.7,
+        "w": 0.9,
+        "h": 0.27
+      }
+    },
+    "maxMarks": 4,
+    "goldMarks": 0,
+    "goldSteps": [
+      0,
+      0,
+      0
+    ],
+    "goldConcept": "c8-le-bothsides",
+    "goldConceptIds": [
+      "c8-le-bothsides",
+      "c8-le-transposing"
+    ],
+    "goldMisconception": null,
+    "goldMistakeType": "unattempted",
+    "tags": [
+      "blank"
+    ]
+  },
+  {
+    "id": "8B-WT4-R17:Q4",
+    "sheetRef": "8B-WT4-R17",
+    "paperKey": "c8-wt4",
+    "questionNumber": 4,
+    "image": {
+      "pageKey": "samples/8b-wt4/R17-p2.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.03,
+        "w": 0.9,
+        "h": 0.44999999999999996
+      }
+    },
+    "maxMarks": 4,
+    "goldMarks": 4,
+    "goldSteps": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "goldConcept": "c8-le-word",
+    "goldConceptIds": [
+      "c8-le-word"
+    ],
+    "goldMisconception": null,
+    "goldMistakeType": "none",
+    "tags": []
+  },
+  {
+    "id": "8B-WT4-R17:Q5",
+    "sheetRef": "8B-WT4-R17",
+    "paperKey": "c8-wt4",
+    "questionNumber": 5,
+    "image": {
+      "pageKey": "samples/8b-wt4/R17-p2.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.48,
+        "w": 0.9,
+        "h": 0.49
+      }
+    },
+    "maxMarks": 6,
+    "goldMarks": 3,
+    "goldSteps": [
+      1,
+      2,
+      0,
+      0
+    ],
+    "goldConcept": "c8-le-word",
+    "goldConceptIds": [
+      "c8-le-word"
+    ],
+    "goldMisconception": "Stopped before completing the solution",
+    "goldMistakeType": "incomplete",
+    "tags": [
+      "partial"
+    ]
+  },
+  {
+    "id": "8B-WT4-R18:Q1",
+    "sheetRef": "8B-WT4-R18",
+    "paperKey": "c8-wt4",
+    "questionNumber": 1,
+    "image": {
+      "pageKey": "samples/8b-wt4/R18-p1.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.14,
+        "w": 0.9,
+        "h": 0.27999999999999997
+      }
+    },
+    "maxMarks": 3,
+    "goldMarks": 2,
+    "goldSteps": [
+      1,
+      1,
+      0
+    ],
+    "goldConcept": "c8-le-transposing",
+    "goldConceptIds": [
+      "c8-le-transposing"
+    ],
+    "goldMisconception": "Correct method, arithmetic slip",
+    "goldMistakeType": "calculation",
+    "tags": [
+      "partial"
+    ]
+  },
+  {
+    "id": "8B-WT4-R18:Q2",
+    "sheetRef": "8B-WT4-R18",
+    "paperKey": "c8-wt4",
+    "questionNumber": 2,
+    "image": {
+      "pageKey": "samples/8b-wt4/R18-p1.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.42,
+        "w": 0.9,
+        "h": 0.27999999999999997
+      }
+    },
+    "maxMarks": 3,
+    "goldMarks": 1,
+    "goldSteps": [
+      1,
+      0,
+      0
+    ],
+    "goldConcept": "c8-le-transposing",
+    "goldConceptIds": [
+      "c8-le-transposing"
+    ],
+    "goldMisconception": "Correct method, arithmetic slip",
+    "goldMistakeType": "calculation",
+    "tags": [
+      "partial"
+    ]
+  },
+  {
+    "id": "8B-WT4-R18:Q3",
+    "sheetRef": "8B-WT4-R18",
+    "paperKey": "c8-wt4",
+    "questionNumber": 3,
+    "image": {
+      "pageKey": "samples/8b-wt4/R18-p1.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.7,
+        "w": 0.9,
+        "h": 0.27
+      }
+    },
+    "maxMarks": 4,
+    "goldMarks": 3,
+    "goldSteps": [
+      2,
+      1,
+      0
+    ],
+    "goldConcept": "c8-le-bothsides",
+    "goldConceptIds": [
+      "c8-le-bothsides",
+      "c8-le-transposing"
+    ],
+    "goldMisconception": "Correct method, arithmetic slip",
+    "goldMistakeType": "calculation",
+    "tags": [
+      "partial"
+    ]
+  },
+  {
+    "id": "8B-WT4-R18:Q4",
+    "sheetRef": "8B-WT4-R18",
+    "paperKey": "c8-wt4",
+    "questionNumber": 4,
+    "image": {
+      "pageKey": "samples/8b-wt4/R18-p2.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.03,
+        "w": 0.9,
+        "h": 0.44999999999999996
+      }
+    },
+    "maxMarks": 4,
+    "goldMarks": 3,
+    "goldSteps": [
+      1,
+      1,
+      1,
+      0
+    ],
+    "goldConcept": "c8-le-word",
+    "goldConceptIds": [
+      "c8-le-word"
+    ],
+    "goldMisconception": "Stopped before completing the solution",
+    "goldMistakeType": "incomplete",
+    "tags": [
+      "partial"
+    ]
+  },
+  {
+    "id": "8B-WT4-R18:Q5",
+    "sheetRef": "8B-WT4-R18",
+    "paperKey": "c8-wt4",
+    "questionNumber": 5,
+    "image": {
+      "pageKey": "samples/8b-wt4/R18-p2.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.48,
+        "w": 0.9,
+        "h": 0.49
+      }
+    },
+    "maxMarks": 6,
+    "goldMarks": 5,
+    "goldSteps": [
+      1,
+      2,
+      2,
+      0
+    ],
+    "goldConcept": "c8-le-word",
+    "goldConceptIds": [
+      "c8-le-word"
+    ],
+    "goldMisconception": "Stopped before completing the solution",
+    "goldMistakeType": "incomplete",
+    "tags": [
+      "partial"
+    ]
+  },
+  {
+    "id": "8B-WT4-R19:Q1",
+    "sheetRef": "8B-WT4-R19",
+    "paperKey": "c8-wt4",
+    "questionNumber": 1,
+    "image": {
+      "pageKey": "samples/8b-wt4/R19-p1.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.14,
+        "w": 0.9,
+        "h": 0.27999999999999997
+      }
+    },
+    "maxMarks": 3,
+    "goldMarks": 2,
+    "goldSteps": [
+      1,
+      1,
+      0
+    ],
+    "goldConcept": "c8-le-transposing",
+    "goldConceptIds": [
+      "c8-le-transposing"
+    ],
+    "goldMisconception": "Correct method, arithmetic slip",
+    "goldMistakeType": "calculation",
+    "tags": [
+      "partial"
+    ]
+  },
+  {
+    "id": "8B-WT4-R19:Q2",
+    "sheetRef": "8B-WT4-R19",
+    "paperKey": "c8-wt4",
+    "questionNumber": 2,
+    "image": {
+      "pageKey": "samples/8b-wt4/R19-p1.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.42,
+        "w": 0.9,
+        "h": 0.27999999999999997
+      }
+    },
+    "maxMarks": 3,
+    "goldMarks": 1,
+    "goldSteps": [
+      1,
+      0,
+      0
+    ],
+    "goldConcept": "c8-le-transposing",
+    "goldConceptIds": [
+      "c8-le-transposing"
+    ],
+    "goldMisconception": "Correct method, arithmetic slip",
+    "goldMistakeType": "calculation",
+    "tags": [
+      "partial"
+    ]
+  },
+  {
+    "id": "8B-WT4-R19:Q3",
+    "sheetRef": "8B-WT4-R19",
+    "paperKey": "c8-wt4",
+    "questionNumber": 3,
+    "image": {
+      "pageKey": "samples/8b-wt4/R19-p1.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.7,
+        "w": 0.9,
+        "h": 0.27
+      }
+    },
+    "maxMarks": 4,
+    "goldMarks": 2,
+    "goldSteps": [
+      2,
+      0,
+      0
+    ],
+    "goldConcept": "c8-le-bothsides",
+    "goldConceptIds": [
+      "c8-le-bothsides",
+      "c8-le-transposing"
+    ],
+    "goldMisconception": "Correct method, arithmetic slip",
+    "goldMistakeType": "calculation",
+    "tags": [
+      "partial"
+    ]
+  },
+  {
+    "id": "8B-WT4-R19:Q4",
+    "sheetRef": "8B-WT4-R19",
+    "paperKey": "c8-wt4",
+    "questionNumber": 4,
+    "image": {
+      "pageKey": "samples/8b-wt4/R19-p2.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.03,
+        "w": 0.9,
+        "h": 0.44999999999999996
+      }
+    },
+    "maxMarks": 4,
+    "goldMarks": 3,
+    "goldSteps": [
+      1,
+      1,
+      1,
+      0
+    ],
+    "goldConcept": "c8-le-word",
+    "goldConceptIds": [
+      "c8-le-word"
+    ],
+    "goldMisconception": "Stopped before completing the solution",
+    "goldMistakeType": "incomplete",
+    "tags": [
+      "partial"
+    ]
+  },
+  {
+    "id": "8B-WT4-R19:Q5",
+    "sheetRef": "8B-WT4-R19",
+    "paperKey": "c8-wt4",
+    "questionNumber": 5,
+    "image": {
+      "pageKey": "samples/8b-wt4/R19-p2.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.48,
+        "w": 0.9,
+        "h": 0.49
+      }
+    },
+    "maxMarks": 6,
+    "goldMarks": 5,
+    "goldSteps": [
+      1,
+      2,
+      2,
+      0
+    ],
+    "goldConcept": "c8-le-word",
+    "goldConceptIds": [
+      "c8-le-word"
+    ],
+    "goldMisconception": "Stopped before completing the solution",
+    "goldMistakeType": "incomplete",
+    "tags": [
+      "partial"
+    ]
+  },
+  {
+    "id": "8B-WT4-R20:Q1",
+    "sheetRef": "8B-WT4-R20",
+    "paperKey": "c8-wt4",
+    "questionNumber": 1,
+    "image": {
+      "pageKey": "samples/8b-wt4/R20-p1.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.14,
+        "w": 0.9,
+        "h": 0.27999999999999997
+      }
+    },
+    "maxMarks": 3,
+    "goldMarks": 1,
+    "goldSteps": [
+      0,
+      1,
+      0
+    ],
+    "goldConcept": "c8-le-transposing",
+    "goldConceptIds": [
+      "c8-le-transposing"
+    ],
+    "goldMisconception": "Moves a term across \"=\" without changing its sign",
+    "goldMistakeType": "conceptual",
+    "tags": [
+      "partial"
+    ]
+  },
+  {
+    "id": "8B-WT4-R20:Q2",
+    "sheetRef": "8B-WT4-R20",
+    "paperKey": "c8-wt4",
+    "questionNumber": 2,
+    "image": {
+      "pageKey": "samples/8b-wt4/R20-p1.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.42,
+        "w": 0.9,
+        "h": 0.27999999999999997
+      }
+    },
+    "maxMarks": 3,
+    "goldMarks": 1,
+    "goldSteps": [
+      0,
+      1,
+      0
+    ],
+    "goldConcept": "c8-le-transposing",
+    "goldConceptIds": [
+      "c8-le-transposing"
+    ],
+    "goldMisconception": "Moves a term across \"=\" without changing its sign",
+    "goldMistakeType": "conceptual",
+    "tags": [
+      "partial"
+    ]
+  },
+  {
+    "id": "8B-WT4-R20:Q3",
+    "sheetRef": "8B-WT4-R20",
+    "paperKey": "c8-wt4",
+    "questionNumber": 3,
+    "image": {
+      "pageKey": "samples/8b-wt4/R20-p1.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.7,
+        "w": 0.9,
+        "h": 0.27
+      }
+    },
+    "maxMarks": 4,
+    "goldMarks": 0,
+    "goldSteps": [
+      0,
+      0,
+      0
+    ],
+    "goldConcept": "c8-le-bothsides",
+    "goldConceptIds": [
+      "c8-le-bothsides",
+      "c8-le-transposing"
+    ],
+    "goldMisconception": null,
+    "goldMistakeType": "unattempted",
+    "tags": [
+      "blank"
+    ]
+  },
+  {
+    "id": "8B-WT4-R20:Q4",
+    "sheetRef": "8B-WT4-R20",
+    "paperKey": "c8-wt4",
+    "questionNumber": 4,
+    "image": {
+      "pageKey": "samples/8b-wt4/R20-p2.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.03,
+        "w": 0.9,
+        "h": 0.44999999999999996
+      }
+    },
+    "maxMarks": 4,
+    "goldMarks": 2,
+    "goldSteps": [
+      1,
+      1,
+      0,
+      0
+    ],
+    "goldConcept": "c8-le-word",
+    "goldConceptIds": [
+      "c8-le-word"
+    ],
+    "goldMisconception": "Stopped before completing the solution",
+    "goldMistakeType": "incomplete",
+    "tags": [
+      "partial"
+    ]
+  },
+  {
+    "id": "8B-WT4-R20:Q5",
+    "sheetRef": "8B-WT4-R20",
+    "paperKey": "c8-wt4",
+    "questionNumber": 5,
+    "image": {
+      "pageKey": "samples/8b-wt4/R20-p2.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.48,
+        "w": 0.9,
+        "h": 0.49
+      }
+    },
+    "maxMarks": 6,
+    "goldMarks": 5,
+    "goldSteps": [
+      1,
+      2,
+      2,
+      0
+    ],
+    "goldConcept": "c8-le-word",
+    "goldConceptIds": [
+      "c8-le-word"
+    ],
+    "goldMisconception": "Stopped before completing the solution",
+    "goldMistakeType": "incomplete",
+    "tags": [
+      "partial"
+    ]
+  },
+  {
+    "id": "8B-WT4-R21:Q1",
+    "sheetRef": "8B-WT4-R21",
+    "paperKey": "c8-wt4",
+    "questionNumber": 1,
+    "image": {
+      "pageKey": "samples/8b-wt4/R21-p1.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.14,
+        "w": 0.9,
+        "h": 0.27999999999999997
+      }
+    },
+    "maxMarks": 3,
+    "goldMarks": 1,
+    "goldSteps": [
+      0,
+      1,
+      0
+    ],
+    "goldConcept": "c8-le-transposing",
+    "goldConceptIds": [
+      "c8-le-transposing"
+    ],
+    "goldMisconception": "Moves a term across \"=\" without changing its sign",
+    "goldMistakeType": "conceptual",
+    "tags": [
+      "partial"
+    ]
+  },
+  {
+    "id": "8B-WT4-R21:Q2",
+    "sheetRef": "8B-WT4-R21",
+    "paperKey": "c8-wt4",
+    "questionNumber": 2,
+    "image": {
+      "pageKey": "samples/8b-wt4/R21-p1.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.42,
+        "w": 0.9,
+        "h": 0.27999999999999997
+      }
+    },
+    "maxMarks": 3,
+    "goldMarks": 1,
+    "goldSteps": [
+      0,
+      1,
+      0
+    ],
+    "goldConcept": "c8-le-transposing",
+    "goldConceptIds": [
+      "c8-le-transposing"
+    ],
+    "goldMisconception": "Moves a term across \"=\" without changing its sign",
+    "goldMistakeType": "conceptual",
+    "tags": [
+      "partial"
+    ]
+  },
+  {
+    "id": "8B-WT4-R21:Q3",
+    "sheetRef": "8B-WT4-R21",
+    "paperKey": "c8-wt4",
+    "questionNumber": 3,
+    "image": {
+      "pageKey": "samples/8b-wt4/R21-p1.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.7,
+        "w": 0.9,
+        "h": 0.27
+      }
+    },
+    "maxMarks": 4,
+    "goldMarks": 0,
+    "goldSteps": [
+      0,
+      0,
+      0
+    ],
+    "goldConcept": "c8-le-bothsides",
+    "goldConceptIds": [
+      "c8-le-bothsides",
+      "c8-le-transposing"
+    ],
+    "goldMisconception": null,
+    "goldMistakeType": "unattempted",
+    "tags": [
+      "blank"
+    ]
+  },
+  {
+    "id": "8B-WT4-R21:Q4",
+    "sheetRef": "8B-WT4-R21",
+    "paperKey": "c8-wt4",
+    "questionNumber": 4,
+    "image": {
+      "pageKey": "samples/8b-wt4/R21-p2.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.03,
+        "w": 0.9,
+        "h": 0.44999999999999996
+      }
+    },
+    "maxMarks": 4,
+    "goldMarks": 3,
+    "goldSteps": [
+      1,
+      1,
+      1,
+      0
+    ],
+    "goldConcept": "c8-le-word",
+    "goldConceptIds": [
+      "c8-le-word"
+    ],
+    "goldMisconception": "Stopped before completing the solution",
+    "goldMistakeType": "incomplete",
+    "tags": [
+      "partial"
+    ]
+  },
+  {
+    "id": "8B-WT4-R21:Q5",
+    "sheetRef": "8B-WT4-R21",
+    "paperKey": "c8-wt4",
+    "questionNumber": 5,
+    "image": {
+      "pageKey": "samples/8b-wt4/R21-p2.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.48,
+        "w": 0.9,
+        "h": 0.49
+      }
+    },
+    "maxMarks": 6,
+    "goldMarks": 3,
+    "goldSteps": [
+      1,
+      2,
+      0,
+      0
+    ],
+    "goldConcept": "c8-le-word",
+    "goldConceptIds": [
+      "c8-le-word"
+    ],
+    "goldMisconception": "Stopped before completing the solution",
+    "goldMistakeType": "incomplete",
+    "tags": [
+      "partial",
+      "injection"
+    ]
+  },
+  {
+    "id": "8B-WT4-R22:Q1",
+    "sheetRef": "8B-WT4-R22",
+    "paperKey": "c8-wt4",
+    "questionNumber": 1,
+    "image": {
+      "pageKey": "samples/8b-wt4/R22-p1.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.14,
+        "w": 0.9,
+        "h": 0.27999999999999997
+      }
+    },
+    "maxMarks": 3,
+    "goldMarks": 2,
+    "goldSteps": [
+      1,
+      1,
+      0
+    ],
+    "goldConcept": "c8-le-transposing",
+    "goldConceptIds": [
+      "c8-le-transposing"
+    ],
+    "goldMisconception": "Correct method, arithmetic slip",
+    "goldMistakeType": "calculation",
+    "tags": [
+      "partial"
+    ]
+  },
+  {
+    "id": "8B-WT4-R22:Q2",
+    "sheetRef": "8B-WT4-R22",
+    "paperKey": "c8-wt4",
+    "questionNumber": 2,
+    "image": {
+      "pageKey": "samples/8b-wt4/R22-p1.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.42,
+        "w": 0.9,
+        "h": 0.27999999999999997
+      }
+    },
+    "maxMarks": 3,
+    "goldMarks": 2,
+    "goldSteps": [
+      1,
+      1,
+      0
+    ],
+    "goldConcept": "c8-le-transposing",
+    "goldConceptIds": [
+      "c8-le-transposing"
+    ],
+    "goldMisconception": "Correct method, arithmetic slip",
+    "goldMistakeType": "calculation",
+    "tags": [
+      "partial"
+    ]
+  },
+  {
+    "id": "8B-WT4-R22:Q3",
+    "sheetRef": "8B-WT4-R22",
+    "paperKey": "c8-wt4",
+    "questionNumber": 3,
+    "image": {
+      "pageKey": "samples/8b-wt4/R22-p1.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.7,
+        "w": 0.9,
+        "h": 0.27
+      }
+    },
+    "maxMarks": 4,
+    "goldMarks": 3,
+    "goldSteps": [
+      2,
+      1,
+      0
+    ],
+    "goldConcept": "c8-le-bothsides",
+    "goldConceptIds": [
+      "c8-le-bothsides",
+      "c8-le-transposing"
+    ],
+    "goldMisconception": "Correct method, arithmetic slip",
+    "goldMistakeType": "calculation",
+    "tags": [
+      "partial"
+    ]
+  },
+  {
+    "id": "8B-WT4-R22:Q4",
+    "sheetRef": "8B-WT4-R22",
+    "paperKey": "c8-wt4",
+    "questionNumber": 4,
+    "image": {
+      "pageKey": "samples/8b-wt4/R22-p2.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.03,
+        "w": 0.9,
+        "h": 0.44999999999999996
+      }
+    },
+    "maxMarks": 4,
+    "goldMarks": 4,
+    "goldSteps": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "goldConcept": "c8-le-word",
+    "goldConceptIds": [
+      "c8-le-word"
+    ],
+    "goldMisconception": null,
+    "goldMistakeType": "none",
+    "tags": []
+  },
+  {
+    "id": "8B-WT4-R22:Q5",
+    "sheetRef": "8B-WT4-R22",
+    "paperKey": "c8-wt4",
+    "questionNumber": 5,
+    "image": {
+      "pageKey": "samples/8b-wt4/R22-p2.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.48,
+        "w": 0.9,
+        "h": 0.49
+      }
+    },
+    "maxMarks": 6,
+    "goldMarks": 5,
+    "goldSteps": [
+      1,
+      2,
+      2,
+      0
+    ],
+    "goldConcept": "c8-le-word",
+    "goldConceptIds": [
+      "c8-le-word"
+    ],
+    "goldMisconception": "Stopped before completing the solution",
+    "goldMistakeType": "incomplete",
+    "tags": [
+      "partial"
+    ]
+  },
+  {
+    "id": "8B-WT4-R23:Q1",
+    "sheetRef": "8B-WT4-R23",
+    "paperKey": "c8-wt4",
+    "questionNumber": 1,
+    "image": {
+      "pageKey": "samples/8b-wt4/R23-p1.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.14,
+        "w": 0.9,
+        "h": 0.27999999999999997
+      }
+    },
+    "maxMarks": 3,
+    "goldMarks": 3,
+    "goldSteps": [
+      1,
+      1,
+      1
+    ],
+    "goldConcept": "c8-le-transposing",
+    "goldConceptIds": [
+      "c8-le-transposing"
+    ],
+    "goldMisconception": null,
+    "goldMistakeType": "none",
+    "tags": []
+  },
+  {
+    "id": "8B-WT4-R23:Q2",
+    "sheetRef": "8B-WT4-R23",
+    "paperKey": "c8-wt4",
+    "questionNumber": 2,
+    "image": {
+      "pageKey": "samples/8b-wt4/R23-p1.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.42,
+        "w": 0.9,
+        "h": 0.27999999999999997
+      }
+    },
+    "maxMarks": 3,
+    "goldMarks": 2,
+    "goldSteps": [
+      1,
+      1,
+      0
+    ],
+    "goldConcept": "c8-le-transposing",
+    "goldConceptIds": [
+      "c8-le-transposing"
+    ],
+    "goldMisconception": "Correct method, arithmetic slip",
+    "goldMistakeType": "calculation",
+    "tags": [
+      "partial"
+    ]
+  },
+  {
+    "id": "8B-WT4-R23:Q3",
+    "sheetRef": "8B-WT4-R23",
+    "paperKey": "c8-wt4",
+    "questionNumber": 3,
+    "image": {
+      "pageKey": "samples/8b-wt4/R23-p1.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.7,
+        "w": 0.9,
+        "h": 0.27
+      }
+    },
+    "maxMarks": 4,
+    "goldMarks": 3,
+    "goldSteps": [
+      2,
+      1,
+      0
+    ],
+    "goldConcept": "c8-le-bothsides",
+    "goldConceptIds": [
+      "c8-le-bothsides",
+      "c8-le-transposing"
+    ],
+    "goldMisconception": "Correct method, arithmetic slip",
+    "goldMistakeType": "calculation",
+    "tags": [
+      "partial"
+    ]
+  },
+  {
+    "id": "8B-WT4-R23:Q4",
+    "sheetRef": "8B-WT4-R23",
+    "paperKey": "c8-wt4",
+    "questionNumber": 4,
+    "image": {
+      "pageKey": "samples/8b-wt4/R23-p2.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.03,
+        "w": 0.9,
+        "h": 0.44999999999999996
+      }
+    },
+    "maxMarks": 4,
+    "goldMarks": 4,
+    "goldSteps": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "goldConcept": "c8-le-word",
+    "goldConceptIds": [
+      "c8-le-word"
+    ],
+    "goldMisconception": null,
+    "goldMistakeType": "none",
+    "tags": []
+  },
+  {
+    "id": "8B-WT4-R23:Q5",
+    "sheetRef": "8B-WT4-R23",
+    "paperKey": "c8-wt4",
+    "questionNumber": 5,
+    "image": {
+      "pageKey": "samples/8b-wt4/R23-p2.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.48,
+        "w": 0.9,
+        "h": 0.49
+      }
+    },
+    "maxMarks": 6,
+    "goldMarks": 6,
+    "goldSteps": [
+      1,
+      2,
+      2,
+      1
+    ],
+    "goldConcept": "c8-le-word",
+    "goldConceptIds": [
+      "c8-le-word"
+    ],
+    "goldMisconception": null,
+    "goldMistakeType": "none",
+    "tags": []
+  },
+  {
+    "id": "8B-WT4-R24:Q1",
+    "sheetRef": "8B-WT4-R24",
+    "paperKey": "c8-wt4",
+    "questionNumber": 1,
+    "image": {
+      "pageKey": "samples/8b-wt4/R24-p1.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.14,
+        "w": 0.9,
+        "h": 0.27999999999999997
+      }
+    },
+    "maxMarks": 3,
+    "goldMarks": 1,
+    "goldSteps": [
+      0,
+      1,
+      0
+    ],
+    "goldConcept": "c8-le-transposing",
+    "goldConceptIds": [
+      "c8-le-transposing"
+    ],
+    "goldMisconception": "Moves a term across \"=\" without changing its sign",
+    "goldMistakeType": "conceptual",
+    "tags": [
+      "partial"
+    ]
+  },
+  {
+    "id": "8B-WT4-R24:Q2",
+    "sheetRef": "8B-WT4-R24",
+    "paperKey": "c8-wt4",
+    "questionNumber": 2,
+    "image": {
+      "pageKey": "samples/8b-wt4/R24-p1.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.42,
+        "w": 0.9,
+        "h": 0.27999999999999997
+      }
+    },
+    "maxMarks": 3,
+    "goldMarks": 1,
+    "goldSteps": [
+      0,
+      1,
+      0
+    ],
+    "goldConcept": "c8-le-transposing",
+    "goldConceptIds": [
+      "c8-le-transposing"
+    ],
+    "goldMisconception": "Moves a term across \"=\" without changing its sign",
+    "goldMistakeType": "conceptual",
+    "tags": [
+      "partial"
+    ]
+  },
+  {
+    "id": "8B-WT4-R24:Q3",
+    "sheetRef": "8B-WT4-R24",
+    "paperKey": "c8-wt4",
+    "questionNumber": 3,
+    "image": {
+      "pageKey": "samples/8b-wt4/R24-p1.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.7,
+        "w": 0.9,
+        "h": 0.27
+      }
+    },
+    "maxMarks": 4,
+    "goldMarks": 0,
+    "goldSteps": [
+      0,
+      0,
+      0
+    ],
+    "goldConcept": "c8-le-bothsides",
+    "goldConceptIds": [
+      "c8-le-bothsides",
+      "c8-le-transposing"
+    ],
+    "goldMisconception": null,
+    "goldMistakeType": "unattempted",
+    "tags": [
+      "blank"
+    ]
+  },
+  {
+    "id": "8B-WT4-R24:Q4",
+    "sheetRef": "8B-WT4-R24",
+    "paperKey": "c8-wt4",
+    "questionNumber": 4,
+    "image": {
+      "pageKey": "samples/8b-wt4/R24-p2.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.03,
+        "w": 0.9,
+        "h": 0.44999999999999996
+      }
+    },
+    "maxMarks": 4,
+    "goldMarks": 2,
+    "goldSteps": [
+      1,
+      1,
+      0,
+      0
+    ],
+    "goldConcept": "c8-le-word",
+    "goldConceptIds": [
+      "c8-le-word"
+    ],
+    "goldMisconception": "Correct method, arithmetic slip",
+    "goldMistakeType": "calculation",
+    "tags": [
+      "partial"
+    ]
+  },
+  {
+    "id": "8B-WT4-R24:Q5",
+    "sheetRef": "8B-WT4-R24",
+    "paperKey": "c8-wt4",
+    "questionNumber": 5,
+    "image": {
+      "pageKey": "samples/8b-wt4/R24-p2.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.48,
+        "w": 0.9,
+        "h": 0.49
+      }
+    },
+    "maxMarks": 6,
+    "goldMarks": 5,
+    "goldSteps": [
+      1,
+      2,
+      2,
+      0
+    ],
+    "goldConcept": "c8-le-word",
+    "goldConceptIds": [
+      "c8-le-word"
+    ],
+    "goldMisconception": "Stopped before completing the solution",
+    "goldMistakeType": "incomplete",
+    "tags": [
+      "partial"
+    ]
+  },
+  {
+    "id": "8B-WT4-R25:Q1",
+    "sheetRef": "8B-WT4-R25",
+    "paperKey": "c8-wt4",
+    "questionNumber": 1,
+    "image": {
+      "pageKey": "samples/8b-wt4/R25-p1.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.14,
+        "w": 0.9,
+        "h": 0.27999999999999997
+      }
+    },
+    "maxMarks": 3,
+    "goldMarks": 3,
+    "goldSteps": [
+      1,
+      1,
+      1
+    ],
+    "goldConcept": "c8-le-transposing",
+    "goldConceptIds": [
+      "c8-le-transposing"
+    ],
+    "goldMisconception": null,
+    "goldMistakeType": "none",
+    "tags": []
+  },
+  {
+    "id": "8B-WT4-R25:Q2",
+    "sheetRef": "8B-WT4-R25",
+    "paperKey": "c8-wt4",
+    "questionNumber": 2,
+    "image": {
+      "pageKey": "samples/8b-wt4/R25-p1.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.42,
+        "w": 0.9,
+        "h": 0.27999999999999997
+      }
+    },
+    "maxMarks": 3,
+    "goldMarks": 2,
+    "goldSteps": [
+      1,
+      1,
+      0
+    ],
+    "goldConcept": "c8-le-transposing",
+    "goldConceptIds": [
+      "c8-le-transposing"
+    ],
+    "goldMisconception": "Correct method, arithmetic slip",
+    "goldMistakeType": "calculation",
+    "tags": [
+      "partial"
+    ]
+  },
+  {
+    "id": "8B-WT4-R25:Q3",
+    "sheetRef": "8B-WT4-R25",
+    "paperKey": "c8-wt4",
+    "questionNumber": 3,
+    "image": {
+      "pageKey": "samples/8b-wt4/R25-p1.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.7,
+        "w": 0.9,
+        "h": 0.27
+      }
+    },
+    "maxMarks": 4,
+    "goldMarks": 3,
+    "goldSteps": [
+      2,
+      1,
+      0
+    ],
+    "goldConcept": "c8-le-bothsides",
+    "goldConceptIds": [
+      "c8-le-bothsides",
+      "c8-le-transposing"
+    ],
+    "goldMisconception": "Correct method, arithmetic slip",
+    "goldMistakeType": "calculation",
+    "tags": [
+      "partial"
+    ]
+  },
+  {
+    "id": "8B-WT4-R25:Q4",
+    "sheetRef": "8B-WT4-R25",
+    "paperKey": "c8-wt4",
+    "questionNumber": 4,
+    "image": {
+      "pageKey": "samples/8b-wt4/R25-p2.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.03,
+        "w": 0.9,
+        "h": 0.44999999999999996
+      }
+    },
+    "maxMarks": 4,
+    "goldMarks": 3,
+    "goldSteps": [
+      1,
+      1,
+      1,
+      0
+    ],
+    "goldConcept": "c8-le-word",
+    "goldConceptIds": [
+      "c8-le-word"
+    ],
+    "goldMisconception": "Stopped before completing the solution",
+    "goldMistakeType": "incomplete",
+    "tags": [
+      "partial",
+      "crossed_out",
+      "messy"
+    ]
+  },
+  {
+    "id": "8B-WT4-R25:Q5",
+    "sheetRef": "8B-WT4-R25",
+    "paperKey": "c8-wt4",
+    "questionNumber": 5,
+    "image": {
+      "pageKey": "samples/8b-wt4/R25-p2.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.48,
+        "w": 0.9,
+        "h": 0.49
+      }
+    },
+    "maxMarks": 6,
+    "goldMarks": 5,
+    "goldSteps": [
+      1,
+      2,
+      2,
+      0
+    ],
+    "goldConcept": "c8-le-word",
+    "goldConceptIds": [
+      "c8-le-word"
+    ],
+    "goldMisconception": "Stopped before completing the solution",
+    "goldMistakeType": "incomplete",
+    "tags": [
+      "partial"
+    ]
+  },
+  {
+    "id": "8B-WT4-R26:Q1",
+    "sheetRef": "8B-WT4-R26",
+    "paperKey": "c8-wt4",
+    "questionNumber": 1,
+    "image": {
+      "pageKey": "samples/8b-wt4/R26-p1.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.14,
+        "w": 0.9,
+        "h": 0.27999999999999997
+      }
+    },
+    "maxMarks": 3,
+    "goldMarks": 1,
+    "goldSteps": [
+      0,
+      1,
+      0
+    ],
+    "goldConcept": "c8-le-transposing",
+    "goldConceptIds": [
+      "c8-le-transposing"
+    ],
+    "goldMisconception": "Moves a term across \"=\" without changing its sign",
+    "goldMistakeType": "conceptual",
+    "tags": [
+      "partial"
+    ]
+  },
+  {
+    "id": "8B-WT4-R26:Q2",
+    "sheetRef": "8B-WT4-R26",
+    "paperKey": "c8-wt4",
+    "questionNumber": 2,
+    "image": {
+      "pageKey": "samples/8b-wt4/R26-p1.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.42,
+        "w": 0.9,
+        "h": 0.27999999999999997
+      }
+    },
+    "maxMarks": 3,
+    "goldMarks": 1,
+    "goldSteps": [
+      0,
+      1,
+      0
+    ],
+    "goldConcept": "c8-le-transposing",
+    "goldConceptIds": [
+      "c8-le-transposing"
+    ],
+    "goldMisconception": "Moves a term across \"=\" without changing its sign",
+    "goldMistakeType": "conceptual",
+    "tags": [
+      "partial"
+    ]
+  },
+  {
+    "id": "8B-WT4-R26:Q3",
+    "sheetRef": "8B-WT4-R26",
+    "paperKey": "c8-wt4",
+    "questionNumber": 3,
+    "image": {
+      "pageKey": "samples/8b-wt4/R26-p1.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.7,
+        "w": 0.9,
+        "h": 0.27
+      }
+    },
+    "maxMarks": 4,
+    "goldMarks": 0,
+    "goldSteps": [
+      0,
+      0,
+      0
+    ],
+    "goldConcept": "c8-le-bothsides",
+    "goldConceptIds": [
+      "c8-le-bothsides",
+      "c8-le-transposing"
+    ],
+    "goldMisconception": null,
+    "goldMistakeType": "unattempted",
+    "tags": [
+      "blank"
+    ]
+  },
+  {
+    "id": "8B-WT4-R26:Q4",
+    "sheetRef": "8B-WT4-R26",
+    "paperKey": "c8-wt4",
+    "questionNumber": 4,
+    "image": {
+      "pageKey": "samples/8b-wt4/R26-p2.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.03,
+        "w": 0.9,
+        "h": 0.44999999999999996
+      }
+    },
+    "maxMarks": 4,
+    "goldMarks": 2,
+    "goldSteps": [
+      1,
+      1,
+      0,
+      0
+    ],
+    "goldConcept": "c8-le-word",
+    "goldConceptIds": [
+      "c8-le-word"
+    ],
+    "goldMisconception": "Correct method, arithmetic slip",
+    "goldMistakeType": "calculation",
+    "tags": [
+      "partial"
+    ]
+  },
+  {
+    "id": "8B-WT4-R26:Q5",
+    "sheetRef": "8B-WT4-R26",
+    "paperKey": "c8-wt4",
+    "questionNumber": 5,
+    "image": {
+      "pageKey": "samples/8b-wt4/R26-p2.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.48,
+        "w": 0.9,
+        "h": 0.49
+      }
+    },
+    "maxMarks": 6,
+    "goldMarks": 3,
+    "goldSteps": [
+      1,
+      2,
+      0,
+      0
+    ],
+    "goldConcept": "c8-le-word",
+    "goldConceptIds": [
+      "c8-le-word"
+    ],
+    "goldMisconception": "Correct method, arithmetic slip",
+    "goldMistakeType": "calculation",
+    "tags": [
+      "partial"
+    ]
+  },
+  {
+    "id": "8B-WT4-R27:Q1",
+    "sheetRef": "8B-WT4-R27",
+    "paperKey": "c8-wt4",
+    "questionNumber": 1,
+    "image": {
+      "pageKey": "samples/8b-wt4/R27-p1.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.14,
+        "w": 0.9,
+        "h": 0.27999999999999997
+      }
+    },
+    "maxMarks": 3,
+    "goldMarks": 2,
+    "goldSteps": [
+      1,
+      1,
+      0
+    ],
+    "goldConcept": "c8-le-transposing",
+    "goldConceptIds": [
+      "c8-le-transposing"
+    ],
+    "goldMisconception": "Correct method, arithmetic slip",
+    "goldMistakeType": "calculation",
+    "tags": [
+      "partial"
+    ]
+  },
+  {
+    "id": "8B-WT4-R27:Q2",
+    "sheetRef": "8B-WT4-R27",
+    "paperKey": "c8-wt4",
+    "questionNumber": 2,
+    "image": {
+      "pageKey": "samples/8b-wt4/R27-p1.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.42,
+        "w": 0.9,
+        "h": 0.27999999999999997
+      }
+    },
+    "maxMarks": 3,
+    "goldMarks": 1,
+    "goldSteps": [
+      1,
+      0,
+      0
+    ],
+    "goldConcept": "c8-le-transposing",
+    "goldConceptIds": [
+      "c8-le-transposing"
+    ],
+    "goldMisconception": "Correct method, arithmetic slip",
+    "goldMistakeType": "calculation",
+    "tags": [
+      "partial"
+    ]
+  },
+  {
+    "id": "8B-WT4-R27:Q3",
+    "sheetRef": "8B-WT4-R27",
+    "paperKey": "c8-wt4",
+    "questionNumber": 3,
+    "image": {
+      "pageKey": "samples/8b-wt4/R27-p1.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.7,
+        "w": 0.9,
+        "h": 0.27
+      }
+    },
+    "maxMarks": 4,
+    "goldMarks": 2,
+    "goldSteps": [
+      2,
+      0,
+      0
+    ],
+    "goldConcept": "c8-le-bothsides",
+    "goldConceptIds": [
+      "c8-le-bothsides",
+      "c8-le-transposing"
+    ],
+    "goldMisconception": "Correct method, arithmetic slip",
+    "goldMistakeType": "calculation",
+    "tags": [
+      "partial"
+    ]
+  },
+  {
+    "id": "8B-WT4-R27:Q4",
+    "sheetRef": "8B-WT4-R27",
+    "paperKey": "c8-wt4",
+    "questionNumber": 4,
+    "image": {
+      "pageKey": "samples/8b-wt4/R27-p2.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.03,
+        "w": 0.9,
+        "h": 0.44999999999999996
+      }
+    },
+    "maxMarks": 4,
+    "goldMarks": 3,
+    "goldSteps": [
+      1,
+      1,
+      1,
+      0
+    ],
+    "goldConcept": "c8-le-word",
+    "goldConceptIds": [
+      "c8-le-word"
+    ],
+    "goldMisconception": "Stopped before completing the solution",
+    "goldMistakeType": "incomplete",
+    "tags": [
+      "partial"
+    ]
+  },
+  {
+    "id": "8B-WT4-R27:Q5",
+    "sheetRef": "8B-WT4-R27",
+    "paperKey": "c8-wt4",
+    "questionNumber": 5,
+    "image": {
+      "pageKey": "samples/8b-wt4/R27-p2.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.48,
+        "w": 0.9,
+        "h": 0.49
+      }
+    },
+    "maxMarks": 6,
+    "goldMarks": 5,
+    "goldSteps": [
+      1,
+      2,
+      2,
+      0
+    ],
+    "goldConcept": "c8-le-word",
+    "goldConceptIds": [
+      "c8-le-word"
+    ],
+    "goldMisconception": "Stopped before completing the solution",
+    "goldMistakeType": "incomplete",
+    "tags": [
+      "partial"
+    ]
+  },
+  {
+    "id": "8B-WT4-R28:Q1",
+    "sheetRef": "8B-WT4-R28",
+    "paperKey": "c8-wt4",
+    "questionNumber": 1,
+    "image": {
+      "pageKey": "samples/8b-wt4/R28-p1.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.14,
+        "w": 0.9,
+        "h": 0.27999999999999997
+      }
+    },
+    "maxMarks": 3,
+    "goldMarks": 1,
+    "goldSteps": [
+      0,
+      0.5,
+      0.5
+    ],
+    "goldConcept": "c8-le-transposing",
+    "goldConceptIds": [
+      "c8-le-transposing"
+    ],
+    "goldMisconception": "Applies an operation to one side only",
+    "goldMistakeType": "conceptual",
+    "tags": [
+      "partial"
+    ]
+  },
+  {
+    "id": "8B-WT4-R28:Q2",
+    "sheetRef": "8B-WT4-R28",
+    "paperKey": "c8-wt4",
+    "questionNumber": 2,
+    "image": {
+      "pageKey": "samples/8b-wt4/R28-p1.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.42,
+        "w": 0.9,
+        "h": 0.27999999999999997
+      }
+    },
+    "maxMarks": 3,
+    "goldMarks": 1,
+    "goldSteps": [
+      0,
+      0.5,
+      0.5
+    ],
+    "goldConcept": "c8-le-transposing",
+    "goldConceptIds": [
+      "c8-le-transposing"
+    ],
+    "goldMisconception": "Applies an operation to one side only",
+    "goldMistakeType": "conceptual",
+    "tags": [
+      "partial"
+    ]
+  },
+  {
+    "id": "8B-WT4-R28:Q3",
+    "sheetRef": "8B-WT4-R28",
+    "paperKey": "c8-wt4",
+    "questionNumber": 3,
+    "image": {
+      "pageKey": "samples/8b-wt4/R28-p1.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.7,
+        "w": 0.9,
+        "h": 0.27
+      }
+    },
+    "maxMarks": 4,
+    "goldMarks": 0,
+    "goldSteps": [
+      0,
+      0,
+      0
+    ],
+    "goldConcept": "c8-le-bothsides",
+    "goldConceptIds": [
+      "c8-le-bothsides",
+      "c8-le-transposing"
+    ],
+    "goldMisconception": null,
+    "goldMistakeType": "unattempted",
+    "tags": [
+      "blank"
+    ]
+  },
+  {
+    "id": "8B-WT4-R28:Q4",
+    "sheetRef": "8B-WT4-R28",
+    "paperKey": "c8-wt4",
+    "questionNumber": 4,
+    "image": {
+      "pageKey": "samples/8b-wt4/R28-p2.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.03,
+        "w": 0.9,
+        "h": 0.44999999999999996
+      }
+    },
+    "maxMarks": 4,
+    "goldMarks": 2,
+    "goldSteps": [
+      1,
+      1,
+      0,
+      0
+    ],
+    "goldConcept": "c8-le-word",
+    "goldConceptIds": [
+      "c8-le-word"
+    ],
+    "goldMisconception": "Correct method, arithmetic slip",
+    "goldMistakeType": "calculation",
+    "tags": [
+      "partial"
+    ]
+  },
+  {
+    "id": "8B-WT4-R28:Q5",
+    "sheetRef": "8B-WT4-R28",
+    "paperKey": "c8-wt4",
+    "questionNumber": 5,
+    "image": {
+      "pageKey": "samples/8b-wt4/R28-p2.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.48,
+        "w": 0.9,
+        "h": 0.49
+      }
+    },
+    "maxMarks": 6,
+    "goldMarks": 3,
+    "goldSteps": [
+      1,
+      2,
+      0,
+      0
+    ],
+    "goldConcept": "c8-le-word",
+    "goldConceptIds": [
+      "c8-le-word"
+    ],
+    "goldMisconception": "Stopped before completing the solution",
+    "goldMistakeType": "incomplete",
+    "tags": [
+      "partial"
+    ]
+  },
+  {
+    "id": "8B-WT4-R29:Q1",
+    "sheetRef": "8B-WT4-R29",
+    "paperKey": "c8-wt4",
+    "questionNumber": 1,
+    "image": {
+      "pageKey": "samples/8b-wt4/R29-p1.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.14,
+        "w": 0.9,
+        "h": 0.27999999999999997
+      }
+    },
+    "maxMarks": 3,
+    "goldMarks": 1,
+    "goldSteps": [
+      0,
+      1,
+      0
+    ],
+    "goldConcept": "c8-le-transposing",
+    "goldConceptIds": [
+      "c8-le-transposing"
+    ],
+    "goldMisconception": "Moves a term across \"=\" without changing its sign",
+    "goldMistakeType": "conceptual",
+    "tags": [
+      "partial"
+    ]
+  },
+  {
+    "id": "8B-WT4-R29:Q2",
+    "sheetRef": "8B-WT4-R29",
+    "paperKey": "c8-wt4",
+    "questionNumber": 2,
+    "image": {
+      "pageKey": "samples/8b-wt4/R29-p1.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.42,
+        "w": 0.9,
+        "h": 0.27999999999999997
+      }
+    },
+    "maxMarks": 3,
+    "goldMarks": 0,
+    "goldSteps": [
+      0,
+      0,
+      0
+    ],
+    "goldConcept": "c8-le-transposing",
+    "goldConceptIds": [
+      "c8-le-transposing"
+    ],
+    "goldMisconception": null,
+    "goldMistakeType": "unattempted",
+    "tags": [
+      "blank"
+    ]
+  },
+  {
+    "id": "8B-WT4-R29:Q3",
+    "sheetRef": "8B-WT4-R29",
+    "paperKey": "c8-wt4",
+    "questionNumber": 3,
+    "image": {
+      "pageKey": "samples/8b-wt4/R29-p1.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.7,
+        "w": 0.9,
+        "h": 0.27
+      }
+    },
+    "maxMarks": 4,
+    "goldMarks": 0,
+    "goldSteps": [
+      0,
+      0,
+      0
+    ],
+    "goldConcept": "c8-le-bothsides",
+    "goldConceptIds": [
+      "c8-le-bothsides",
+      "c8-le-transposing"
+    ],
+    "goldMisconception": null,
+    "goldMistakeType": "unattempted",
+    "tags": [
+      "blank"
+    ]
+  },
+  {
+    "id": "8B-WT4-R29:Q4",
+    "sheetRef": "8B-WT4-R29",
+    "paperKey": "c8-wt4",
+    "questionNumber": 4,
+    "image": {
+      "pageKey": "samples/8b-wt4/R29-p2.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.03,
+        "w": 0.9,
+        "h": 0.44999999999999996
+      }
+    },
+    "maxMarks": 4,
+    "goldMarks": 1,
+    "goldSteps": [
+      1,
+      0,
+      0,
+      0
+    ],
+    "goldConcept": "c8-le-word",
+    "goldConceptIds": [
+      "c8-le-word"
+    ],
+    "goldMisconception": "Stopped before completing the solution",
+    "goldMistakeType": "incomplete",
+    "tags": [
+      "partial"
+    ]
+  },
+  {
+    "id": "8B-WT4-R29:Q5",
+    "sheetRef": "8B-WT4-R29",
+    "paperKey": "c8-wt4",
+    "questionNumber": 5,
+    "image": {
+      "pageKey": "samples/8b-wt4/R29-p2.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.48,
+        "w": 0.9,
+        "h": 0.49
+      }
+    },
+    "maxMarks": 6,
+    "goldMarks": 3,
+    "goldSteps": [
+      1,
+      2,
+      0,
+      0
+    ],
+    "goldConcept": "c8-le-word",
+    "goldConceptIds": [
+      "c8-le-word"
+    ],
+    "goldMisconception": "Correct method, arithmetic slip",
+    "goldMistakeType": "calculation",
+    "tags": [
+      "partial"
+    ]
+  },
+  {
+    "id": "8B-WT4-R30:Q1",
+    "sheetRef": "8B-WT4-R30",
+    "paperKey": "c8-wt4",
+    "questionNumber": 1,
+    "image": {
+      "pageKey": "samples/8b-wt4/R30-p1.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.14,
+        "w": 0.9,
+        "h": 0.27999999999999997
+      }
+    },
+    "maxMarks": 3,
+    "goldMarks": 1,
+    "goldSteps": [
+      0,
+      1,
+      0
+    ],
+    "goldConcept": "c8-le-transposing",
+    "goldConceptIds": [
+      "c8-le-transposing"
+    ],
+    "goldMisconception": "Moves a term across \"=\" without changing its sign",
+    "goldMistakeType": "conceptual",
+    "tags": [
+      "partial",
+      "hindi"
+    ]
+  },
+  {
+    "id": "8B-WT4-R30:Q2",
+    "sheetRef": "8B-WT4-R30",
+    "paperKey": "c8-wt4",
+    "questionNumber": 2,
+    "image": {
+      "pageKey": "samples/8b-wt4/R30-p1.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.42,
+        "w": 0.9,
+        "h": 0.27999999999999997
+      }
+    },
+    "maxMarks": 3,
+    "goldMarks": 0,
+    "goldSteps": [
+      0,
+      0,
+      0
+    ],
+    "goldConcept": "c8-le-transposing",
+    "goldConceptIds": [
+      "c8-le-transposing"
+    ],
+    "goldMisconception": null,
+    "goldMistakeType": "unattempted",
+    "tags": [
+      "blank"
+    ]
+  },
+  {
+    "id": "8B-WT4-R30:Q3",
+    "sheetRef": "8B-WT4-R30",
+    "paperKey": "c8-wt4",
+    "questionNumber": 3,
+    "image": {
+      "pageKey": "samples/8b-wt4/R30-p1.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.7,
+        "w": 0.9,
+        "h": 0.27
+      }
+    },
+    "maxMarks": 4,
+    "goldMarks": 0,
+    "goldSteps": [
+      0,
+      0,
+      0
+    ],
+    "goldConcept": "c8-le-bothsides",
+    "goldConceptIds": [
+      "c8-le-bothsides",
+      "c8-le-transposing"
+    ],
+    "goldMisconception": null,
+    "goldMistakeType": "unattempted",
+    "tags": [
+      "blank"
+    ]
+  },
+  {
+    "id": "8B-WT4-R30:Q4",
+    "sheetRef": "8B-WT4-R30",
+    "paperKey": "c8-wt4",
+    "questionNumber": 4,
+    "image": {
+      "pageKey": "samples/8b-wt4/R30-p2.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.03,
+        "w": 0.9,
+        "h": 0.44999999999999996
+      }
+    },
+    "maxMarks": 4,
+    "goldMarks": 2,
+    "goldSteps": [
+      1,
+      1,
+      0,
+      0
+    ],
+    "goldConcept": "c8-le-word",
+    "goldConceptIds": [
+      "c8-le-word"
+    ],
+    "goldMisconception": "Correct method, arithmetic slip",
+    "goldMistakeType": "calculation",
+    "tags": [
+      "partial"
+    ]
+  },
+  {
+    "id": "8B-WT4-R30:Q5",
+    "sheetRef": "8B-WT4-R30",
+    "paperKey": "c8-wt4",
+    "questionNumber": 5,
+    "image": {
+      "pageKey": "samples/8b-wt4/R30-p2.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.48,
+        "w": 0.9,
+        "h": 0.49
+      }
+    },
+    "maxMarks": 6,
+    "goldMarks": 3,
+    "goldSteps": [
+      1,
+      2,
+      0,
+      0
+    ],
+    "goldConcept": "c8-le-word",
+    "goldConceptIds": [
+      "c8-le-word"
+    ],
+    "goldMisconception": "Correct method, arithmetic slip",
+    "goldMistakeType": "calculation",
+    "tags": [
+      "partial"
+    ]
+  },
+  {
+    "id": "8B-WT4-R31:Q1",
+    "sheetRef": "8B-WT4-R31",
+    "paperKey": "c8-wt4",
+    "questionNumber": 1,
+    "image": {
+      "pageKey": "samples/8b-wt4/R31-p1.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.14,
+        "w": 0.9,
+        "h": 0.27999999999999997
+      }
+    },
+    "maxMarks": 3,
+    "goldMarks": 1,
+    "goldSteps": [
+      0,
+      0.5,
+      0.5
+    ],
+    "goldConcept": "c8-le-transposing",
+    "goldConceptIds": [
+      "c8-le-transposing"
+    ],
+    "goldMisconception": "Applies an operation to one side only",
+    "goldMistakeType": "conceptual",
+    "tags": [
+      "partial"
+    ]
+  },
+  {
+    "id": "8B-WT4-R31:Q2",
+    "sheetRef": "8B-WT4-R31",
+    "paperKey": "c8-wt4",
+    "questionNumber": 2,
+    "image": {
+      "pageKey": "samples/8b-wt4/R31-p1.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.42,
+        "w": 0.9,
+        "h": 0.27999999999999997
+      }
+    },
+    "maxMarks": 3,
+    "goldMarks": 1,
+    "goldSteps": [
+      0,
+      0.5,
+      0.5
+    ],
+    "goldConcept": "c8-le-transposing",
+    "goldConceptIds": [
+      "c8-le-transposing"
+    ],
+    "goldMisconception": "Applies an operation to one side only",
+    "goldMistakeType": "conceptual",
+    "tags": [
+      "partial"
+    ]
+  },
+  {
+    "id": "8B-WT4-R31:Q3",
+    "sheetRef": "8B-WT4-R31",
+    "paperKey": "c8-wt4",
+    "questionNumber": 3,
+    "image": {
+      "pageKey": "samples/8b-wt4/R31-p1.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.7,
+        "w": 0.9,
+        "h": 0.27
+      }
+    },
+    "maxMarks": 4,
+    "goldMarks": 0,
+    "goldSteps": [
+      0,
+      0,
+      0
+    ],
+    "goldConcept": "c8-le-bothsides",
+    "goldConceptIds": [
+      "c8-le-bothsides",
+      "c8-le-transposing"
+    ],
+    "goldMisconception": null,
+    "goldMistakeType": "unattempted",
+    "tags": [
+      "blank"
+    ]
+  },
+  {
+    "id": "8B-WT4-R31:Q4",
+    "sheetRef": "8B-WT4-R31",
+    "paperKey": "c8-wt4",
+    "questionNumber": 4,
+    "image": {
+      "pageKey": "samples/8b-wt4/R31-p2.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.03,
+        "w": 0.9,
+        "h": 0.44999999999999996
+      }
+    },
+    "maxMarks": 4,
+    "goldMarks": 3,
+    "goldSteps": [
+      1,
+      1,
+      1,
+      0
+    ],
+    "goldConcept": "c8-le-word",
+    "goldConceptIds": [
+      "c8-le-word"
+    ],
+    "goldMisconception": "Stopped before completing the solution",
+    "goldMistakeType": "incomplete",
+    "tags": [
+      "partial"
+    ]
+  },
+  {
+    "id": "8B-WT4-R31:Q5",
+    "sheetRef": "8B-WT4-R31",
+    "paperKey": "c8-wt4",
+    "questionNumber": 5,
+    "image": {
+      "pageKey": "samples/8b-wt4/R31-p2.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.48,
+        "w": 0.9,
+        "h": 0.49
+      }
+    },
+    "maxMarks": 6,
+    "goldMarks": 3,
+    "goldSteps": [
+      1,
+      2,
+      0,
+      0
+    ],
+    "goldConcept": "c8-le-word",
+    "goldConceptIds": [
+      "c8-le-word"
+    ],
+    "goldMisconception": "Correct method, arithmetic slip",
+    "goldMistakeType": "calculation",
+    "tags": [
+      "partial"
+    ]
+  },
+  {
+    "id": "8B-WT4-R32:Q1",
+    "sheetRef": "8B-WT4-R32",
+    "paperKey": "c8-wt4",
+    "questionNumber": 1,
+    "image": {
+      "pageKey": "samples/8b-wt4/R32-p1.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.14,
+        "w": 0.9,
+        "h": 0.27999999999999997
+      }
+    },
+    "maxMarks": 3,
+    "goldMarks": 2,
+    "goldSteps": [
+      1,
+      1,
+      0
+    ],
+    "goldConcept": "c8-le-transposing",
+    "goldConceptIds": [
+      "c8-le-transposing"
+    ],
+    "goldMisconception": "Correct method, arithmetic slip",
+    "goldMistakeType": "calculation",
+    "tags": [
+      "partial"
+    ]
+  },
+  {
+    "id": "8B-WT4-R32:Q2",
+    "sheetRef": "8B-WT4-R32",
+    "paperKey": "c8-wt4",
+    "questionNumber": 2,
+    "image": {
+      "pageKey": "samples/8b-wt4/R32-p1.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.42,
+        "w": 0.9,
+        "h": 0.27999999999999997
+      }
+    },
+    "maxMarks": 3,
+    "goldMarks": 2,
+    "goldSteps": [
+      1,
+      1,
+      0
+    ],
+    "goldConcept": "c8-le-transposing",
+    "goldConceptIds": [
+      "c8-le-transposing"
+    ],
+    "goldMisconception": "Correct method, arithmetic slip",
+    "goldMistakeType": "calculation",
+    "tags": [
+      "partial"
+    ]
+  },
+  {
+    "id": "8B-WT4-R32:Q3",
+    "sheetRef": "8B-WT4-R32",
+    "paperKey": "c8-wt4",
+    "questionNumber": 3,
+    "image": {
+      "pageKey": "samples/8b-wt4/R32-p1.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.7,
+        "w": 0.9,
+        "h": 0.27
+      }
+    },
+    "maxMarks": 4,
+    "goldMarks": 3,
+    "goldSteps": [
+      2,
+      1,
+      0
+    ],
+    "goldConcept": "c8-le-bothsides",
+    "goldConceptIds": [
+      "c8-le-bothsides",
+      "c8-le-transposing"
+    ],
+    "goldMisconception": "Correct method, arithmetic slip",
+    "goldMistakeType": "calculation",
+    "tags": [
+      "partial"
+    ]
+  },
+  {
+    "id": "8B-WT4-R32:Q4",
+    "sheetRef": "8B-WT4-R32",
+    "paperKey": "c8-wt4",
+    "questionNumber": 4,
+    "image": {
+      "pageKey": "samples/8b-wt4/R32-p2.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.03,
+        "w": 0.9,
+        "h": 0.44999999999999996
+      }
+    },
+    "maxMarks": 4,
+    "goldMarks": 4,
+    "goldSteps": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "goldConcept": "c8-le-word",
+    "goldConceptIds": [
+      "c8-le-word"
+    ],
+    "goldMisconception": null,
+    "goldMistakeType": "none",
+    "tags": []
+  },
+  {
+    "id": "8B-WT4-R32:Q5",
+    "sheetRef": "8B-WT4-R32",
+    "paperKey": "c8-wt4",
+    "questionNumber": 5,
+    "image": {
+      "pageKey": "samples/8b-wt4/R32-p2.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.48,
+        "w": 0.9,
+        "h": 0.49
+      }
+    },
+    "maxMarks": 6,
+    "goldMarks": 5,
+    "goldSteps": [
+      1,
+      2,
+      2,
+      0
+    ],
+    "goldConcept": "c8-le-word",
+    "goldConceptIds": [
+      "c8-le-word"
+    ],
+    "goldMisconception": "Stopped before completing the solution",
+    "goldMistakeType": "incomplete",
+    "tags": [
+      "partial"
+    ]
+  },
+  {
+    "id": "8B-WT4-R33:Q1",
+    "sheetRef": "8B-WT4-R33",
+    "paperKey": "c8-wt4",
+    "questionNumber": 1,
+    "image": {
+      "pageKey": "samples/8b-wt4/R33-p1.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.14,
+        "w": 0.9,
+        "h": 0.27999999999999997
+      }
+    },
+    "maxMarks": 3,
+    "goldMarks": 1,
+    "goldSteps": [
+      1,
+      0,
+      0
+    ],
+    "goldConcept": "c8-le-transposing",
+    "goldConceptIds": [
+      "c8-le-transposing"
+    ],
+    "goldMisconception": "Correct method, arithmetic slip",
+    "goldMistakeType": "calculation",
+    "tags": [
+      "partial"
+    ]
+  },
+  {
+    "id": "8B-WT4-R33:Q2",
+    "sheetRef": "8B-WT4-R33",
+    "paperKey": "c8-wt4",
+    "questionNumber": 2,
+    "image": {
+      "pageKey": "samples/8b-wt4/R33-p1.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.42,
+        "w": 0.9,
+        "h": 0.27999999999999997
+      }
+    },
+    "maxMarks": 3,
+    "goldMarks": 1,
+    "goldSteps": [
+      1,
+      0,
+      0
+    ],
+    "goldConcept": "c8-le-transposing",
+    "goldConceptIds": [
+      "c8-le-transposing"
+    ],
+    "goldMisconception": "Correct method, arithmetic slip",
+    "goldMistakeType": "calculation",
+    "tags": [
+      "partial"
+    ]
+  },
+  {
+    "id": "8B-WT4-R33:Q3",
+    "sheetRef": "8B-WT4-R33",
+    "paperKey": "c8-wt4",
+    "questionNumber": 3,
+    "image": {
+      "pageKey": "samples/8b-wt4/R33-p1.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.7,
+        "w": 0.9,
+        "h": 0.27
+      }
+    },
+    "maxMarks": 4,
+    "goldMarks": 2,
+    "goldSteps": [
+      2,
+      0,
+      0
+    ],
+    "goldConcept": "c8-le-bothsides",
+    "goldConceptIds": [
+      "c8-le-bothsides",
+      "c8-le-transposing"
+    ],
+    "goldMisconception": "Correct method, arithmetic slip",
+    "goldMistakeType": "calculation",
+    "tags": [
+      "partial"
+    ]
+  },
+  {
+    "id": "8B-WT4-R33:Q4",
+    "sheetRef": "8B-WT4-R33",
+    "paperKey": "c8-wt4",
+    "questionNumber": 4,
+    "image": {
+      "pageKey": "samples/8b-wt4/R33-p2.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.03,
+        "w": 0.9,
+        "h": 0.44999999999999996
+      }
+    },
+    "maxMarks": 4,
+    "goldMarks": 3,
+    "goldSteps": [
+      1,
+      1,
+      1,
+      0
+    ],
+    "goldConcept": "c8-le-word",
+    "goldConceptIds": [
+      "c8-le-word"
+    ],
+    "goldMisconception": "Stopped before completing the solution",
+    "goldMistakeType": "incomplete",
+    "tags": [
+      "partial"
+    ]
+  },
+  {
+    "id": "8B-WT4-R33:Q5",
+    "sheetRef": "8B-WT4-R33",
+    "paperKey": "c8-wt4",
+    "questionNumber": 5,
+    "image": {
+      "pageKey": "samples/8b-wt4/R33-p2.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.48,
+        "w": 0.9,
+        "h": 0.49
+      }
+    },
+    "maxMarks": 6,
+    "goldMarks": 3,
+    "goldSteps": [
+      1,
+      2,
+      0,
+      0
+    ],
+    "goldConcept": "c8-le-word",
+    "goldConceptIds": [
+      "c8-le-word"
+    ],
+    "goldMisconception": "Stopped before completing the solution",
+    "goldMistakeType": "incomplete",
+    "tags": [
+      "partial"
+    ]
+  },
+  {
+    "id": "8B-WT4-R34:Q1",
+    "sheetRef": "8B-WT4-R34",
+    "paperKey": "c8-wt4",
+    "questionNumber": 1,
+    "image": {
+      "pageKey": "samples/8b-wt4/R34-p1.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.14,
+        "w": 0.9,
+        "h": 0.27999999999999997
+      }
+    },
+    "maxMarks": 3,
+    "goldMarks": 1,
+    "goldSteps": [
+      0,
+      1,
+      0
+    ],
+    "goldConcept": "c8-le-transposing",
+    "goldConceptIds": [
+      "c8-le-transposing"
+    ],
+    "goldMisconception": "Moves a term across \"=\" without changing its sign",
+    "goldMistakeType": "conceptual",
+    "tags": [
+      "partial"
+    ]
+  },
+  {
+    "id": "8B-WT4-R34:Q2",
+    "sheetRef": "8B-WT4-R34",
+    "paperKey": "c8-wt4",
+    "questionNumber": 2,
+    "image": {
+      "pageKey": "samples/8b-wt4/R34-p1.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.42,
+        "w": 0.9,
+        "h": 0.27999999999999997
+      }
+    },
+    "maxMarks": 3,
+    "goldMarks": 0,
+    "goldSteps": [
+      0,
+      0,
+      0
+    ],
+    "goldConcept": "c8-le-transposing",
+    "goldConceptIds": [
+      "c8-le-transposing"
+    ],
+    "goldMisconception": null,
+    "goldMistakeType": "unattempted",
+    "tags": [
+      "blank"
+    ]
+  },
+  {
+    "id": "8B-WT4-R34:Q3",
+    "sheetRef": "8B-WT4-R34",
+    "paperKey": "c8-wt4",
+    "questionNumber": 3,
+    "image": {
+      "pageKey": "samples/8b-wt4/R34-p1.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.7,
+        "w": 0.9,
+        "h": 0.27
+      }
+    },
+    "maxMarks": 4,
+    "goldMarks": 0,
+    "goldSteps": [
+      0,
+      0,
+      0
+    ],
+    "goldConcept": "c8-le-bothsides",
+    "goldConceptIds": [
+      "c8-le-bothsides",
+      "c8-le-transposing"
+    ],
+    "goldMisconception": null,
+    "goldMistakeType": "unattempted",
+    "tags": [
+      "blank"
+    ]
+  },
+  {
+    "id": "8B-WT4-R34:Q4",
+    "sheetRef": "8B-WT4-R34",
+    "paperKey": "c8-wt4",
+    "questionNumber": 4,
+    "image": {
+      "pageKey": "samples/8b-wt4/R34-p2.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.03,
+        "w": 0.9,
+        "h": 0.44999999999999996
+      }
+    },
+    "maxMarks": 4,
+    "goldMarks": 2,
+    "goldSteps": [
+      1,
+      1,
+      0,
+      0
+    ],
+    "goldConcept": "c8-le-word",
+    "goldConceptIds": [
+      "c8-le-word"
+    ],
+    "goldMisconception": "Stopped before completing the solution",
+    "goldMistakeType": "incomplete",
+    "tags": [
+      "partial"
+    ]
+  },
+  {
+    "id": "8B-WT4-R34:Q5",
+    "sheetRef": "8B-WT4-R34",
+    "paperKey": "c8-wt4",
+    "questionNumber": 5,
+    "image": {
+      "pageKey": "samples/8b-wt4/R34-p2.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.48,
+        "w": 0.9,
+        "h": 0.49
+      }
+    },
+    "maxMarks": 6,
+    "goldMarks": 3,
+    "goldSteps": [
+      1,
+      2,
+      0,
+      0
+    ],
+    "goldConcept": "c8-le-word",
+    "goldConceptIds": [
+      "c8-le-word"
+    ],
+    "goldMisconception": "Correct method, arithmetic slip",
+    "goldMistakeType": "calculation",
+    "tags": [
+      "partial"
+    ]
+  },
+  {
+    "id": "8B-WT4-R35:Q1",
+    "sheetRef": "8B-WT4-R35",
+    "paperKey": "c8-wt4",
+    "questionNumber": 1,
+    "image": {
+      "pageKey": "samples/8b-wt4/R35-p1.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.14,
+        "w": 0.9,
+        "h": 0.27999999999999997
+      }
+    },
+    "maxMarks": 3,
+    "goldMarks": 1,
+    "goldSteps": [
+      0,
+      0.5,
+      0.5
+    ],
+    "goldConcept": "c8-le-transposing",
+    "goldConceptIds": [
+      "c8-le-transposing"
+    ],
+    "goldMisconception": "Applies an operation to one side only",
+    "goldMistakeType": "conceptual",
+    "tags": [
+      "partial"
+    ]
+  },
+  {
+    "id": "8B-WT4-R35:Q2",
+    "sheetRef": "8B-WT4-R35",
+    "paperKey": "c8-wt4",
+    "questionNumber": 2,
+    "image": {
+      "pageKey": "samples/8b-wt4/R35-p1.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.42,
+        "w": 0.9,
+        "h": 0.27999999999999997
+      }
+    },
+    "maxMarks": 3,
+    "goldMarks": 0,
+    "goldSteps": [
+      0,
+      0,
+      0
+    ],
+    "goldConcept": "c8-le-transposing",
+    "goldConceptIds": [
+      "c8-le-transposing"
+    ],
+    "goldMisconception": null,
+    "goldMistakeType": "unattempted",
+    "tags": [
+      "blank"
+    ]
+  },
+  {
+    "id": "8B-WT4-R35:Q3",
+    "sheetRef": "8B-WT4-R35",
+    "paperKey": "c8-wt4",
+    "questionNumber": 3,
+    "image": {
+      "pageKey": "samples/8b-wt4/R35-p1.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.7,
+        "w": 0.9,
+        "h": 0.27
+      }
+    },
+    "maxMarks": 4,
+    "goldMarks": 0,
+    "goldSteps": [
+      0,
+      0,
+      0
+    ],
+    "goldConcept": "c8-le-bothsides",
+    "goldConceptIds": [
+      "c8-le-bothsides",
+      "c8-le-transposing"
+    ],
+    "goldMisconception": null,
+    "goldMistakeType": "unattempted",
+    "tags": [
+      "blank"
+    ]
+  },
+  {
+    "id": "8B-WT4-R35:Q4",
+    "sheetRef": "8B-WT4-R35",
+    "paperKey": "c8-wt4",
+    "questionNumber": 4,
+    "image": {
+      "pageKey": "samples/8b-wt4/R35-p2.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.03,
+        "w": 0.9,
+        "h": 0.44999999999999996
+      }
+    },
+    "maxMarks": 4,
+    "goldMarks": 2,
+    "goldSteps": [
+      1,
+      1,
+      0,
+      0
+    ],
+    "goldConcept": "c8-le-word",
+    "goldConceptIds": [
+      "c8-le-word"
+    ],
+    "goldMisconception": "Stopped before completing the solution",
+    "goldMistakeType": "incomplete",
+    "tags": [
+      "partial"
+    ]
+  },
+  {
+    "id": "8B-WT4-R35:Q5",
+    "sheetRef": "8B-WT4-R35",
+    "paperKey": "c8-wt4",
+    "questionNumber": 5,
+    "image": {
+      "pageKey": "samples/8b-wt4/R35-p2.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.48,
+        "w": 0.9,
+        "h": 0.49
+      }
+    },
+    "maxMarks": 6,
+    "goldMarks": 5,
+    "goldSteps": [
+      1,
+      2,
+      2,
+      0
+    ],
+    "goldConcept": "c8-le-word",
+    "goldConceptIds": [
+      "c8-le-word"
+    ],
+    "goldMisconception": "Stopped before completing the solution",
+    "goldMistakeType": "incomplete",
+    "tags": [
+      "partial"
+    ]
+  },
+  {
+    "id": "8B-WT4-R36:Q1",
+    "sheetRef": "8B-WT4-R36",
+    "paperKey": "c8-wt4",
+    "questionNumber": 1,
+    "image": {
+      "pageKey": "samples/8b-wt4/R36-p1.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.14,
+        "w": 0.9,
+        "h": 0.27999999999999997
+      }
+    },
+    "maxMarks": 3,
+    "goldMarks": 1,
+    "goldSteps": [
+      0,
+      1,
+      0
+    ],
+    "goldConcept": "c8-le-transposing",
+    "goldConceptIds": [
+      "c8-le-transposing"
+    ],
+    "goldMisconception": "Moves a term across \"=\" without changing its sign",
+    "goldMistakeType": "conceptual",
+    "tags": [
+      "partial"
+    ]
+  },
+  {
+    "id": "8B-WT4-R36:Q2",
+    "sheetRef": "8B-WT4-R36",
+    "paperKey": "c8-wt4",
+    "questionNumber": 2,
+    "image": {
+      "pageKey": "samples/8b-wt4/R36-p1.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.42,
+        "w": 0.9,
+        "h": 0.27999999999999997
+      }
+    },
+    "maxMarks": 3,
+    "goldMarks": 1,
+    "goldSteps": [
+      0,
+      1,
+      0
+    ],
+    "goldConcept": "c8-le-transposing",
+    "goldConceptIds": [
+      "c8-le-transposing"
+    ],
+    "goldMisconception": "Moves a term across \"=\" without changing its sign",
+    "goldMistakeType": "conceptual",
+    "tags": [
+      "partial"
+    ]
+  },
+  {
+    "id": "8B-WT4-R36:Q3",
+    "sheetRef": "8B-WT4-R36",
+    "paperKey": "c8-wt4",
+    "questionNumber": 3,
+    "image": {
+      "pageKey": "samples/8b-wt4/R36-p1.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.7,
+        "w": 0.9,
+        "h": 0.27
+      }
+    },
+    "maxMarks": 4,
+    "goldMarks": 1,
+    "goldSteps": [
+      0,
+      1,
+      0
+    ],
+    "goldConcept": "c8-le-bothsides",
+    "goldConceptIds": [
+      "c8-le-bothsides",
+      "c8-le-transposing"
+    ],
+    "goldMisconception": "Moves a term across \"=\" without changing its sign",
+    "goldMistakeType": "conceptual",
+    "tags": [
+      "partial"
+    ]
+  },
+  {
+    "id": "8B-WT4-R36:Q4",
+    "sheetRef": "8B-WT4-R36",
+    "paperKey": "c8-wt4",
+    "questionNumber": 4,
+    "image": {
+      "pageKey": "samples/8b-wt4/R36-p2.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.03,
+        "w": 0.9,
+        "h": 0.44999999999999996
+      }
+    },
+    "maxMarks": 4,
+    "goldMarks": 4,
+    "goldSteps": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "goldConcept": "c8-le-word",
+    "goldConceptIds": [
+      "c8-le-word"
+    ],
+    "goldMisconception": null,
+    "goldMistakeType": "none",
+    "tags": []
+  },
+  {
+    "id": "8B-WT4-R36:Q5",
+    "sheetRef": "8B-WT4-R36",
+    "paperKey": "c8-wt4",
+    "questionNumber": 5,
+    "image": {
+      "pageKey": "samples/8b-wt4/R36-p2.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.48,
+        "w": 0.9,
+        "h": 0.49
+      }
+    },
+    "maxMarks": 6,
+    "goldMarks": 3,
+    "goldSteps": [
+      1,
+      2,
+      0,
+      0
+    ],
+    "goldConcept": "c8-le-word",
+    "goldConceptIds": [
+      "c8-le-word"
+    ],
+    "goldMisconception": "Stopped before completing the solution",
+    "goldMistakeType": "incomplete",
+    "tags": [
+      "partial"
+    ]
+  },
+  {
+    "id": "8B-WT4-R37:Q1",
+    "sheetRef": "8B-WT4-R37",
+    "paperKey": "c8-wt4",
+    "questionNumber": 1,
+    "image": {
+      "pageKey": "samples/8b-wt4/R37-p1.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.14,
+        "w": 0.9,
+        "h": 0.27999999999999997
+      }
+    },
+    "maxMarks": 3,
+    "goldMarks": 2,
+    "goldSteps": [
+      1,
+      1,
+      0
+    ],
+    "goldConcept": "c8-le-transposing",
+    "goldConceptIds": [
+      "c8-le-transposing"
+    ],
+    "goldMisconception": "Correct method, arithmetic slip",
+    "goldMistakeType": "calculation",
+    "tags": [
+      "partial"
+    ]
+  },
+  {
+    "id": "8B-WT4-R37:Q2",
+    "sheetRef": "8B-WT4-R37",
+    "paperKey": "c8-wt4",
+    "questionNumber": 2,
+    "image": {
+      "pageKey": "samples/8b-wt4/R37-p1.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.42,
+        "w": 0.9,
+        "h": 0.27999999999999997
+      }
+    },
+    "maxMarks": 3,
+    "goldMarks": 1,
+    "goldSteps": [
+      1,
+      0,
+      0
+    ],
+    "goldConcept": "c8-le-transposing",
+    "goldConceptIds": [
+      "c8-le-transposing"
+    ],
+    "goldMisconception": "Correct method, arithmetic slip",
+    "goldMistakeType": "calculation",
+    "tags": [
+      "partial"
+    ]
+  },
+  {
+    "id": "8B-WT4-R37:Q3",
+    "sheetRef": "8B-WT4-R37",
+    "paperKey": "c8-wt4",
+    "questionNumber": 3,
+    "image": {
+      "pageKey": "samples/8b-wt4/R37-p1.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.7,
+        "w": 0.9,
+        "h": 0.27
+      }
+    },
+    "maxMarks": 4,
+    "goldMarks": 3,
+    "goldSteps": [
+      2,
+      1,
+      0
+    ],
+    "goldConcept": "c8-le-bothsides",
+    "goldConceptIds": [
+      "c8-le-bothsides",
+      "c8-le-transposing"
+    ],
+    "goldMisconception": "Correct method, arithmetic slip",
+    "goldMistakeType": "calculation",
+    "tags": [
+      "partial"
+    ]
+  },
+  {
+    "id": "8B-WT4-R37:Q4",
+    "sheetRef": "8B-WT4-R37",
+    "paperKey": "c8-wt4",
+    "questionNumber": 4,
+    "image": {
+      "pageKey": "samples/8b-wt4/R37-p2.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.03,
+        "w": 0.9,
+        "h": 0.44999999999999996
+      }
+    },
+    "maxMarks": 4,
+    "goldMarks": 3,
+    "goldSteps": [
+      1,
+      1,
+      1,
+      0
+    ],
+    "goldConcept": "c8-le-word",
+    "goldConceptIds": [
+      "c8-le-word"
+    ],
+    "goldMisconception": "Stopped before completing the solution",
+    "goldMistakeType": "incomplete",
+    "tags": [
+      "partial"
+    ]
+  },
+  {
+    "id": "8B-WT4-R37:Q5",
+    "sheetRef": "8B-WT4-R37",
+    "paperKey": "c8-wt4",
+    "questionNumber": 5,
+    "image": {
+      "pageKey": "samples/8b-wt4/R37-p2.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.48,
+        "w": 0.9,
+        "h": 0.49
+      }
+    },
+    "maxMarks": 6,
+    "goldMarks": 5,
+    "goldSteps": [
+      1,
+      2,
+      2,
+      0
+    ],
+    "goldConcept": "c8-le-word",
+    "goldConceptIds": [
+      "c8-le-word"
+    ],
+    "goldMisconception": "Stopped before completing the solution",
+    "goldMistakeType": "incomplete",
+    "tags": [
+      "partial"
+    ]
+  },
+  {
+    "id": "8B-WT4-R38:Q1",
+    "sheetRef": "8B-WT4-R38",
+    "paperKey": "c8-wt4",
+    "questionNumber": 1,
+    "image": {
+      "pageKey": "samples/8b-wt4/R38-p1.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.14,
+        "w": 0.9,
+        "h": 0.27999999999999997
+      }
+    },
+    "maxMarks": 3,
+    "goldMarks": 1,
+    "goldSteps": [
+      0,
+      1,
+      0
+    ],
+    "goldConcept": "c8-le-transposing",
+    "goldConceptIds": [
+      "c8-le-transposing"
+    ],
+    "goldMisconception": "Moves a term across \"=\" without changing its sign",
+    "goldMistakeType": "conceptual",
+    "tags": [
+      "partial"
+    ]
+  },
+  {
+    "id": "8B-WT4-R38:Q2",
+    "sheetRef": "8B-WT4-R38",
+    "paperKey": "c8-wt4",
+    "questionNumber": 2,
+    "image": {
+      "pageKey": "samples/8b-wt4/R38-p1.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.42,
+        "w": 0.9,
+        "h": 0.27999999999999997
+      }
+    },
+    "maxMarks": 3,
+    "goldMarks": 1,
+    "goldSteps": [
+      0,
+      1,
+      0
+    ],
+    "goldConcept": "c8-le-transposing",
+    "goldConceptIds": [
+      "c8-le-transposing"
+    ],
+    "goldMisconception": "Moves a term across \"=\" without changing its sign",
+    "goldMistakeType": "conceptual",
+    "tags": [
+      "partial"
+    ]
+  },
+  {
+    "id": "8B-WT4-R38:Q3",
+    "sheetRef": "8B-WT4-R38",
+    "paperKey": "c8-wt4",
+    "questionNumber": 3,
+    "image": {
+      "pageKey": "samples/8b-wt4/R38-p1.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.7,
+        "w": 0.9,
+        "h": 0.27
+      }
+    },
+    "maxMarks": 4,
+    "goldMarks": 0,
+    "goldSteps": [
+      0,
+      0,
+      0
+    ],
+    "goldConcept": "c8-le-bothsides",
+    "goldConceptIds": [
+      "c8-le-bothsides",
+      "c8-le-transposing"
+    ],
+    "goldMisconception": null,
+    "goldMistakeType": "unattempted",
+    "tags": [
+      "blank"
+    ]
+  },
+  {
+    "id": "8B-WT4-R38:Q4",
+    "sheetRef": "8B-WT4-R38",
+    "paperKey": "c8-wt4",
+    "questionNumber": 4,
+    "image": {
+      "pageKey": "samples/8b-wt4/R38-p2.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.03,
+        "w": 0.9,
+        "h": 0.44999999999999996
+      }
+    },
+    "maxMarks": 4,
+    "goldMarks": 3,
+    "goldSteps": [
+      1,
+      1,
+      1,
+      0
+    ],
+    "goldConcept": "c8-le-word",
+    "goldConceptIds": [
+      "c8-le-word"
+    ],
+    "goldMisconception": "Stopped before completing the solution",
+    "goldMistakeType": "incomplete",
+    "tags": [
+      "partial"
+    ]
+  },
+  {
+    "id": "8B-WT4-R38:Q5",
+    "sheetRef": "8B-WT4-R38",
+    "paperKey": "c8-wt4",
+    "questionNumber": 5,
+    "image": {
+      "pageKey": "samples/8b-wt4/R38-p2.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.48,
+        "w": 0.9,
+        "h": 0.49
+      }
+    },
+    "maxMarks": 6,
+    "goldMarks": 3,
+    "goldSteps": [
+      1,
+      2,
+      0,
+      0
+    ],
+    "goldConcept": "c8-le-word",
+    "goldConceptIds": [
+      "c8-le-word"
+    ],
+    "goldMisconception": "Correct method, arithmetic slip",
+    "goldMistakeType": "calculation",
+    "tags": [
+      "partial"
+    ]
+  },
+  {
+    "id": "8B-WT4-R39:Q1",
+    "sheetRef": "8B-WT4-R39",
+    "paperKey": "c8-wt4",
+    "questionNumber": 1,
+    "image": {
+      "pageKey": "samples/8b-wt4/R39-p1.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.14,
+        "w": 0.9,
+        "h": 0.27999999999999997
+      }
+    },
+    "maxMarks": 3,
+    "goldMarks": 2,
+    "goldSteps": [
+      1,
+      1,
+      0
+    ],
+    "goldConcept": "c8-le-transposing",
+    "goldConceptIds": [
+      "c8-le-transposing"
+    ],
+    "goldMisconception": "Correct method, arithmetic slip",
+    "goldMistakeType": "calculation",
+    "tags": [
+      "partial"
+    ]
+  },
+  {
+    "id": "8B-WT4-R39:Q2",
+    "sheetRef": "8B-WT4-R39",
+    "paperKey": "c8-wt4",
+    "questionNumber": 2,
+    "image": {
+      "pageKey": "samples/8b-wt4/R39-p1.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.42,
+        "w": 0.9,
+        "h": 0.27999999999999997
+      }
+    },
+    "maxMarks": 3,
+    "goldMarks": 1,
+    "goldSteps": [
+      1,
+      0,
+      0
+    ],
+    "goldConcept": "c8-le-transposing",
+    "goldConceptIds": [
+      "c8-le-transposing"
+    ],
+    "goldMisconception": "Correct method, arithmetic slip",
+    "goldMistakeType": "calculation",
+    "tags": [
+      "partial"
+    ]
+  },
+  {
+    "id": "8B-WT4-R39:Q3",
+    "sheetRef": "8B-WT4-R39",
+    "paperKey": "c8-wt4",
+    "questionNumber": 3,
+    "image": {
+      "pageKey": "samples/8b-wt4/R39-p1.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.7,
+        "w": 0.9,
+        "h": 0.27
+      }
+    },
+    "maxMarks": 4,
+    "goldMarks": 2,
+    "goldSteps": [
+      2,
+      0,
+      0
+    ],
+    "goldConcept": "c8-le-bothsides",
+    "goldConceptIds": [
+      "c8-le-bothsides",
+      "c8-le-transposing"
+    ],
+    "goldMisconception": "Correct method, arithmetic slip",
+    "goldMistakeType": "calculation",
+    "tags": [
+      "partial"
+    ]
+  },
+  {
+    "id": "8B-WT4-R39:Q4",
+    "sheetRef": "8B-WT4-R39",
+    "paperKey": "c8-wt4",
+    "questionNumber": 4,
+    "image": {
+      "pageKey": "samples/8b-wt4/R39-p2.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.03,
+        "w": 0.9,
+        "h": 0.44999999999999996
+      }
+    },
+    "maxMarks": 4,
+    "goldMarks": 3,
+    "goldSteps": [
+      1,
+      1,
+      1,
+      0
+    ],
+    "goldConcept": "c8-le-word",
+    "goldConceptIds": [
+      "c8-le-word"
+    ],
+    "goldMisconception": "Stopped before completing the solution",
+    "goldMistakeType": "incomplete",
+    "tags": [
+      "partial"
+    ]
+  },
+  {
+    "id": "8B-WT4-R39:Q5",
+    "sheetRef": "8B-WT4-R39",
+    "paperKey": "c8-wt4",
+    "questionNumber": 5,
+    "image": {
+      "pageKey": "samples/8b-wt4/R39-p2.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.48,
+        "w": 0.9,
+        "h": 0.49
+      }
+    },
+    "maxMarks": 6,
+    "goldMarks": 3,
+    "goldSteps": [
+      1,
+      2,
+      0,
+      0
+    ],
+    "goldConcept": "c8-le-word",
+    "goldConceptIds": [
+      "c8-le-word"
+    ],
+    "goldMisconception": "Correct method, arithmetic slip",
+    "goldMistakeType": "calculation",
+    "tags": [
+      "partial"
+    ]
+  },
+  {
+    "id": "8B-WT4-R40:Q1",
+    "sheetRef": "8B-WT4-R40",
+    "paperKey": "c8-wt4",
+    "questionNumber": 1,
+    "image": {
+      "pageKey": "samples/8b-wt4/R40-p1.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.14,
+        "w": 0.9,
+        "h": 0.27999999999999997
+      }
+    },
+    "maxMarks": 3,
+    "goldMarks": 1,
+    "goldSteps": [
+      0,
+      0.5,
+      0.5
+    ],
+    "goldConcept": "c8-le-transposing",
+    "goldConceptIds": [
+      "c8-le-transposing"
+    ],
+    "goldMisconception": "Applies an operation to one side only",
+    "goldMistakeType": "conceptual",
+    "tags": [
+      "partial"
+    ]
+  },
+  {
+    "id": "8B-WT4-R40:Q2",
+    "sheetRef": "8B-WT4-R40",
+    "paperKey": "c8-wt4",
+    "questionNumber": 2,
+    "image": {
+      "pageKey": "samples/8b-wt4/R40-p1.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.42,
+        "w": 0.9,
+        "h": 0.27999999999999997
+      }
+    },
+    "maxMarks": 3,
+    "goldMarks": 0,
+    "goldSteps": [
+      0,
+      0,
+      0
+    ],
+    "goldConcept": "c8-le-transposing",
+    "goldConceptIds": [
+      "c8-le-transposing"
+    ],
+    "goldMisconception": null,
+    "goldMistakeType": "unattempted",
+    "tags": [
+      "blank"
+    ]
+  },
+  {
+    "id": "8B-WT4-R40:Q3",
+    "sheetRef": "8B-WT4-R40",
+    "paperKey": "c8-wt4",
+    "questionNumber": 3,
+    "image": {
+      "pageKey": "samples/8b-wt4/R40-p1.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.7,
+        "w": 0.9,
+        "h": 0.27
+      }
+    },
+    "maxMarks": 4,
+    "goldMarks": 0,
+    "goldSteps": [
+      0,
+      0,
+      0
+    ],
+    "goldConcept": "c8-le-bothsides",
+    "goldConceptIds": [
+      "c8-le-bothsides",
+      "c8-le-transposing"
+    ],
+    "goldMisconception": null,
+    "goldMistakeType": "unattempted",
+    "tags": [
+      "blank"
+    ]
+  },
+  {
+    "id": "8B-WT4-R40:Q4",
+    "sheetRef": "8B-WT4-R40",
+    "paperKey": "c8-wt4",
+    "questionNumber": 4,
+    "image": {
+      "pageKey": "samples/8b-wt4/R40-p2.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.03,
+        "w": 0.9,
+        "h": 0.44999999999999996
+      }
+    },
+    "maxMarks": 4,
+    "goldMarks": 2,
+    "goldSteps": [
+      1,
+      1,
+      0,
+      0
+    ],
+    "goldConcept": "c8-le-word",
+    "goldConceptIds": [
+      "c8-le-word"
+    ],
+    "goldMisconception": "Correct method, arithmetic slip",
+    "goldMistakeType": "calculation",
+    "tags": [
+      "partial"
+    ]
+  },
+  {
+    "id": "8B-WT4-R40:Q5",
+    "sheetRef": "8B-WT4-R40",
+    "paperKey": "c8-wt4",
+    "questionNumber": 5,
+    "image": {
+      "pageKey": "samples/8b-wt4/R40-p2.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.48,
+        "w": 0.9,
+        "h": 0.49
+      }
+    },
+    "maxMarks": 6,
+    "goldMarks": 3,
+    "goldSteps": [
+      1,
+      2,
+      0,
+      0
+    ],
+    "goldConcept": "c8-le-word",
+    "goldConceptIds": [
+      "c8-le-word"
+    ],
+    "goldMisconception": "Correct method, arithmetic slip",
+    "goldMistakeType": "calculation",
+    "tags": [
+      "partial"
+    ]
+  },
+  {
+    "id": "8B-WT4-R41:Q1",
+    "sheetRef": "8B-WT4-R41",
+    "paperKey": "c8-wt4",
+    "questionNumber": 1,
+    "image": {
+      "pageKey": "samples/8b-wt4/R41-p1.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.14,
+        "w": 0.9,
+        "h": 0.27999999999999997
+      }
+    },
+    "maxMarks": 3,
+    "goldMarks": 2,
+    "goldSteps": [
+      1,
+      1,
+      0
+    ],
+    "goldConcept": "c8-le-transposing",
+    "goldConceptIds": [
+      "c8-le-transposing"
+    ],
+    "goldMisconception": "Correct method, arithmetic slip",
+    "goldMistakeType": "calculation",
+    "tags": [
+      "partial"
+    ]
+  },
+  {
+    "id": "8B-WT4-R41:Q2",
+    "sheetRef": "8B-WT4-R41",
+    "paperKey": "c8-wt4",
+    "questionNumber": 2,
+    "image": {
+      "pageKey": "samples/8b-wt4/R41-p1.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.42,
+        "w": 0.9,
+        "h": 0.27999999999999997
+      }
+    },
+    "maxMarks": 3,
+    "goldMarks": 1,
+    "goldSteps": [
+      1,
+      0,
+      0
+    ],
+    "goldConcept": "c8-le-transposing",
+    "goldConceptIds": [
+      "c8-le-transposing"
+    ],
+    "goldMisconception": "Correct method, arithmetic slip",
+    "goldMistakeType": "calculation",
+    "tags": [
+      "partial"
+    ]
+  },
+  {
+    "id": "8B-WT4-R41:Q3",
+    "sheetRef": "8B-WT4-R41",
+    "paperKey": "c8-wt4",
+    "questionNumber": 3,
+    "image": {
+      "pageKey": "samples/8b-wt4/R41-p1.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.7,
+        "w": 0.9,
+        "h": 0.27
+      }
+    },
+    "maxMarks": 4,
+    "goldMarks": 3,
+    "goldSteps": [
+      2,
+      1,
+      0
+    ],
+    "goldConcept": "c8-le-bothsides",
+    "goldConceptIds": [
+      "c8-le-bothsides",
+      "c8-le-transposing"
+    ],
+    "goldMisconception": "Correct method, arithmetic slip",
+    "goldMistakeType": "calculation",
+    "tags": [
+      "partial"
+    ]
+  },
+  {
+    "id": "8B-WT4-R41:Q4",
+    "sheetRef": "8B-WT4-R41",
+    "paperKey": "c8-wt4",
+    "questionNumber": 4,
+    "image": {
+      "pageKey": "samples/8b-wt4/R41-p2.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.03,
+        "w": 0.9,
+        "h": 0.44999999999999996
+      }
+    },
+    "maxMarks": 4,
+    "goldMarks": 3,
+    "goldSteps": [
+      1,
+      1,
+      1,
+      0
+    ],
+    "goldConcept": "c8-le-word",
+    "goldConceptIds": [
+      "c8-le-word"
+    ],
+    "goldMisconception": "Stopped before completing the solution",
+    "goldMistakeType": "incomplete",
+    "tags": [
+      "partial"
+    ]
+  },
+  {
+    "id": "8B-WT4-R41:Q5",
+    "sheetRef": "8B-WT4-R41",
+    "paperKey": "c8-wt4",
+    "questionNumber": 5,
+    "image": {
+      "pageKey": "samples/8b-wt4/R41-p2.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.48,
+        "w": 0.9,
+        "h": 0.49
+      }
+    },
+    "maxMarks": 6,
+    "goldMarks": 5,
+    "goldSteps": [
+      1,
+      2,
+      2,
+      0
+    ],
+    "goldConcept": "c8-le-word",
+    "goldConceptIds": [
+      "c8-le-word"
+    ],
+    "goldMisconception": "Stopped before completing the solution",
+    "goldMistakeType": "incomplete",
+    "tags": [
+      "partial"
+    ]
+  },
+  {
+    "id": "8B-WT4-R42:Q1",
+    "sheetRef": "8B-WT4-R42",
+    "paperKey": "c8-wt4",
+    "questionNumber": 1,
+    "image": {
+      "pageKey": "samples/8b-wt4/R42-p1.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.14,
+        "w": 0.9,
+        "h": 0.27999999999999997
+      }
+    },
+    "maxMarks": 3,
+    "goldMarks": 3,
+    "goldSteps": [
+      1,
+      1,
+      1
+    ],
+    "goldConcept": "c8-le-transposing",
+    "goldConceptIds": [
+      "c8-le-transposing"
+    ],
+    "goldMisconception": null,
+    "goldMistakeType": "none",
+    "tags": []
+  },
+  {
+    "id": "8B-WT4-R42:Q2",
+    "sheetRef": "8B-WT4-R42",
+    "paperKey": "c8-wt4",
+    "questionNumber": 2,
+    "image": {
+      "pageKey": "samples/8b-wt4/R42-p1.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.42,
+        "w": 0.9,
+        "h": 0.27999999999999997
+      }
+    },
+    "maxMarks": 3,
+    "goldMarks": 2,
+    "goldSteps": [
+      1,
+      1,
+      0
+    ],
+    "goldConcept": "c8-le-transposing",
+    "goldConceptIds": [
+      "c8-le-transposing"
+    ],
+    "goldMisconception": "Correct method, arithmetic slip",
+    "goldMistakeType": "calculation",
+    "tags": [
+      "partial"
+    ]
+  },
+  {
+    "id": "8B-WT4-R42:Q3",
+    "sheetRef": "8B-WT4-R42",
+    "paperKey": "c8-wt4",
+    "questionNumber": 3,
+    "image": {
+      "pageKey": "samples/8b-wt4/R42-p1.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.7,
+        "w": 0.9,
+        "h": 0.27
+      }
+    },
+    "maxMarks": 4,
+    "goldMarks": 3,
+    "goldSteps": [
+      2,
+      1,
+      0
+    ],
+    "goldConcept": "c8-le-bothsides",
+    "goldConceptIds": [
+      "c8-le-bothsides",
+      "c8-le-transposing"
+    ],
+    "goldMisconception": "Correct method, arithmetic slip",
+    "goldMistakeType": "calculation",
+    "tags": [
+      "partial"
+    ]
+  },
+  {
+    "id": "8B-WT4-R42:Q4",
+    "sheetRef": "8B-WT4-R42",
+    "paperKey": "c8-wt4",
+    "questionNumber": 4,
+    "image": {
+      "pageKey": "samples/8b-wt4/R42-p2.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.03,
+        "w": 0.9,
+        "h": 0.44999999999999996
+      }
+    },
+    "maxMarks": 4,
+    "goldMarks": 4,
+    "goldSteps": [
+      1,
+      1,
+      1,
+      1
+    ],
+    "goldConcept": "c8-le-word",
+    "goldConceptIds": [
+      "c8-le-word"
+    ],
+    "goldMisconception": null,
+    "goldMistakeType": "none",
+    "tags": []
+  },
+  {
+    "id": "8B-WT4-R42:Q5",
+    "sheetRef": "8B-WT4-R42",
+    "paperKey": "c8-wt4",
+    "questionNumber": 5,
+    "image": {
+      "pageKey": "samples/8b-wt4/R42-p2.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.48,
+        "w": 0.9,
+        "h": 0.49
+      }
+    },
+    "maxMarks": 6,
+    "goldMarks": 5,
+    "goldSteps": [
+      1,
+      2,
+      2,
+      0
+    ],
+    "goldConcept": "c8-le-word",
+    "goldConceptIds": [
+      "c8-le-word"
+    ],
+    "goldMisconception": "Stopped before completing the solution",
+    "goldMistakeType": "incomplete",
+    "tags": [
+      "partial"
+    ]
+  },
+  {
+    "id": "8B-WT4-R43:Q1",
+    "sheetRef": "8B-WT4-R43",
+    "paperKey": "c8-wt4",
+    "questionNumber": 1,
+    "image": {
+      "pageKey": "samples/8b-wt4/R43-p1.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.14,
+        "w": 0.9,
+        "h": 0.27999999999999997
+      }
+    },
+    "maxMarks": 3,
+    "goldMarks": 1,
+    "goldSteps": [
+      1,
+      0,
+      0
+    ],
+    "goldConcept": "c8-le-transposing",
+    "goldConceptIds": [
+      "c8-le-transposing"
+    ],
+    "goldMisconception": "Correct method, arithmetic slip",
+    "goldMistakeType": "calculation",
+    "tags": [
+      "partial"
+    ]
+  },
+  {
+    "id": "8B-WT4-R43:Q2",
+    "sheetRef": "8B-WT4-R43",
+    "paperKey": "c8-wt4",
+    "questionNumber": 2,
+    "image": {
+      "pageKey": "samples/8b-wt4/R43-p1.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.42,
+        "w": 0.9,
+        "h": 0.27999999999999997
+      }
+    },
+    "maxMarks": 3,
+    "goldMarks": 1,
+    "goldSteps": [
+      1,
+      0,
+      0
+    ],
+    "goldConcept": "c8-le-transposing",
+    "goldConceptIds": [
+      "c8-le-transposing"
+    ],
+    "goldMisconception": "Correct method, arithmetic slip",
+    "goldMistakeType": "calculation",
+    "tags": [
+      "partial"
+    ]
+  },
+  {
+    "id": "8B-WT4-R43:Q3",
+    "sheetRef": "8B-WT4-R43",
+    "paperKey": "c8-wt4",
+    "questionNumber": 3,
+    "image": {
+      "pageKey": "samples/8b-wt4/R43-p1.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.7,
+        "w": 0.9,
+        "h": 0.27
+      }
+    },
+    "maxMarks": 4,
+    "goldMarks": 2,
+    "goldSteps": [
+      2,
+      0,
+      0
+    ],
+    "goldConcept": "c8-le-bothsides",
+    "goldConceptIds": [
+      "c8-le-bothsides",
+      "c8-le-transposing"
+    ],
+    "goldMisconception": "Correct method, arithmetic slip",
+    "goldMistakeType": "calculation",
+    "tags": [
+      "partial"
+    ]
+  },
+  {
+    "id": "8B-WT4-R43:Q4",
+    "sheetRef": "8B-WT4-R43",
+    "paperKey": "c8-wt4",
+    "questionNumber": 4,
+    "image": {
+      "pageKey": "samples/8b-wt4/R43-p2.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.03,
+        "w": 0.9,
+        "h": 0.44999999999999996
+      }
+    },
+    "maxMarks": 4,
+    "goldMarks": 2,
+    "goldSteps": [
+      1,
+      1,
+      0,
+      0
+    ],
+    "goldConcept": "c8-le-word",
+    "goldConceptIds": [
+      "c8-le-word"
+    ],
+    "goldMisconception": "Correct method, arithmetic slip",
+    "goldMistakeType": "calculation",
+    "tags": [
+      "partial"
+    ]
+  },
+  {
+    "id": "8B-WT4-R43:Q5",
+    "sheetRef": "8B-WT4-R43",
+    "paperKey": "c8-wt4",
+    "questionNumber": 5,
+    "image": {
+      "pageKey": "samples/8b-wt4/R43-p2.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.48,
+        "w": 0.9,
+        "h": 0.49
+      }
+    },
+    "maxMarks": 6,
+    "goldMarks": 6,
+    "goldSteps": [
+      1,
+      2,
+      2,
+      1
+    ],
+    "goldConcept": "c8-le-word",
+    "goldConceptIds": [
+      "c8-le-word"
+    ],
+    "goldMisconception": null,
+    "goldMistakeType": "none",
+    "tags": []
+  },
+  {
+    "id": "8B-WT4-R44:Q1",
+    "sheetRef": "8B-WT4-R44",
+    "paperKey": "c8-wt4",
+    "questionNumber": 1,
+    "image": {
+      "pageKey": "samples/8b-wt4/R44-p1.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.14,
+        "w": 0.9,
+        "h": 0.27999999999999997
+      }
+    },
+    "maxMarks": 3,
+    "goldMarks": 1,
+    "goldSteps": [
+      0,
+      1,
+      0
+    ],
+    "goldConcept": "c8-le-transposing",
+    "goldConceptIds": [
+      "c8-le-transposing"
+    ],
+    "goldMisconception": "Moves a term across \"=\" without changing its sign",
+    "goldMistakeType": "conceptual",
+    "tags": [
+      "partial"
+    ]
+  },
+  {
+    "id": "8B-WT4-R44:Q2",
+    "sheetRef": "8B-WT4-R44",
+    "paperKey": "c8-wt4",
+    "questionNumber": 2,
+    "image": {
+      "pageKey": "samples/8b-wt4/R44-p1.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.42,
+        "w": 0.9,
+        "h": 0.27999999999999997
+      }
+    },
+    "maxMarks": 3,
+    "goldMarks": 0,
+    "goldSteps": [
+      0,
+      0,
+      0
+    ],
+    "goldConcept": "c8-le-transposing",
+    "goldConceptIds": [
+      "c8-le-transposing"
+    ],
+    "goldMisconception": null,
+    "goldMistakeType": "unattempted",
+    "tags": [
+      "blank"
+    ]
+  },
+  {
+    "id": "8B-WT4-R44:Q3",
+    "sheetRef": "8B-WT4-R44",
+    "paperKey": "c8-wt4",
+    "questionNumber": 3,
+    "image": {
+      "pageKey": "samples/8b-wt4/R44-p1.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.7,
+        "w": 0.9,
+        "h": 0.27
+      }
+    },
+    "maxMarks": 4,
+    "goldMarks": 0,
+    "goldSteps": [
+      0,
+      0,
+      0
+    ],
+    "goldConcept": "c8-le-bothsides",
+    "goldConceptIds": [
+      "c8-le-bothsides",
+      "c8-le-transposing"
+    ],
+    "goldMisconception": null,
+    "goldMistakeType": "unattempted",
+    "tags": [
+      "blank"
+    ]
+  },
+  {
+    "id": "8B-WT4-R44:Q4",
+    "sheetRef": "8B-WT4-R44",
+    "paperKey": "c8-wt4",
+    "questionNumber": 4,
+    "image": {
+      "pageKey": "samples/8b-wt4/R44-p2.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.03,
+        "w": 0.9,
+        "h": 0.44999999999999996
+      }
+    },
+    "maxMarks": 4,
+    "goldMarks": 2,
+    "goldSteps": [
+      1,
+      1,
+      0,
+      0
+    ],
+    "goldConcept": "c8-le-word",
+    "goldConceptIds": [
+      "c8-le-word"
+    ],
+    "goldMisconception": "Stopped before completing the solution",
+    "goldMistakeType": "incomplete",
+    "tags": [
+      "partial"
+    ]
+  },
+  {
+    "id": "8B-WT4-R44:Q5",
+    "sheetRef": "8B-WT4-R44",
+    "paperKey": "c8-wt4",
+    "questionNumber": 5,
+    "image": {
+      "pageKey": "samples/8b-wt4/R44-p2.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.48,
+        "w": 0.9,
+        "h": 0.49
+      }
+    },
+    "maxMarks": 6,
+    "goldMarks": 3,
+    "goldSteps": [
+      1,
+      2,
+      0,
+      0
+    ],
+    "goldConcept": "c8-le-word",
+    "goldConceptIds": [
+      "c8-le-word"
+    ],
+    "goldMisconception": "Correct method, arithmetic slip",
+    "goldMistakeType": "calculation",
+    "tags": [
+      "partial"
+    ]
+  },
+  {
+    "id": "8B-WT4-R45:Q1",
+    "sheetRef": "8B-WT4-R45",
+    "paperKey": "c8-wt4",
+    "questionNumber": 1,
+    "image": {
+      "pageKey": "samples/8b-wt4/R45-p1.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.14,
+        "w": 0.9,
+        "h": 0.27999999999999997
+      }
+    },
+    "maxMarks": 3,
+    "goldMarks": 1,
+    "goldSteps": [
+      1,
+      0,
+      0
+    ],
+    "goldConcept": "c8-le-transposing",
+    "goldConceptIds": [
+      "c8-le-transposing"
+    ],
+    "goldMisconception": "Correct method, arithmetic slip",
+    "goldMistakeType": "calculation",
+    "tags": [
+      "partial"
+    ]
+  },
+  {
+    "id": "8B-WT4-R45:Q2",
+    "sheetRef": "8B-WT4-R45",
+    "paperKey": "c8-wt4",
+    "questionNumber": 2,
+    "image": {
+      "pageKey": "samples/8b-wt4/R45-p1.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.42,
+        "w": 0.9,
+        "h": 0.27999999999999997
+      }
+    },
+    "maxMarks": 3,
+    "goldMarks": 1,
+    "goldSteps": [
+      1,
+      0,
+      0
+    ],
+    "goldConcept": "c8-le-transposing",
+    "goldConceptIds": [
+      "c8-le-transposing"
+    ],
+    "goldMisconception": "Correct method, arithmetic slip",
+    "goldMistakeType": "calculation",
+    "tags": [
+      "partial",
+      "messy"
+    ]
+  },
+  {
+    "id": "8B-WT4-R45:Q3",
+    "sheetRef": "8B-WT4-R45",
+    "paperKey": "c8-wt4",
+    "questionNumber": 3,
+    "image": {
+      "pageKey": "samples/8b-wt4/R45-p1.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.7,
+        "w": 0.9,
+        "h": 0.27
+      }
+    },
+    "maxMarks": 4,
+    "goldMarks": 2,
+    "goldSteps": [
+      2,
+      0,
+      0
+    ],
+    "goldConcept": "c8-le-bothsides",
+    "goldConceptIds": [
+      "c8-le-bothsides",
+      "c8-le-transposing"
+    ],
+    "goldMisconception": "Correct method, arithmetic slip",
+    "goldMistakeType": "calculation",
+    "tags": [
+      "partial"
+    ]
+  },
+  {
+    "id": "8B-WT4-R45:Q4",
+    "sheetRef": "8B-WT4-R45",
+    "paperKey": "c8-wt4",
+    "questionNumber": 4,
+    "image": {
+      "pageKey": "samples/8b-wt4/R45-p2.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.03,
+        "w": 0.9,
+        "h": 0.44999999999999996
+      }
+    },
+    "maxMarks": 4,
+    "goldMarks": 3,
+    "goldSteps": [
+      1,
+      1,
+      1,
+      0
+    ],
+    "goldConcept": "c8-le-word",
+    "goldConceptIds": [
+      "c8-le-word"
+    ],
+    "goldMisconception": "Stopped before completing the solution",
+    "goldMistakeType": "incomplete",
+    "tags": [
+      "partial"
+    ]
+  },
+  {
+    "id": "8B-WT4-R45:Q5",
+    "sheetRef": "8B-WT4-R45",
+    "paperKey": "c8-wt4",
+    "questionNumber": 5,
+    "image": {
+      "pageKey": "samples/8b-wt4/R45-p2.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.48,
+        "w": 0.9,
+        "h": 0.49
+      }
+    },
+    "maxMarks": 6,
+    "goldMarks": 5,
+    "goldSteps": [
+      1,
+      2,
+      2,
+      0
+    ],
+    "goldConcept": "c8-le-word",
+    "goldConceptIds": [
+      "c8-le-word"
+    ],
+    "goldMisconception": "Stopped before completing the solution",
+    "goldMistakeType": "incomplete",
+    "tags": [
+      "partial"
+    ]
+  },
+  {
+    "id": "8B-WT4-R46:Q1",
+    "sheetRef": "8B-WT4-R46",
+    "paperKey": "c8-wt4",
+    "questionNumber": 1,
+    "image": {
+      "pageKey": "samples/8b-wt4/R46-p1.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.14,
+        "w": 0.9,
+        "h": 0.27999999999999997
+      }
+    },
+    "maxMarks": 3,
+    "goldMarks": 1,
+    "goldSteps": [
+      0,
+      1,
+      0
+    ],
+    "goldConcept": "c8-le-transposing",
+    "goldConceptIds": [
+      "c8-le-transposing"
+    ],
+    "goldMisconception": "Moves a term across \"=\" without changing its sign",
+    "goldMistakeType": "conceptual",
+    "tags": [
+      "partial"
+    ]
+  },
+  {
+    "id": "8B-WT4-R46:Q2",
+    "sheetRef": "8B-WT4-R46",
+    "paperKey": "c8-wt4",
+    "questionNumber": 2,
+    "image": {
+      "pageKey": "samples/8b-wt4/R46-p1.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.42,
+        "w": 0.9,
+        "h": 0.27999999999999997
+      }
+    },
+    "maxMarks": 3,
+    "goldMarks": 0,
+    "goldSteps": [
+      0,
+      0,
+      0
+    ],
+    "goldConcept": "c8-le-transposing",
+    "goldConceptIds": [
+      "c8-le-transposing"
+    ],
+    "goldMisconception": null,
+    "goldMistakeType": "unattempted",
+    "tags": [
+      "blank"
+    ]
+  },
+  {
+    "id": "8B-WT4-R46:Q3",
+    "sheetRef": "8B-WT4-R46",
+    "paperKey": "c8-wt4",
+    "questionNumber": 3,
+    "image": {
+      "pageKey": "samples/8b-wt4/R46-p1.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.7,
+        "w": 0.9,
+        "h": 0.27
+      }
+    },
+    "maxMarks": 4,
+    "goldMarks": 0,
+    "goldSteps": [
+      0,
+      0,
+      0
+    ],
+    "goldConcept": "c8-le-bothsides",
+    "goldConceptIds": [
+      "c8-le-bothsides",
+      "c8-le-transposing"
+    ],
+    "goldMisconception": null,
+    "goldMistakeType": "unattempted",
+    "tags": [
+      "blank"
+    ]
+  },
+  {
+    "id": "8B-WT4-R46:Q4",
+    "sheetRef": "8B-WT4-R46",
+    "paperKey": "c8-wt4",
+    "questionNumber": 4,
+    "image": {
+      "pageKey": "samples/8b-wt4/R46-p2.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.03,
+        "w": 0.9,
+        "h": 0.44999999999999996
+      }
+    },
+    "maxMarks": 4,
+    "goldMarks": 3,
+    "goldSteps": [
+      1,
+      1,
+      1,
+      0
+    ],
+    "goldConcept": "c8-le-word",
+    "goldConceptIds": [
+      "c8-le-word"
+    ],
+    "goldMisconception": "Stopped before completing the solution",
+    "goldMistakeType": "incomplete",
+    "tags": [
+      "partial"
+    ]
+  },
+  {
+    "id": "8B-WT4-R46:Q5",
+    "sheetRef": "8B-WT4-R46",
+    "paperKey": "c8-wt4",
+    "questionNumber": 5,
+    "image": {
+      "pageKey": "samples/8b-wt4/R46-p2.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.48,
+        "w": 0.9,
+        "h": 0.49
+      }
+    },
+    "maxMarks": 6,
+    "goldMarks": 3,
+    "goldSteps": [
+      1,
+      2,
+      0,
+      0
+    ],
+    "goldConcept": "c8-le-word",
+    "goldConceptIds": [
+      "c8-le-word"
+    ],
+    "goldMisconception": "Stopped before completing the solution",
+    "goldMistakeType": "incomplete",
+    "tags": [
+      "partial"
+    ]
+  },
+  {
+    "id": "8B-WT4-R47:Q1",
+    "sheetRef": "8B-WT4-R47",
+    "paperKey": "c8-wt4",
+    "questionNumber": 1,
+    "image": {
+      "pageKey": "samples/8b-wt4/R47-p1.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.14,
+        "w": 0.9,
+        "h": 0.27999999999999997
+      }
+    },
+    "maxMarks": 3,
+    "goldMarks": 2,
+    "goldSteps": [
+      1,
+      1,
+      0
+    ],
+    "goldConcept": "c8-le-transposing",
+    "goldConceptIds": [
+      "c8-le-transposing"
+    ],
+    "goldMisconception": "Correct method, arithmetic slip",
+    "goldMistakeType": "calculation",
+    "tags": [
+      "partial"
+    ]
+  },
+  {
+    "id": "8B-WT4-R47:Q2",
+    "sheetRef": "8B-WT4-R47",
+    "paperKey": "c8-wt4",
+    "questionNumber": 2,
+    "image": {
+      "pageKey": "samples/8b-wt4/R47-p1.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.42,
+        "w": 0.9,
+        "h": 0.27999999999999997
+      }
+    },
+    "maxMarks": 3,
+    "goldMarks": 1,
+    "goldSteps": [
+      1,
+      0,
+      0
+    ],
+    "goldConcept": "c8-le-transposing",
+    "goldConceptIds": [
+      "c8-le-transposing"
+    ],
+    "goldMisconception": "Correct method, arithmetic slip",
+    "goldMistakeType": "calculation",
+    "tags": [
+      "partial"
+    ]
+  },
+  {
+    "id": "8B-WT4-R47:Q3",
+    "sheetRef": "8B-WT4-R47",
+    "paperKey": "c8-wt4",
+    "questionNumber": 3,
+    "image": {
+      "pageKey": "samples/8b-wt4/R47-p1.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.7,
+        "w": 0.9,
+        "h": 0.27
+      }
+    },
+    "maxMarks": 4,
+    "goldMarks": 2,
+    "goldSteps": [
+      2,
+      0,
+      0
+    ],
+    "goldConcept": "c8-le-bothsides",
+    "goldConceptIds": [
+      "c8-le-bothsides",
+      "c8-le-transposing"
+    ],
+    "goldMisconception": "Correct method, arithmetic slip",
+    "goldMistakeType": "calculation",
+    "tags": [
+      "partial"
+    ]
+  },
+  {
+    "id": "8B-WT4-R47:Q4",
+    "sheetRef": "8B-WT4-R47",
+    "paperKey": "c8-wt4",
+    "questionNumber": 4,
+    "image": {
+      "pageKey": "samples/8b-wt4/R47-p2.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.03,
+        "w": 0.9,
+        "h": 0.44999999999999996
+      }
+    },
+    "maxMarks": 4,
+    "goldMarks": 3,
+    "goldSteps": [
+      1,
+      1,
+      1,
+      0
+    ],
+    "goldConcept": "c8-le-word",
+    "goldConceptIds": [
+      "c8-le-word"
+    ],
+    "goldMisconception": "Stopped before completing the solution",
+    "goldMistakeType": "incomplete",
+    "tags": [
+      "partial"
+    ]
+  },
+  {
+    "id": "8B-WT4-R47:Q5",
+    "sheetRef": "8B-WT4-R47",
+    "paperKey": "c8-wt4",
+    "questionNumber": 5,
+    "image": {
+      "pageKey": "samples/8b-wt4/R47-p2.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.48,
+        "w": 0.9,
+        "h": 0.49
+      }
+    },
+    "maxMarks": 6,
+    "goldMarks": 3,
+    "goldSteps": [
+      1,
+      2,
+      0,
+      0
+    ],
+    "goldConcept": "c8-le-word",
+    "goldConceptIds": [
+      "c8-le-word"
+    ],
+    "goldMisconception": "Correct method, arithmetic slip",
+    "goldMistakeType": "calculation",
+    "tags": [
+      "partial"
+    ]
+  },
+  {
+    "id": "8B-WT4-R48:Q1",
+    "sheetRef": "8B-WT4-R48",
+    "paperKey": "c8-wt4",
+    "questionNumber": 1,
+    "image": {
+      "pageKey": "samples/8b-wt4/R48-p1.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.14,
+        "w": 0.9,
+        "h": 0.27999999999999997
+      }
+    },
+    "maxMarks": 3,
+    "goldMarks": 1,
+    "goldSteps": [
+      0,
+      1,
+      0
+    ],
+    "goldConcept": "c8-le-transposing",
+    "goldConceptIds": [
+      "c8-le-transposing"
+    ],
+    "goldMisconception": "Moves a term across \"=\" without changing its sign",
+    "goldMistakeType": "conceptual",
+    "tags": [
+      "partial"
+    ]
+  },
+  {
+    "id": "8B-WT4-R48:Q2",
+    "sheetRef": "8B-WT4-R48",
+    "paperKey": "c8-wt4",
+    "questionNumber": 2,
+    "image": {
+      "pageKey": "samples/8b-wt4/R48-p1.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.42,
+        "w": 0.9,
+        "h": 0.27999999999999997
+      }
+    },
+    "maxMarks": 3,
+    "goldMarks": 0,
+    "goldSteps": [
+      0,
+      0,
+      0
+    ],
+    "goldConcept": "c8-le-transposing",
+    "goldConceptIds": [
+      "c8-le-transposing"
+    ],
+    "goldMisconception": null,
+    "goldMistakeType": "unattempted",
+    "tags": [
+      "blank"
+    ]
+  },
+  {
+    "id": "8B-WT4-R48:Q3",
+    "sheetRef": "8B-WT4-R48",
+    "paperKey": "c8-wt4",
+    "questionNumber": 3,
+    "image": {
+      "pageKey": "samples/8b-wt4/R48-p1.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.7,
+        "w": 0.9,
+        "h": 0.27
+      }
+    },
+    "maxMarks": 4,
+    "goldMarks": 0,
+    "goldSteps": [
+      0,
+      0,
+      0
+    ],
+    "goldConcept": "c8-le-bothsides",
+    "goldConceptIds": [
+      "c8-le-bothsides",
+      "c8-le-transposing"
+    ],
+    "goldMisconception": null,
+    "goldMistakeType": "unattempted",
+    "tags": [
+      "blank"
+    ]
+  },
+  {
+    "id": "8B-WT4-R48:Q4",
+    "sheetRef": "8B-WT4-R48",
+    "paperKey": "c8-wt4",
+    "questionNumber": 4,
+    "image": {
+      "pageKey": "samples/8b-wt4/R48-p2.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.03,
+        "w": 0.9,
+        "h": 0.44999999999999996
+      }
+    },
+    "maxMarks": 4,
+    "goldMarks": 2,
+    "goldSteps": [
+      1,
+      1,
+      0,
+      0
+    ],
+    "goldConcept": "c8-le-word",
+    "goldConceptIds": [
+      "c8-le-word"
+    ],
+    "goldMisconception": "Correct method, arithmetic slip",
+    "goldMistakeType": "calculation",
+    "tags": [
+      "partial"
+    ]
+  },
+  {
+    "id": "8B-WT4-R48:Q5",
+    "sheetRef": "8B-WT4-R48",
+    "paperKey": "c8-wt4",
+    "questionNumber": 5,
+    "image": {
+      "pageKey": "samples/8b-wt4/R48-p2.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.48,
+        "w": 0.9,
+        "h": 0.49
+      }
+    },
+    "maxMarks": 6,
+    "goldMarks": 3.5,
+    "goldSteps": [
+      1,
+      2,
+      0.5,
+      0
+    ],
+    "goldConcept": "c8-le-word",
+    "goldConceptIds": [
+      "c8-le-word"
+    ],
+    "goldMisconception": "Moves a term across \"=\" without changing its sign",
+    "goldMistakeType": "conceptual",
+    "tags": [
+      "partial"
+    ]
+  },
+  {
+    "id": "8B-WT4-R49:Q1",
+    "sheetRef": "8B-WT4-R49",
+    "paperKey": "c8-wt4",
+    "questionNumber": 1,
+    "image": {
+      "pageKey": "samples/8b-wt4/R49-p1.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.14,
+        "w": 0.9,
+        "h": 0.27999999999999997
+      }
+    },
+    "maxMarks": 3,
+    "goldMarks": 1,
+    "goldSteps": [
+      1,
+      0,
+      0
+    ],
+    "goldConcept": "c8-le-transposing",
+    "goldConceptIds": [
+      "c8-le-transposing"
+    ],
+    "goldMisconception": "Correct method, arithmetic slip",
+    "goldMistakeType": "calculation",
+    "tags": [
+      "partial"
+    ]
+  },
+  {
+    "id": "8B-WT4-R49:Q2",
+    "sheetRef": "8B-WT4-R49",
+    "paperKey": "c8-wt4",
+    "questionNumber": 2,
+    "image": {
+      "pageKey": "samples/8b-wt4/R49-p1.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.42,
+        "w": 0.9,
+        "h": 0.27999999999999997
+      }
+    },
+    "maxMarks": 3,
+    "goldMarks": 1,
+    "goldSteps": [
+      1,
+      0,
+      0
+    ],
+    "goldConcept": "c8-le-transposing",
+    "goldConceptIds": [
+      "c8-le-transposing"
+    ],
+    "goldMisconception": "Correct method, arithmetic slip",
+    "goldMistakeType": "calculation",
+    "tags": [
+      "partial"
+    ]
+  },
+  {
+    "id": "8B-WT4-R49:Q3",
+    "sheetRef": "8B-WT4-R49",
+    "paperKey": "c8-wt4",
+    "questionNumber": 3,
+    "image": {
+      "pageKey": "samples/8b-wt4/R49-p1.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.7,
+        "w": 0.9,
+        "h": 0.27
+      }
+    },
+    "maxMarks": 4,
+    "goldMarks": 2,
+    "goldSteps": [
+      2,
+      0,
+      0
+    ],
+    "goldConcept": "c8-le-bothsides",
+    "goldConceptIds": [
+      "c8-le-bothsides",
+      "c8-le-transposing"
+    ],
+    "goldMisconception": "Correct method, arithmetic slip",
+    "goldMistakeType": "calculation",
+    "tags": [
+      "partial"
+    ]
+  },
+  {
+    "id": "8B-WT4-R49:Q4",
+    "sheetRef": "8B-WT4-R49",
+    "paperKey": "c8-wt4",
+    "questionNumber": 4,
+    "image": {
+      "pageKey": "samples/8b-wt4/R49-p2.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.03,
+        "w": 0.9,
+        "h": 0.44999999999999996
+      }
+    },
+    "maxMarks": 4,
+    "goldMarks": 2,
+    "goldSteps": [
+      1,
+      1,
+      0,
+      0
+    ],
+    "goldConcept": "c8-le-word",
+    "goldConceptIds": [
+      "c8-le-word"
+    ],
+    "goldMisconception": "Stopped before completing the solution",
+    "goldMistakeType": "incomplete",
+    "tags": [
+      "partial"
+    ]
+  },
+  {
+    "id": "8B-WT4-R49:Q5",
+    "sheetRef": "8B-WT4-R49",
+    "paperKey": "c8-wt4",
+    "questionNumber": 5,
+    "image": {
+      "pageKey": "samples/8b-wt4/R49-p2.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.48,
+        "w": 0.9,
+        "h": 0.49
+      }
+    },
+    "maxMarks": 6,
+    "goldMarks": 5,
+    "goldSteps": [
+      1,
+      2,
+      2,
+      0
+    ],
+    "goldConcept": "c8-le-word",
+    "goldConceptIds": [
+      "c8-le-word"
+    ],
+    "goldMisconception": "Stopped before completing the solution",
+    "goldMistakeType": "incomplete",
+    "tags": [
+      "partial"
+    ]
+  },
+  {
+    "id": "8B-WT4-R50:Q1",
+    "sheetRef": "8B-WT4-R50",
+    "paperKey": "c8-wt4",
+    "questionNumber": 1,
+    "image": {
+      "pageKey": "samples/8b-wt4/R50-p1.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.14,
+        "w": 0.9,
+        "h": 0.27999999999999997
+      }
+    },
+    "maxMarks": 3,
+    "goldMarks": 1,
+    "goldSteps": [
+      0,
+      1,
+      0
+    ],
+    "goldConcept": "c8-le-transposing",
+    "goldConceptIds": [
+      "c8-le-transposing"
+    ],
+    "goldMisconception": "Moves a term across \"=\" without changing its sign",
+    "goldMistakeType": "conceptual",
+    "tags": [
+      "partial"
+    ]
+  },
+  {
+    "id": "8B-WT4-R50:Q2",
+    "sheetRef": "8B-WT4-R50",
+    "paperKey": "c8-wt4",
+    "questionNumber": 2,
+    "image": {
+      "pageKey": "samples/8b-wt4/R50-p1.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.42,
+        "w": 0.9,
+        "h": 0.27999999999999997
+      }
+    },
+    "maxMarks": 3,
+    "goldMarks": 0,
+    "goldSteps": [
+      0,
+      0,
+      0
+    ],
+    "goldConcept": "c8-le-transposing",
+    "goldConceptIds": [
+      "c8-le-transposing"
+    ],
+    "goldMisconception": null,
+    "goldMistakeType": "unattempted",
+    "tags": [
+      "blank"
+    ]
+  },
+  {
+    "id": "8B-WT4-R50:Q3",
+    "sheetRef": "8B-WT4-R50",
+    "paperKey": "c8-wt4",
+    "questionNumber": 3,
+    "image": {
+      "pageKey": "samples/8b-wt4/R50-p1.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.7,
+        "w": 0.9,
+        "h": 0.27
+      }
+    },
+    "maxMarks": 4,
+    "goldMarks": 0,
+    "goldSteps": [
+      0,
+      0,
+      0
+    ],
+    "goldConcept": "c8-le-bothsides",
+    "goldConceptIds": [
+      "c8-le-bothsides",
+      "c8-le-transposing"
+    ],
+    "goldMisconception": null,
+    "goldMistakeType": "unattempted",
+    "tags": [
+      "blank"
+    ]
+  },
+  {
+    "id": "8B-WT4-R50:Q4",
+    "sheetRef": "8B-WT4-R50",
+    "paperKey": "c8-wt4",
+    "questionNumber": 4,
+    "image": {
+      "pageKey": "samples/8b-wt4/R50-p2.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.03,
+        "w": 0.9,
+        "h": 0.44999999999999996
+      }
+    },
+    "maxMarks": 4,
+    "goldMarks": 2,
+    "goldSteps": [
+      1,
+      1,
+      0,
+      0
+    ],
+    "goldConcept": "c8-le-word",
+    "goldConceptIds": [
+      "c8-le-word"
+    ],
+    "goldMisconception": "Correct method, arithmetic slip",
+    "goldMistakeType": "calculation",
+    "tags": [
+      "partial"
+    ]
+  },
+  {
+    "id": "8B-WT4-R50:Q5",
+    "sheetRef": "8B-WT4-R50",
+    "paperKey": "c8-wt4",
+    "questionNumber": 5,
+    "image": {
+      "pageKey": "samples/8b-wt4/R50-p2.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.48,
+        "w": 0.9,
+        "h": 0.49
+      }
+    },
+    "maxMarks": 6,
+    "goldMarks": 5,
+    "goldSteps": [
+      1,
+      2,
+      2,
+      0
+    ],
+    "goldConcept": "c8-le-word",
+    "goldConceptIds": [
+      "c8-le-word"
+    ],
+    "goldMisconception": "Stopped before completing the solution",
+    "goldMistakeType": "incomplete",
+    "tags": [
+      "partial"
+    ]
+  },
+  {
+    "id": "8B-WT4-R51:Q1",
+    "sheetRef": "8B-WT4-R51",
+    "paperKey": "c8-wt4",
+    "questionNumber": 1,
+    "image": {
+      "pageKey": "samples/8b-wt4/R51-p1.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.14,
+        "w": 0.9,
+        "h": 0.27999999999999997
+      }
+    },
+    "maxMarks": 3,
+    "goldMarks": 2,
+    "goldSteps": [
+      1,
+      1,
+      0
+    ],
+    "goldConcept": "c8-le-transposing",
+    "goldConceptIds": [
+      "c8-le-transposing"
+    ],
+    "goldMisconception": "Correct method, arithmetic slip",
+    "goldMistakeType": "calculation",
+    "tags": [
+      "partial"
+    ]
+  },
+  {
+    "id": "8B-WT4-R51:Q2",
+    "sheetRef": "8B-WT4-R51",
+    "paperKey": "c8-wt4",
+    "questionNumber": 2,
+    "image": {
+      "pageKey": "samples/8b-wt4/R51-p1.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.42,
+        "w": 0.9,
+        "h": 0.27999999999999997
+      }
+    },
+    "maxMarks": 3,
+    "goldMarks": 1,
+    "goldSteps": [
+      1,
+      0,
+      0
+    ],
+    "goldConcept": "c8-le-transposing",
+    "goldConceptIds": [
+      "c8-le-transposing"
+    ],
+    "goldMisconception": "Correct method, arithmetic slip",
+    "goldMistakeType": "calculation",
+    "tags": [
+      "partial"
+    ]
+  },
+  {
+    "id": "8B-WT4-R51:Q3",
+    "sheetRef": "8B-WT4-R51",
+    "paperKey": "c8-wt4",
+    "questionNumber": 3,
+    "image": {
+      "pageKey": "samples/8b-wt4/R51-p1.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.7,
+        "w": 0.9,
+        "h": 0.27
+      }
+    },
+    "maxMarks": 4,
+    "goldMarks": 2,
+    "goldSteps": [
+      2,
+      0,
+      0
+    ],
+    "goldConcept": "c8-le-bothsides",
+    "goldConceptIds": [
+      "c8-le-bothsides",
+      "c8-le-transposing"
+    ],
+    "goldMisconception": "Correct method, arithmetic slip",
+    "goldMistakeType": "calculation",
+    "tags": [
+      "partial"
+    ]
+  },
+  {
+    "id": "8B-WT4-R51:Q4",
+    "sheetRef": "8B-WT4-R51",
+    "paperKey": "c8-wt4",
+    "questionNumber": 4,
+    "image": {
+      "pageKey": "samples/8b-wt4/R51-p2.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.03,
+        "w": 0.9,
+        "h": 0.44999999999999996
+      }
+    },
+    "maxMarks": 4,
+    "goldMarks": 3,
+    "goldSteps": [
+      1,
+      1,
+      1,
+      0
+    ],
+    "goldConcept": "c8-le-word",
+    "goldConceptIds": [
+      "c8-le-word"
+    ],
+    "goldMisconception": "Stopped before completing the solution",
+    "goldMistakeType": "incomplete",
+    "tags": [
+      "partial"
+    ]
+  },
+  {
+    "id": "8B-WT4-R51:Q5",
+    "sheetRef": "8B-WT4-R51",
+    "paperKey": "c8-wt4",
+    "questionNumber": 5,
+    "image": {
+      "pageKey": "samples/8b-wt4/R51-p2.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.48,
+        "w": 0.9,
+        "h": 0.49
+      }
+    },
+    "maxMarks": 6,
+    "goldMarks": 5,
+    "goldSteps": [
+      1,
+      2,
+      2,
+      0
+    ],
+    "goldConcept": "c8-le-word",
+    "goldConceptIds": [
+      "c8-le-word"
+    ],
+    "goldMisconception": "Stopped before completing the solution",
+    "goldMistakeType": "incomplete",
+    "tags": [
+      "partial"
+    ]
+  },
+  {
+    "id": "8B-WT4-R52:Q1",
+    "sheetRef": "8B-WT4-R52",
+    "paperKey": "c8-wt4",
+    "questionNumber": 1,
+    "image": {
+      "pageKey": "samples/8b-wt4/R52-p1.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.14,
+        "w": 0.9,
+        "h": 0.27999999999999997
+      }
+    },
+    "maxMarks": 3,
+    "goldMarks": 1,
+    "goldSteps": [
+      0,
+      0.5,
+      0.5
+    ],
+    "goldConcept": "c8-le-transposing",
+    "goldConceptIds": [
+      "c8-le-transposing"
+    ],
+    "goldMisconception": "Applies an operation to one side only",
+    "goldMistakeType": "conceptual",
+    "tags": [
+      "partial"
+    ]
+  },
+  {
+    "id": "8B-WT4-R52:Q2",
+    "sheetRef": "8B-WT4-R52",
+    "paperKey": "c8-wt4",
+    "questionNumber": 2,
+    "image": {
+      "pageKey": "samples/8b-wt4/R52-p1.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.42,
+        "w": 0.9,
+        "h": 0.27999999999999997
+      }
+    },
+    "maxMarks": 3,
+    "goldMarks": 0,
+    "goldSteps": [
+      0,
+      0,
+      0
+    ],
+    "goldConcept": "c8-le-transposing",
+    "goldConceptIds": [
+      "c8-le-transposing"
+    ],
+    "goldMisconception": null,
+    "goldMistakeType": "unattempted",
+    "tags": [
+      "blank"
+    ]
+  },
+  {
+    "id": "8B-WT4-R52:Q3",
+    "sheetRef": "8B-WT4-R52",
+    "paperKey": "c8-wt4",
+    "questionNumber": 3,
+    "image": {
+      "pageKey": "samples/8b-wt4/R52-p1.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.7,
+        "w": 0.9,
+        "h": 0.27
+      }
+    },
+    "maxMarks": 4,
+    "goldMarks": 0,
+    "goldSteps": [
+      0,
+      0,
+      0
+    ],
+    "goldConcept": "c8-le-bothsides",
+    "goldConceptIds": [
+      "c8-le-bothsides",
+      "c8-le-transposing"
+    ],
+    "goldMisconception": null,
+    "goldMistakeType": "unattempted",
+    "tags": [
+      "blank"
+    ]
+  },
+  {
+    "id": "8B-WT4-R52:Q4",
+    "sheetRef": "8B-WT4-R52",
+    "paperKey": "c8-wt4",
+    "questionNumber": 4,
+    "image": {
+      "pageKey": "samples/8b-wt4/R52-p2.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.03,
+        "w": 0.9,
+        "h": 0.44999999999999996
+      }
+    },
+    "maxMarks": 4,
+    "goldMarks": 2,
+    "goldSteps": [
+      1,
+      1,
+      0,
+      0
+    ],
+    "goldConcept": "c8-le-word",
+    "goldConceptIds": [
+      "c8-le-word"
+    ],
+    "goldMisconception": "Correct method, arithmetic slip",
+    "goldMistakeType": "calculation",
+    "tags": [
+      "partial"
+    ]
+  },
+  {
+    "id": "8B-WT4-R52:Q5",
+    "sheetRef": "8B-WT4-R52",
+    "paperKey": "c8-wt4",
+    "questionNumber": 5,
+    "image": {
+      "pageKey": "samples/8b-wt4/R52-p2.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.48,
+        "w": 0.9,
+        "h": 0.49
+      }
+    },
+    "maxMarks": 6,
+    "goldMarks": 5,
+    "goldSteps": [
+      1,
+      2,
+      2,
+      0
+    ],
+    "goldConcept": "c8-le-word",
+    "goldConceptIds": [
+      "c8-le-word"
+    ],
+    "goldMisconception": "Stopped before completing the solution",
+    "goldMistakeType": "incomplete",
+    "tags": [
+      "partial"
+    ]
+  }
+]

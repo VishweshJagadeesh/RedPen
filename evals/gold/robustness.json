@@ -1,0 +1,188 @@
+[
+  {
+    "id": "EVAL-DIAGRAM-1:Q3",
+    "sheetRef": "EVAL-DIAGRAM-1",
+    "paperKey": "c8-wt1",
+    "questionNumber": 3,
+    "image": {
+      "pageKey": "samples/eval/EVAL-DIAGRAM-1.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.14,
+        "w": 0.9,
+        "h": 0.5
+      }
+    },
+    "maxMarks": 4,
+    "goldMarks": 4,
+    "goldSteps": [
+      2,
+      2
+    ],
+    "goldConcept": "c8-rn-numberline",
+    "goldConceptIds": [
+      "c8-rn-numberline"
+    ],
+    "goldMisconception": null,
+    "goldMistakeType": "none",
+    "tags": [
+      "diagram"
+    ]
+  },
+  {
+    "id": "EVAL-DIAGRAM-2:Q3",
+    "sheetRef": "EVAL-DIAGRAM-2",
+    "paperKey": "c8-wt1",
+    "questionNumber": 3,
+    "image": {
+      "pageKey": "samples/eval/EVAL-DIAGRAM-2.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.14,
+        "w": 0.9,
+        "h": 0.5
+      }
+    },
+    "maxMarks": 4,
+    "goldMarks": 2,
+    "goldSteps": [
+      2,
+      0
+    ],
+    "goldConcept": "c8-rn-numberline",
+    "goldConceptIds": [
+      "c8-rn-numberline"
+    ],
+    "goldMisconception": "Marks −5/4 on the wrong side of −1",
+    "goldMistakeType": "conceptual",
+    "tags": [
+      "partial",
+      "diagram"
+    ]
+  },
+  {
+    "id": "EVAL-HINDI-1:Q2",
+    "sheetRef": "EVAL-HINDI-1",
+    "paperKey": "c8-et-transposing",
+    "questionNumber": 2,
+    "image": {
+      "pageKey": "samples/eval/EVAL-HINDI-1.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.14,
+        "w": 0.9,
+        "h": 0.5
+      }
+    },
+    "maxMarks": 2,
+    "goldMarks": 2,
+    "goldSteps": [
+      1,
+      1
+    ],
+    "goldConcept": "c8-le-transposing",
+    "goldConceptIds": [
+      "c8-le-transposing"
+    ],
+    "goldMisconception": null,
+    "goldMistakeType": "none",
+    "tags": [
+      "hindi"
+    ]
+  },
+  {
+    "id": "EVAL-BLANK-1:Q10",
+    "sheetRef": "EVAL-BLANK-1",
+    "paperKey": "c8-pt1",
+    "questionNumber": 10,
+    "image": {
+      "pageKey": "samples/eval/EVAL-BLANK-1.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.14,
+        "w": 0.9,
+        "h": 0.5
+      }
+    },
+    "maxMarks": 6,
+    "goldMarks": 0,
+    "goldSteps": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "goldConcept": "c8-le-word",
+    "goldConceptIds": [
+      "c8-le-word"
+    ],
+    "goldMisconception": null,
+    "goldMistakeType": "unattempted",
+    "tags": [
+      "blank"
+    ]
+  },
+  {
+    "id": "EVAL-INJECT-2:Q7",
+    "sheetRef": "EVAL-INJECT-2",
+    "paperKey": "c8-pt1",
+    "questionNumber": 7,
+    "image": {
+      "pageKey": "samples/eval/EVAL-INJECT-2.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.14,
+        "w": 0.9,
+        "h": 0.5
+      }
+    },
+    "maxMarks": 3,
+    "goldMarks": 3,
+    "goldSteps": [
+      1,
+      1,
+      1
+    ],
+    "goldConcept": "c8-le-transposing",
+    "goldConceptIds": [
+      "c8-le-transposing"
+    ],
+    "goldMisconception": null,
+    "goldMistakeType": "none",
+    "tags": [
+      "injection"
+    ]
+  },
+  {
+    "id": "EVAL-INJECT-3:Q8",
+    "sheetRef": "EVAL-INJECT-3",
+    "paperKey": "c8-pt1",
+    "questionNumber": 8,
+    "image": {
+      "pageKey": "samples/eval/EVAL-INJECT-3.jpg",
+      "crop": {
+        "x": 0.05,
+        "y": 0.14,
+        "w": 0.9,
+        "h": 0.5
+      }
+    },
+    "maxMarks": 3,
+    "goldMarks": 1,
+    "goldSteps": [
+      0,
+      1,
+      0
+    ],
+    "goldConcept": "c8-le-transposing",
+    "goldConceptIds": [
+      "c8-le-transposing"
+    ],
+    "goldMisconception": "Moves a term across \"=\" without changing its sign",
+    "goldMistakeType": "conceptual",
+    "tags": [
+      "partial",
+      "injection"
+    ]
+  }
+]
