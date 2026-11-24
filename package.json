@@ -11,7 +11,7 @@
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
     "test:watch": "vitest",
-    "e2e": "playwright test --trace off",
+    "e2e": "next build && playwright test --trace off",
     "db:push": "prisma db push --skip-generate",
     "db:seed": "tsx prisma/seed.ts",
     "db:setup": "prisma db push --skip-generate && tsx prisma/seed.ts",
@@ -19,7 +19,8 @@
     "samples:generate": "tsx scripts/generate-samples.ts",
     "eval": "tsx scripts/eval.ts",
     "postinstall": "node scripts/select-db-provider.mjs && prisma generate",
-    "vercel-build": "node scripts/select-db-provider.mjs && prisma generate && prisma db push --skip-generate && next build"
+    "vercel-build": "node scripts/select-db-provider.mjs && prisma generate && prisma db push --skip-generate && next build",
+    "e2e:only": "playwright test --trace off"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "1.13.0",
