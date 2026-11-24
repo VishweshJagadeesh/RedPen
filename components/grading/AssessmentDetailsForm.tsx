@@ -85,6 +85,7 @@ export function AssessmentDetailsForm({ sections, samples, defaultDate, busy, er
                 variant="outline"
                 size="sm"
                 disabled={busy}
+                className="h-auto whitespace-normal py-1.5 text-left"
                 data-demo-id={`use-sample-paper-${s.key}`}
                 onClick={() => onSubmit({ sectionId: s.sectionId, title: s.title, type: s.type, date, paper: [], key: [], sample: s.key })}
               >
