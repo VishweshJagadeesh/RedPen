@@ -12,9 +12,10 @@ import type { RubricStep } from "../domain";
 import { loadSectionDataset } from "../queries/dataset";
 import { livePlanSections, liveRegenerateSection } from "./live";
 import { mockPlanSections, mockRegenerateSection } from "./mock";
-import type { PlanEvidence, PlanInputs, PlanSection } from "./types";
+import { TIMED_KINDS, type PlanEvidence, type PlanInputs, type PlanProgress, type PlanSection } from "./types";
 
 const newId = () => crypto.randomBytes(5).toString("hex");
+const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
 
 export async function buildEvidence(sectionId: string, conceptId: string): Promise<{ evidence: PlanEvidence; students: { id: string; name: string }[]; summary: NonNullable<ReturnType<typeof classConceptSummary>> }> {
   const ds = await loadSectionDataset(sectionId);
@@ -57,16 +58,48 @@ async function attachPairs(sectionId: string, conceptId: string, sections: PlanS
   return sections.map((s) => (s.kind === "peer_pairs" ? { ...s, pairs: { ...pairs, seed } } : s));
 }
 
-export async function createPlan(sectionId: string, conceptId: string, inputs: PlanInputs) {
-  const { evidence } = await buildEvidence(sectionId, conceptId);
+/**
+ * Generates a draft plan. `progress` reports each step as it happens (the setup page streams these to a
+ * progress bar); in mock mode the steps are paced by MOCK_LATENCY_MS so the stepper is visible.
+ */
+export async function createPlan(sectionId: string, conceptId: string, inputs: PlanInputs, progress: PlanProgress = () => {}) {
+  const live = aiMode() === "live";
+  const pace = () => (live ? Promise.resolve() : sleep(config.grading.mockLatencyMs * 3));
   const started = Date.now();
-  const generated = aiMode() === "live" ? await livePlanSections(evidence, inputs) : mockPlanSections(evidence, inputs);
+  progress("evidence", "active");
+  const { evidence } = await buildEvidence(sectionId, conceptId);
+  await pace();
+  progress("evidence", "done", `${evidence.studentsUnder} of ${evidence.studentsAssessed} students under 50% in ${evidence.assessmentTitle}`);
+  progress("misconceptions", "active");
+  await pace();
+  const named = evidence.misconceptions.filter((m) => !/unattempted/i.test(m.label)).slice(0, 2);
+  progress("misconceptions", "done", named.length ? named.map((m, i) => `#${i + 1} ${m.label} (${m.count})`).join(" · ") : "No named misconception; the plan rebuilds the method");
+  progress("draft", "active", live ? "The AI is writing the plan from your class's mistakes. This usually takes 20–60 seconds." : undefined);
+  let generated;
+  if (live) {
+    generated = await livePlanSections(evidence, inputs, progress);
+  } else {
+    generated = mockPlanSections(evidence, inputs);
+    await pace();
+    progress("draft", "done", `${generated.length} sections`);
+    progress("checks", "active");
+    await pace();
+  }
+  const timed = generated.filter((s) => TIMED_KINDS.includes(s.kind)).reduce((t, s) => t + s.minutes, 0);
+  const exit = generated.find((s) => s.kind === "exit_ticket")?.questions.length ?? 0;
+  progress("checks", "done", `${timed} of ${inputs.periodMinutes} minutes · ${exit}-question exit ticket`);
+  progress("pairs", "active");
   const sections = await attachPairs(sectionId, conceptId, withIds(generated));
+  await pace();
+  const groups = sections.find((s) => s.kind === "peer_pairs")?.pairs?.groups.length ?? 0;
+  progress("pairs", "done", groups ? `${groups} mentor groups` : "No mentors available");
+  progress("save", "active");
   const id = `plan_${newId()}`;
   await prisma.lessonPlan.create({
     data: { id, sectionId, conceptId, evidence: JSON.stringify(evidence), inputs: JSON.stringify(inputs), sections: JSON.stringify(sections), status: "draft" },
   });
   await audit("ai", "plan.generated", "LessonPlan", id, { mode: aiMode(), conceptId, latencyMs: Date.now() - started, sections: sections.length });
+  progress("save", "done");
   return id;
 }
 
@@ -87,6 +120,7 @@ export async function getPlan(planId: string) {
     exitTicket: exit ? { id: exit.id, status: exit.status, title: exit.title } : null,
     students: students.map((s) => ({ id: s.id, name: s.name, rollNumber: s.rollNumber })),
     updatedAt: p.updatedAt.toISOString(),
+    draftSavedAt: p.draftSavedAt?.toISOString() ?? null,
     mode: aiMode(),
   };
 }
@@ -101,6 +135,22 @@ export async function saveSections(planId: string, sections: PlanSection[]) {
   }
   await prisma.lessonPlan.update({ where: { id: planId }, data: { sections: JSON.stringify(sections) } });
   await audit("teacher", "plan.edited", "LessonPlan", planId, { sections: sections.length });
+}
+
+/** "Save draft & leave": keeps the plan (with any unsaved edits) and stops asking on the way out. */
+export async function savePlanDraft(planId: string, sections?: PlanSection[]) {
+  if (sections) await saveSections(planId, sections);
+  await prisma.lessonPlan.update({ where: { id: planId }, data: { draftSavedAt: new Date() } });
+  await audit("teacher", "plan.draft_saved", "LessonPlan", planId, {});
+}
+
+/** "Discard": deletes a plan whose exit ticket has not become an assessment. */
+export async function discardPlan(planId: string) {
+  const p = await prisma.lessonPlan.findUnique({ where: { id: planId } });
+  if (!p) return;
+  if (p.exitTicketAssessmentId) throw new Error("This plan's exit ticket is already an assessment, so the plan cannot be discarded.");
+  await prisma.lessonPlan.delete({ where: { id: planId } });
+  await audit("teacher", "plan.discarded", "LessonPlan", planId, { conceptId: p.conceptId });
 }
 
 export async function regenerateSection(planId: string, sectionId: string) {

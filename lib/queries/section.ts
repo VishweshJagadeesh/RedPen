@@ -124,6 +124,12 @@ export async function getSectionDashboard(sectionId: string) {
   const roster = classRoster(idx, weakIds);
 
   const flags = await prisma.flag.findMany({ where: { sectionId }, orderBy: { createdAt: "desc" }, include: { student: true } });
+  // Work set up on RedPen but not handed to the class yet (or handed out, sheets not back).
+  const upcoming = await prisma.assessment.findMany({
+    where: { sectionId, status: "questions_ready", submissions: { none: {} }, remedialAssignmentId: null },
+    orderBy: { date: "asc" },
+    select: { id: true, title: true, type: true, date: true, handedOut: true },
+  });
   const latest = trend.at(-1) ?? null;
   const previous = trend.at(-2) ?? null;
   const openFlags = flags.filter((f) => f.status !== "resolved");
@@ -146,6 +152,7 @@ export async function getSectionDashboard(sectionId: string) {
     trend,
     heatmap,
     homework,
+    upcoming: upcoming.map((u) => ({ ...u, date: u.date.toISOString() })),
     roster: roster.map((r) => ({ ...r, flagged: flaggedIds.has(r.studentId) })),
     rosterLabels: idx.ds.assessments.filter((a) => ["weekly_test", "periodic_test", "term_exam"].includes(a.type)).map((a) => a.shortTitle),
     weakConcepts: cards,

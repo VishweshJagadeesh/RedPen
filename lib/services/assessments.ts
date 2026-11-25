@@ -7,6 +7,9 @@ import { audit } from "../audit";
 import { storage, contentTypeFor, type StoredFile } from "../storage";
 import { proposeMatch } from "../grading/matching";
 import { sheetsInSet, SAMPLE_PAPERS, type MockSheet } from "../fixtures/sheets";
+import { syntheticAbsent, syntheticPageKeys, syntheticSheetRef } from "../fixtures/synthetic";
+import { aiMode } from "../ai/mode";
+import { PAPER_BY_KEY } from "../fixtures/papers";
 import type { AssessmentType, RubricStep } from "../domain";
 
 export interface QuestionDraft {
@@ -57,15 +60,33 @@ export async function createAssessment(input: {
   return a;
 }
 
-export function sampleSetFor(fixtureKey: string | null | undefined, type: string): MockSheet["set"] | null {
+/** The bundled handwriting sample set for a seeded story, if this assessment is one. */
+export function sampleSetFor(fixtureKey: string | null | undefined): MockSheet["set"] | null {
   if (fixtureKey === "c8-wt4") return "8b-wt4";
   if (fixtureKey === "c8-et-transposing") return "8b-exit-ticket";
-  if (fixtureKey === "remedial-transposing" || type === "remedial") return "8b-remedial-rohan";
+  if (fixtureKey === "remedial-transposing") return "8b-remedial-rohan";
   return null;
 }
 
-export function samplePaperFor(fixtureKey: string) {
-  return SAMPLE_PAPERS[fixtureKey] ?? null;
+/**
+ * Which sample sheets "Use the sample answer sheets" can attach:
+ * - "fixture": the bundled handwriting photos of a seeded story (works in mock and live mode);
+ * - "synthetic": generated practice sheets for every student (mock mode only — the mock AI grades them);
+ * - null: none (live mode, not a seeded story).
+ */
+export function sampleKindFor(fixtureKey: string | null | undefined, mode = aiMode()): "fixture" | "synthetic" | null {
+  if (sampleSetFor(fixtureKey)) return "fixture";
+  return mode === "mock" ? "synthetic" : null;
+}
+
+/**
+ * Sample papers: the bundled paper + key photos, or (mock mode only) any fixture paper by its key — the mock
+ * AI reads its questions from the fixtures, so no photo is needed.
+ */
+export function samplePaperFor(fixtureKey: string, mode = aiMode()) {
+  if (SAMPLE_PAPERS[fixtureKey]) return SAMPLE_PAPERS[fixtureKey];
+  if (mode === "mock" && PAPER_BY_KEY[fixtureKey]) return { paper: [] as string[], key: [] as string[] };
+  return null;
 }
 
 /** Step 2: the AI splits the paper into questions; the teacher confirms in a table. */
@@ -126,7 +147,13 @@ async function roster(assessmentId: string) {
  * Step 3: pages are uploaded in order. A page with a name/roll header starts a new sheet; other
  * pages are appended to the previous sheet. The proposed student match is stored for review.
  */
+/** Uploading sheets means the work went out to the class. */
+async function markHandedOut(assessmentId: string) {
+  await prisma.assessment.updateMany({ where: { id: assessmentId, handedOut: false }, data: { handedOut: true, handedOutAt: new Date() } });
+}
+
 export async function addPage(assessmentId: string, pageKey: string) {
+  await markHandedOut(assessmentId);
   const page = await storage().get(pageKey);
   if (!page) throw new Error("Upload could not be read back from storage.");
   const header = await ai().readSheetHeader({ pageKey, page });
@@ -153,21 +180,54 @@ export async function addPage(assessmentId: string, pageKey: string) {
   return { submissionId: sub.id, newSheet: true };
 }
 
-/** Demo helper: attach the bundled sample sheets for this assessment (works in mock and live mode). */
+/** Average share of marks each student earned on graded work so far (drives synthetic answers). */
+async function abilities(studentIds: string[]) {
+  const rows = await prisma.answerGrade.findMany({
+    where: { submission: { studentId: { in: studentIds }, assessment: { status: "final" } } },
+    select: { awardedMarks: true, teacherMarks: true, maxMarks: true, submission: { select: { studentId: true } } },
+  });
+  const sums = new Map<string, { got: number; max: number }>();
+  for (const r of rows) {
+    const id = r.submission.studentId!;
+    const s = sums.get(id) ?? { got: 0, max: 0 };
+    s.got += r.teacherMarks ?? r.awardedMarks;
+    s.max += r.maxMarks;
+    sums.set(id, s);
+  }
+  return (id: string) => {
+    const s = sums.get(id);
+    return s && s.max > 0 ? s.got / s.max : 0.65;
+  };
+}
+
+/**
+ * Demo helper behind "Use the sample answer sheets". Seeded stories get their bundled handwriting
+ * photos; every other assessment gets generated practice sheets in mock mode (see lib/fixtures/synthetic.ts).
+ */
 export async function attachSampleSheets(assessmentId: string) {
-  const a = await prisma.assessment.findUniqueOrThrow({ where: { id: assessmentId } });
-  const set = sampleSetFor(a.fixtureKey, a.type);
-  if (!set) throw new Error("There are no sample sheets for this assessment.");
+  const a = await prisma.assessment.findUniqueOrThrow({ where: { id: assessmentId }, include: { _count: { select: { questions: true } } } });
+  const kind = sampleKindFor(a.fixtureKey);
+  if (!kind) throw new Error("Sample answer sheets are only available for the seeded demo tests in live mode. Upload photos of the real sheets instead.");
+  if (a._count.questions === 0) throw new Error("Confirm the questions first.");
   const students = await roster(assessmentId);
-  let sheets = sheetsInSet(set);
-  if (set === "8b-remedial-rohan") sheets = sheets.filter((s) => students.some((st) => st.id === s.studentId));
+  const set = sampleSetFor(a.fixtureKey);
+  let fixtureSheets = set ? sheetsInSet(set) : [];
+  if (set === "8b-remedial-rohan") fixtureSheets = fixtureSheets.filter((s) => students.some((st) => st.id === s.studentId));
+  // Remedial groups can include students without a bundled sheet; they get a generated one (mock mode).
+  const covered = new Set(fixtureSheets.map((s) => s.studentId));
+  const needSynthetic = !set || set === "8b-remedial-rohan" ? students.filter((s) => !covered.has(s.id)) : [];
+  const synthetic = aiMode() === "mock" ? needSynthetic.filter((s) => !syntheticAbsent(assessmentId, s.id, students.length)) : [];
+  if (fixtureSheets.length + synthetic.length === 0) throw new Error("There are no sample sheets for these students in live mode. Upload photos of the real sheets instead.");
+
   await prisma.submission.deleteMany({ where: { assessmentId, answerGrades: { none: {} } } });
+  await markHandedOut(assessmentId);
+  const prefix = assessmentId.replace("asm_", "");
   let i = 0;
-  for (const s of sheets) {
+  for (const s of fixtureSheets) {
     const match = proposeMatch(s.detected, students);
     await prisma.submission.create({
       data: {
-        id: `sub_${assessmentId.replace("asm_", "")}_${String(i++).padStart(3, "0")}`,
+        id: `sub_${prefix}_${String(i++).padStart(3, "0")}`,
         assessmentId,
         studentId: match.studentId,
         status: match.studentId ? "matched" : "uploaded",
@@ -180,8 +240,65 @@ export async function attachSampleSheets(assessmentId: string) {
       },
     });
   }
-  await audit("teacher", "sheets.sample_attached", "Assessment", assessmentId, { set, count: sheets.length });
-  return sheets.length;
+  const ability = synthetic.length ? await abilities(synthetic.map((s) => s.id)) : () => 0.65;
+  for (const st of synthetic) {
+    const id = `sub_${prefix}_${String(i++).padStart(3, "0")}`;
+    const match = proposeMatch({ name: st.name, roll: st.rollNumber }, students);
+    await prisma.submission.create({
+      data: {
+        id,
+        assessmentId,
+        studentId: match.studentId,
+        status: match.studentId ? "matched" : "uploaded",
+        pageKeys: JSON.stringify(syntheticPageKeys(id, a._count.questions)),
+        sheetRef: syntheticSheetRef({ assessmentId, studentId: st.id, ability: ability(st.id) }),
+        detectedName: st.name,
+        detectedRoll: st.rollNumber,
+        matchConfidence: match.confidence,
+        createdAt: new Date(Date.now() + i),
+      },
+    });
+  }
+  await audit("teacher", "sheets.sample_attached", "Assessment", assessmentId, { set: set ?? "synthetic", fixture: fixtureSheets.length, synthetic: synthetic.length });
+  return fixtureSheets.length + synthetic.length;
+}
+
+/** "Save draft & leave" on an unfinished assessment set-up (optionally with edited questions). */
+export async function saveAssessmentDraft(assessmentId: string, questions?: QuestionDraft[]) {
+  if (questions) await saveQuestions(assessmentId, questions, false);
+  await prisma.assessment.update({ where: { id: assessmentId }, data: { draftSavedAt: new Date() } });
+  await audit("teacher", "assessment.draft_saved", "Assessment", assessmentId, {});
+}
+
+/** "Discard": deletes an assessment that has nothing graded yet. */
+export async function discardAssessment(assessmentId: string) {
+  const a = await prisma.assessment.findUnique({ where: { id: assessmentId } });
+  if (!a) return;
+  const graded = await prisma.answerGrade.count({ where: { submission: { assessmentId } } });
+  if (graded > 0) throw new Error("Answers have already been graded, so this assessment cannot be discarded.");
+  if (a.remedialAssignmentId) throw new Error("This belongs to an assigned remedial sheet and cannot be discarded here.");
+  await prisma.$transaction(async (tx) => {
+    if (a.lessonPlanId) await tx.lessonPlan.updateMany({ where: { id: a.lessonPlanId, exitTicketAssessmentId: assessmentId }, data: { exitTicketAssessmentId: null } });
+    await tx.assessment.delete({ where: { id: assessmentId } });
+  });
+  await audit("teacher", "assessment.discarded", "Assessment", assessmentId, { title: a.title });
+}
+
+/** "Yet to hand it to the class": keep it set up (printable, shareable) and listed as ready to grade. */
+export async function setHandedOut(assessmentId: string, handedOut: boolean) {
+  await prisma.assessment.update({ where: { id: assessmentId }, data: { handedOut, handedOutAt: handedOut ? new Date() : null } });
+  await audit("teacher", handedOut ? "assessment.handed_out" : "assessment.not_handed_out", "Assessment", assessmentId, {});
+}
+
+/** A read-only student copy link (/w/[token]) the teacher can share with the class. */
+export async function shareToken(assessmentId: string) {
+  const a = await prisma.assessment.findUniqueOrThrow({ where: { id: assessmentId }, include: { _count: { select: { questions: true } } } });
+  if (a._count.questions === 0) throw new Error("Confirm the questions first.");
+  if (a.shareToken) return a.shareToken;
+  const token = crypto.randomBytes(12).toString("base64url");
+  await prisma.assessment.update({ where: { id: assessmentId }, data: { shareToken: token } });
+  await audit("teacher", "assessment.shared", "Assessment", assessmentId, {});
+  return token;
 }
 
 export async function setSubmissionStudent(submissionId: string, studentId: string | null) {

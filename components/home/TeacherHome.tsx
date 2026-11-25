@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowRight, BellRing, BookOpenCheck, ClipboardCheck, TriangleAlert, Users } from "lucide-react";
+import { ArrowRight, BellRing, BookOpenCheck, ClipboardCheck, FilePen, TriangleAlert, Users } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -8,18 +8,9 @@ import { ASSESSMENT_TYPE_LABEL, FLAG_TYPE_LABEL, type AssessmentType, type FlagT
 import { formatDate, formatPct } from "@/lib/format";
 import type { HomeData } from "@/lib/queries/home";
 
-const STATUS_LABEL: Record<string, string> = {
-  draft: "Draft",
-  questions_ready: "Questions confirmed",
-  sheets_uploaded: "Ready to grade",
-  grading: "Grading",
-  in_review: "In review",
-  final: "Final",
-};
+import { assessmentStatus, statusLabel } from "@/lib/ui/status";
 
-export function statusLabel(s: string) {
-  return STATUS_LABEL[s] ?? s;
-}
+export { statusLabel };
 
 /** Teacher home: what needs doing today, then a card per section. */
 export function TeacherHome({ data, teacherFirstName }: { data: HomeData; teacherFirstName: string }) {
@@ -96,6 +87,28 @@ export function TeacherHome({ data, teacherFirstName }: { data: HomeData; teache
         </section>
       )}
 
+      {data.drafts.length > 0 && (
+        <section data-demo-id="home-drafts">
+          <h2 className="mb-3 flex items-center gap-2 text-lg font-semibold">
+            <FilePen className="h-4 w-4" /> Drafts to finish
+          </h2>
+          <div className="grid gap-3 md:grid-cols-2 xl:grid-cols-3">
+            {data.drafts.map((d) => (
+              <Link key={d.id} href={d.href} className="flex items-center gap-3 rounded-xl border bg-card p-3 hover:shadow-sm" data-demo-id={`draft-${d.id}`}>
+                <div className="min-w-0 flex-1">
+                  <div className="truncate font-medium">{d.title}</div>
+                  <div className="text-xs text-muted-foreground">
+                    {d.kind} · Class {d.section} · {formatDate(d.at)}
+                  </div>
+                </div>
+                <Badge variant="secondary">{d.saved ? "Saved draft" : "Draft"}</Badge>
+                <ArrowRight className="h-4 w-4 text-muted-foreground" />
+              </Link>
+            ))}
+          </div>
+        </section>
+      )}
+
       <section className="grid items-start gap-4 lg:grid-cols-2">
         <Card>
           <CardHeader>
@@ -105,24 +118,30 @@ export function TeacherHome({ data, teacherFirstName }: { data: HomeData; teache
           </CardHeader>
           <CardContent className="space-y-3">
             {data.toDo.length === 0 && <EmptyState title="Nothing waiting" description="Create an assessment to upload a new set of answer sheets." />}
-            {data.toDo.map((a) => (
-              <Link
-                key={a.id}
-                href={a.status === "in_review" ? `/assessments/${a.id}/review` : a.status === "grading" ? `/assessments/${a.id}/grade` : `/assessments/${a.id}`}
-                data-demo-id={`todo-${a.id}`}
-                className="flex items-center gap-3 rounded-lg border p-3 hover:bg-muted/50"
-              >
-                <div className="min-w-0 flex-1">
-                  <div className="truncate font-medium">{a.title}</div>
-                  <div className="text-xs text-muted-foreground">
-                    {a.section} · {ASSESSMENT_TYPE_LABEL[a.type as AssessmentType]} · {formatDate(a.date)} · {a.sheets} sheets
-                    {a.pendingReview ? ` · ${a.pendingReview} to review` : ""}
+            {data.toDo.map((a) => {
+              const st = assessmentStatus(a);
+              return (
+                <Link
+                  key={a.id}
+                  href={a.status === "in_review" ? `/assessments/${a.id}/review` : a.status === "grading" ? `/assessments/${a.id}/grade` : `/assessments/${a.id}`}
+                  data-demo-id={`todo-${a.id}`}
+                  className="flex items-center gap-3 rounded-lg border p-3 hover:bg-muted/50"
+                >
+                  <div className="min-w-0 flex-1">
+                    <div className="truncate font-medium">{a.title}</div>
+                    <div className="text-xs text-muted-foreground">
+                      {a.section} · {ASSESSMENT_TYPE_LABEL[a.type as AssessmentType]} · {formatDate(a.date)} · {st.tag ? "print or share it from here" : `${a.sheets} sheets`}
+                      {a.pendingReview ? ` · ${a.pendingReview} to review` : ""}
+                    </div>
                   </div>
-                </div>
-                <Badge variant={a.status === "sheets_uploaded" ? "default" : "secondary"}>{statusLabel(a.status)}</Badge>
-                <ArrowRight className="h-4 w-4 text-muted-foreground" />
-              </Link>
-            ))}
+                  <div className="flex shrink-0 flex-col items-end gap-1">
+                    <Badge variant={st.variant}>{st.label}</Badge>
+                    {st.tag && <Badge variant="outline">{st.tag}</Badge>}
+                  </div>
+                  <ArrowRight className="h-4 w-4 text-muted-foreground" />
+                </Link>
+              );
+            })}
           </CardContent>
         </Card>
         <Card>

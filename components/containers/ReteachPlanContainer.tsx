@@ -2,6 +2,7 @@
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { ReteachPlanEditor } from "@/components/reteach/ReteachPlanEditor";
+import { DraftGuard } from "@/components/shared/DraftGuard";
 import { api } from "@/lib/client/api";
 import type { PlanData } from "@/lib/planner/service";
 import type { PlanSection } from "@/lib/planner/types";
@@ -31,6 +32,15 @@ export function ReteachPlanContainer({ plan }: { plan: PlanData }) {
   }
 
   return (
+    <>
+    <DraftGuard
+      isNew={plan.status === "draft" && !plan.draftSavedAt}
+      dirty={dirty}
+      noun="reteach plan"
+      scope={[`/reteach/${plan.id}`]}
+      onSave={() => api(`/api/reteach/${plan.id}/draft`, { method: "POST", json: { sections: dirty ? sections : undefined } }).then(() => undefined)}
+      onDiscard={() => api(`/api/reteach/${plan.id}`, { method: "DELETE" }).then(() => undefined)}
+    />
     <ReteachPlanEditor
       evidence={plan.evidence}
       inputs={plan.inputs}
@@ -59,5 +69,6 @@ export function ReteachPlanContainer({ plan }: { plan: PlanData }) {
         })
       }
     />
+    </>
   );
 }

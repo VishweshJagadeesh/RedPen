@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 import { PrintableRemedialSheet } from "@/components/remedial/PrintableRemedialSheet";
 import { PrintButton } from "@/components/shared/PrintButton";
+import { BackLink } from "@/components/shared/States";
 import { getRemedial, personalCitations } from "@/lib/remedial/service";
 
 export const metadata = { title: "Print remedial sheets" };
@@ -14,6 +15,7 @@ export default async function PrintRemedialPage({ params }: { params: Promise<{ 
   return (
     <div>
       <div className="no-print flex items-center justify-between gap-2 p-4">
+        <BackLink href={`/remedial/${data.id}`} label="the remedial sheet" />
         <span className="text-sm text-gray-600">{sheets.length} sheet(s), one page per student.</span>
         <PrintButton />
       </div>

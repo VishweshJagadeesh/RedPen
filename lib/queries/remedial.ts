@@ -22,7 +22,10 @@ export async function builderContext(sectionId: string, conceptId: string | unde
 
 export async function listRemedials(teacherId: string) {
   const rows = await prisma.remedialAssignment.findMany({ where: { section: { teacherId } }, orderBy: { createdAt: "desc" }, include: { section: true } });
+  const ids = rows.map((r) => r.assessmentId).filter((x): x is string => !!x);
+  const asm = new Map((await prisma.assessment.findMany({ where: { id: { in: ids } }, select: { id: true, status: true } })).map((a) => [a.id, a]));
   return rows.map((r) => ({
+    assessment: r.assessmentId ? (asm.get(r.assessmentId) ?? null) : null,
     id: r.id,
     title: r.title,
     status: r.status,

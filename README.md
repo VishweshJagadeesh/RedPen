@@ -82,6 +82,18 @@ latest test **or homework** that covered it"; a concept needs at least 4 marks o
 understanding and completion on the class page, and appear in each student's mastery. They never trigger the
 test-based alerts (sudden drop, missed submissions).
 
+## Drafts, back links and handing work out later
+
+- Every page below the top level has a **← Back to …** link to its parent (class, assessment, plan, sheet, list).
+- Leaving something you just created — a reteach plan, a remedial sheet, an assessment or homework set-up — or leaving
+  unsaved edits asks whether to **Save draft & leave**, **Discard**, or **Cancel**. Saved drafts wait on Home under
+  **Drafts to finish**.
+- Reteach generation shows each step as it completes (streamed from `POST /api/reteach`).
+- On the answer-sheets step, **Yet to hand it to the class** saves the work as **Ready to grade · Not handed out**. Print a
+  student copy (blank, or one per student with the header filled in) or share a read-only link (`/w/<token>`, questions
+  and marks only) from the wizard, the Assessments list, Home or the class page. Uploading sheets marks it handed out.
+- Assigned remedial sheets have a **Grade responses** button wherever they are listed.
+
 ## Class health on the trend chart
 
 The class page plots the class average per test on a zoomed y-axis with green / yellow / red bands: Healthy ≥ 60%,
@@ -91,8 +103,11 @@ Critical 45–59%, Poor < 45% (`CLASS_HEALTHY`, `CLASS_CRITICAL`). Changes of 5+
 
 - **Mock** (`AI_MODE=mock`, the default without a key): deterministic fixture outputs keyed by sheet and question
   (`lib/ai/mock.ts`, `lib/fixtures/sheets.ts`); plans, remedial questions and PTM text are built from the real data by
-  templates. A **Sample data · Mock AI** badge is shown. Sheets outside the sample set get an honest Low-band
-  placeholder grade.
+  templates. A **Sample data · Mock AI** badge is shown. "Use the sample answer sheets" works for **every**
+  assessment: seeded stories attach the bundled handwriting photos; anything else gets generated practice sheets
+  (`lib/fixtures/synthetic.ts`) — what each student "wrote" is derived from the answer key and their own track record,
+  rendered as a handwritten page and graded deterministically (mostly High confidence, a few for review). Other uploads
+  get an honest Low-band placeholder grade.
 - **Live**: the Anthropic API with vision via the official SDK (`lib/ai/live.ts`, `lib/planner/live.ts`,
   `lib/remedial/service.ts`, `lib/ptm/summary.ts`). Every output is requested as JSON matching a zod schema
   (`lib/ai/schemas.ts`); invalid output is retried once, then surfaced as an error — never guessed. Requests opt into
@@ -144,8 +159,8 @@ npm run e2e
 ```
 
 `npm run e2e` builds the app and runs one Playwright happy path per flow (`tests/e2e/`): grade & review WT4,
-weak concept → reteach → exit ticket, flag → remedial → regrade, PTM + parent profile, and the class page / Home
-weak-concept notifications. Each test resets the demo
+weak concept → reteach → exit ticket, flag → remedial → regrade, PTM + parent profile, the class page / Home
+weak-concept notifications, and drafts / hand out later / print & share / sample sheets anywhere. Each test resets the demo
 data first. Use `npm run e2e:only` to skip the build.
 
 ## Deploying to Vercel
@@ -163,7 +178,8 @@ Grading runs as short per-sheet requests driven by the progress screen, so it fi
 ## Project layout
 
 ```
-app/                 routes (App Router): (app) teacher pages, (print) print/PTM views, p/[token] parent profile, api/
+app/                 routes (App Router): (app) teacher pages, (print) print/PTM views, p/[token] parent profile,
+                     w/[token] shared student copy, api/
 components/          presentational components (pure, props only) + containers/ (data + actions)
 lib/ai/              schemas, client (retry-once), mock + live providers
 lib/grading/         pipeline, confidence, matching

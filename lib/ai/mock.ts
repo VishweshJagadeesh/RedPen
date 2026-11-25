@@ -5,6 +5,7 @@
 import { config } from "../config";
 import { PAPER_BY_KEY } from "../fixtures/papers";
 import { SAMPLE_PAPERS, mockSheets, sheetForPageKey } from "../fixtures/sheets";
+import { parseSyntheticRef, syntheticAnswers } from "../fixtures/synthetic";
 import type { ParsedPaper } from "./schemas";
 import {
   emptyMeta,
@@ -79,8 +80,41 @@ function steps(rubric: { step: string; marks: number }[], awards: number[]) {
   return rubric.map((r, i) => ({ step: r.step, marks: r.marks, awarded: awards[i] ?? 0 }));
 }
 
+/** Synthetic practice sheets ("Use the sample answer sheets" outside the seeded stories). */
+function syntheticGrade(input: GradeSheetInput): AnswerResult[] | null {
+  const ref = parseSyntheticRef(input.sheetRef);
+  if (!ref) return null;
+  return syntheticAnswers(ref, input.questions).map((a) => {
+    const q = input.questions.find((x) => x.number === a.questionNumber)!;
+    const passA: PassResult = {
+      steps: steps(q.rubric, a.awards),
+      mistakeType: a.mistakeType,
+      misconception: a.misconception,
+      conceptIds: q.conceptIds,
+      reasoning: a.reasoning,
+      keyAmbiguity: a.keyAmbiguity,
+      selfConfidence: a.selfConfidence,
+    };
+    return {
+      questionNumber: a.questionNumber,
+      pageIndex: a.pageIndex,
+      crop: a.crop,
+      transcription: a.lines.join("\n"),
+      legibility: a.legibility,
+      uncertainSpans: a.uncertainSpans,
+      crossedOut: a.crossedOut.length > 0,
+      mixedLanguage: false,
+      containsInstructions: false,
+      passA,
+      passB: { ...passA, steps: steps(q.rubric, a.passBAwards) },
+    };
+  });
+}
+
 export async function mockGradeSheet(input: GradeSheetInput): Promise<GradeSheetResult> {
   await sleep(config.grading.mockLatencyMs);
+  const synthetic = syntheticGrade(input);
+  if (synthetic) return { answers: synthetic, meta: { ...emptyMeta("mock"), calls: 1, latencyMs: config.grading.mockLatencyMs } };
   const sheet = input.sheetRef ? mockSheets().get(input.sheetRef) : undefined;
   const answers: AnswerResult[] = input.questions.map((q, i) => {
     const m = sheet?.answers.find((a) => a.questionNumber === q.number);

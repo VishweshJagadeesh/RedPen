@@ -14,6 +14,7 @@ export default async function SectionPage({ params }: { params: Promise<{ id: st
       <PageHeader
         eyebrow={`Mathematics · ${data.section.academicYear}`}
         title={`Class ${data.section.name}`}
+        back={{ href: "/dashboard", label: "Home" }}
         description={`${data.studentCount} students${latest ? ` · latest test average ${formatPct(latest.average)} (${latest.title})` : ""}`}
       />
       <ClassDashboard data={data} />

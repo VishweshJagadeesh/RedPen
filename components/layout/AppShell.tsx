@@ -1,9 +1,10 @@
 "use client";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState, type ReactNode } from "react";
+import { Suspense, useState, type ReactNode } from "react";
 import { BellRing, ClipboardCheck, ClipboardList, FlaskConical, Home, Menu, Settings, TriangleAlert, Users, X } from "lucide-react";
 import { MockModeBadge } from "@/components/shared/MockModeBadge";
+import { NavigationProgress } from "./NavigationProgress";
 import { cn } from "@/lib/utils";
 
 export interface AppShellProps {
@@ -81,6 +82,9 @@ export function AppShell({ teacherName, subject, mode, sections, openFlags, chil
 
   return (
     <div className="min-h-screen">
+      <Suspense fallback={null}>
+        <NavigationProgress />
+      </Suspense>
       <header className="no-print sticky top-0 z-30 flex h-14 items-center gap-3 border-b bg-card/90 px-4 backdrop-blur lg:hidden">
         <button className="relative rounded-md p-2 hover:bg-muted" onClick={() => setOpen(true)} aria-label="Open menu" data-demo-id="mobile-menu">
           <Menu className="h-5 w-5" />

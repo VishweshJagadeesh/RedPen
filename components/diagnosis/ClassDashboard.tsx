@@ -1,5 +1,9 @@
 import Link from "next/link";
-import { AlertTriangle, BellRing, BookOpen, CheckCircle2, ClipboardPlus, OctagonAlert, TrendingDown, TrendingUp, Users } from "lucide-react";
+import { AlertTriangle, BellRing, BookOpen, CheckCircle2, ClipboardPlus, OctagonAlert, Printer, TrendingDown, TrendingUp, Users } from "lucide-react";
+import { Badge } from "@/components/ui/badge";
+import { ShareWorkButton } from "@/components/shared/ShareWorkButton";
+import { ASSESSMENT_TYPE_LABEL, type AssessmentType } from "@/lib/domain";
+import { assessmentStatus } from "@/lib/ui/status";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -197,6 +201,34 @@ export function ClassDashboard({ data }: { data: SectionDashboardData }) {
             </Link>
           </Button>
         </div>
+        {data.upcoming.length > 0 && (
+          <div className="mb-4 rounded-xl border bg-card p-3" data-demo-id="class-upcoming">
+            <div className="mb-2 text-sm font-medium">Set up on RedPen, waiting for sheets</div>
+            <ul className="divide-y">
+              {data.upcoming.map((u) => {
+                const st = assessmentStatus({ status: "questions_ready", handedOut: u.handedOut, sheets: 0 });
+                return (
+                  <li key={u.id} className="flex flex-wrap items-center gap-2 py-2 text-sm" data-demo-id={`upcoming-${u.id}`}>
+                    <Link href={`/assessments/${u.id}`} className="min-w-0 flex-1 font-medium hover:underline">
+                      {u.title}
+                      <span className="ml-2 text-xs font-normal text-muted-foreground">
+                        {ASSESSMENT_TYPE_LABEL[u.type as AssessmentType]} · {formatDate(u.date)}
+                      </span>
+                    </Link>
+                    <Badge variant={st.variant}>{st.label}</Badge>
+                    {st.tag && <Badge variant="outline">{st.tag}</Badge>}
+                    <Button asChild size="sm" variant="ghost">
+                      <Link href={`/assessments/${u.id}/print`} target="_blank">
+                        <Printer /> Print
+                      </Link>
+                    </Button>
+                    <ShareWorkButton assessmentId={u.id} title={u.title} variant="ghost" />
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
+        )}
         <p className="-mt-1 mb-3 text-xs text-muted-foreground">▲ class-wide weak on this homework · ✓ fine · grey: only one short question, so not enough on its own</p>
         {data.homework.length === 0 ? (
           <EmptyState title="No homework graded yet" description="Homework goes through the same grading flow and feeds the weak-concept cards." />

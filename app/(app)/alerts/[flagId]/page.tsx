@@ -11,7 +11,7 @@ export default async function AlertPage({ params }: { params: Promise<{ flagId: 
   if (!flag) notFound();
   return (
     <div className="mx-auto max-w-5xl">
-      <PageHeader eyebrow={`Class ${flag.section.name} · Roll ${flag.student.rollNumber}`} title={`Why ${flag.student.name} was flagged`} />
+      <PageHeader eyebrow={`Class ${flag.section.name} · Roll ${flag.student.rollNumber}`} title={`Why ${flag.student.name} was flagged`} back={{ href: "/alerts", label: "Alerts" }} />
       <WhyFlaggedContainer flag={flag} />
     </div>
   );

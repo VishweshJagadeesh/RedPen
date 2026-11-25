@@ -1,4 +1,7 @@
 import Link from "next/link";
+import { ClipboardCheck } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { assessmentHref, gradeActionLabel } from "@/lib/ui/status";
 import { Badge } from "@/components/ui/badge";
 import { Table, TBody, TD, TH, THead, TR } from "@/components/ui/table";
 import { EmptyState, PageHeader } from "@/components/shared/States";
@@ -26,6 +29,7 @@ export default async function RemedialListPage() {
                 <TH>Questions</TH>
                 <TH>Created</TH>
                 <TH>Status</TH>
+                <TH className="w-40" />
               </tr>
             </THead>
             <TBody>
@@ -41,7 +45,16 @@ export default async function RemedialListPage() {
                   <TD>{r.questions}</TD>
                   <TD>{formatDate(r.createdAt)}</TD>
                   <TD>
-                    <Badge variant={r.status === "graded" ? "high" : r.status === "assigned" ? "medium" : "secondary"}>{r.status === "assigned" ? "Pending" : r.status === "graded" ? "Graded" : "Draft"}</Badge>
+                    <Badge variant={r.status === "graded" ? "high" : r.status === "assigned" ? "medium" : "secondary"}>{r.status === "assigned" ? "Awaiting answers" : r.status === "graded" ? "Graded" : "Draft"}</Badge>
+                  </TD>
+                  <TD className="text-right">
+                    {r.assessment && (
+                      <Button asChild size="sm" variant={r.assessment.status === "final" ? "ghost" : "default"}>
+                        <Link href={assessmentHref(r.assessment)} data-demo-id={`grade-remedial-${r.id}`}>
+                          <ClipboardCheck /> {gradeActionLabel(r.assessment.status)}
+                        </Link>
+                      </Button>
+                    )}
                   </TD>
                 </TR>
               ))}

@@ -1,5 +1,6 @@
 "use client";
 import Link from "next/link";
+import { gradeActionLabel } from "@/lib/ui/status";
 import { useMemo, useState } from "react";
 import { ArrowDown, ArrowUp, ClipboardCheck, Printer, Send, Sparkles, Trash2 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
@@ -32,6 +33,8 @@ export interface RemedialBuilderProps {
   error: string | null;
   printHref?: string;
   assessmentHref?: string | null;
+  /** Status of the remedial assessment once assigned (drives the "Grade responses" label). */
+  assessmentStatus?: string | null;
   onSetupChange: (s: RemedialSetup) => void;
   onGenerate: () => void;
   onQuestionsChange: (q: RemedialQuestion[]) => void;
@@ -170,7 +173,7 @@ export function RemedialBuilder(p: RemedialBuilderProps) {
                 {p.assessmentHref && (
                   <Button asChild size="sm" data-demo-id="upload-remedial-submissions">
                     <Link href={p.assessmentHref}>
-                      <ClipboardCheck /> {p.status === "graded" ? "Results" : "Upload & grade submissions"}
+                      <ClipboardCheck /> {gradeActionLabel(p.assessmentStatus)}
                     </Link>
                   </Button>
                 )}

@@ -2,10 +2,13 @@
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
-import { ArrowRight, FileText } from "lucide-react";
+import { ArrowRight, FileText, Printer } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Alert } from "@/components/ui/misc";
 import { LoadingState } from "@/components/shared/States";
+import { DraftGuard } from "@/components/shared/DraftGuard";
+import { ShareWorkButton } from "@/components/shared/ShareWorkButton";
+import { HandOutPanel } from "@/components/grading/HandOutPanel";
 import { QuestionConfirmTable, type QuestionDraftView } from "@/components/grading/QuestionConfirmTable";
 import { SheetMatcher } from "@/components/grading/SheetMatcher";
 import { SheetUploader } from "@/components/grading/SheetUploader";
@@ -27,7 +30,23 @@ export function AssessmentWizardContainer({ data }: { data: AssessmentWizardData
   const [error, setError] = useState<string | null>(null);
   const [progress, setProgress] = useState<{ done: number; total: number } | null>(null);
   const autoParsed = useRef(false);
+  const [draftRows, setDraftRows] = useState<QuestionDraftView[] | null>(null);
+  useEffect(() => setDraftRows(null), [data.questions]);
   const step = stepFor(data);
+  const noun = data.type === "homework" ? "homework" : data.type === "exit_ticket" ? "exit ticket" : "assessment";
+  // A set-up the teacher just created and has not chosen to keep (no sheets yet, not parked as "not handed out").
+  const isNew = !data.linked && !data.draftSavedAt && data.handedOut && data.sheets.length === 0 && (data.status === "draft" || data.status === "questions_ready");
+  const guard = (
+    <DraftGuard
+      isNew={isNew}
+      dirty={draftRows !== null}
+      noun={noun}
+      scope={[`/assessments/${data.id}`]}
+      onSave={() => api(`/api/assessments/${data.id}/draft`, { method: "POST", json: { questions: draftRows ?? undefined } }).then(() => undefined)}
+      onDiscard={() => api(`/api/assessments/${data.id}`, { method: "DELETE" }).then(() => undefined)}
+    />
+  );
+  const printHref = `/assessments/${data.id}/print`;
 
   async function run(fn: () => Promise<unknown>) {
     setBusy(true);
@@ -74,8 +93,13 @@ export function AssessmentWizardContainer({ data }: { data: AssessmentWizardData
 
   const paperLinks = (
     <div className="rounded-lg border bg-card p-3 text-sm">
-      <div className="mb-2 font-medium">Uploaded papers</div>
+      <div className="mb-2 font-medium">{data.paperUrls.length || data.keyUrls.length ? "Uploaded papers" : "Question paper"}</div>
       <div className="space-y-1">
+        {data.questions.length > 0 && step !== "questions" && (
+          <a href={printHref} target="_blank" className="flex items-center gap-2 text-primary underline-offset-2 hover:underline" data-demo-id="aside-print-student-copy">
+            <Printer className="h-4 w-4" /> Student copy (print)
+          </a>
+        )}
         {data.paperUrls.map((u, i) => (
           <a key={u} href={u} target="_blank" className="flex items-center gap-2 text-primary underline-offset-2 hover:underline">
             <FileText className="h-4 w-4" /> Question paper {data.paperUrls.length > 1 ? i + 1 : ""}
@@ -92,6 +116,8 @@ export function AssessmentWizardContainer({ data }: { data: AssessmentWizardData
 
   if (step === "questions") {
     return (
+      <>
+      {guard}
       <UploadWizard step="questions" heading="Check the questions" description="The AI split the paper into questions with step marks and concept tags. Edit anything before grading." aside={paperLinks}>
         {data.questions.length === 0 ? (
           busy ? (
@@ -112,9 +138,11 @@ export function AssessmentWizardContainer({ data }: { data: AssessmentWizardData
             error={error}
             onSave={(questions, confirm) => run(() => api(`/api/assessments/${data.id}/questions`, { method: "PUT", json: { questions, confirm } }))}
             onReparse={parse}
+            onChange={setDraftRows}
           />
         )}
       </UploadWizard>
+      </>
     );
   }
 
@@ -139,6 +167,8 @@ export function AssessmentWizardContainer({ data }: { data: AssessmentWizardData
   const pages = data.sheets.reduce((s, x) => s + x.pageCount, 0);
   const ready = data.status === "sheets_uploaded";
   return (
+    <>
+    {guard}
     <UploadWizard
       step={step}
       heading={step === "sheets" ? "Upload the answer sheets" : "Match sheets to students"}
@@ -150,11 +180,22 @@ export function AssessmentWizardContainer({ data }: { data: AssessmentWizardData
       aside={paperLinks}
     >
       <div className="space-y-8">
+        {step === "sheets" && data.sheets.length === 0 && !data.linked && (
+          <HandOutPanel
+            noun={noun}
+            handedOut={data.handedOut}
+            busy={busy}
+            printHref={printHref}
+            listHref="/assessments"
+            share={<ShareWorkButton assessmentId={data.id} title={data.title} />}
+            onChange={(handedOut) => run(() => api(`/api/assessments/${data.id}/hand-out`, { method: "POST", json: { handedOut } }))}
+          />
+        )}
         {!ready && (
           <SheetUploader
             uploaded={{ sheets: data.sheets.length, pages }}
             progress={progress}
-            canUseSamples={!!data.sampleSet && data.sheets.length === 0}
+            sampleKind={data.sheets.length === 0 && data.questions.length > 0 ? data.sampleKind : null}
             busy={busy}
             error={step === "sheets" ? error : null}
             onFiles={uploadPages}
@@ -187,5 +228,6 @@ export function AssessmentWizardContainer({ data }: { data: AssessmentWizardData
         )}
       </div>
     </UploadWizard>
+    </>
   );
 }

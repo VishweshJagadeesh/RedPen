@@ -20,6 +20,7 @@ export default async function NewRemedialPage({ searchParams }: { searchParams: 
       <PageHeader
         eyebrow={`Class ${ctx.section.name}`}
         title="New remedial sheet"
+        back={prefill.flagId ? { href: `/alerts/${prefill.flagId}`, label: "the alert" } : { href: `/sections/${prefill.sectionId}`, label: `Class ${ctx.section.name}` }}
         description={isGroup ? `Prefilled with the ${prefill.studentIds.length} students under 50% on this concept.` : "Prefilled from the evidence. Change anything before generating."}
       />
       <RemedialNewContainer

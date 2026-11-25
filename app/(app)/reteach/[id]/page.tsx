@@ -19,6 +19,7 @@ export default async function ReteachPlanPage({ params }: { params: Promise<{ id
           </Link>
         }
         title={`Reteach: ${plan.evidence.conceptName}`}
+        back={{ href: `/sections/${plan.section.id}`, label: `Class ${plan.section.name}` }}
       />
       <ReteachPlanContainer plan={plan} />
     </div>

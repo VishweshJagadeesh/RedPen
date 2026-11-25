@@ -278,6 +278,7 @@ export async function getRemedial(id: string) {
     concepts: concepts.map((c) => ({ id: c.id, name: c.name })),
     questions: parseJson<RemedialQuestion[]>(r.questions, []),
     assessment: assessment ? { id: assessment.id, status: assessment.status } : null,
+    draftSavedAt: r.draftSavedAt?.toISOString() ?? null,
     createdAt: r.createdAt.toISOString(),
     mode: aiMode(),
   };
@@ -290,6 +291,22 @@ export async function saveRemedialQuestions(id: string, questions: RemedialQuest
   if (questions.length === 0) throw new Error("Keep at least one question.");
   await prisma.remedialAssignment.update({ where: { id }, data: { questions: JSON.stringify(questions) } });
   await audit("teacher", "remedial.edited", "RemedialAssignment", id, { questions: questions.length });
+}
+
+/** "Save draft & leave": keeps the sheet (with any unsaved edits) and stops asking on the way out. */
+export async function saveRemedialDraft(id: string, questions?: RemedialQuestion[]) {
+  if (questions) await saveRemedialQuestions(id, questions);
+  await prisma.remedialAssignment.update({ where: { id }, data: { draftSavedAt: new Date() } });
+  await audit("teacher", "remedial.draft_saved", "RemedialAssignment", id, {});
+}
+
+/** "Discard": deletes a sheet that was never assigned. */
+export async function discardRemedial(id: string) {
+  const r = await prisma.remedialAssignment.findUnique({ where: { id } });
+  if (!r) return;
+  if (r.status !== "draft" || r.assessmentId) throw new Error("This sheet has been assigned and can no longer be discarded.");
+  await prisma.remedialAssignment.delete({ where: { id } });
+  await audit("teacher", "remedial.discarded", "RemedialAssignment", id, { title: r.title });
 }
 
 /** Assign: the sheet becomes a remedial assessment (graded through the same flow) and shows as pending. */

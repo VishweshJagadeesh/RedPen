@@ -2,7 +2,7 @@
 import { AiError, callStructured } from "../ai/client";
 import { planningModel } from "../ai/mode";
 import { PlanSectionSchema, ReteachPlanSchema, type PlanSectionOut } from "../ai/schemas";
-import type { PlanEvidence, PlanInputs, PlanSection } from "./types";
+import type { PlanEvidence, PlanInputs, PlanProgress, PlanSection } from "./types";
 import { TIMED_KINDS } from "./types";
 
 const LANG: Record<PlanInputs["language"], string> = {
@@ -69,9 +69,10 @@ function normalise(out: PlanSectionOut): Omit<PlanSection, "id"> {
   };
 }
 
-export async function livePlanSections(ev: PlanEvidence, inputs: PlanInputs): Promise<Omit<PlanSection, "id">[]> {
+export async function livePlanSections(ev: PlanEvidence, inputs: PlanInputs, progress: PlanProgress = () => {}): Promise<Omit<PlanSection, "id">[]> {
   let feedback = "";
   for (let attempt = 1; attempt <= 2; attempt++) {
+    if (attempt > 1) progress("draft", "active", "Redrafting to fix what the checks found…");
     const res = await callStructured({
       label: "reteach plan",
       model: planningModel(),
@@ -92,8 +93,11 @@ Timed steps (prerequisite_check through exit_ticket_step) must fit in ${inputs.p
     });
     const sections = res.data.sections.map(normalise);
     if (!sections.some((s) => s.kind === "objective")) sections.unshift({ kind: "objective", title: "Learning objective", minutes: 0, body: res.data.objective, citesMisconceptions: [], questions: [] });
+    progress("draft", "done", `${sections.length} sections`);
+    progress("checks", "active");
     const problems = checkPlan(sections, ev, inputs);
     if (problems.length === 0) return sections;
+    if (attempt < 2) progress("checks", "active", `Found ${problems.length} problem${problems.length === 1 ? "" : "s"}: ${problems[0]}`);
     feedback = `\n\nYour previous plan failed these checks; fix them: ${problems.join("; ")}.`;
   }
   throw new AiError("The AI's reteach plan failed the evidence checks twice (citations, timing or exit ticket). Nothing was saved; try again.", "reteach plan", 2);

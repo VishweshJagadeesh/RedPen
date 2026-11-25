@@ -25,12 +25,18 @@ export interface QuestionConfirmTableProps {
   error: string | null;
   onSave: (questions: QuestionDraftView[], confirm: boolean) => void;
   onReparse?: () => void;
+  /** Called with the edited rows whenever the teacher changes something (for "save draft" on leaving). */
+  onChange?: (questions: QuestionDraftView[]) => void;
 }
 
 /** Step 2: the AI's split of the paper, editable before grading starts. */
-export function QuestionConfirmTable({ questions, concepts, warnings, confirmed, busy, error, onSave, onReparse }: QuestionConfirmTableProps) {
+export function QuestionConfirmTable({ questions, concepts, warnings, confirmed, busy, error, onSave, onReparse, onChange }: QuestionConfirmTableProps) {
   const [rows, setRows] = useState(questions);
   useEffect(() => setRows(questions), [questions]);
+  useEffect(() => {
+    if (rows !== questions) onChange?.(rows);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [rows]);
   const update = (i: number, patch: Partial<QuestionDraftView>) => setRows((r) => r.map((q, j) => (j === i ? { ...q, ...patch } : q)));
   const total = rows.reduce((s, q) => s + q.rubric.reduce((a, r) => a + r.marks, 0), 0);
 

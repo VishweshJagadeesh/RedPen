@@ -94,6 +94,7 @@ class BlobAdapter implements StorageAdapter {
 
   async get(key: string): Promise<StoredFile | null> {
     if (isSampleKey(key)) return readSample(key);
+    if (!key.startsWith("http")) return null; // generated practice sheets are rendered by /api/files
     const res = await fetch(key);
     if (!res.ok) return null;
     return { data: Buffer.from(await res.arrayBuffer()), contentType: res.headers.get("content-type") ?? contentTypeFor(key) };

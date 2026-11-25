@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ClipboardList, ExternalLink, Presentation } from "lucide-react";
+import { ClipboardCheck, ClipboardList, ExternalLink, Presentation } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -10,6 +10,7 @@ import { masteryColor } from "@/lib/ui/mastery-color";
 import { ASSESSMENT_TYPE_LABEL, FLAG_STATUS_LABEL, FLAG_TYPE_LABEL, type AssessmentType, type FlagStatus, type FlagType } from "@/lib/domain";
 import { formatDate, formatMarks, formatPct } from "@/lib/format";
 import type { StudentViewData } from "@/lib/queries/student";
+import { assessmentHref, gradeActionLabel } from "@/lib/ui/status";
 
 /** Teacher's view of one student: mastery over time, tests, alerts and actions taken. */
 export function StudentDetail({ data, shareUrl }: { data: StudentViewData; shareUrl: string }) {
@@ -65,13 +66,24 @@ export function StudentDetail({ data, shareUrl }: { data: StudentViewData; share
               </Link>
             ))}
             {data.remedials.map((r) => (
-              <div key={r.id} className="rounded-lg border p-3">
-                <div className="flex items-center gap-2">
-                  <span className="font-medium">{r.title}</span>
-                  <Badge variant={r.status === "graded" ? "high" : "medium"}>{r.status === "assigned" ? "Pending" : r.status === "graded" ? "Graded" : "Draft"}</Badge>
+              <div key={r.id} className="rounded-lg border p-3" data-demo-id={`student-remedial-${r.id}`}>
+                <div className="flex flex-wrap items-center gap-2">
+                  <Link href={`/remedial/${r.id}`} className="font-medium hover:underline">
+                    {r.title}
+                  </Link>
+                  <Badge variant={r.status === "graded" ? "high" : r.status === "assigned" ? "medium" : "secondary"}>{r.status === "assigned" ? "Awaiting answers" : r.status === "graded" ? "Graded" : "Draft"}</Badge>
                 </div>
-                <div className="text-xs text-muted-foreground">
-                  {r.questions} questions{r.score ? ` · scored ${formatMarks(r.score.got)}/${formatMarks(r.score.max)}` : ""}
+                <div className="mt-1 flex flex-wrap items-center gap-2 text-xs text-muted-foreground">
+                  <span>
+                    {r.questions} questions{r.score ? ` · scored ${formatMarks(r.score.got)}/${formatMarks(r.score.max)}` : ""}
+                  </span>
+                  {r.assessmentId && (
+                    <Button asChild size="sm" variant={r.assessmentStatus === "final" ? "ghost" : "default"} className="ml-auto">
+                      <Link href={assessmentHref({ id: r.assessmentId, status: r.assessmentStatus ?? "" })} data-demo-id={`grade-remedial-${r.id}`}>
+                        <ClipboardCheck /> {gradeActionLabel(r.assessmentStatus)}
+                      </Link>
+                    </Button>
+                  )}
                 </div>
               </div>
             ))}

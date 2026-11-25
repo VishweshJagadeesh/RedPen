@@ -16,8 +16,13 @@ This document is for whoever builds the scripted walkthrough next. Everything be
 | 7 Evals | `npm run eval` and `/evals`: agreement, calibration, confidently-wrong, review load, tagging, robustness, injection, alert P/R, plan rubric (rules + AI judge in live), latency/cost, review-override stats. Dated markdown reports in `evals/reports/`. Mock runs are labelled. |
 | Homework | `homework` assessment type graded through the same flow; feeds class-wide weak concepts (not test alerts); per-concept understanding and completion on the class page; "Grade a homework" prefills the wizard. Seeded HW1–HW3; 8B HW3 surfaces "Percentage increase and decrease". |
 | Class page & notifications | KPI strip; weak-concept cards (homework-sourced ones badged); class trend with zoomed axis and Healthy/Critical/Poor bands and change call-outs, in a card decoupled from the scrolling alerts card; homework panel; Students tab (search by name/roll, filters, sort, sparkline, weakest concept, homework completion); Concept mastery tab (short horizontal labels, weak columns marked, chapter grouping, search, sort, weak-only filter). Weak-concept count badges next to each class in the sidebar; Home banner and weak-concept cards with View class / Plan a reteach. |
+| Navigation & drafts | "← Back to …" on every page below the top level (explicit parent routes, incl. print views). Leaving something just created — a reteach plan, a remedial sheet, an assessment/homework set-up — or leaving unsaved edits asks **Save draft & leave / Discard / Cancel**. Drafts are listed on Home ("Drafts to finish"). A thin progress bar shows while a link navigation loads. |
+| Plan progress | Reteach generation streams its steps (reading answers → misconceptions → drafting → checks → mentor pairs → save) to a stepper with a progress bar and elapsed time; live-mode redrafts after a failed check are shown. |
+| Hand out later | On the answer-sheets step, **Yet to hand it to the class** keeps the work set up and listed as **Ready to grade · Not handed out** (Assessments filter, Home, class page). **Print student copy** (blank, or one per student with name/roll filled in) and **Share with students** (read-only `/w/<token>` page: questions and marks only, via the phone's share sheet or copy link). Uploading sheets marks it handed out. |
+| Sample sheets anywhere | "Use the sample answer sheets" works for every assessment in mock mode: seeded stories use the bundled handwriting photos; anything else (homework, new tests, other exit tickets, remedial sheets for any student) gets generated practice sheets (`lib/fixtures/synthetic.ts`: answers derived from the answer key and each student's track record, rendered as handwritten SVG, graded deterministically). Sample homework papers are offered on "Grade a homework" in mock mode. |
+| Remedial grading shortcut | Assigned remedial sheets show **Grade responses** (or Continue grading / Review grades / Results) on the Remedial list, the sheet itself, the student page and the alert page — straight to the upload/grading step. |
 | Settings | Reset demo data, AI mode/models, thresholds, audit log, sign out. |
-| Tests | Vitest: 45 unit tests (story numbers, confidence, planner, remedial, PTM, evals, schemas). Playwright: one happy path per flow plus the class page (`npm run e2e`). |
+| Tests | Vitest: 54 unit tests (story numbers, confidence, planner, remedial, PTM, evals, schemas, synthetic sheets, status labels). Playwright: one happy path per flow, the class page, and drafts/hand-out/print/share/samples (`npm run e2e`). |
 
 ## Known limitations
 
@@ -27,7 +32,15 @@ This document is for whoever builds the scripted walkthrough next. Everything be
 - Grading is driven by the progress screen (one short request per sheet). Leaving the page pauses grading; reopening
   resumes it. There is no background queue.
 - Answer sheets must be photos (JPG/PNG/WebP). Question papers and keys may be PDFs (sent to the model as documents).
-- Mock mode only "reads" the bundled sample sheets; other uploads get a Low-band placeholder grade that says so.
+- Mock mode only "reads" the bundled sample sheets and the generated practice sheets; other uploads get a Low-band
+  placeholder grade that says so. Generated practice sheets are mock-only (they are SVG, which the vision API does not
+  accept); in live mode "Use the sample answer sheets" is offered only for the seeded stories.
+- The draft guard intercepts in-app links (back links, sidebar, any link) and warns on reload/close with unsaved edits.
+  The browser's own Back button is not intercepted; nothing is lost then either, because generated work is already
+  stored as a draft and listed on Home.
+- There is no route-level `loading.tsx` under `app/(app)`: with one, Next.js 15.5 intermittently failed to commit
+  client navigations in production builds (about one in three; the RSC response arrived but the page never changed).
+  `NavigationProgress` in the app shell gives the loading feedback instead.
 - Seeded history (July–October) has no scans, so review cards for those answers show "Scan not retained".
 - In-browser optimistic review updates are queued; on a very slow connection the counter can lead the server briefly.
 - Peer pairs pair each mentor (≥60%) with up to two learners (<50%); the rest are listed to sit with the teacher.
@@ -49,7 +62,10 @@ This document is for whoever builds the scripted walkthrough next. Everything be
 | Injection answer (Kabir Q5, after grading) | `ag_sub_asm_8b_wt4_8b_21_5` |
 | Concept "Transposing terms" | `c8-le-transposing` |
 
-Useful endpoints for a script: `POST /api/settings/reset` (restore seed), `POST /api/assessments/asm_8b_wt4/grade`
+Useful endpoints for a script: `POST /api/settings/reset` (restore seed), `POST /api/reteach` with
+`Accept: application/x-ndjson` (streams plan progress, ends with `{"type":"done","id"}`), `POST /api/assessments/<id>/hand-out`
+`{"handedOut":false}`, `POST /api/assessments/<id>/share` (→ `/w/<token>`), `POST /api/<reteach|remedial|assessments>/<id>/draft`,
+`DELETE /api/<reteach|remedial|assessments>/<id>` (discard), `POST /api/assessments/asm_8b_wt4/grade`
 (grade the next sheet; returns progress), `POST /api/assessments/<id>/accept-high`, `POST /api/assessments/<id>/finalise`.
 `MOCK_LATENCY_MS` controls the per-sheet delay in mock mode (0 for instant, ~120–250 for a visible progress bar).
 
@@ -110,7 +126,8 @@ Dynamic parts are shown in `<angle brackets>`.
 `home-weak-<section>-<conceptId>`, `home-weak-view-class`, `home-weak-plan-reteach`, `section-card-weak-<section>`,
 `continue-demo-teacher`, `logo`, `mobile-menu`, `mock-mode-badge`, `teacher-name`, `nav-home`, `nav-assessments`,
 `nav-alerts`, `nav-remedial`, `nav-evals`, `nav-settings`, `nav-section-<8A|8B|9A>`, `section-card-<8A|8B|9A>`,
-`home-flag-<flagId>`, `todo-<assessmentId>`, `empty-state`, `error-state`, `loading-state`.
+`home-flag-<flagId>`, `todo-<assessmentId>`, `empty-state`, `error-state`, `loading-state`, `back-link`, `nav-progress`,
+`home-drafts`, `draft-<id>`, `draft-guard-dialog`, `draft-guard-save`, `draft-guard-discard`, `draft-guard-cancel`.
 
 ### Flow 1 — grade and review
 - Wizard: `upload-wizard` (has `data-step`), `wizard-step-<details|questions|sheets|match|grade>`, `assessment-status`,
@@ -120,7 +137,12 @@ Dynamic parts are shown in `<angle brackets>`.
   `question-concept-<n>`, `confirm-questions`, `capture-sheets`, `upload-sheets`, `use-sample-sheets`,
   `upload-progress`, `upload-summary`, `match-summary`, `match-row-<submissionId>`, `match-select-<submissionId>`,
   `confirm-matches` (label becomes "Start grading" once matches are confirmed), `start-grading-link`, `open-grading`,
-  `open-review`, `open-results`.
+  `open-review`, `open-results`, `use-sample-paper-<paperKey>` (homework papers in mock mode), `use-sample-sheets`
+  (has `data-sample-kind` = `fixture` | `synthetic`), `assessment-filter-<all|tests|homework|followups|not_handed_out|drafts>`.
+- Hand out later: `hand-out-panel`, `not-handed-out-toggle`, `not-handed-out-saved`, `hand-out-done`, `print-student-copy`,
+  `aside-print-student-copy`, `share-work-<assessmentId>`, `share-work-url`, `not-handed-out-<assessmentId>`,
+  `print-copy-<assessmentId>`, `class-upcoming`, `upcoming-<assessmentId>`; print page `student-copy` /
+  `student-copy-<roll>`, `print-blank-copy`, `print-named-copies`; public page `student-copy`.
 - Progress: `grading-progress`, `answers-graded-count`, `sheets-graded-count`, `band-count-<high|medium|low>`,
   `start-grading`, `pause-grading`, `retry-sheet-<submissionId>`, `go-to-review`.
 - Review: `review-queue`, `reviewed-count`, `accept-all-high`, `accept-high-dialog`, `confirm-accept-high`,
@@ -140,7 +162,8 @@ Dynamic parts are shown in `<angle brackets>`.
   `weak-concept-misconceptions`, `weak-concept-snippet-<i>`, `plan-reteach`, `assign-group-practice`,
   `reteach-outcome`, `mastery-before-after`, `section-trend`, `class-concept-heatmap`, `heatmap-concept-<conceptId>`,
   `heatmap-row-<roll>`.
-- Setup: `plan-evidence`, `reteach-period`, `reteach-resources`, `reteach-language`, `reteach-note`, `generate-plan`.
+- Setup: `plan-evidence`, `reteach-period`, `reteach-resources`, `reteach-language`, `reteach-note`, `generate-plan`,
+  `plan-progress`, `progress-step-<evidence|misconceptions|draft|checks|pairs|save>` (has `data-status`).
 - Editor: `reteach-plan-editor`, `plan-status`, `plan-time-budget`, `open-teaching-mode`, `print-plan`, `save-plan`,
   `mark-plan-ready`, `taught-date`, `mark-plan-taught`, `create-exit-ticket`, `open-exit-ticket`,
   `plan-section-<kind>` (has `data-section-id`), `cites-<kind>`, `edit-section-<kind>`, `section-body-<kind>`,
@@ -160,7 +183,9 @@ Dynamic parts are shown in `<angle brackets>`.
 - Builder: `remedial-builder`, `remedial-students`, `remedial-student-<roll>`, `remedial-concepts`,
   `remedial-concept-<conceptId>` (has `data-state`), `remedial-count`, `remedial-mode`, `generate-remedial`,
   `remedial-question-<n>`, `remedial-question-text-<n>`, `targets-mistake-<n>`, `remove-remedial-question-<n>`,
-  `save-remedial`, `assign-remedial`, `print-remedial`, `upload-remedial-submissions`.
+  `save-remedial`, `assign-remedial`, `print-remedial`, `upload-remedial-submissions` (label follows the grading state:
+  Grade responses / Continue grading / Review grades / Results), `grade-remedial-<remedialId>` (Remedial list, student
+  page, alert page), `student-remedial-<remedialId>`.
 - Print: `printable-sheet-<roll>`, `print-now`. Then flow 1 ids for grading and review.
 
 ### Flow 4 — PTM
@@ -183,5 +208,7 @@ Dynamic parts are shown in `<angle brackets>`.
   and callbacks they need.
 - The e2e specs in `tests/e2e/` are working scripts for all four flows and show reliable selectors and waits.
   `clickUntil` in `tests/e2e/helpers.ts` guards against clicking server-rendered buttons before hydration.
+- A script that leaves a freshly generated plan, remedial sheet or assessment set-up through a link will see the draft
+  guard; click `draft-guard-save` (or mark the work ready/assigned first).
 - Story numbers are asserted in `tests/unit/fixtures.test.ts`; if you change fixtures, run `npm test` and
   `npm run samples:generate` (images and gold set) together.

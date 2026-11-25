@@ -72,3 +72,15 @@ export const KIND_LABEL: Record<PlanSectionKindT, string> = {
   extension: "Extension work",
   exit_ticket: "Exit ticket questions",
 };
+
+/** The steps shown while a plan is generated (streamed from POST /api/reteach). */
+export const PLAN_STEPS = [
+  { id: "evidence", label: "Reading your class's answers" },
+  { id: "misconceptions", label: "Choosing the misconceptions to tackle" },
+  { id: "draft", label: "Drafting the lesson steps" },
+  { id: "checks", label: "Checking citations, timing and the exit ticket" },
+  { id: "pairs", label: "Pairing mentors with learners" },
+  { id: "save", label: "Saving your draft" },
+] as const;
+export type PlanStepId = (typeof PLAN_STEPS)[number]["id"];
+export type PlanProgress = (step: PlanStepId, status: "active" | "done", detail?: string) => void;

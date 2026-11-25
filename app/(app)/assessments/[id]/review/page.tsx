@@ -5,6 +5,7 @@ import { Badge } from "@/components/ui/badge";
 import { statusLabel } from "@/components/home/TeacherHome";
 import { formatDate } from "@/lib/format";
 import { getReviewQueue } from "@/lib/queries/review";
+import { assessmentHome } from "@/lib/ui/back";
 
 export const metadata = { title: "Review" };
 
@@ -17,6 +18,7 @@ export default async function ReviewPage({ params }: { params: Promise<{ id: str
       <PageHeader
         eyebrow={`Class ${data.assessment.section} · ${formatDate(data.assessment.date)}`}
         title={`Review: ${data.assessment.title}`}
+        back={assessmentHome(id, data.assessment.title)}
         description="Least certain answers first. Nothing is final until you accept it."
         actions={<Badge variant="secondary">{statusLabel(data.assessment.status)}</Badge>}
       />

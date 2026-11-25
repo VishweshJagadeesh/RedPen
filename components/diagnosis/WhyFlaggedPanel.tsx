@@ -1,7 +1,8 @@
 "use client";
 import Link from "next/link";
 import { useState } from "react";
-import { ArrowRight, CheckCircle2, ClipboardList, Lightbulb, RotateCcw, Wrench } from "lucide-react";
+import { ArrowRight, CheckCircle2, ClipboardCheck, ClipboardList, Lightbulb, RotateCcw, Wrench } from "lucide-react";
+import { assessmentHref, gradeActionLabel } from "@/lib/ui/status";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -253,13 +254,20 @@ export function WhyFlaggedPanel({ flag, remedialHref, studentHref, busy, error, 
             )}
           </div>
           {flag.remedials.length > 0 && (
-            <ul className="text-sm text-muted-foreground">
+            <ul className="space-y-2 text-sm text-muted-foreground">
               {flag.remedials.map((r) => (
-                <li key={r.id}>
+                <li key={r.id} className="flex flex-wrap items-center gap-2">
                   <Link href={`/remedial/${r.id}`} className="text-primary hover:underline">
                     {r.title}
-                  </Link>{" "}
-                  · {r.status}
+                  </Link>
+                  <span>· {r.status === "assigned" ? "awaiting answers" : r.status}</span>
+                  {r.assessmentId && (
+                    <Button asChild size="sm" variant={r.assessmentStatus === "final" ? "ghost" : "default"}>
+                      <Link href={assessmentHref({ id: r.assessmentId, status: r.assessmentStatus ?? "" })} data-demo-id={`grade-remedial-${r.id}`}>
+                        <ClipboardCheck /> {gradeActionLabel(r.assessmentStatus)}
+                      </Link>
+                    </Button>
+                  )}
                 </li>
               ))}
             </ul>

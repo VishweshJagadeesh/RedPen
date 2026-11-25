@@ -19,6 +19,7 @@ export default async function RemedialPage({ params }: { params: Promise<{ id: s
           </Link>
         }
         title={data.title}
+        back={{ href: "/remedial", label: "Remedial sheets" }}
         description={data.status === "draft" ? "Review, edit or remove questions, then assign. Nothing goes out until you assign it." : undefined}
       />
       <RemedialReviewContainer data={data} roster={ctx.roster} concepts={ctx.concepts} fromFlag={!!data.flagId} />

@@ -25,7 +25,11 @@ export async function listFlags(teacherId: string) {
 export async function getFlag(flagId: string) {
   const f = await prisma.flag.findUnique({ where: { id: flagId }, include: { student: true, section: true } });
   if (!f) return null;
-  const remedials = (await prisma.remedialAssignment.findMany({ where: { flagId } })).map((r) => ({ id: r.id, title: r.title, status: r.status, assessmentId: r.assessmentId }));
+  const remRows = await prisma.remedialAssignment.findMany({ where: { flagId } });
+  const remAsm = new Map(
+    (await prisma.assessment.findMany({ where: { id: { in: remRows.map((r) => r.assessmentId).filter((x): x is string => !!x) } }, select: { id: true, status: true } })).map((a) => [a.id, a.status]),
+  );
+  const remedials = remRows.map((r) => ({ id: r.id, title: r.title, status: r.status, assessmentId: r.assessmentId, assessmentStatus: r.assessmentId ? (remAsm.get(r.assessmentId) ?? null) : null }));
   return {
     id: f.id,
     type: f.type,

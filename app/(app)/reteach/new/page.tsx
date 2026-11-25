@@ -23,7 +23,7 @@ export default async function NewReteachPage({ searchParams }: { searchParams: P
   }
   return (
     <div className="mx-auto max-w-3xl space-y-6">
-      <PageHeader eyebrow={`Class ${section?.name} · ${evidence.chapter}`} title={`Plan a reteach: ${evidence.conceptName}`} description="One period, built around the mistakes this class actually made." />
+      <PageHeader eyebrow={`Class ${section?.name} · ${evidence.chapter}`} title={`Plan a reteach: ${evidence.conceptName}`} back={{ href: `/sections/${sectionId}`, label: `Class ${section?.name ?? ""}` }} description="One period, built around the mistakes this class actually made." />
       <EvidenceSummary evidence={evidence} />
       <ReteachSetupContainer sectionId={sectionId} conceptId={conceptId} defaultPeriod={config.planner.defaultPeriodMinutes} />
     </div>

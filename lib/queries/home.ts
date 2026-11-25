@@ -42,7 +42,7 @@ export async function getHomeData(teacherId: string) {
   );
 
   const pending = await prisma.assessment.findMany({
-    where: { section: { teacherId }, status: { not: "final" } },
+    where: { section: { teacherId }, status: { notIn: ["final", "draft"] } },
     orderBy: { date: "desc" },
     include: { section: true, submissions: { select: { status: true, answerGrades: { select: { status: true } } } } },
   });
@@ -54,12 +54,28 @@ export async function getHomeData(teacherId: string) {
       section: a.section.name,
       type: a.type,
       status: a.status,
+      handedOut: a.handedOut,
       date: a.date.toISOString(),
       sheets: a.submissions.filter((s) => s.status !== "absent").length,
       graded: a.submissions.filter((s) => s.status === "graded").length,
       pendingReview: answers.filter((g) => g.status === "pending_review").length,
     };
   });
+
+  // Unfinished work the teacher can come back to (saved from the "leave this page?" dialog, or just left).
+  const [draftPlans, draftRemedials, draftAssessments] = await Promise.all([
+    prisma.lessonPlan.findMany({ where: { section: { teacherId }, status: "draft" }, orderBy: { updatedAt: "desc" }, include: { section: true } }),
+    prisma.remedialAssignment.findMany({ where: { section: { teacherId }, status: "draft" }, orderBy: { createdAt: "desc" }, include: { section: true } }),
+    prisma.assessment.findMany({ where: { section: { teacherId }, status: "draft" }, orderBy: { createdAt: "desc" }, include: { section: true } }),
+  ]);
+  const conceptNames = new Map(
+    (await prisma.concept.findMany({ where: { id: { in: draftPlans.map((p) => p.conceptId) } }, select: { id: true, name: true } })).map((c) => [c.id, c.name]),
+  );
+  const drafts = [
+    ...draftPlans.map((p) => ({ kind: "Reteach plan", id: p.id, title: `Reteach: ${conceptNames.get(p.conceptId) ?? p.conceptId}`, section: p.section.name, at: p.updatedAt.toISOString(), href: `/reteach/${p.id}`, saved: !!p.draftSavedAt })),
+    ...draftRemedials.map((r) => ({ kind: "Remedial sheet", id: r.id, title: r.title, section: r.section.name, at: r.createdAt.toISOString(), href: `/remedial/${r.id}`, saved: !!r.draftSavedAt })),
+    ...draftAssessments.map((a) => ({ kind: a.type === "homework" ? "Homework" : "Assessment", id: a.id, title: a.title, section: a.section.name, at: a.createdAt.toISOString(), href: `/assessments/${a.id}`, saved: !!a.draftSavedAt })),
+  ].sort((a, b) => b.at.localeCompare(a.at));
 
   const flags = await prisma.flag.findMany({
     where: { section: { teacherId }, status: { not: "resolved" } },
@@ -70,6 +86,7 @@ export async function getHomeData(teacherId: string) {
   return {
     sections: sectionCards,
     toDo,
+    drafts,
     flags: flags.map((f) => ({
       id: f.id,
       studentName: f.student.name,

@@ -6,7 +6,8 @@ import { Alert, Progress } from "@/components/ui/misc";
 export interface SheetUploaderProps {
   uploaded: { sheets: number; pages: number };
   progress: { done: number; total: number } | null;
-  canUseSamples: boolean;
+  /** "fixture": bundled handwriting photos; "synthetic": generated practice sheets (mock AI); null: none. */
+  sampleKind: "fixture" | "synthetic" | null;
   busy: boolean;
   error: string | null;
   onFiles: (files: File[]) => void;
@@ -14,7 +15,7 @@ export interface SheetUploaderProps {
 }
 
 /** Step 3: bulk upload by multi-photo capture or multiple files, in sheet order. */
-export function SheetUploader({ uploaded, progress, canUseSamples, busy, error, onFiles, onUseSamples }: SheetUploaderProps) {
+export function SheetUploader({ uploaded, progress, sampleKind, busy, error, onFiles, onUseSamples }: SheetUploaderProps) {
   return (
     <div className="space-y-4">
       <p className="text-sm text-muted-foreground">
@@ -35,10 +36,17 @@ export function SheetUploader({ uploaded, progress, canUseSamples, busy, error, 
           <input type="file" accept="image/*" multiple className="sr-only" disabled={busy} data-demo-id="upload-sheets" onChange={(e) => onFiles(Array.from(e.target.files ?? []))} />
         </label>
       </div>
-      {canUseSamples && (
-        <Button type="button" variant="outline" disabled={busy} onClick={onUseSamples} data-demo-id="use-sample-sheets">
-          <Sparkles /> Use the sample answer sheets
-        </Button>
+      {sampleKind && (
+        <div className="flex flex-wrap items-center gap-3 rounded-lg border border-dashed p-3">
+          <Button type="button" variant="outline" disabled={busy} onClick={onUseSamples} data-demo-id="use-sample-sheets" data-sample-kind={sampleKind}>
+            <Sparkles /> {busy ? "Attaching sample sheets…" : "Use the sample answer sheets"}
+          </Button>
+          <span className="text-xs text-muted-foreground">
+            {sampleKind === "fixture"
+              ? "Handwritten sample sheets for this demo test."
+              : "Generates a practice sheet for every student from the answer key and their past work, graded by the mock AI. For trying the flow only."}
+          </span>
+        </div>
       )}
       {progress && (
         <div className="space-y-1" data-demo-id="upload-progress">

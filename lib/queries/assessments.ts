@@ -3,8 +3,9 @@ import { parseJson } from "../db/json";
 import { aiMode } from "../ai/mode";
 import { fileUrl } from "../storage";
 import { proposeMatch, MATCH_REVIEW_THRESHOLD } from "../grading/matching";
-import { sampleSetFor } from "../services/assessments";
+import { sampleKindFor } from "../services/assessments";
 import type { RubricStep } from "../domain";
+import { assessmentParent } from "../ui/back";
 
 export async function listAssessments(teacherId: string) {
   const rows = await prisma.assessment.findMany({
@@ -22,6 +23,8 @@ export async function listAssessments(teacherId: string) {
     sectionId: a.sectionId,
     sheets: a._count.submissions,
     questions: a._count.questions,
+    handedOut: a.handedOut,
+    linked: !!(a.lessonPlanId || a.remedialAssignmentId),
   }));
 }
 export type AssessmentListItem = Awaited<ReturnType<typeof listAssessments>>[number];
@@ -70,6 +73,10 @@ export async function getAssessmentWizard(id: string) {
     type: a.type,
     date: a.date.toISOString(),
     status: a.status,
+    handedOut: a.handedOut,
+    draftSavedAt: a.draftSavedAt?.toISOString() ?? null,
+    /** Created by another flow (exit ticket of a plan, assigned remedial sheet), so never a loose draft. */
+    linked: !!(a.lessonPlanId || a.remedialAssignmentId),
     section: { id: a.section.id, name: a.section.name },
     paperUrls: parseJson<string[]>(a.questionPaperKeys, []).map(fileUrl),
     keyUrls: parseJson<string[]>(a.answerKeyKeys, []).map(fileUrl),
@@ -86,8 +93,32 @@ export async function getAssessmentWizard(id: string) {
     roster,
     sheets,
     missingStudents: roster.filter((s) => !matchedIds.has(s.id)),
-    sampleSet: sampleSetFor(a.fixtureKey, a.type),
+    sampleKind: sampleKindFor(a.fixtureKey),
+    back: assessmentParent(a),
     mode: aiMode(),
   };
 }
 export type AssessmentWizardData = NonNullable<Awaited<ReturnType<typeof getAssessmentWizard>>>;
+
+/** The student copy: questions and marks only (no answer key, no rubric). */
+async function studentCopy(where: { id: string } | { shareToken: string }) {
+  const a = await prisma.assessment.findUnique({
+    where: where as { id: string },
+    include: { section: { include: { teacher: true } }, questions: { orderBy: { number: "asc" } } },
+  });
+  if (!a) return null;
+  return {
+    id: a.id,
+    title: a.title,
+    type: a.type,
+    date: a.date.toISOString(),
+    sectionId: a.sectionId,
+    sectionName: a.section.name,
+    teacherName: a.section.teacher.name,
+    handedOut: a.handedOut,
+    questions: a.questions.map((q) => ({ number: q.number, text: q.text, maxMarks: q.maxMarks })),
+  };
+}
+
+export const getStudentCopy = (id: string) => studentCopy({ id });
+export const getSharedStudentCopy = (token: string) => studentCopy({ shareToken: token });

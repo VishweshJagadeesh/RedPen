@@ -13,7 +13,9 @@ export { ReviewQueue } from "./grading/ReviewQueue";
 export { AnswerReviewCard } from "./grading/AnswerReviewCard";
 export { HandwritingCrop } from "./grading/HandwritingCrop";
 export { ResultsTable } from "./grading/ResultsTable";
-export { AssessmentList } from "./grading/AssessmentList";
+export { AssessmentList, ASSESSMENT_FILTERS } from "./grading/AssessmentList";
+export { HandOutPanel } from "./grading/HandOutPanel";
+export { StudentCopy } from "./grading/StudentCopy";
 // Diagnosis
 export { ClassDashboard } from "./diagnosis/ClassDashboard";
 export { ClassConceptHeatmap } from "./diagnosis/ClassConceptHeatmap";
@@ -38,11 +40,15 @@ export { StudentProfile } from "./profile/StudentProfile";
 export { PtmSummary } from "./profile/PtmSummary";
 // Shell, shared, evals, settings
 export { AppShell } from "./layout/AppShell";
+export { NavigationProgress } from "./layout/NavigationProgress";
 export { TeacherHome } from "./home/TeacherHome";
 export { ConfidenceBadge } from "./shared/ConfidenceBadge";
 export { AiSuggestedTag } from "./shared/AiSuggested";
 export { MockModeBadge } from "./shared/MockModeBadge";
-export { EmptyState, ErrorState, LoadingState, PageHeader } from "./shared/States";
+export { BackLink, EmptyState, ErrorState, LoadingState, PageHeader } from "./shared/States";
+export { DraftGuard } from "./shared/DraftGuard";
+export { GenerationProgress } from "./shared/GenerationProgress";
+export { ShareWorkButton } from "./shared/ShareWorkButton";
 export { EvalReportView } from "./evals/EvalReportView";
 export { SettingsPanel } from "./settings/SettingsPanel";
 // Containers (fetch data / perform actions, then render the components above)

@@ -4,6 +4,9 @@ const nextConfig: NextConfig = {
   experimental: { serverActions: { bodySizeLimit: "8mb" } },
   outputFileTracingIncludes: {
     "/**": ["./evals/reports/latest.json", "./evals/gold/*.json"],
+    // Generated practice sheets embed the handwriting font; live grading reads the bundled samples from disk.
+    "/api/files/**": ["./node_modules/@fontsource/kalam/files/kalam-latin-400-normal.woff2"],
+    "/api/assessments/**": ["./public/samples/**"],
   },
   webpack: (config, { dev }) => {
     if (dev) {

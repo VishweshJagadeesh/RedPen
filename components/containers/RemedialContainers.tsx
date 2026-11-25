@@ -2,6 +2,8 @@
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { RemedialBuilder, type RemedialBuilderProps, type RemedialSetup } from "@/components/remedial/RemedialBuilder";
+import { DraftGuard } from "@/components/shared/DraftGuard";
+import { assessmentHref } from "@/lib/ui/status";
 import { api } from "@/lib/client/api";
 import type { RemedialData, RemedialQuestion } from "@/lib/remedial/service";
 
@@ -63,6 +65,15 @@ export function RemedialReviewContainer({ data, ...shared }: Shared & { data: Re
     }
   }
   return (
+    <>
+    <DraftGuard
+      isNew={data.status === "draft" && !data.draftSavedAt}
+      dirty={dirty}
+      noun="remedial sheet"
+      scope={[`/remedial/${data.id}`]}
+      onSave={() => api(`/api/remedial/${data.id}/draft`, { method: "POST", json: { questions: dirty ? questions : undefined } }).then(() => undefined)}
+      onDiscard={() => api(`/api/remedial/${data.id}`, { method: "DELETE" }).then(() => undefined)}
+    />
     <RemedialBuilder
       {...shared}
       phase="review"
@@ -74,7 +85,8 @@ export function RemedialReviewContainer({ data, ...shared }: Shared & { data: Re
       busy={busy}
       error={error}
       printHref={`/remedial/${data.id}/print`}
-      assessmentHref={data.assessment ? (data.assessment.status === "final" ? `/assessments/${data.assessment.id}/results` : `/assessments/${data.assessment.id}`) : null}
+      assessmentHref={data.assessment ? assessmentHref(data.assessment) : null}
+      assessmentStatus={data.assessment?.status ?? null}
       onSetupChange={() => {}}
       onGenerate={() => {}}
       onQuestionsChange={(q) => {
@@ -84,5 +96,6 @@ export function RemedialReviewContainer({ data, ...shared }: Shared & { data: Re
       onSave={() => run("save", () => api(`/api/remedial/${data.id}`, { method: "PATCH", json: { questions } }))}
       onAssign={() => run("assign", () => api(`/api/remedial/${data.id}/assign`, { method: "POST" }))}
     />
+    </>
   );
 }
