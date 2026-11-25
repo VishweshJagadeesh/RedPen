@@ -6,7 +6,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Table, TBody, TD, TH, THead, TR } from "@/components/ui/table";
 import { TrendLineChart } from "@/components/charts/TrendLineChart";
 import { EmptyState } from "@/components/shared/States";
-import { masteryColor } from "./ClassConceptHeatmap";
+import { masteryColor } from "@/lib/ui/mastery-color";
 import { ASSESSMENT_TYPE_LABEL, FLAG_STATUS_LABEL, FLAG_TYPE_LABEL, type AssessmentType, type FlagStatus, type FlagType } from "@/lib/domain";
 import { formatDate, formatMarks, formatPct } from "@/lib/format";
 import type { StudentViewData } from "@/lib/queries/student";

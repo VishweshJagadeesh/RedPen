@@ -14,7 +14,7 @@ export async function getStudentView(studentId: string) {
   const classTrend = sectionTrend(idx);
   const series = studentScoreSeries(idx, studentId, { regularOnly: false });
   const trend = series
-    .filter((s) => s.type !== "remedial")
+    .filter((s) => ["weekly_test", "periodic_test", "term_exam"].includes(s.type))
     .map((s) => ({
       label: s.shortTitle,
       title: s.title,

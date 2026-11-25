@@ -1,27 +1,41 @@
 import { prisma } from "../db/prisma";
 import { parseJson } from "../db/json";
-import { DatasetIndex } from "../diagnosis/dataset";
-import { classWeakConcepts, sectionTrend } from "../diagnosis/mastery";
+import { classHealth, sectionTrend } from "../diagnosis/mastery";
 import type { FlagEvidence } from "../diagnosis/flags";
-import { loadSectionDataset } from "./dataset";
+import { sectionInsights } from "./section";
 
 export async function getHomeData(teacherId: string) {
   const sections = await prisma.section.findMany({ where: { teacherId }, orderBy: { name: "asc" }, include: { _count: { select: { students: true } } } });
   const sectionCards = await Promise.all(
     sections.map(async (s) => {
-      const ds = await loadSectionDataset(s.id);
-      const idx = new DatasetIndex(ds);
+      const { idx, cards } = await sectionInsights(s.id);
       const trend = sectionTrend(idx);
-      const weak = classWeakConcepts(idx);
+      const weak = cards.filter((c) => c.isWeak);
       const openFlags = await prisma.flag.count({ where: { sectionId: s.id, status: { not: "resolved" } } });
+      const latest = trend.at(-1);
+      const prev = trend.at(-2);
       return {
         id: s.id,
         name: s.name,
         students: s._count.students,
-        latestAverage: trend.at(-1)?.average ?? null,
-        latestTitle: trend.at(-1)?.shortTitle ?? null,
+        latestAverage: latest?.average ?? null,
+        latestTitle: latest?.shortTitle ?? null,
+        change: latest && prev ? Math.round((latest.average - prev.average) * 10) / 10 : null,
+        health: classHealth(latest?.average ?? null),
         trend: trend.map((t) => ({ label: t.shortTitle, value: t.average })),
-        weakConcepts: weak.map((w) => ({ id: w.conceptId, name: w.conceptName, shareUnder: w.shareUnder })),
+        weakConcepts: weak.map((w) => ({
+          id: w.conceptId,
+          name: w.conceptName,
+          chapter: w.chapter,
+          shareUnder: w.shareUnder,
+          studentsUnder: w.studentsUnder,
+          studentsAssessed: w.studentsAssessed,
+          meanPct: w.meanPct,
+          source: w.source,
+          assessmentTitle: w.assessmentTitle,
+          topMisconception: w.misconceptions[0] ?? null,
+          plan: w.plan ? { id: w.plan.id, status: w.plan.status } : null,
+        })),
         openFlags,
       };
     }),

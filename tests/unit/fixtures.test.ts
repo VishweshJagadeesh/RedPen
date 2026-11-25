@@ -72,7 +72,12 @@ describe("seeded stories for 8B", () => {
     const after = classConceptSummary(new DatasetIndex(all), "c8-le-transposing")!;
     expect(after.studentsUnder).toBe(33);
     expect(Math.round(after.meanPct)).toBe(36);
-    expect(classWeakConcepts(new DatasetIndex(seeded)).map((w) => w.conceptName)).toEqual(["Transposing terms", "Variables on both sides"]);
+    // Two weak concepts from tests, plus one surfaced by homework before any test covered it.
+    const weak = classWeakConcepts(new DatasetIndex(seeded));
+    expect(weak.map((w) => w.conceptName)).toEqual(["Transposing terms", "Variables on both sides", "Percentage increase and decrease"]);
+    const pct = weak.find((w) => w.conceptId === "c8-cq-percent")!;
+    expect(pct.assessmentType).toBe("homework");
+    expect(pct.misconceptions[0].label).toBe("Uses the new value as the base");
   });
 
   it("(a) WT4 mock grading yields 40 High, 9 Medium and 3 Low sheets", () => {

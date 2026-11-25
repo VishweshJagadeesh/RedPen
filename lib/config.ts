@@ -42,6 +42,11 @@ export const config = {
     resolveWithin: 10,
     /** Strengths / focus areas thresholds for profiles. */
     strengthScore: 75,
+    /** Class average health bands on the trend chart: ≥ healthy is green, ≥ critical is yellow, below is red. */
+    classHealthy: num("CLASS_HEALTHY", 60),
+    classCritical: num("CLASS_CRITICAL", 45),
+    /** A change between consecutive tests of at least this many points is called out on the chart. */
+    notableChange: 5,
   },
   planner: {
     defaultPeriodMinutes: 40,

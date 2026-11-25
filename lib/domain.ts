@@ -1,6 +1,6 @@
 /** Shared domain types. Database rows store JSON as strings; these are the parsed shapes. */
 
-export const ASSESSMENT_TYPES = ["weekly_test", "periodic_test", "term_exam", "remedial", "exit_ticket"] as const;
+export const ASSESSMENT_TYPES = ["weekly_test", "periodic_test", "term_exam", "homework", "remedial", "exit_ticket"] as const;
 export type AssessmentType = (typeof ASSESSMENT_TYPES)[number];
 export const REGULAR_TYPES: AssessmentType[] = ["weekly_test", "periodic_test", "term_exam"];
 
@@ -8,6 +8,7 @@ export const ASSESSMENT_TYPE_LABEL: Record<AssessmentType, string> = {
   weekly_test: "Weekly test",
   periodic_test: "Periodic test",
   term_exam: "Term exam",
+  homework: "Homework",
   remedial: "Remedial",
   exit_ticket: "Exit ticket",
 };

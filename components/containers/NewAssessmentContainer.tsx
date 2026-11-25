@@ -6,7 +6,7 @@ import { UploadWizard } from "@/components/grading/UploadWizard";
 import { api } from "@/lib/client/api";
 import { downscaleImage } from "@/lib/client/image";
 
-export function NewAssessmentContainer(props: Pick<AssessmentDetailsFormProps, "sections" | "samples" | "defaultDate">) {
+export function NewAssessmentContainer(props: Pick<AssessmentDetailsFormProps, "sections" | "samples" | "defaultDate" | "defaultType" | "defaultSectionId">) {
   const router = useRouter();
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);

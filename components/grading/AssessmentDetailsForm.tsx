@@ -20,6 +20,8 @@ export interface AssessmentDetailsFormProps {
   sections: { id: string; name: string }[];
   samples: { key: string; label: string; sectionId: string; title: string; type: AssessmentType }[];
   defaultDate: string;
+  defaultType?: AssessmentType;
+  defaultSectionId?: string;
   busy: boolean;
   error: string | null;
   onSubmit: (values: AssessmentDetailsValues) => void;
@@ -56,9 +58,9 @@ function FilePicker({ label, files, onChange, demoId }: { label: string; files: 
 }
 
 /** Step 1 of the upload wizard: section, type, date, question paper and answer key. Mobile-first. */
-export function AssessmentDetailsForm({ sections, samples, defaultDate, busy, error, onSubmit }: AssessmentDetailsFormProps) {
-  const [sectionId, setSectionId] = useState(sections[0]?.id ?? "");
-  const [type, setType] = useState<AssessmentType>("weekly_test");
+export function AssessmentDetailsForm({ sections, samples, defaultDate, defaultType = "weekly_test", defaultSectionId, busy, error, onSubmit }: AssessmentDetailsFormProps) {
+  const [sectionId, setSectionId] = useState(defaultSectionId ?? sections[0]?.id ?? "");
+  const [type, setType] = useState<AssessmentType>(defaultType);
   const [title, setTitle] = useState("");
   const [date, setDate] = useState(defaultDate);
   const [paper, setPaper] = useState<File[]>([]);
@@ -118,7 +120,7 @@ export function AssessmentDetailsForm({ sections, samples, defaultDate, busy, er
         </div>
         <div className="space-y-2">
           <Label htmlFor="title">Title</Label>
-          <Input id="title" placeholder="Weekly Test 5 — Mensuration" value={title} onChange={(e) => setTitle(e.target.value)} data-demo-id="assessment-title" />
+          <Input id="title" placeholder={type === "homework" ? "Homework 4 — Mensuration" : "Weekly Test 5 — Mensuration"} value={title} onChange={(e) => setTitle(e.target.value)} data-demo-id="assessment-title" />
         </div>
         <div className="space-y-2">
           <Label htmlFor="date">Date</Label>

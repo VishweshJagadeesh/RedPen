@@ -53,6 +53,42 @@ export const CONCEPTS: ConceptFixture[] = [
 
 export const CONCEPT_BY_ID: Record<string, ConceptFixture> = Object.fromEntries(CONCEPTS.map((x) => [x.id, x]));
 
+/** Short labels for dense views (heatmap headers). Full names stay in tooltips. */
+export const CONCEPT_SHORT: Record<string, string> = {
+  "c8-rn-properties": "Properties",
+  "c8-rn-between": "Between two rationals",
+  "c8-rn-numberline": "Number line",
+  "c8-le-transposing": "Transposing terms",
+  "c8-le-bothsides": "Variables both sides",
+  "c8-le-word": "Word problems",
+  "c8-sq-properties": "Square properties",
+  "c8-sq-prime": "√ by prime factors",
+  "c8-sq-longdiv": "√ by long division",
+  "c8-ae-multiply": "Multiplying",
+  "c8-ae-identities": "Identities",
+  "c8-ae-terms": "Like terms",
+  "c8-me-area": "Area",
+  "c8-me-surface": "Surface area",
+  "c8-me-volume": "Volume",
+  "c8-cq-percent": "% increase / decrease",
+  "c8-cq-discount": "Discount & tax",
+  "c8-cq-ci": "Compound interest",
+  "c9-ns-irrational": "Irrational numbers",
+  "c9-ns-rationalise": "Rationalising",
+  "c9-ns-exponents": "Exponent laws",
+  "c9-po-zeroes": "Zeroes",
+  "c9-po-factor": "Factor theorem",
+  "c9-po-identities": "Identities",
+  "c9-cg-plotting": "Plotting points",
+  "c9-cg-quadrants": "Quadrants",
+  "c9-le2-solutions": "Solutions",
+  "c9-le2-graph": "Graphs",
+};
+
+export function conceptShort(id: string, fallback: string): string {
+  return CONCEPT_SHORT[id] ?? fallback;
+}
+
 export function conceptName(id: string): string {
   return CONCEPT_BY_ID[id]?.name ?? id;
 }

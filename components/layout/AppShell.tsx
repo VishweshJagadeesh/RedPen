@@ -2,7 +2,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState, type ReactNode } from "react";
-import { BellRing, ClipboardCheck, ClipboardList, FlaskConical, Home, Menu, Settings, Users, X } from "lucide-react";
+import { BellRing, ClipboardCheck, ClipboardList, FlaskConical, Home, Menu, Settings, TriangleAlert, Users, X } from "lucide-react";
 import { MockModeBadge } from "@/components/shared/MockModeBadge";
 import { cn } from "@/lib/utils";
 
@@ -10,7 +10,8 @@ export interface AppShellProps {
   teacherName: string;
   subject: string;
   mode: "live" | "mock";
-  sections: { id: string; name: string }[];
+  /** weakConcepts: number of class-wide weak concepts, shown as a badge next to the class. */
+  sections: { id: string; name: string; weakConcepts: number }[];
   openFlags: number;
   children: ReactNode;
 }
@@ -27,6 +28,7 @@ export function AppShell({ teacherName, subject, mode, sections, openFlags, chil
     { href: "/evals", label: "Evals", icon: FlaskConical, demoId: "nav-evals" },
     { href: "/settings", label: "Settings", icon: Settings, demoId: "nav-settings" },
   ];
+  const totalWeak = sections.reduce((t, s) => t + s.weakConcepts, 0);
   const isActive = (href: string) => pathname === href || pathname.startsWith(`${href}/`);
 
   const links = (
@@ -60,7 +62,18 @@ export function AppShell({ teacherName, subject, mode, sections, openFlags, chil
           )}
         >
           <Users className="h-4 w-4" aria-hidden />
-          Class {s.name}
+          <span className="flex-1">Class {s.name}</span>
+          {s.weakConcepts > 0 && (
+            <span
+              className="inline-flex items-center gap-0.5 rounded-full bg-low px-1.5 text-xs font-medium text-white"
+              title={`${s.weakConcepts} class-wide weak concept${s.weakConcepts === 1 ? "" : "s"}`}
+              aria-label={`${s.weakConcepts} class-wide weak concept${s.weakConcepts === 1 ? "" : "s"}`}
+              data-demo-id={`nav-weak-badge-${s.name}`}
+            >
+              <TriangleAlert className="h-3 w-3" aria-hidden />
+              {s.weakConcepts}
+            </span>
+          )}
         </Link>
       ))}
     </nav>
@@ -69,8 +82,9 @@ export function AppShell({ teacherName, subject, mode, sections, openFlags, chil
   return (
     <div className="min-h-screen">
       <header className="no-print sticky top-0 z-30 flex h-14 items-center gap-3 border-b bg-card/90 px-4 backdrop-blur lg:hidden">
-        <button className="rounded-md p-2 hover:bg-muted" onClick={() => setOpen(true)} aria-label="Open menu" data-demo-id="mobile-menu">
+        <button className="relative rounded-md p-2 hover:bg-muted" onClick={() => setOpen(true)} aria-label="Open menu" data-demo-id="mobile-menu">
           <Menu className="h-5 w-5" />
+          {totalWeak > 0 && <span className="absolute right-0.5 top-0.5 h-2.5 w-2.5 rounded-full bg-low ring-2 ring-card" aria-label={`${totalWeak} class-wide weak concepts`} />}
         </button>
         <Logo />
         <div className="ml-auto">

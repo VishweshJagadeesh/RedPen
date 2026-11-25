@@ -14,8 +14,10 @@ This document is for whoever builds the scripted walkthrough next. Everything be
 | 5.4 Remedial | Start from an alert, a weak-concept group or a student. 5–10 questions easier → harder, each tagged and citing the exact mistake (test, question, what was written; anonymised for groups). Review/edit/reorder/remove → assign (pending on the student's profile, alert → Action taken) → printable sheet per student with a personal "Why this sheet" → upload & grade through the same flow → alert moves to Improving/Resolved with the evidence. |
 | 5.5 Profile & PTM | Parent profile at `/p/<token>` (public, read-only, noindex, no contact details or photos): grades over time, strengths, weak concepts, pending work. PTM mode (large text, laptop-facing): trend, 2–3 strengths, 2–3 focus areas in plain language, this term's story, 3 talking points incl. a home activity, EN/HI toggle, one-page print. Every statement links to its source test/question and only uses extracted facts. |
 | 7 Evals | `npm run eval` and `/evals`: agreement, calibration, confidently-wrong, review load, tagging, robustness, injection, alert P/R, plan rubric (rules + AI judge in live), latency/cost, review-override stats. Dated markdown reports in `evals/reports/`. Mock runs are labelled. |
+| Homework | `homework` assessment type graded through the same flow; feeds class-wide weak concepts (not test alerts); per-concept understanding and completion on the class page; "Grade a homework" prefills the wizard. Seeded HW1–HW3; 8B HW3 surfaces "Percentage increase and decrease". |
+| Class page & notifications | KPI strip; weak-concept cards (homework-sourced ones badged); class trend with zoomed axis and Healthy/Critical/Poor bands and change call-outs, in a card decoupled from the scrolling alerts card; homework panel; Students tab (search by name/roll, filters, sort, sparkline, weakest concept, homework completion); Concept mastery tab (short horizontal labels, weak columns marked, chapter grouping, search, sort, weak-only filter). Weak-concept count badges next to each class in the sidebar; Home banner and weak-concept cards with View class / Plan a reteach. |
 | Settings | Reset demo data, AI mode/models, thresholds, audit log, sign out. |
-| Tests | Vitest: 39 unit tests (story numbers, confidence, planner, remedial, PTM, evals, schemas). Playwright: one happy path per flow (`npm run e2e`). |
+| Tests | Vitest: 45 unit tests (story numbers, confidence, planner, remedial, PTM, evals, schemas). Playwright: one happy path per flow plus the class page (`npm run e2e`). |
 
 ## Known limitations
 
@@ -71,7 +73,7 @@ render them. All are exported from `components/index.ts`.
 
 | Screen | Route | Container | Presentational |
 |---|---|---|---|
-| Class dashboard | `/sections/[id]` | `app/(app)/sections/[id]/page.tsx` | `ClassDashboard`, `WeakConceptCard`, `ClassConceptHeatmap`, `TrendLineChart`, `FlaggedStudentsList` |
+| Class dashboard | `/sections/[id]` | `app/(app)/sections/[id]/page.tsx` | `ClassDashboard`, `WeakConceptCard`, `ClassTrendChart`, `StudentRoster`, `ClassConceptHeatmap`, `FlaggedStudentsList` |
 | Plan setup | `/reteach/new?sectionId&conceptId` | `ReteachSetupContainer` | `EvidenceSummary`, `ReteachInputsForm` |
 | Plan editor | `/reteach/[id]` | `ReteachPlanContainer` | `ReteachPlanEditor` |
 | Teaching mode | `/reteach/[id]/teach` | page | `TeachingMode` |
@@ -104,6 +106,8 @@ Other: `EvalReportView` (`/evals`), `SettingsPanel` (`/settings`), `AppShell`, `
 Dynamic parts are shown in `<angle brackets>`.
 
 ### Shared / navigation
+`nav-weak-badge-<8A|8B|9A>` (class-wide weak concept count), `weak-concepts-banner`, `home-weak-concepts`,
+`home-weak-<section>-<conceptId>`, `home-weak-view-class`, `home-weak-plan-reteach`, `section-card-weak-<section>`,
 `continue-demo-teacher`, `logo`, `mobile-menu`, `mock-mode-badge`, `teacher-name`, `nav-home`, `nav-assessments`,
 `nav-alerts`, `nav-remedial`, `nav-evals`, `nav-settings`, `nav-section-<8A|8B|9A>`, `section-card-<8A|8B|9A>`,
 `home-flag-<flagId>`, `todo-<assessmentId>`, `empty-state`, `error-state`, `loading-state`.
@@ -127,6 +131,11 @@ Dynamic parts are shown in `<angle brackets>`.
 - Results: `results-table`, `results-filter-<all|low|medium|high>`, `results-row-<roll>`, `export-csv`.
 
 ### Flow 2 — weak concept → reteach → exit ticket
+- Class page: `kpi-students`, `kpi-latest-average`, `kpi-weak-concepts`, `kpi-open-flags`, `kpi-homework`,
+  `section-trend-card`, `class-health`, `needs-attention-card`, `homework-list`, `homework-<assessmentId>`,
+  `grade-homework`, `weak-concept-from-homework`, `tab-students`, `tab-heatmap`, `student-roster`, `student-search`,
+  `roster-count`, `roster-filter-<all|attention|weak|homework>`, `roster-sort`, `roster-row-<roll>`, `heatmap-search`,
+  `heatmap-group-chapter`, `heatmap-only-weak`, `heatmap-sort`.
 - Dashboard: `class-dashboard`, `weak-concept-card-<conceptId>`, `weak-concept-affected`,
   `weak-concept-misconceptions`, `weak-concept-snippet-<i>`, `plan-reteach`, `assign-group-practice`,
   `reteach-outcome`, `mastery-before-after`, `section-trend`, `class-concept-heatmap`, `heatmap-concept-<conceptId>`,
@@ -168,6 +177,8 @@ Dynamic parts are shown in `<angle brackets>`.
 
 ## Notes for the scripted walkthrough
 
+- `ClassConceptHeatmap` and `StudentRoster` take `studentHrefBase` (a string prefix) rather than a function, so they
+  can be rendered from server components.
 - Each presentational component can be rendered with fixture props alone; the containers show exactly which props
   and callbacks they need.
 - The e2e specs in `tests/e2e/` are working scripts for all four flows and show reliable selectors and waits.

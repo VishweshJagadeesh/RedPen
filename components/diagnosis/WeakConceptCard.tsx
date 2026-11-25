@@ -38,6 +38,11 @@ export function WeakConceptCard({ concept: c, planHref, practiceHref }: WeakConc
           </div>
           <div className="text-sm text-muted-foreground">
             Class mastery <span className="font-semibold text-foreground">{Math.round(c.meanPct)}%</span> · {c.assessmentTitle}
+            {c.source === "homework" && (
+              <Badge variant="medium" className="ml-2" data-demo-id="weak-concept-from-homework">
+                Spotted in homework
+              </Badge>
+            )}
           </div>
         </div>
 

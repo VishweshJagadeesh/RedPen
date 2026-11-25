@@ -1,5 +1,6 @@
 /** Concept mastery, class-wide weak concepts, heatmap and trends — pure functions over a dataset. */
 import { config } from "../config";
+import { conceptShort } from "../fixtures/concepts";
 import { MISTAKE_LABEL, type MistakeType } from "../domain";
 import {
   DatasetIndex,
@@ -126,6 +127,7 @@ export interface ClassConceptSummary {
   assessmentId: string;
   assessmentTitle: string;
   assessmentDate: string;
+  assessmentType: DsAssessment["type"];
   studentsAssessed: number;
   studentsUnder: number;
   shareUnder: number; // 0..1
@@ -245,6 +247,7 @@ export function classConceptSummary(
     assessmentId: latest.id,
     assessmentTitle: latest.title,
     assessmentDate: latest.date,
+    assessmentType: latest.type,
     studentsAssessed: perStudent.length,
     studentsUnder: under.length,
     shareUnder,
@@ -270,7 +273,7 @@ export function classWeakConcepts(idx: DatasetIndex, cfg: DiagnosisConfig = conf
 }
 
 export interface HeatmapData {
-  concepts: { id: string; name: string; chapter: string; classMean: number }[];
+  concepts: { id: string; name: string; shortName: string; chapter: string; classMean: number }[];
   rows: { studentId: string; name: string; rollNumber: number; cells: (number | null)[] }[];
 }
 
@@ -296,7 +299,7 @@ export function conceptHeatmap(idx: DatasetIndex): HeatmapData {
   });
   concepts.sort((a, b) => a.classMean - b.classMean);
   return {
-    concepts: concepts.map(({ id, name, chapter, classMean }) => ({ id, name, chapter, classMean })),
+    concepts: concepts.map(({ id, name, chapter, classMean }) => ({ id, name, shortName: conceptShort(id, name), chapter, classMean })),
     rows: cellsByStudent.map((r) => ({
       studentId: r.student.id,
       name: r.student.name,
@@ -340,4 +343,104 @@ function rotate<T>(arr: T[], by: number) {
   const k = by % arr.length;
   const head = arr.splice(0, k);
   arr.push(...head);
+}
+
+
+/** Latest test average, its change, and a health band for the class trend. */
+export function classHealth(avg: number | null, cfg: DiagnosisConfig = config.diagnosis): "healthy" | "critical" | "poor" | null {
+  if (avg === null) return null;
+  return avg >= cfg.classHealthy ? "healthy" : avg >= cfg.classCritical ? "critical" : "poor";
+}
+
+export interface HomeworkSummary {
+  assessmentId: string;
+  title: string;
+  shortTitle: string;
+  date: string;
+  average: number;
+  submitted: number;
+  expected: number;
+  /** enoughEvidence: the concept had at least minConceptMarks on this homework (otherwise not used for weak detection). */
+  concepts: { id: string; name: string; meanPct: number; shareUnder: number; marks: number; enoughEvidence: boolean }[];
+}
+
+/** Homework shows whether a topic taught in class landed: average, completion and per-concept understanding. */
+export function homeworkSummaries(idx: DatasetIndex, cfg: DiagnosisConfig = config.diagnosis): HomeworkSummary[] {
+  return idx.ds.assessments
+    .filter((a) => a.type === "homework")
+    .map((a) => {
+      const scores = idx.ds.students.map((s) => idx.scorePct(a.id, s.id)).filter((v): v is number => v !== null);
+      const conceptIds = [...new Set(a.questions.flatMap((q) => q.conceptIds))];
+      return {
+        assessmentId: a.id,
+        title: a.title,
+        shortTitle: a.shortTitle,
+        date: a.date,
+        average: round(scores.length ? scores.reduce((t, v) => t + v, 0) / scores.length : 0, 1),
+        submitted: scores.length,
+        expected: idx.expected(a).length,
+        concepts: conceptIds.map((cid) => {
+          const vals = idx.ds.students.map((s) => idx.conceptMarks(a.id, s.id, cid)).filter((m): m is { got: number; max: number } => m !== null).map((m) => pct(m.got, m.max));
+          const c = idx.ds.concepts.find((x) => x.id === cid);
+          const marks = idx.conceptMaxInAssessment(a.id, cid);
+          return {
+            id: cid,
+            name: c?.name ?? cid,
+            meanPct: round(vals.length ? vals.reduce((t, v) => t + v, 0) / vals.length : 0),
+            shareUnder: vals.length ? vals.filter((v) => v < cfg.weakScore).length / vals.length : 0,
+            marks,
+            enoughEvidence: marks >= cfg.minConceptMarks,
+          };
+        }),
+      };
+    })
+    .reverse();
+}
+
+export interface RosterRow {
+  studentId: string;
+  name: string;
+  rollNumber: number;
+  latestPct: number | null;
+  latestTitle: string | null;
+  change: number | null;
+  series: (number | null)[];
+  weakest: { id: string; name: string; pct: number } | null;
+  weakOnClassConcepts: string[];
+  homework: { submitted: number; total: number; average: number | null };
+}
+
+/** One row per student for the searchable class roster. */
+export function classRoster(idx: DatasetIndex, weakConceptIds: string[], cfg: DiagnosisConfig = config.diagnosis): RosterRow[] {
+  const regular = idx.ds.assessments.filter(isRegular);
+  const homework = idx.ds.assessments.filter((a) => a.type === "homework");
+  const covered = coveredConceptIds(idx.ds);
+  return idx.ds.students.map((s) => {
+    const series = regular.map((a) => idx.scorePct(a.id, s.id));
+    const taken = regular.map((a, i) => ({ a, pct: series[i] })).filter((x): x is { a: DsAssessment; pct: number } => x.pct !== null);
+    const last = taken.at(-1) ?? null;
+    const prev = taken.slice(-4, -1);
+    const prevAvg = prev.length ? prev.reduce((t, x) => t + x.pct, 0) / prev.length : null;
+    let weakest: RosterRow["weakest"] = null;
+    const weakOn: string[] = [];
+    for (const cid of covered) {
+      const w = studentConceptMastery(idx, s.id, cid);
+      if (!w || w.max < cfg.minConceptMarks) continue;
+      if (!weakest || w.pct < weakest.pct) weakest = { id: cid, name: idx.ds.concepts.find((c) => c.id === cid)?.name ?? cid, pct: round(w.pct) };
+      if (weakConceptIds.includes(cid) && w.pct < cfg.weakScore) weakOn.push(cid);
+    }
+    const hw = homework.map((a) => idx.scorePct(a.id, s.id)).filter((v): v is number => v !== null);
+    return {
+      studentId: s.id,
+      name: s.name,
+      rollNumber: s.rollNumber,
+      latestPct: last ? round(last.pct) : null,
+      latestTitle: last?.a.shortTitle ?? null,
+      change: last && prevAvg !== null ? round(last.pct - prevAvg) : null,
+      series: series.map((v) => (v === null ? null : round(v))),
+      weakest,
+      weakOnClassConcepts: weakOn,
+      homework: { submitted: hw.length, total: homework.length, average: hw.length ? round(hw.reduce((t, v) => t + v, 0) / hw.length) : null },
+    };
+  });
 }

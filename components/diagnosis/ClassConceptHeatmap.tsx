@@ -1,83 +1,162 @@
+"use client";
 import Link from "next/link";
+import { useMemo, useState } from "react";
+import { Search } from "lucide-react";
+import { Input, NativeSelect } from "@/components/ui/input";
+import { Switch } from "@/components/ui/switch";
 import type { HeatmapData } from "@/lib/diagnosis/mastery";
-
-/** Diverging scale around the 50% "weak" line: red arm below, grey midpoint, blue arm above. */
-const BINS: { max: number; bg: string; fg: string; label: string }[] = [
-  { max: 20, bg: "#b83a3a", fg: "#fff", label: "<20" },
-  { max: 35, bg: "#dd7b74", fg: "#1f1f1f", label: "20–34" },
-  { max: 45, bg: "#efb3ab", fg: "#1f1f1f", label: "35–44" },
-  { max: 50, bg: "#f6dbd6", fg: "#1f1f1f", label: "45–49" },
-  { max: 60, bg: "#f0efec", fg: "#1f1f1f", label: "50–59" },
-  { max: 70, bg: "#cde2fb", fg: "#1f1f1f", label: "60–69" },
-  { max: 80, bg: "#9ec5f4", fg: "#1f1f1f", label: "70–79" },
-  { max: 90, bg: "#5598e7", fg: "#fff", label: "80–89" },
-  { max: 101, bg: "#256abf", fg: "#fff", label: "90+" },
-];
-
-export function masteryColor(v: number) {
-  return BINS.find((b) => v < b.max) ?? BINS[BINS.length - 1];
-}
+import { cn } from "@/lib/utils";
+import { MASTERY_BINS as BINS, masteryColor } from "@/lib/ui/mastery-color";
 
 export interface ClassConceptHeatmapProps {
   data: HeatmapData;
-  studentHref: (studentId: string) => string;
+  /** Student links are `${studentHrefBase}/${studentId}`. */
+  studentHrefBase: string;
+  weakConceptIds?: string[];
   highlightConceptId?: string;
 }
 
-/** Students × concepts mastery %, weakest concepts first. Every cell shows its number. */
-export function ClassConceptHeatmap({ data, studentHref, highlightConceptId }: ClassConceptHeatmapProps) {
+type SortKey = "roll" | "lowest" | "name";
+
+/**
+ * Students × concepts mastery %. Weakest concepts first (or grouped by chapter), class-wide weak
+ * concepts marked, every cell shows its number, with search, filtering and sorting for 50+ rows.
+ */
+export function ClassConceptHeatmap({ data, studentHrefBase, weakConceptIds = [], highlightConceptId }: ClassConceptHeatmapProps) {
+  const [query, setQuery] = useState("");
+  const [byChapter, setByChapter] = useState(false);
+  const [onlyWeak, setOnlyWeak] = useState(false);
+  const [sort, setSort] = useState<SortKey>("roll");
+
+  const columns = useMemo(() => {
+    const cols = data.concepts.map((c, i) => ({ ...c, index: i }));
+    if (!byChapter) return cols;
+    const order = [...new Set(cols.map((c) => c.chapter))];
+    return [...cols].sort((a, b) => order.indexOf(a.chapter) - order.indexOf(b.chapter) || a.classMean - b.classMean);
+  }, [data.concepts, byChapter]);
+
+  const chapters = useMemo(() => {
+    const groups: { chapter: string; span: number }[] = [];
+    for (const c of columns) {
+      const last = groups.at(-1);
+      if (last && last.chapter === c.chapter) last.span++;
+      else groups.push({ chapter: c.chapter, span: 1 });
+    }
+    return groups;
+  }, [columns]);
+
+  const weakIdx = new Set(data.concepts.map((c, i) => (weakConceptIds.includes(c.id) ? i : -1)).filter((i) => i >= 0));
+  const rows = useMemo(() => {
+    const q = query.trim().toLowerCase();
+    const avg = (cells: (number | null)[]) => {
+      const v = cells.filter((x): x is number => x !== null);
+      return v.length ? v.reduce((a, b) => a + b, 0) / v.length : 101;
+    };
+    return data.rows
+      .filter((r) => !q || r.name.toLowerCase().includes(q) || String(r.rollNumber) === q)
+      .filter((r) => !onlyWeak || r.cells.some((v, i) => weakIdx.has(i) && v !== null && v < 50))
+      .sort((a, b) => (sort === "roll" ? a.rollNumber - b.rollNumber : sort === "name" ? a.name.localeCompare(b.name) : avg(a.cells) - avg(b.cells)));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [data.rows, query, onlyWeak, sort, weakConceptIds.join(",")]);
+
   if (data.concepts.length === 0) return <p className="text-sm text-muted-foreground">No graded concepts yet.</p>;
   return (
     <div className="space-y-3" data-demo-id="class-concept-heatmap">
-      <div className="max-h-[560px] overflow-auto rounded-xl border bg-card">
-        <table className="border-separate border-spacing-0 text-xs">
+      <div className="flex flex-wrap items-center gap-3">
+        <div className="relative w-full sm:w-64">
+          <Search className="pointer-events-none absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
+          <Input value={query} onChange={(e) => setQuery(e.target.value)} placeholder="Find a student or roll no." className="pl-8" data-demo-id="heatmap-search" aria-label="Find a student in the heatmap" />
+        </div>
+        <label className="flex items-center gap-2 text-sm">
+          <Switch checked={byChapter} onCheckedChange={setByChapter} data-demo-id="heatmap-group-chapter" /> Group by chapter
+        </label>
+        {weakConceptIds.length > 0 && (
+          <label className="flex items-center gap-2 text-sm">
+            <Switch checked={onlyWeak} onCheckedChange={setOnlyWeak} data-demo-id="heatmap-only-weak" /> Only students under 50% on a weak concept
+          </label>
+        )}
+        <label className="flex items-center gap-2 text-sm">
+          Sort
+          <NativeSelect value={sort} onChange={(e) => setSort(e.target.value as SortKey)} className="h-8 w-40" data-demo-id="heatmap-sort">
+            <option value="roll">Roll number</option>
+            <option value="lowest">Lowest mastery first</option>
+            <option value="name">Name</option>
+          </NativeSelect>
+        </label>
+        <span className="ml-auto text-xs text-muted-foreground">
+          {rows.length} of {data.rows.length} students
+        </span>
+      </div>
+
+      <div className="max-h-[600px] overflow-auto rounded-xl border bg-card">
+        <table className="border-separate border-spacing-[2px] text-xs">
           <thead className="sticky top-0 z-10 bg-card">
+            {byChapter && (
+              <tr>
+                <th className="sticky left-0 z-20 bg-card" />
+                {chapters.map((g, i) => (
+                  <th key={`${g.chapter}-${i}`} colSpan={g.span} className="border-b-2 border-border px-1 pb-1 pt-2 text-left text-[11px] font-semibold text-muted-foreground">
+                    <span className="line-clamp-1" title={g.chapter}>
+                      {g.chapter}
+                    </span>
+                  </th>
+                ))}
+              </tr>
+            )}
             <tr>
-              <th className="sticky left-0 z-20 min-w-[170px] border-b bg-card px-3 py-2 text-left font-medium text-muted-foreground">Student</th>
-              {data.concepts.map((c) => (
-                <th
-                  key={c.id}
-                  className={`h-36 min-w-[46px] border-b px-1 align-bottom font-medium ${c.id === highlightConceptId ? "text-primary" : "text-muted-foreground"}`}
-                  title={`${c.chapter} › ${c.name} · class mean ${c.classMean}%`}
-                  data-demo-id={`heatmap-concept-${c.id}`}
-                >
-                  <div className="mx-auto w-5 whitespace-nowrap [writing-mode:vertical-rl] rotate-180 text-left">{c.name}</div>
-                </th>
-              ))}
+              <th className="sticky left-0 z-20 min-w-[190px] bg-card px-2 py-2 text-left align-bottom text-xs font-medium text-muted-foreground">Student</th>
+              {columns.map((c) => {
+                const weak = weakConceptIds.includes(c.id);
+                return (
+                  <th
+                    key={c.id}
+                    className={cn("w-[78px] min-w-[78px] px-1 pb-1 pt-2 text-left align-bottom font-medium", weak ? "text-low" : c.id === highlightConceptId ? "text-primary" : "text-muted-foreground")}
+                    title={`${c.chapter} › ${c.name} · class mean ${c.classMean}%${weak ? " · class-wide weak" : ""}`}
+                    data-demo-id={`heatmap-concept-${c.id}`}
+                  >
+                    {weak && <div className="mb-0.5 text-[10px] font-semibold uppercase tracking-wide">▲ Weak</div>}
+                    <div className="line-clamp-2 leading-tight">{c.shortName}</div>
+                  </th>
+                );
+              })}
             </tr>
             <tr>
-              <th className="sticky left-0 z-20 border-b bg-muted/60 px-3 py-1 text-left font-medium">Class mean</th>
-              {data.concepts.map((c) => (
-                <th key={c.id} className="border-b bg-muted/60 px-1 py-1 text-center font-semibold tabular-nums">
+              <th className="sticky left-0 z-20 bg-muted/70 px-2 py-1 text-left font-semibold">Class mean</th>
+              {columns.map((c) => (
+                <th key={c.id} className={cn("rounded-sm bg-muted/70 py-1 text-center font-semibold tabular-nums", weakConceptIds.includes(c.id) && "text-low")}>
                   {c.classMean}
                 </th>
               ))}
             </tr>
           </thead>
           <tbody>
-            {data.rows.map((r) => (
-              <tr key={r.studentId} data-demo-id={`heatmap-row-${r.rollNumber}`}>
-                <td className="sticky left-0 z-10 whitespace-nowrap border-b bg-card px-3 py-1">
-                  <Link href={studentHref(r.studentId)} className="hover:underline">
-                    {r.rollNumber}. {r.name}
+            {rows.map((r) => (
+              <tr key={r.studentId} className="group" data-demo-id={`heatmap-row-${r.rollNumber}`}>
+                <td className="sticky left-0 z-10 whitespace-nowrap bg-card px-2 py-1 group-hover:bg-muted">
+                  <Link href={`${studentHrefBase}/${r.studentId}`} className="hover:underline">
+                    <span className="inline-block w-6 tabular-nums text-muted-foreground">{r.rollNumber}</span>
+                    {r.name}
                   </Link>
                 </td>
-                {r.cells.map((v, i) => {
-                  if (v === null) return <td key={i} className="border-b border-l border-card bg-muted/30 text-center text-muted-foreground">—</td>;
-                  const c = masteryColor(v);
+                {columns.map((c) => {
+                  const v = r.cells[c.index];
+                  if (v === null) return <td key={c.id} className="rounded-sm bg-muted/30 text-center text-muted-foreground">—</td>;
+                  const col = masteryColor(v);
                   return (
-                    <td
-                      key={i}
-                      className="border-b border-l border-card px-1 py-1 text-center tabular-nums"
-                      style={{ background: c.bg, color: c.fg }}
-                      title={`${r.name} · ${data.concepts[i].name}: ${v}%`}
-                    >
+                    <td key={c.id} className="h-7 rounded-sm text-center tabular-nums" style={{ background: col.bg, color: col.fg }} title={`${r.name} · ${c.name}: ${v}%`}>
                       {v}
                     </td>
                   );
                 })}
               </tr>
             ))}
+            {rows.length === 0 && (
+              <tr>
+                <td colSpan={columns.length + 1} className="p-6 text-center text-sm text-muted-foreground">
+                  No students match.
+                </td>
+              </tr>
+            )}
           </tbody>
         </table>
       </div>
@@ -88,7 +167,7 @@ export function ClassConceptHeatmap({ data, studentHref, highlightConceptId }: C
             {b.label}
           </span>
         ))}
-        <span className="ml-2">Weakest concepts on the left. Each cell is the student&apos;s most recent evidence on that concept.</span>
+        <span className="ml-2">{byChapter ? "Grouped by chapter, weakest first within each." : "Weakest concepts on the left."} Each cell is the student&apos;s most recent evidence (tests and homework).</span>
       </div>
     </div>
   );

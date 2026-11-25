@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowRight, BellRing, ClipboardCheck, TriangleAlert } from "lucide-react";
+import { ArrowRight, BellRing, BookOpenCheck, ClipboardCheck, TriangleAlert, Users } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -23,6 +23,7 @@ export function statusLabel(s: string) {
 
 /** Teacher home: what needs doing today, then a card per section. */
 export function TeacherHome({ data, teacherFirstName }: { data: HomeData; teacherFirstName: string }) {
+  const weakAll = data.sections.flatMap((section) => section.weakConcepts.map((w) => ({ section, w }))).sort((a, b) => b.w.shareUnder - a.w.shareUnder);
   return (
     <div className="space-y-8">
       <div>
@@ -30,7 +31,72 @@ export function TeacherHome({ data, teacherFirstName }: { data: HomeData; teache
         <p className="text-sm text-muted-foreground">Here is what needs you, and how each class is doing.</p>
       </div>
 
-      <section className="grid gap-4 lg:grid-cols-2">
+      {weakAll.length > 0 && (
+        <a
+          href="#class-wide-weak"
+          role="alert"
+          data-demo-id="weak-concepts-banner"
+          className="flex flex-wrap items-center gap-3 rounded-xl border border-[oklch(0.85_0.08_27)] bg-low-bg px-4 py-3 text-sm hover:shadow-sm"
+        >
+          <TriangleAlert className="h-5 w-5 shrink-0 text-low" />
+          <span className="font-semibold text-low">
+            {weakAll.length} class-wide weak concept{weakAll.length === 1 ? "" : "s"}
+          </span>
+          <span className="text-foreground">
+            {data.sections
+              .filter((s) => s.weakConcepts.length)
+              .map((s) => `${s.name}: ${s.weakConcepts.map((w) => w.name).join(", ")}`)
+              .join(" · ")}
+          </span>
+          <ArrowRight className="ml-auto h-4 w-4 text-low" />
+        </a>
+      )}
+
+      {weakAll.length > 0 && (
+        <section id="class-wide-weak" className="scroll-mt-20" data-demo-id="home-weak-concepts">
+          <h2 className="mb-3 flex items-center gap-2 text-lg font-semibold">
+            <TriangleAlert className="h-5 w-5 text-low" /> Class-wide weak concepts
+          </h2>
+          <div className="grid gap-3 md:grid-cols-2 xl:grid-cols-3">
+            {weakAll.map(({ section, w }) => (
+              <div key={`${section.id}-${w.id}`} className="flex flex-col rounded-xl border border-[oklch(0.88_0.06_27)] bg-card p-4" data-demo-id={`home-weak-${section.name}-${w.id}`}>
+                <div className="flex items-start justify-between gap-2">
+                  <div>
+                    <div className="text-xs text-muted-foreground">
+                      Class {section.name} · {w.chapter}
+                    </div>
+                    <div className="font-semibold">{w.name}</div>
+                  </div>
+                  <Badge variant="low">{Math.round(w.shareUnder * 100)}% under 50%</Badge>
+                </div>
+                <div className="mt-2 text-sm text-muted-foreground">
+                  {w.studentsUnder} of {w.studentsAssessed} students · class mastery {Math.round(w.meanPct)}% · {w.source === "homework" ? "spotted in " : ""}
+                  {w.assessmentTitle}
+                </div>
+                {w.topMisconception && (
+                  <div className="mt-1 text-sm">
+                    Most common: <span className="font-medium">{w.topMisconception.label}</span> ({w.topMisconception.count})
+                  </div>
+                )}
+                <div className="mt-3 flex flex-wrap gap-2 pt-1">
+                  <Button asChild size="sm" variant="outline" data-demo-id="home-weak-view-class">
+                    <Link href={`/sections/${section.id}#weak-concepts`}>
+                      <Users /> View class
+                    </Link>
+                  </Button>
+                  <Button asChild size="sm" data-demo-id="home-weak-plan-reteach">
+                    <Link href={w.plan ? `/reteach/${w.plan.id}` : `/reteach/new?sectionId=${section.id}&conceptId=${w.id}`}>
+                      <BookOpenCheck /> {w.plan ? "Open reteach plan" : "Plan a reteach"}
+                    </Link>
+                  </Button>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+      )}
+
+      <section className="grid items-start gap-4 lg:grid-cols-2">
         <Card>
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
@@ -66,7 +132,7 @@ export function TeacherHome({ data, teacherFirstName }: { data: HomeData; teache
             </CardTitle>
             <CardDescription>Every alert says why it fired.</CardDescription>
           </CardHeader>
-          <CardContent className="space-y-3">
+          <CardContent className="max-h-[420px] space-y-3 overflow-y-auto">
             {data.flags.length === 0 && <EmptyState title="No open alerts" />}
             {data.flags.map((f) => (
               <Link key={f.id} href={`/alerts/${f.id}`} data-demo-id={`home-flag-${f.id}`} className="block rounded-lg border p-3 hover:bg-muted/50">
@@ -96,14 +162,17 @@ export function TeacherHome({ data, teacherFirstName }: { data: HomeData; teache
               </div>
               <div className="mt-3 text-sm">
                 Latest average{s.latestTitle ? ` (${s.latestTitle})` : ""}: <span className="font-semibold">{formatPct(s.latestAverage)}</span>
+                {s.change !== null && (
+                  <span className={s.change <= -5 ? "ml-2 font-semibold text-low" : "ml-2 text-muted-foreground"}>
+                    {s.change < 0 ? "▼" : "▲"} {Math.abs(s.change)}
+                  </span>
+                )}
               </div>
               <div className="mt-3 flex flex-wrap gap-2">
                 {s.weakConcepts.length > 0 ? (
-                  s.weakConcepts.map((w) => (
-                    <Badge key={w.id} variant="low">
-                      <TriangleAlert /> {w.name}
-                    </Badge>
-                  ))
+                  <Badge variant="low" data-demo-id={`section-card-weak-${s.name}`}>
+                    <TriangleAlert /> {s.weakConcepts.length} weak concept{s.weakConcepts.length === 1 ? "" : "s"}
+                  </Badge>
                 ) : (
                   <Badge variant="high">No class-wide weak concepts</Badge>
                 )}

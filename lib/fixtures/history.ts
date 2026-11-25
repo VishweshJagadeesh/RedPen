@@ -34,10 +34,25 @@ import {
 
 // ------------------------------------------------------------------ ids
 
-export const SCHEDULE: Record<string, [string, string][]> = {
-  sec_8a: [["c8-wt1", "2026-07-13"], ["c8-wt2", "2026-08-03"], ["c8-wt3", "2026-08-24"], ["c8-pt1", "2026-09-21"], ["c8-wt4", "2026-10-26"]],
-  sec_8b: [["c8-wt1", "2026-07-14"], ["c8-wt2", "2026-08-04"], ["c8-wt3", "2026-08-25"], ["c8-pt1", "2026-09-22"], ["c8-wt4", "2026-10-27"]],
-  sec_9a: [["c9-wt1", "2026-07-15"], ["c9-wt2", "2026-08-05"], ["c9-wt3", "2026-08-26"], ["c9-pt1", "2026-09-23"], ["c9-wt4", "2026-10-28"]],
+/** Difficulty offset for a class: a number for the whole paper, or per concept. Negative = harder. */
+type Difficulty = number | Record<string, number>;
+
+/** [paperKey, date, difficulty]. */
+export const SCHEDULE: Record<string, [string, string, Difficulty?][]> = {
+  sec_8a: [
+    ["c8-wt1", "2026-07-13"], ["c8-hw1", "2026-07-21"], ["c8-wt2", "2026-08-03"], ["c8-hw2", "2026-08-11"], ["c8-wt3", "2026-08-24"],
+    ["c8-pt1", "2026-09-21"], ["c8-wt4", "2026-10-26"], ["c8-hw3", "2026-11-03"],
+  ],
+  sec_8b: [
+    ["c8-wt1", "2026-07-14"], ["c8-hw1", "2026-07-22"], ["c8-wt2", "2026-08-04"], ["c8-hw2", "2026-08-12"], ["c8-wt3", "2026-08-25"],
+    ["c8-pt1", "2026-09-22"], ["c8-wt4", "2026-10-27"],
+    // Homework surfaces a new class-wide weak concept (percentages) before any test covers it.
+    ["c8-hw3", "2026-11-04", { "c8-cq-percent": -0.22 }],
+  ],
+  sec_9a: [
+    ["c9-wt1", "2026-07-15"], ["c9-hw1", "2026-07-22"], ["c9-wt2", "2026-08-05"], ["c9-hw2", "2026-08-12"], ["c9-wt3", "2026-08-26"],
+    ["c9-pt1", "2026-09-23"], ["c9-wt4", "2026-10-28"],
+  ],
 };
 
 export function assessmentId(sectionId: string, paperKey: string): string {
@@ -370,6 +385,7 @@ function genSubmission(
   student: StudentFixture,
   p: PaperFixture,
   asmId: string,
+  difficulty: Difficulty = 0,
 ): GenSubmission {
   const salt = ctx.salts.get(student.id) ?? 0;
   const rng = createRng(hashString(`${asmId}:${student.id}:${salt}`));
@@ -377,7 +393,7 @@ function genSubmission(
   if (is8B && (ABSENCES_8B[student.name] ?? []).includes(p.key)) {
     return { studentId: student.id, absent: true, answers: [] };
   }
-  if (!is8B && rng.chance(0.012)) return { studentId: student.id, absent: true, answers: [] };
+  if (p.type === "homework" ? rng.chance(0.05) : !is8B && rng.chance(0.012)) return { studentId: student.id, absent: true, answers: [] };
 
   const ability = abilityFor(student);
   const shift = rng.noise(is8B ? 0.025 : 0.035);
@@ -405,7 +421,8 @@ function genSubmission(
     const off = q.conceptIds.reduce((s, c) => s + conceptOffset(student.id, c), 0) / Math.max(1, q.conceptIds.length);
     // Weaker students in 8B mostly lose marks on Linear Equations through the story variants;
     // elsewhere they make ordinary slips and leave steps incomplete.
-    const f = clamp(ability + off + shift + rng.noise(is8B ? 0.08 : 0.13));
+    const d = typeof difficulty === "number" ? difficulty : q.conceptIds.reduce((t, c) => t + (difficulty[c] ?? 0), 0) / Math.max(1, q.conceptIds.length);
+    const f = clamp(ability + off + shift + d + rng.noise(is8B ? 0.08 : 0.13));
     return chooseByFraction(q, f, rng, (v) => !(is8B && (v.id === "sign" || v.id === "one_side")));
   });
 
@@ -600,7 +617,7 @@ const MAX_FLAGS_OTHER_SECTIONS = 2;
 
 function generateSection(sectionId: string, ctx: GenContext): GenAssessment[] {
   const students = studentsOf(sectionId);
-  return SCHEDULE[sectionId].map(([paperKey, date]) => {
+  return SCHEDULE[sectionId].map(([paperKey, date, difficulty]) => {
     const p = paper(paperKey);
     const id = assessmentId(sectionId, paperKey);
     return {
@@ -612,7 +629,7 @@ function generateSection(sectionId: string, ctx: GenContext): GenAssessment[] {
       type: p.type,
       date,
       graded: !(sectionId === "sec_8b" && paperKey === "c8-wt4"),
-      submissions: students.map((s) => genSubmission(ctx, s, p, id)),
+      submissions: students.map((s) => genSubmission(ctx, s, p, id, difficulty ?? 0)),
     };
   });
 }
@@ -640,7 +657,7 @@ export function buildFixtures(): FixtureBundle {
         unexpected = simulated.filter((f) => !STORY_STUDENTS_8B.has(nameOf(f.studentId))).map((f) => f.studentId);
       } else {
         // Other sections keep at most two recent alerts (from PT1 or WT4) for realism.
-        const recent = new Set(generated.slice(-2).map((a) => a.id));
+        const recent = new Set(generated.filter((a) => a.type !== "homework").slice(-2).map((a) => a.id));
         const stale = simulated.filter((f) => !recent.has(f.triggerAssessmentId));
         const fresh = simulated.filter((f) => recent.has(f.triggerAssessmentId));
         unexpected = [...stale, ...fresh.slice(MAX_FLAGS_OTHER_SECTIONS)].map((f) => f.studentId);

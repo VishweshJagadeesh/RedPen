@@ -38,7 +38,7 @@ export interface PaperFixture {
   key: string;
   title: string;
   shortTitle: string;
-  type: "weekly_test" | "periodic_test" | "exit_ticket" | "remedial";
+  type: "weekly_test" | "periodic_test" | "homework" | "exit_ticket" | "remedial";
   gradeLevel: number;
   chapter: string;
   questions: QuestionFixture[];
@@ -596,7 +596,86 @@ const C9_WT4: PaperFixture = {
   ],
 };
 
-export const PAPERS: PaperFixture[] = [C8_WT1, C8_WT2, C8_WT3, C8_PT1, C8_WT4, C9_WT1, C9_WT2, C9_WT3, C9_PT1, C9_WT4, C8_EXIT_TICKET_TRANSPOSING];
+
+// ---------------------------------------------------------------- Homework
+
+const C8_HW1: PaperFixture = {
+  key: "c8-hw1", title: "Homework 1 — Rational Numbers", shortTitle: "HW1", type: "homework", gradeLevel: 8, chapter: "Rational Numbers",
+  questions: [
+    q(1, "Find four rational numbers between −1 and 0.", [["Writes −1 and 0 with denominator 5", 1], ["Four correct numbers", 2]], ["c8-rn-between"],
+      [["−1 = −5/5, 0 = 0/5"], ["−4/5, −3/5, −2/5, −1/5"]], { slip: { step: 1, lines: ["−4/5, −3/5, −2/5, 1/5"] }, answerKey: "e.g. −4/5, −3/5, −2/5, −1/5" }),
+    q(2, "Find the sum: 5/4 + (−11/6).", [["Common denominator 12", 1], ["Converts both fractions", 1], ["= −7/12", 1]], ["c8-rn-properties"],
+      [["LCM of 4 and 6 = 12"], ["= 15/12 − 22/12"], ["= −7/12"]], { slip: { step: 2, lines: ["= −5/12"] }, answerKey: "−7/12" }),
+    q(3, "Represent 2/5 and −3/5 on the number line.", [["Divides each unit into 5 equal parts", 2], ["Marks both points", 2]], ["c8-rn-numberline"],
+      [["Unit 0 to 1 divided into 5 equal parts"], ["2/5 two parts right of 0; −3/5 three parts left of 0"]],
+      { slip: { step: 1, lines: ["2/5 two parts right of 0; −3/5 three parts right of 0"] } }),
+  ],
+};
+
+const C8_HW2: PaperFixture = {
+  key: "c8-hw2", title: "Homework 2 — Squares and Square Roots", shortTitle: "HW2", type: "homework", gradeLevel: 8, chapter: "Squares and Square Roots",
+  questions: [
+    q(1, "Which of 1057, 23453 and 7928 can be perfect squares? Give a reason.", [["States the units-digit rule", 1], ["Rules out all three", 2]], ["c8-sq-properties"],
+      [["A perfect square cannot end in 2, 3, 7 or 8"], ["1057, 23453, 7928 end in 7, 3, 8 — none is a perfect square"]],
+      { slip: { step: 1, lines: ["So 7928 can be a perfect square"] }, answerKey: "None" }),
+    q(2, "Find the square root of 576 by prime factorisation.", [["Prime factorisation", 1], ["Pairs the factors", 1], ["√576 = 24", 1]], ["c8-sq-prime"],
+      [["576 = 2 × 2 × 2 × 2 × 2 × 2 × 3 × 3"], ["= (2 × 2)(2 × 2)(2 × 2)(3 × 3)"], ["√576 = 2 × 2 × 2 × 3 = 24"]], { slip: { step: 2, lines: ["√576 = 2 × 2 × 2 × 3 = 26"] }, answerKey: "24" }),
+    q(3, "Find the square root of 1369 by the long division method.", [["First digit 3, remainder 4", 1], ["Brings down 69: 67 × 7 = 469", 2], ["√1369 = 37", 1]], ["c8-sq-longdiv"],
+      [["13 | 69 → 3² = 9, remainder 4"], ["469 ÷ 67 → 67 × 7 = 469"], ["√1369 = 37"]], { slip: { step: 1, lines: ["469 ÷ 66 → 66 × 6 = 396", "√1369 ≈ 36"] }, answerKey: "37" }),
+  ],
+};
+
+const C8_HW3: PaperFixture = {
+  key: "c8-hw3", title: "Homework 3 — Comparing Quantities", shortTitle: "HW3", type: "homework", gradeLevel: 8, chapter: "Comparing Quantities",
+  questions: [
+    q(1, "A school's enrolment rose from 1,250 to 1,400. Find the percentage increase.", [["Increase = 150", 1], ["Uses (increase ÷ original) × 100", 1], ["Substitutes 150/1250 × 100", 1], ["= 12%", 1]], ["c8-cq-percent"],
+      [["Increase = 1400 − 1250 = 150"], ["% increase = increase ÷ original × 100"], ["= 150/1250 × 100"], ["= 12%"]],
+      {
+        slip: { step: 3, lines: ["= 10%"] },
+        answerKey: "12%",
+        variants: [{ id: "wrong_base", awards: [1, 0, 0, 0], lines: ["Increase = 150", "% increase = 150/1400 × 100 = 10.7%"], mistakeType: "conceptual", misconception: "Uses the new value as the base" }],
+      }),
+    q(2, "The price of a phone fell from ₹12,000 to ₹10,200. Find the percentage decrease.", [["Decrease = ₹1,800", 1], ["Uses (decrease ÷ original) × 100", 1], ["Substitutes 1800/12000 × 100", 1], ["= 15%", 1]], ["c8-cq-percent"],
+      [["Decrease = 12000 − 10200 = ₹1800"], ["% decrease = decrease ÷ original × 100"], ["= 1800/12000 × 100"], ["= 15%"]],
+      {
+        slip: { step: 3, lines: ["= 18%"] },
+        answerKey: "15%",
+        variants: [{ id: "wrong_base", awards: [1, 0, 0, 0], lines: ["Decrease = ₹1800", "% decrease = 1800/10200 × 100 = 17.6%"], mistakeType: "conceptual", misconception: "Uses the new value as the base" }],
+      }),
+    q(3, "A shirt marked ₹850 is sold at a 12% discount. Find the selling price.", [["Discount = 12% of ₹850", 1], ["= ₹102", 1], ["SP = 850 − 102", 1], ["= ₹748", 1]], ["c8-cq-discount"],
+      [["Discount = 12% of ₹850"], ["= ₹102"], ["SP = 850 − 102"], ["= ₹748"]],
+      {
+        slip: { step: 1, lines: ["= ₹112", "SP = 850 − 112 = ₹738"] },
+        answerKey: "₹748",
+        variants: [{ id: "added_discount", awards: [1, 1, 0, 0], lines: ["Discount = 12% of ₹850 = ₹102", "SP = 850 + 102 = ₹952"], mistakeType: "conceptual", misconception: "Adds the discount instead of subtracting it" }],
+      }),
+  ],
+};
+
+const C9_HW1: PaperFixture = {
+  key: "c9-hw1", title: "Homework 1 — Number Systems", shortTitle: "HW1", type: "homework", gradeLevel: 9, chapter: "Number Systems",
+  questions: [
+    q(1, "Rationalise the denominator of 1/√3.", [["Multiplies by √3/√3", 1], ["= √3/3", 2]], ["c9-ns-rationalise"], [["Multiply by √3/√3"], ["= √3/3"]], { slip: { step: 1, lines: ["= √3/9"] }, answerKey: "√3/3" }),
+    q(2, "Simplify: 9^(3/2).", [["Writes 9 = 3²", 1], ["= 3³", 1], ["= 27", 1]], ["c9-ns-exponents"], [["9^(3/2) = (3²)^(3/2)"], ["= 3³"], ["= 27"]], { slip: { step: 2, lines: ["= 81"] }, answerKey: "27" }),
+    q(3, "Is 3 + √2 rational or irrational? Give a reason.", [["States irrational", 2], ["Reason", 2]], ["c9-ns-irrational"],
+      [["3 + √2 is irrational"], ["Rational + irrational is always irrational"]], { answerKey: "Irrational" }),
+  ],
+};
+
+const C9_HW2: PaperFixture = {
+  key: "c9-hw2", title: "Homework 2 — Polynomials", shortTitle: "HW2", type: "homework", gradeLevel: 9, chapter: "Polynomials",
+  questions: [
+    q(1, "Find p(2) for p(x) = x² − 3x + 5.", [["Substitutes x = 2", 1], ["4 − 6 + 5", 1], ["= 3", 1]], ["c9-po-zeroes"], [["p(2) = 2² − 3(2) + 5"], ["= 4 − 6 + 5"], ["= 3"]], { slip: { step: 2, lines: ["= 1"] }, answerKey: "3" }),
+    q(2, "Expand (x − 3)(x + 3).", [["Uses (a − b)(a + b) = a² − b²", 1], ["= x² − 9", 2]], ["c9-po-identities"], [["(a − b)(a + b) = a² − b²"], ["= x² − 9"]], { slip: { step: 1, lines: ["= x² + 9"] }, answerKey: "x² − 9" }),
+    q(3, "Is x − 2 a factor of x³ − 8?", [["Evaluates p(2)", 2], ["p(2) = 0", 1], ["Concludes", 1]], ["c9-po-factor"],
+      [["p(2) = 8 − 8"], ["= 0"], ["So x − 2 is a factor"]], { slip: { step: 1, lines: ["= 16", "So x − 2 is not a factor"] }, answerKey: "Yes" }),
+  ],
+};
+
+export const PAPERS: PaperFixture[] = [
+  C8_WT1, C8_WT2, C8_WT3, C8_PT1, C8_WT4, C9_WT1, C9_WT2, C9_WT3, C9_PT1, C9_WT4, C8_EXIT_TICKET_TRANSPOSING,
+  C8_HW1, C8_HW2, C8_HW3, C9_HW1, C9_HW2,
+];
 export const PAPER_BY_KEY: Record<string, PaperFixture> = Object.fromEntries(PAPERS.map((p) => [p.key, p]));
 
 export function paper(key: string): PaperFixture {

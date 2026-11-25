@@ -21,6 +21,8 @@ export { WeakConceptCard } from "./diagnosis/WeakConceptCard";
 export { FlaggedStudentsList } from "./diagnosis/FlaggedStudentsList";
 export { WhyFlaggedPanel } from "./diagnosis/WhyFlaggedPanel";
 export { StudentDetail } from "./diagnosis/StudentDetail";
+export { StudentRoster } from "./diagnosis/StudentRoster";
+export { ClassTrendChart } from "./charts/ClassTrendChart";
 export { TrendLineChart, HBarList } from "./charts/TrendLineChart";
 // Reteach
 export { ReteachPlanEditor } from "./reteach/ReteachPlanEditor";

@@ -1,7 +1,18 @@
+import { cache } from "react";
 import { prisma } from "../db/prisma";
 import { parseJson } from "../db/json";
+import { config } from "../config";
 import { DatasetIndex, round } from "../diagnosis/dataset";
-import { classConceptSummary, classWeakConcepts, conceptHeatmap, sectionTrend, type ClassConceptSummary } from "../diagnosis/mastery";
+import {
+  classConceptSummary,
+  classHealth,
+  classRoster,
+  classWeakConcepts,
+  conceptHeatmap,
+  homeworkSummaries,
+  sectionTrend,
+  type ClassConceptSummary,
+} from "../diagnosis/mastery";
 import type { FlagEvidence } from "../diagnosis/flags";
 import { loadSectionDataset } from "./dataset";
 
@@ -15,6 +26,8 @@ export interface WeakConceptView {
   shareUnder: number;
   meanPct: number;
   assessmentTitle: string;
+  /** "homework" when the latest evidence came from homework rather than a test. */
+  source: "test" | "homework" | "exit_ticket";
   misconceptions: { label: string; count: number }[];
   snippets: { text: string; misconception: string; source: string }[];
   weakStudentIds: string[];
@@ -42,19 +55,17 @@ export function toWeakConceptView(s: ClassConceptSummary): Omit<WeakConceptView,
     shareUnder: s.shareUnder,
     meanPct: s.meanPct,
     assessmentTitle: s.assessmentTitle,
+    source: s.assessmentType === "homework" ? "homework" : s.assessmentType === "exit_ticket" ? "exit_ticket" : "test",
     misconceptions: s.misconceptions,
     snippets: s.snippets.map((x) => ({ text: x.text, misconception: x.misconception, source: `${x.assessmentTitle}, Q${x.questionNumber}` })),
-    weakStudentIds: s.perStudent.filter((p) => p.pct < 50).map((p) => p.studentId),
+    weakStudentIds: s.perStudent.filter((p) => p.pct < config.diagnosis.weakScore).map((p) => p.studentId),
   };
 }
 
-export async function getSectionDashboard(sectionId: string) {
-  const section = await prisma.section.findUnique({ where: { id: sectionId } });
-  if (!section) return null;
+/** Everything derived for one section. Cached per request so the shell, Home and class page share it. */
+export const sectionInsights = cache(async (sectionId: string) => {
   const ds = await loadSectionDataset(sectionId);
   const idx = new DatasetIndex(ds);
-  const trend = sectionTrend(idx);
-  const heatmap = conceptHeatmap(idx);
   const plans = await prisma.lessonPlan.findMany({ where: { sectionId }, orderBy: { createdAt: "desc" } });
   const exitIds = plans.map((p) => p.exitTicketAssessmentId).filter((x): x is string => !!x);
   const exits = exitIds.length ? await prisma.assessment.findMany({ where: { id: { in: exitIds } } }) : [];
@@ -68,10 +79,10 @@ export async function getSectionDashboard(sectionId: string) {
     const plan = plans.find((p) => p.conceptId === id);
     let planView: WeakConceptView["plan"] = null;
     if (plan) {
-      const evidence = parseJson<{ meanPct: number; assessmentTitle?: string }>(plan.evidence, { meanPct: s.meanPct });
+      const evidence = parseJson<{ meanPct: number }>(plan.evidence, { meanPct: s.meanPct });
       const exit = exits.find((e) => e.id === plan.exitTicketAssessmentId);
       const exitHistory = exit && exit.status === "final" ? s.history.find((h) => h.assessmentId === exit.id) : undefined;
-      const exitSummary = exitHistory ? s : null;
+      const latestIsExit = !!exit && s.assessmentId === exit.id;
       planView = {
         id: plan.id,
         status: plan.status,
@@ -80,20 +91,63 @@ export async function getSectionDashboard(sectionId: string) {
         exitTicketStatus: exit?.status ?? null,
         beforePct: round(evidence.meanPct),
         afterPct: exitHistory ? round(exitHistory.meanPct) : null,
-        afterUnder: exitSummary && exitSummary.assessmentId === exit?.id ? exitSummary.studentsUnder : null,
-        afterAssessed: exitSummary && exitSummary.assessmentId === exit?.id ? exitSummary.studentsAssessed : null,
+        afterUnder: exitHistory && latestIsExit ? s.studentsUnder : null,
+        afterAssessed: exitHistory && latestIsExit ? s.studentsAssessed : null,
       };
     }
     cards.push({ ...toWeakConceptView(s), plan: planView });
   }
-  cards.sort((a, b) => Number(!!a.plan?.afterPct) - Number(!!b.plan?.afterPct) || b.shareUnder - a.shareUnder);
+  // Open problems first (most students affected), then concepts already reteached.
+  cards.sort((a, b) => Number(!a.isWeak) - Number(!b.isWeak) || b.shareUnder - a.shareUnder);
+  return { ds, idx, cards };
+});
+
+/** Class-wide weak concepts across all of a teacher's sections (for sidebar badges and Home). */
+export const teacherWeakConcepts = cache(async (teacherId: string) => {
+  const sections = await prisma.section.findMany({ where: { teacherId }, orderBy: { name: "asc" } });
+  return Promise.all(
+    sections.map(async (s) => {
+      const { cards } = await sectionInsights(s.id);
+      return { sectionId: s.id, sectionName: s.name, weak: cards.filter((c) => c.isWeak) };
+    }),
+  );
+});
+
+export async function getSectionDashboard(sectionId: string) {
+  const section = await prisma.section.findUnique({ where: { id: sectionId } });
+  if (!section) return null;
+  const { ds, idx, cards } = await sectionInsights(sectionId);
+  const trend = sectionTrend(idx);
+  const heatmap = conceptHeatmap(idx);
+  const homework = homeworkSummaries(idx);
+  const weakIds = cards.filter((c) => c.isWeak).map((c) => c.conceptId);
+  const roster = classRoster(idx, weakIds);
 
   const flags = await prisma.flag.findMany({ where: { sectionId }, orderBy: { createdAt: "desc" }, include: { student: true } });
+  const latest = trend.at(-1) ?? null;
+  const previous = trend.at(-2) ?? null;
+  const openFlags = flags.filter((f) => f.status !== "resolved");
+  const flaggedIds = new Set(openFlags.map((f) => f.studentId));
   return {
     section: { id: section.id, name: section.name, grade: section.grade, academicYear: section.academicYear },
     studentCount: ds.students.length,
+    kpis: {
+      latestAverage: latest?.average ?? null,
+      latestTitle: latest?.title ?? null,
+      latestShort: latest?.shortTitle ?? null,
+      change: latest && previous ? round(latest.average - previous.average, 1) : null,
+      previousShort: previous?.shortTitle ?? null,
+      health: classHealth(latest?.average ?? null),
+      weakConcepts: weakIds.length,
+      openFlags: openFlags.length,
+      latestHomework: homework[0] ? { title: homework[0].title, average: homework[0].average, submitted: homework[0].submitted, expected: homework[0].expected } : null,
+    },
+    bands: { healthy: config.diagnosis.classHealthy, critical: config.diagnosis.classCritical, notable: config.diagnosis.notableChange },
     trend,
     heatmap,
+    homework,
+    roster: roster.map((r) => ({ ...r, flagged: flaggedIds.has(r.studentId) })),
+    rosterLabels: idx.ds.assessments.filter((a) => ["weekly_test", "periodic_test", "term_exam"].includes(a.type)).map((a) => a.shortTitle),
     weakConcepts: cards,
     flags: flags.map((f) => ({
       id: f.id,

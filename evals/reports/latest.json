@@ -1,6 +1,6 @@
 {
   "mode": "mock",
-  "generatedAt": "2026-11-24T15:48:47.347Z",
+  "generatedAt": "2026-11-25T14:35:18.530Z",
   "models": {
     "grading": "mock fixtures",
     "planning": "mock templates"
@@ -788,27 +788,27 @@
     }
   ],
   "agreement": {
-    "reviewed": 4108,
-    "overridden": 162,
-    "overriddenPct": 3.9,
+    "reviewed": 5273,
+    "overridden": 215,
+    "overriddenPct": 4.1,
     "byBand": [
       {
         "band": "high",
-        "reviewed": 3528,
+        "reviewed": 4529,
         "overridden": 0,
         "pct": 0
       },
       {
         "band": "medium",
-        "reviewed": 385,
-        "overridden": 68,
-        "pct": 17.7
+        "reviewed": 493,
+        "overridden": 82,
+        "pct": 16.6
       },
       {
         "band": "low",
-        "reviewed": 195,
-        "overridden": 94,
-        "pct": 48.2
+        "reviewed": 251,
+        "overridden": 133,
+        "pct": 53
       }
     ]
   }
