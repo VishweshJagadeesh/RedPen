@@ -81,12 +81,16 @@ model Assessment {
   // false = set up on RedPen but not handed to the class yet (printable / shareable, "Ready to grade")
   handedOut            Boolean      @default(true)
   handedOutAt          DateTime?
-  shareToken           String?      @unique // read-only student copy at /w/[token]
+  // read-only student copy at /w/[token]; random 96-bit token, indexed (not @unique, so adding it to an
+  // existing production table needs no data-loss confirmation in `prisma db push`)
+  shareToken           String?
   draftSavedAt         DateTime? // the teacher chose "Save draft" when leaving an unfinished set-up
   createdAt            DateTime     @default(now())
   finalizedAt          DateTime?
   questions            Question[]
   submissions          Submission[]
+
+  @@index([shareToken])
 }
 
 model Question {

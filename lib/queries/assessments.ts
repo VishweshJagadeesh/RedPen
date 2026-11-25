@@ -102,8 +102,8 @@ export type AssessmentWizardData = NonNullable<Awaited<ReturnType<typeof getAsse
 
 /** The student copy: questions and marks only (no answer key, no rubric). */
 async function studentCopy(where: { id: string } | { shareToken: string }) {
-  const a = await prisma.assessment.findUnique({
-    where: where as { id: string },
+  const a = await prisma.assessment.findFirst({
+    where,
     include: { section: { include: { teacher: true } }, questions: { orderBy: { number: "asc" } } },
   });
   if (!a) return null;
