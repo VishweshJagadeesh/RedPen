@@ -49,11 +49,13 @@ export async function resetDemoData(prisma: PrismaClient, log: (msg: string) => 
 
   log("Assessments and questions…");
   const sheets = mockSheets();
+  // Batched (two inserts in total) so a reset is quick on a remote database.
+  const assessmentRows: Prisma.AssessmentCreateManyInput[] = [];
+  const questionRows: Prisma.QuestionCreateManyInput[] = [];
   for (const a of fx.assessments) {
     const p = paper(a.paperKey);
     const samplePaper = a.id === WT4_8B_ID ? SAMPLE_PAPERS["c8-wt4"] : undefined;
-    await prisma.assessment.create({
-      data: {
+    assessmentRows.push({
         id: a.id,
         sectionId: a.sectionId,
         title: a.title,
@@ -65,10 +67,9 @@ export async function resetDemoData(prisma: PrismaClient, log: (msg: string) => 
         answerKeyKeys: JSON.stringify(samplePaper?.key ?? []),
         createdAt: addDays(a.date, 0),
         finalizedAt: a.graded ? addDays(a.date, 3) : null,
-      },
     });
-    await prisma.question.createMany({
-      data: p.questions.map((q) => ({
+    questionRows.push(
+      ...p.questions.map((q) => ({
         id: questionId(a.id, q.number),
         assessmentId: a.id,
         number: q.number,
@@ -78,8 +79,10 @@ export async function resetDemoData(prisma: PrismaClient, log: (msg: string) => 
         conceptIds: JSON.stringify(q.conceptIds),
         answerKey: q.answerKey,
       })),
-    });
+    );
   }
+  await prisma.assessment.createMany({ data: assessmentRows });
+  await prisma.question.createMany({ data: questionRows });
 
   log("Submissions and graded answers…");
   const submissions: Prisma.SubmissionCreateManyInput[] = [];

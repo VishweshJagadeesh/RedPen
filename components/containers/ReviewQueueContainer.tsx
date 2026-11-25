@@ -15,6 +15,7 @@ export function ReviewQueueContainer({ data }: { data: ReviewQueueData }) {
   // Writes run one after another; finalise waits for every queued write to land first.
   const queue = useRef<Promise<unknown>>(Promise.resolve());
   const inFlight = useRef(0);
+  const needsSync = useRef(false);
   useEffect(() => {
     if (inFlight.current === 0) setItems(data.items);
   }, [data.items]);
@@ -25,10 +26,18 @@ export function ReviewQueueContainer({ data }: { data: ReviewQueueData }) {
     setError(null);
     optimistic?.();
     inFlight.current++;
-    const run = queue.current.then(fn).catch((e) => setError(e instanceof Error ? e.message : String(e)));
+    // Actions shown optimistically don't need a full page re-fetch; a failure re-syncs from the server.
+    if (!optimistic) needsSync.current = true;
+    const run = queue.current.then(fn).catch((e) => {
+      needsSync.current = true;
+      setError(e instanceof Error ? e.message : String(e));
+    });
     queue.current = run.finally(() => {
       inFlight.current--;
-      if (inFlight.current === 0) router.refresh();
+      if (inFlight.current === 0 && needsSync.current) {
+        needsSync.current = false;
+        router.refresh();
+      }
     });
     return queue.current.then(() => undefined);
   }

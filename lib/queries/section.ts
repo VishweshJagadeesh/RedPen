@@ -64,11 +64,13 @@ export function toWeakConceptView(s: ClassConceptSummary): Omit<WeakConceptView,
 
 /** Everything derived for one section. Cached per request so the shell, Home and class page share it. */
 export const sectionInsights = cache(async (sectionId: string) => {
-  const ds = await loadSectionDataset(sectionId);
+  // Independent reads run together: each round trip to a remote database counts.
+  const [ds, plans, exits] = await Promise.all([
+    loadSectionDataset(sectionId),
+    prisma.lessonPlan.findMany({ where: { sectionId }, orderBy: { createdAt: "desc" } }),
+    prisma.assessment.findMany({ where: { sectionId, lessonPlanId: { not: null } }, select: { id: true, status: true } }),
+  ]);
   const idx = new DatasetIndex(ds);
-  const plans = await prisma.lessonPlan.findMany({ where: { sectionId }, orderBy: { createdAt: "desc" } });
-  const exitIds = plans.map((p) => p.exitTicketAssessmentId).filter((x): x is string => !!x);
-  const exits = exitIds.length ? await prisma.assessment.findMany({ where: { id: { in: exitIds } } }) : [];
 
   const weak = classWeakConcepts(idx);
   const conceptIds = new Set([...weak.map((w) => w.conceptId), ...plans.map((p) => p.conceptId)]);

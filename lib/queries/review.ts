@@ -42,7 +42,7 @@ export async function getReviewQueue(assessmentId: string) {
     include: {
       section: true,
       questions: true,
-      submissions: { include: { student: true, answerGrades: true } },
+      submissions: { include: { student: true, answerGrades: { omit: { signals: true } } } },
     },
   });
   if (!a) return null;
@@ -102,7 +102,7 @@ export async function getResults(assessmentId: string) {
     include: {
       section: true,
       questions: { orderBy: { number: "asc" } },
-      submissions: { include: { student: true, answerGrades: true } },
+      submissions: { include: { student: true, answerGrades: { select: { questionId: true, status: true, awardedMarks: true, teacherMarks: true, confidence: true } } } },
     },
   });
   if (!a) return null;

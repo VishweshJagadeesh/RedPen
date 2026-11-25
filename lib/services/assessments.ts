@@ -1,5 +1,6 @@
 /** Assessment creation, paper parsing, sheet upload and student matching. */
 import crypto from "node:crypto";
+import type { Prisma } from "@prisma/client";
 import { prisma } from "../db/prisma";
 import { parseJson } from "../db/json";
 import { ai } from "../ai";
@@ -223,10 +224,11 @@ export async function attachSampleSheets(assessmentId: string) {
   await markHandedOut(assessmentId);
   const prefix = assessmentId.replace("asm_", "");
   let i = 0;
+  // One batched insert instead of one round trip per sheet (matters on a remote database).
+  const rows: Prisma.SubmissionCreateManyInput[] = [];
   for (const s of fixtureSheets) {
     const match = proposeMatch(s.detected, students);
-    await prisma.submission.create({
-      data: {
+    rows.push({
         id: `sub_${prefix}_${String(i++).padStart(3, "0")}`,
         assessmentId,
         studentId: match.studentId,
@@ -237,15 +239,13 @@ export async function attachSampleSheets(assessmentId: string) {
         detectedRoll: s.detected.roll,
         matchConfidence: match.confidence,
         createdAt: new Date(Date.now() + i),
-      },
     });
   }
   const ability = synthetic.length ? await abilities(synthetic.map((s) => s.id)) : () => 0.65;
   for (const st of synthetic) {
     const id = `sub_${prefix}_${String(i++).padStart(3, "0")}`;
     const match = proposeMatch({ name: st.name, roll: st.rollNumber }, students);
-    await prisma.submission.create({
-      data: {
+    rows.push({
         id,
         assessmentId,
         studentId: match.studentId,
@@ -256,9 +256,9 @@ export async function attachSampleSheets(assessmentId: string) {
         detectedRoll: st.rollNumber,
         matchConfidence: match.confidence,
         createdAt: new Date(Date.now() + i),
-      },
     });
   }
+  await prisma.submission.createMany({ data: rows });
   await audit("teacher", "sheets.sample_attached", "Assessment", assessmentId, { set: set ?? "synthetic", fixture: fixtureSheets.length, synthetic: synthetic.length });
   return fixtureSheets.length + synthetic.length;
 }
@@ -324,9 +324,9 @@ export async function confirmMatches(assessmentId: string) {
   const all = await prisma.submission.findMany({ where: { assessmentId }, select: { studentId: true } });
   const present = new Set(all.map((x) => x.studentId));
   const absent = students.filter((s) => !present.has(s.id));
-  for (const s of absent) {
-    await prisma.submission.create({ data: { id: `sub_${assessmentId.replace("asm_", "")}_abs_${s.id.replace("stu_", "")}`, assessmentId, studentId: s.id, status: "absent" } });
-  }
+  await prisma.submission.createMany({
+    data: absent.map((s) => ({ id: `sub_${assessmentId.replace("asm_", "")}_abs_${s.id.replace("stu_", "")}`, assessmentId, studentId: s.id, status: "absent" })),
+  });
   await prisma.assessment.update({ where: { id: assessmentId }, data: { status: "sheets_uploaded" } });
   await audit("teacher", "sheets.matches_confirmed", "Assessment", assessmentId, { sheets: subs.length });
 }
