@@ -11,10 +11,15 @@ export interface ReteachInputsFormProps {
   busy: boolean;
   error: string | null;
   onSubmit: (inputs: PlanInputs) => void;
+  /** Optional controlled values (otherwise the form keeps its own). */
+  values?: PlanInputs;
+  onValuesChange?: (inputs: PlanInputs) => void;
 }
 
-export function ReteachInputsForm({ defaultPeriod, busy, error, onSubmit }: ReteachInputsFormProps) {
-  const [inputs, setInputs] = useState<PlanInputs>({ periodMinutes: defaultPeriod, resources: "blackboard", language: "en", note: "" });
+export function ReteachInputsForm({ defaultPeriod, busy, error, onSubmit, values, onValuesChange }: ReteachInputsFormProps) {
+  const [own, setOwn] = useState<PlanInputs>({ periodMinutes: defaultPeriod, resources: "blackboard", language: "en", note: "" });
+  const inputs = values ?? own;
+  const setInputs = (next: PlanInputs) => (onValuesChange ? onValuesChange(next) : setOwn(next));
   return (
     <form
       className="space-y-4"

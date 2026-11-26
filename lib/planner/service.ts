@@ -7,12 +7,15 @@ import { audit } from "../audit";
 import { config } from "../config";
 import { DatasetIndex } from "../diagnosis/dataset";
 import { classConceptSummary, suggestPeerPairs } from "../diagnosis/mastery";
+import { evidenceFromDataset } from "./evidence";
 import { C8_EXIT_TICKET_TRANSPOSING } from "../fixtures/papers";
 import type { RubricStep } from "../domain";
 import { loadSectionDataset } from "../queries/dataset";
 import { livePlanSections, liveRegenerateSection } from "./live";
 import { mockPlanSections, mockRegenerateSection } from "./mock";
 import { TIMED_KINDS, type PlanEvidence, type PlanInputs, type PlanProgress, type PlanSection } from "./types";
+
+export { evidenceFromDataset };
 
 const newId = () => crypto.randomBytes(5).toString("hex");
 const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
@@ -22,30 +25,11 @@ export async function buildEvidence(sectionId: string, conceptId: string): Promi
   const idx = new DatasetIndex(ds);
   const s = classConceptSummary(idx, conceptId);
   if (!s) throw new Error("There is no graded evidence for this concept yet.");
-  const pairs = suggestPeerPairs(s, ds.students);
   const qs = await prisma.question.findMany({ where: { assessmentId: s.assessmentId }, orderBy: { number: "asc" } });
   const sourceQuestions = qs
     .filter((q) => parseJson<string[]>(q.conceptIds, []).includes(conceptId))
     .map((q) => ({ text: q.text, answer: q.answerKey, marks: q.maxMarks, rubric: parseJson<RubricStep[]>(q.rubric, []) }));
-  return {
-    summary: s,
-    students: ds.students,
-    evidence: {
-      conceptId,
-      conceptName: s.conceptName,
-      chapter: s.chapter,
-      assessmentId: s.assessmentId,
-      assessmentTitle: s.assessmentTitle,
-      studentsAssessed: s.studentsAssessed,
-      studentsUnder: s.studentsUnder,
-      meanPct: s.meanPct,
-      misconceptions: s.misconceptions,
-      snippets: s.snippets.map((x) => ({ text: x.text, misconception: x.misconception, source: `${x.assessmentTitle}, Q${x.questionNumber}` })),
-      mentors: pairs.groups.length,
-      learners: s.studentsUnder,
-      sourceQuestions,
-    },
-  };
+  return evidenceFromDataset(ds, conceptId, sourceQuestions)!;
 }
 
 function withIds(sections: Omit<PlanSection, "id">[]): PlanSection[] {

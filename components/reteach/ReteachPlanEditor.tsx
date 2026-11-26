@@ -31,6 +31,11 @@ export interface ReteachPlanEditorProps {
   onReshufflePairs: () => void;
   onStatus: (status: "draft" | "ready" | "taught", taughtAt?: string) => void;
   onCreateExitTicket: () => void;
+  /** Optional controlled UI state: which section is being edited, and the "date taught" field. */
+  editingId?: string | null;
+  onEditingChange?: (sectionId: string | null) => void;
+  taughtDate?: string;
+  onTaughtDateChange?: (date: string) => void;
 }
 
 const LANG_LABEL = { en: "English", hi: "Hindi", mixed: "Hindi + English" };
@@ -38,8 +43,12 @@ const RES_LABEL = { blackboard: "Blackboard only", projector: "Projector", works
 
 /** The reteach plan: every section editable inline, reorderable, and individually regenerable. */
 export function ReteachPlanEditor(p: ReteachPlanEditorProps) {
-  const [editing, setEditing] = useState<string | null>(null);
-  const [taughtDate, setTaughtDate] = useState(new Date().toISOString().slice(0, 10));
+  const [ownEditing, setOwnEditing] = useState<string | null>(null);
+  const [ownDate, setOwnDate] = useState(() => new Date().toISOString().slice(0, 10));
+  const editing = p.editingId !== undefined ? p.editingId : ownEditing;
+  const setEditing = (id: string | null) => (p.onEditingChange ? p.onEditingChange(id) : setOwnEditing(id));
+  const taughtDate = p.taughtDate ?? ownDate;
+  const setTaughtDate = (d: string) => (p.onTaughtDateChange ? p.onTaughtDateChange(d) : setOwnDate(d));
   const timed = p.sections.filter((s) => TIMED_KINDS.includes(s.kind)).reduce((t, s) => t + s.minutes, 0);
   const over = timed > p.inputs.periodMinutes;
   const labelIndex = (label: string) => p.evidence.misconceptions.findIndex((m) => m.label === label) + 1;

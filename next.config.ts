@@ -1,6 +1,8 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  // The dev-mode "N" badge sits over the walkthrough's caption bar.
+  devIndicators: false,
   experimental: { serverActions: { bodySizeLimit: "8mb" } },
   outputFileTracingIncludes: {
     "/**": ["./evals/reports/latest.json", "./evals/gold/*.json"],

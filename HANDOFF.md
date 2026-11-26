@@ -24,6 +24,19 @@ This document is for whoever builds the scripted walkthrough next. Everything be
 | Settings | Reset demo data, AI mode/models, thresholds, audit log, sign out. |
 | Tests | Vitest: 54 unit tests (story numbers, confidence, planner, remedial, PTM, evals, schemas, synthetic sheets, status labels). Playwright: one happy path per flow, the class page, and drafts/hand-out/print/share/samples (`npm run e2e`). |
 
+## Scripted walkthrough (`/demo`)
+
+Built: `src/demo/` (see its README). The right-hand panel renders the presentational components listed below
+inside iframe device frames, fed by a `DemoStore` whose numbers come from `src/demo/data/build.ts` — the seed
+fixtures run through the app's own pure functions. To make that possible, a few pieces moved without changing
+behaviour: pure helpers now live in `lib/planner/evidence.ts`, `lib/remedial/questions.ts`,
+`lib/ptm/student-facts.ts`, `lib/grading/rows.ts`, `lib/grading/review-items.ts` and
+`lib/diagnosis/weak-concept-view.ts` (the old modules re-export them); `ReviewQueue` and `TeachingMode` gained
+controlled views (`ReviewQueueView`, `TeachingModeView`); `AssessmentDetailsForm`, `ReteachInputsForm`,
+`ReteachPlanEditor` and `PtmSummary` accept optional controlled props; dialogs can mount in a given container
+(`PortalContainerContext`). Teaching mode now also shows an "Up next" line with the next step's title and
+minutes. `next.config.ts` hides the dev-mode indicator (it sat over the walkthrough's caption).
+
 ## Known limitations
 
 - **Live mode was not exercised against the real API in this build environment** (no key available). The live code
@@ -47,7 +60,6 @@ This document is for whoever builds the scripted walkthrough next. Everything be
 - Local file storage is ephemeral on Vercel — set `BLOB_READ_WRITE_TOKEN` for uploads in production. SQLite is for
   local development only; production needs Postgres.
 - Single teacher, single school, demo cookie only (by design for review).
-- Next.js dev mode shows its own "N" indicator in the corner; it is not part of the app (absent in `npm start`).
 
 ## Seeded IDs (stable across resets)
 

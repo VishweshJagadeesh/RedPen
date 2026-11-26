@@ -4,13 +4,20 @@ import * as DialogPrimitive from "@radix-ui/react-dialog";
 import { X } from "lucide-react";
 import { cn } from "@/lib/utils";
 
+/**
+ * Where dialogs mount. Defaults to the document body; the scripted walkthrough renders screens inside
+ * device frames (iframes) and points this at the frame's body so dialogs stay on that screen.
+ */
+export const PortalContainerContext = React.createContext<HTMLElement | null>(null);
+
 export const Dialog = DialogPrimitive.Root;
 export const DialogTrigger = DialogPrimitive.Trigger;
 export const DialogClose = DialogPrimitive.Close;
 
 export function DialogContent({ className, children, ...props }: React.ComponentPropsWithoutRef<typeof DialogPrimitive.Content>) {
+  const container = React.useContext(PortalContainerContext);
   return (
-    <DialogPrimitive.Portal>
+    <DialogPrimitive.Portal container={container ?? undefined}>
       <DialogPrimitive.Overlay className="fixed inset-0 z-50 bg-black/40" />
       <DialogPrimitive.Content
         className={cn(

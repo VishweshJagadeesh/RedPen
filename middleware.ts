@@ -1,7 +1,7 @@
 import { NextResponse, type NextRequest } from "next/server";
 
 const SESSION_COOKIE = "redpen_session";
-const PUBLIC_PREFIXES = ["/p/", "/w/", "/api/session", "/api/files/", "/samples/", "/_next/", "/favicon"];
+const PUBLIC_PREFIXES = ["/demo", "/p/", "/w/", "/api/session", "/api/files/", "/samples/", "/_next/", "/favicon"];
 
 export function middleware(req: NextRequest) {
   const { pathname } = req.nextUrl;

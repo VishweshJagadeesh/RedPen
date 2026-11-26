@@ -4,10 +4,9 @@ import { parseJson } from "../db/json";
 import type { AssessmentType, MistakeType } from "../domain";
 import type { SectionDataset } from "../diagnosis/dataset";
 import { isoDate } from "../format";
+import { effectiveMarks } from "../grading/review-items";
 
-export function effectiveMarks(g: { status: string; awardedMarks: number; teacherMarks: number | null }): number {
-  return g.status === "overridden" && g.teacherMarks !== null ? g.teacherMarks : g.awardedMarks;
-}
+export { effectiveMarks };
 
 export function shortTitleOf(title: string, type: string): string {
   const m = title.match(/^(Weekly Test|Periodic Test|Term Exam)\s+(\d+)/i);

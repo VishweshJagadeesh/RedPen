@@ -32,6 +32,14 @@ Open http://localhost:3000 and click **Continue as demo teacher** (signs in as A
 Requirements: Node 20+ (tested on Node 22). Local development uses SQLite (`DATABASE_URL="file:./dev.db"`, stored in
 `prisma/dev.db`).
 
+## Walkthrough
+
+`/demo` is a scripted, auto-playing walkthrough of the four flows: a low-poly 3D scene on the left and the real
+product UI (the app's own components, in phone and laptop frames) on the right, about three minutes long. It is
+public, needs no database, and is linked from the landing page as **Watch the walkthrough**. Deep links such as
+`/demo#s=5&t=7.5&p=0` jump to a scene and time. `npm run demo:check` screenshots and checks every scene;
+`npm run demo:record` records it to `demo.webm`. See `src/demo/README.md`.
+
 ## What's in the demo data
 
 `npm run db:seed` (or **Settings → Reset demo data**) resets the app to exactly this state:
@@ -194,6 +202,7 @@ lib/ptm/             fact extraction and PTM summary
 lib/fixtures/        typed seed data: roster, concepts, papers, stories, term history, sheet manifest
 lib/evals/           gold set, harness, report
 prisma/              schema and seed entry point
+src/demo/            the /demo walkthrough (engine, 3D world, device frames, scenes, data snapshot)
 scripts/             samples:generate, eval, DB provider switch
 tests/unit, tests/e2e
 ```

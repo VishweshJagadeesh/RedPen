@@ -1,5 +1,6 @@
 import { redirect } from "next/navigation";
-import { ArrowRight, BookOpenCheck, LineChart, PencilRuler, Repeat } from "lucide-react";
+import Link from "next/link";
+import { ArrowRight, BookOpenCheck, LineChart, PencilRuler, PlayCircle, Repeat } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { MockModeBadge } from "@/components/shared/MockModeBadge";
 import { aiMode } from "@/lib/ai/mode";
@@ -38,6 +39,12 @@ export default async function Landing({ searchParams }: { searchParams: Promise<
             <Button size="lg" type="submit" data-demo-id="continue-demo-teacher">
               Continue as demo teacher
               <ArrowRight />
+            </Button>
+            <Button asChild size="lg" variant="outline" data-demo-id="watch-walkthrough">
+              <Link href="/demo">
+                <PlayCircle />
+                Watch the walkthrough
+              </Link>
             </Button>
             <span className="text-sm text-muted-foreground">Signs in as Anjali Verma · Mathematics · 8A, 8B, 9A</span>
           </form>

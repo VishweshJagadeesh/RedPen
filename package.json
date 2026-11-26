@@ -20,7 +20,9 @@
     "eval": "tsx scripts/eval.ts",
     "postinstall": "node scripts/select-db-provider.mjs && prisma generate",
     "vercel-build": "node scripts/select-db-provider.mjs && prisma generate && prisma db push --skip-generate && next build",
-    "e2e:only": "playwright test --trace off"
+    "e2e:only": "playwright test --trace off",
+    "demo:check": "playwright test -c playwright.demo.config.ts check.spec.ts",
+    "demo:record": "playwright test -c playwright.demo.config.ts record.spec.ts"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "1.13.0",
@@ -43,6 +45,7 @@
     "react-dom": "19.2.9",
     "recharts": "^3.11.1",
     "tailwind-merge": "^3.4.0",
+    "three": "^0.181.2",
     "tsx": "^4.21.0",
     "zod": "^4.1.0"
   },
@@ -53,6 +56,7 @@
     "@types/node": "^22.19.0",
     "@types/react": "^19.2.0",
     "@types/react-dom": "^19.2.0",
+    "@types/three": "^0.181.0",
     "eslint": "9.39.5",
     "eslint-config-next": "15.5.29",
     "tailwindcss": "4.1.18",

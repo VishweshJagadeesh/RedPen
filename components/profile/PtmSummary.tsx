@@ -16,6 +16,9 @@ export interface PtmSummaryProps {
   sources: Record<string, { label: string; href: string | null }>;
   backHref: string;
   initialLang?: "en" | "hi";
+  /** Optional controlled language (otherwise the toggle keeps its own). */
+  lang?: "en" | "hi";
+  onLangChange?: (lang: "en" | "hi") => void;
 }
 
 const L = {
@@ -24,8 +27,10 @@ const L = {
 };
 
 /** PTM mode: one large-text screen to turn toward the parent. Every statement links to its source. */
-export function PtmSummary({ student, teacherName, trend, summary, sources, backHref, initialLang = "en" }: PtmSummaryProps) {
-  const [lang, setLang] = useState<"en" | "hi">(initialLang);
+export function PtmSummary({ student, teacherName, trend, summary, sources, backHref, initialLang = "en", lang: langProp, onLangChange }: PtmSummaryProps) {
+  const [ownLang, setOwnLang] = useState<"en" | "hi">(initialLang);
+  const lang = langProp ?? ownLang;
+  const setLang = (l: "en" | "hi") => (onLangChange ? onLangChange(l) : setOwnLang(l));
   const t = L[lang];
   const Statement = ({ s, demoId }: { s: PtmStatement; demoId?: string }) => (
     <li className="leading-snug" data-demo-id={demoId}>

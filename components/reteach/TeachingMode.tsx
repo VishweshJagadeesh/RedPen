@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { ChevronLeft, ChevronRight, Pause, Play, RotateCcw, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import type { PlanSection } from "@/lib/planner/types";
@@ -18,39 +18,61 @@ function mmss(sec: number) {
   return `${sec < 0 ? "+" : ""}${Math.floor(s / 60)}:${String(s % 60).padStart(2, "0")}`;
 }
 
+export interface TeachingUi {
+  index: number;
+  /** Seconds left on the current step's timer (negative when over time). */
+  remaining: number;
+  running: boolean;
+  showBoard: boolean;
+}
+
+export function initialTeachingUi(steps: PlanSection[]): TeachingUi {
+  return { index: 0, remaining: steps[0] ? steps[0].minutes * 60 : 0, running: false, showBoard: false };
+}
+
+/** Moving to step `n` resets and stops its timer. */
+export function teachingUiAt(steps: PlanSection[], n: number): Pick<TeachingUi, "index" | "remaining" | "running"> {
+  const k = Math.max(0, Math.min(steps.length - 1, n));
+  return { index: k, remaining: (steps[k]?.minutes ?? 0) * 60, running: false };
+}
+
 /** One step at a time, large text, with a timer per step. Arrow keys move between steps; space starts/pauses. */
-export function TeachingMode({ conceptName, steps, boardPlan, exitHref }: TeachingModeProps) {
-  const [i, setI] = useState(0);
-  const [remaining, setRemaining] = useState(steps[0] ? steps[0].minutes * 60 : 0);
-  const [running, setRunning] = useState(false);
-  const [showBoard, setShowBoard] = useState(false);
-  const step = steps[i];
+export function TeachingMode(props: TeachingModeProps) {
+  const { steps } = props;
+  const [ui, setUiState] = useState<TeachingUi>(() => initialTeachingUi(steps));
+  const setUi = useCallback((patch: Partial<TeachingUi>) => setUiState((u) => ({ ...u, ...patch })), []);
 
   useEffect(() => {
-    if (!running) return;
-    const t = setInterval(() => setRemaining((r) => r - 1), 1000);
+    if (!ui.running) return;
+    const t = setInterval(() => setUiState((u) => ({ ...u, remaining: u.remaining - 1 })), 1000);
     return () => clearInterval(t);
-  }, [running]);
-
-  const goTo = (n: number) => {
-    const k = Math.max(0, Math.min(steps.length - 1, n));
-    setI(k);
-    setRemaining(steps[k].minutes * 60);
-    setRunning(false);
-  };
+  }, [ui.running]);
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
-      if (e.key === "ArrowRight") goTo(i + 1);
-      else if (e.key === "ArrowLeft") goTo(i - 1);
+      if (e.key === "ArrowRight") setUi(teachingUiAt(steps, ui.index + 1));
+      else if (e.key === "ArrowLeft") setUi(teachingUiAt(steps, ui.index - 1));
       else if (e.key === " ") {
         e.preventDefault();
-        setRunning((r) => !r);
+        setUi({ running: !ui.running });
       }
     };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
   });
+
+  return <TeachingModeView {...props} ui={ui} onUiChange={setUi} />;
+}
+
+/** Teaching mode with its step and timer supplied by the caller (the stateful `TeachingMode`, or a scripted walkthrough). */
+export function TeachingModeView({ conceptName, steps, boardPlan, exitHref, ui, onUiChange }: TeachingModeProps & { ui: TeachingUi; onUiChange: (patch: Partial<TeachingUi>) => void }) {
+  const i = ui.index;
+  const remaining = ui.remaining;
+  const running = ui.running;
+  const showBoard = ui.showBoard;
+  const goTo = (n: number) => onUiChange(teachingUiAt(steps, n));
+  const step = steps[i];
+  const next = steps[i + 1];
 
   if (!step) return <p className="p-10 text-center">This plan has no timed steps.</p>;
   const total = step.minutes * 60;
@@ -65,7 +87,7 @@ export function TeachingMode({ conceptName, steps, boardPlan, exitHref }: Teachi
           ))}
         </div>
         {boardPlan && (
-          <Button variant="outline" size="sm" onClick={() => setShowBoard((v) => !v)} data-demo-id="toggle-board-plan">
+          <Button variant="outline" size="sm" onClick={() => onUiChange({ showBoard: !showBoard })} data-demo-id="toggle-board-plan">
             {showBoard ? "Hide" : "Show"} board plan
           </Button>
         )}
@@ -95,6 +117,11 @@ export function TeachingMode({ conceptName, steps, boardPlan, exitHref }: Teachi
               ))}
             </ol>
           )}
+          {next && (
+            <div className="mt-8 border-t pt-4 text-lg text-muted-foreground" data-demo-id="teaching-next-step">
+              Up next: <span className="font-medium text-foreground">{next.title}</span> · {next.minutes} min
+            </div>
+          )}
         </div>
         {showBoard && boardPlan && (
           <pre className="h-fit whitespace-pre-wrap rounded-xl bg-[#24352b] p-6 font-mono text-xl text-[#f1f5ef] lg:w-[420px]" data-demo-id="teaching-board-plan">
@@ -113,10 +140,10 @@ export function TeachingMode({ conceptName, steps, boardPlan, exitHref }: Teachi
         <Button size="lg" variant="outline" onClick={() => goTo(i - 1)} disabled={i === 0} data-demo-id="prev-step">
           <ChevronLeft /> Back
         </Button>
-        <Button size="lg" onClick={() => setRunning((r) => !r)} data-demo-id="toggle-timer">
+        <Button size="lg" onClick={() => onUiChange({ running: !running })} data-demo-id="toggle-timer">
           {running ? <Pause /> : <Play />} {running ? "Pause" : "Start"}
         </Button>
-        <Button size="lg" variant="ghost" onClick={() => setRemaining(total)} aria-label="Reset timer">
+        <Button size="lg" variant="ghost" onClick={() => onUiChange({ remaining: total })} aria-label="Reset timer">
           <RotateCcw />
         </Button>
         <Button size="lg" onClick={() => goTo(i + 1)} disabled={i === steps.length - 1} data-demo-id="next-step">

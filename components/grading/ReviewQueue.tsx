@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
-import { useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { CheckCheck, CheckCircle2, Flag } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle } from "@/components/ui/dialog";
@@ -34,69 +34,83 @@ export interface ReviewQueueProps {
   onFinalise: () => void;
 }
 
-/** Review queue: Low, then Medium, then High. Keyboard: A accept, E edit, J next, K previous. */
-export function ReviewQueue(p: ReviewQueueProps) {
-  const [filter, setFilter] = useState<ReviewFilter>(p.initialFilter ?? "needs_review");
-  const [currentId, setCurrentId] = useState<string | null>(null);
-  const [editing, setEditing] = useState(false);
-  const [draft, setDraft] = useState<{ awards: number[]; note: string }>({ awards: [], note: "" });
-  const [confirmHigh, setConfirmHigh] = useState(false);
+/** What the queue is showing: the filter tab, the current answer, the edit draft and the accept-all dialog. */
+export interface ReviewQueueUi {
+  filter: ReviewFilter;
+  currentId: string | null;
+  editing: boolean;
+  draft: { awards: number[]; note: string };
+  confirmHigh: boolean;
+}
 
-  const visible = useMemo(() => {
-    if (filter === "needs_review") return p.items.filter((i) => i.band !== "high" || i.needsRescan);
-    if (filter === "pending") return p.items.filter((i) => i.status === "pending_review");
-    return p.items;
-  }, [p.items, filter]);
+export function initialReviewUi(filter: ReviewFilter = "needs_review"): ReviewQueueUi {
+  return { filter, currentId: null, editing: false, draft: { awards: [], note: "" }, confirmHigh: false };
+}
 
-  const index = Math.max(0, visible.findIndex((i) => i.id === currentId));
+/** The answers shown for a filter tab. */
+export function visibleReviewItems(items: ReviewItem[], filter: ReviewFilter): ReviewItem[] {
+  if (filter === "needs_review") return items.filter((i) => i.band !== "high" || i.needsRescan);
+  if (filter === "pending") return items.filter((i) => i.status === "pending_review");
+  return items;
+}
+
+/** After reviewing `fromId`, the next answer still waiting for review (wrapping around), or `fromId` itself. */
+export function nextPendingReviewId(visible: ReviewItem[], fromId: string): string {
+  const start = visible.findIndex((i) => i.id === fromId);
+  const after = [...visible.slice(start + 1), ...visible.slice(0, start)].find((i) => i.status === "pending_review" && i.id !== fromId);
+  return after?.id ?? fromId;
+}
+
+/** Derived queue state and the actions the buttons and keyboard shortcuts share. */
+function useQueueActions(p: ReviewQueueProps, ui: ReviewQueueUi, setUi: (patch: Partial<ReviewQueueUi>) => void) {
+  const visible = useMemo(() => visibleReviewItems(p.items, ui.filter), [p.items, ui.filter]);
+  const index = Math.max(0, visible.findIndex((i) => i.id === ui.currentId));
   const current = visible[index] ?? null;
-  const reviewed = p.items.filter((i) => i.status !== "pending_review").length;
-  const allReviewed = p.items.length > 0 && reviewed === p.items.length && p.ungradedSheets === 0;
 
   useEffect(() => {
-    if (!current && visible.length) setCurrentId(visible[0].id);
-  }, [current, visible]);
+    if (!current && visible.length) setUi({ currentId: visible[0].id });
+  }, [current, visible, setUi]);
 
   const go = (delta: number) => {
     if (!visible.length) return;
     const next = visible[Math.min(visible.length - 1, Math.max(0, index + delta))];
-    setCurrentId(next.id);
-    setEditing(false);
+    setUi({ currentId: next.id, editing: false });
   };
   const startEdit = () => {
     if (!current) return;
-    setDraft({ awards: (current.teacherSteps ?? current.steps).map((s) => s.awarded), note: current.teacherNote ?? "" });
-    setEditing(true);
-  };
-  const nextPending = (fromId: string) => {
-    const start = visible.findIndex((i) => i.id === fromId);
-    const after = [...visible.slice(start + 1), ...visible.slice(0, start)].find((i) => i.status === "pending_review" && i.id !== fromId);
-    return after?.id ?? fromId;
+    setUi({ draft: { awards: (current.teacherSteps ?? current.steps).map((s) => s.awarded), note: current.teacherNote ?? "" }, editing: true });
   };
   // Updates are optimistic: move to the next answer immediately while the save happens.
-  const accept = async () => {
+  const accept = () => {
     if (!current || current.needsRescan) return;
     const id = current.id;
     void p.onAccept(id);
-    setCurrentId(nextPending(id));
+    setUi({ currentId: nextPendingReviewId(visible, id) });
   };
-  const saveOverride = async () => {
+  const saveOverride = () => {
     if (!current) return;
     const id = current.id;
-    void p.onOverride(id, draft.awards, draft.note);
-    setEditing(false);
-    setCurrentId(nextPending(id));
+    void p.onOverride(id, ui.draft.awards, ui.draft.note);
+    setUi({ editing: false, currentId: nextPendingReviewId(visible, id) });
   };
+  return { visible, index, current, go, startEdit, accept, saveOverride };
+}
+
+/** Review queue: Low, then Medium, then High. Keyboard: A accept, E edit, J next, K previous. */
+export function ReviewQueue(p: ReviewQueueProps) {
+  const [ui, setUiState] = useState<ReviewQueueUi>(() => initialReviewUi(p.initialFilter));
+  const setUi = useCallback((patch: Partial<ReviewQueueUi>) => setUiState((u) => ({ ...u, ...patch })), []);
+  const { go, startEdit, accept } = useQueueActions(p, ui, setUi);
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
       const t = e.target as HTMLElement;
       if (t && (t.tagName === "INPUT" || t.tagName === "TEXTAREA" || t.tagName === "SELECT" || t.isContentEditable)) return;
-      if (e.metaKey || e.ctrlKey || e.altKey || confirmHigh) return;
+      if (e.metaKey || e.ctrlKey || e.altKey || ui.confirmHigh) return;
       const k = e.key.toLowerCase();
-      if (k === "a" && !editing) {
+      if (k === "a" && !ui.editing) {
         e.preventDefault();
-        void accept();
+        accept();
       } else if (k === "e") {
         e.preventDefault();
         startEdit();
@@ -106,11 +120,27 @@ export function ReviewQueue(p: ReviewQueueProps) {
       } else if (k === "k") {
         e.preventDefault();
         go(-1);
-      } else if (k === "escape" && editing) setEditing(false);
+      } else if (k === "escape" && ui.editing) setUi({ editing: false });
     };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
   });
+
+  return <ReviewQueueView {...p} ui={ui} onUiChange={setUi} />;
+}
+
+export interface ReviewQueueViewProps extends ReviewQueueProps {
+  ui: ReviewQueueUi;
+  onUiChange: (patch: Partial<ReviewQueueUi>) => void;
+}
+
+/** The queue with its view state supplied by the caller (the stateful `ReviewQueue`, or a scripted walkthrough). */
+export function ReviewQueueView(p: ReviewQueueViewProps) {
+  const { ui, onUiChange: setUi } = p;
+  const { visible, index, current, go, startEdit, accept, saveOverride } = useQueueActions(p, ui, setUi);
+  const filter = ui.filter;
+  const reviewed = p.items.filter((i) => i.status !== "pending_review").length;
+  const allReviewed = p.items.length > 0 && reviewed === p.items.length && p.ungradedSheets === 0;
 
   if (p.items.length === 0) {
     return <EmptyState title="Nothing to review yet" description={p.ungradedSheets ? `${p.ungradedSheets} sheet(s) still need grading.` : "Grade the sheets first."} />;
@@ -129,7 +159,7 @@ export function ReviewQueue(p: ReviewQueueProps) {
           <Progress value={(reviewed / p.items.length) * 100} label="Answers reviewed" />
         </div>
         {!p.isFinal && (
-          <Button variant="secondary" disabled={p.busy || p.pendingHigh === 0} onClick={() => setConfirmHigh(true)} data-demo-id="accept-all-high">
+          <Button variant="secondary" disabled={p.busy || p.pendingHigh === 0} onClick={() => setUi({ confirmHigh: true })} data-demo-id="accept-all-high">
             <CheckCheck /> Accept all High-confidence ({p.pendingHigh})
           </Button>
         )}
@@ -161,7 +191,7 @@ export function ReviewQueue(p: ReviewQueueProps) {
       {p.error && !current && <Alert tone="error">{p.error}</Alert>}
 
       <div className="flex flex-wrap items-center gap-3">
-        <Tabs value={filter} onValueChange={(v) => setFilter(v as ReviewFilter)}>
+        <Tabs value={filter} onValueChange={(v) => setUi({ filter: v as ReviewFilter })}>
           <TabsList>
             <TabsTrigger value="needs_review" data-demo-id="filter-needs-review">
               Low &amp; Medium ({p.items.filter((i) => i.band !== "high").length})
@@ -187,10 +217,7 @@ export function ReviewQueue(p: ReviewQueueProps) {
             {visible.map((i) => (
               <li key={i.id}>
                 <button
-                  onClick={() => {
-                    setCurrentId(i.id);
-                    setEditing(false);
-                  }}
+                  onClick={() => setUi({ currentId: i.id, editing: false })}
                   data-demo-id={`queue-item-${i.id}`}
                   className={cn("flex w-full items-center gap-2 border-b px-3 py-2 text-left text-sm hover:bg-muted/50", current?.id === i.id && "bg-accent")}
                 >
@@ -208,15 +235,15 @@ export function ReviewQueue(p: ReviewQueueProps) {
             <AnswerReviewCard
               item={current}
               position={{ index, total: visible.length }}
-              editing={editing}
-              draft={draft}
+              editing={ui.editing}
+              draft={ui.draft}
               busy={p.busy || p.isFinal}
               error={p.error}
-              onDraftChange={setDraft}
-              onAccept={() => void accept()}
+              onDraftChange={(draft) => setUi({ draft })}
+              onAccept={accept}
               onEdit={startEdit}
-              onCancelEdit={() => setEditing(false)}
-              onSaveOverride={() => void saveOverride()}
+              onCancelEdit={() => setUi({ editing: false })}
+              onSaveOverride={saveOverride}
               onIllegible={() => p.onIllegible(current.id)}
               onNeedsRescan={() => p.onNeedsRescan(current.id)}
               onUploadRescan={(files) => p.onUploadRescan(current.submissionId, files)}
@@ -227,7 +254,7 @@ export function ReviewQueue(p: ReviewQueueProps) {
         </div>
       )}
 
-      <Dialog open={confirmHigh} onOpenChange={setConfirmHigh}>
+      <Dialog open={ui.confirmHigh} onOpenChange={(open) => setUi({ confirmHigh: open })}>
         <DialogContent data-demo-id="accept-high-dialog">
           <DialogHeader>
             <DialogTitle>Accept {p.pendingHigh} High-confidence answers?</DialogTitle>
@@ -237,13 +264,13 @@ export function ReviewQueue(p: ReviewQueueProps) {
             </DialogDescription>
           </DialogHeader>
           <DialogFooter>
-            <Button variant="ghost" onClick={() => setConfirmHigh(false)}>
+            <Button variant="ghost" onClick={() => setUi({ confirmHigh: false })}>
               Cancel
             </Button>
             <Button
               data-demo-id="confirm-accept-high"
               onClick={() => {
-                setConfirmHigh(false);
+                setUi({ confirmHigh: false });
                 p.onAcceptAllHigh();
               }}
             >

@@ -25,6 +25,9 @@ export interface AssessmentDetailsFormProps {
   busy: boolean;
   error: string | null;
   onSubmit: (values: AssessmentDetailsValues) => void;
+  /** Optional controlled values (otherwise the form keeps its own). */
+  values?: Omit<AssessmentDetailsValues, "sample">;
+  onValuesChange?: (values: Omit<AssessmentDetailsValues, "sample">) => void;
 }
 
 function FilePicker({ label, files, onChange, demoId }: { label: string; files: File[]; onChange: (f: File[]) => void; demoId: string }) {
@@ -58,13 +61,17 @@ function FilePicker({ label, files, onChange, demoId }: { label: string; files: 
 }
 
 /** Step 1 of the upload wizard: section, type, date, question paper and answer key. Mobile-first. */
-export function AssessmentDetailsForm({ sections, samples, defaultDate, defaultType = "weekly_test", defaultSectionId, busy, error, onSubmit }: AssessmentDetailsFormProps) {
-  const [sectionId, setSectionId] = useState(defaultSectionId ?? sections[0]?.id ?? "");
-  const [type, setType] = useState<AssessmentType>(defaultType);
-  const [title, setTitle] = useState("");
-  const [date, setDate] = useState(defaultDate);
-  const [paper, setPaper] = useState<File[]>([]);
-  const [key, setKey] = useState<File[]>([]);
+export function AssessmentDetailsForm({ sections, samples, defaultDate, defaultType = "weekly_test", defaultSectionId, busy, error, onSubmit, values, onValuesChange }: AssessmentDetailsFormProps) {
+  const [own, setOwn] = useState<Omit<AssessmentDetailsValues, "sample">>(() => ({ sectionId: defaultSectionId ?? sections[0]?.id ?? "", type: defaultType, title: "", date: defaultDate, paper: [], key: [] }));
+  const v = values ?? own;
+  const set = (patch: Partial<Omit<AssessmentDetailsValues, "sample">>) => (onValuesChange ? onValuesChange({ ...v, ...patch }) : setOwn((o) => ({ ...o, ...patch })));
+  const { sectionId, type, title, date, paper, key } = v;
+  const setSectionId = (sectionId: string) => set({ sectionId });
+  const setType = (type: AssessmentType) => set({ type });
+  const setTitle = (title: string) => set({ title });
+  const setDate = (date: string) => set({ date });
+  const setPaper = (paper: File[]) => set({ paper });
+  const setKey = (key: File[]) => set({ key });
 
   return (
     <form
