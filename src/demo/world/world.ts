@@ -12,8 +12,10 @@ import { Overlay } from "./overlay";
 import { Person } from "./person";
 import type { DemoData } from "../data/types";
 
+/** The 3D view's designed size (stage units). The stage grows to the window's shape, so the live size can be larger. */
 export const VIEW_W = 1114;
 export const VIEW_H = 900;
+const BASE_FOV = 38;
 
 export type SetName = "home" | "classroom" | "ptm";
 export type LightName = "night" | "day" | "afternoon";
@@ -84,7 +86,7 @@ function vals(name: LightName): LightState {
 export class World {
   renderer: THREE.WebGLRenderer;
   scene = new THREE.Scene();
-  camera = new THREE.PerspectiveCamera(38, VIEW_W / VIEW_H, 0.05, 400);
+  camera = new THREE.PerspectiveCamera(BASE_FOV, VIEW_W / VIEW_H, 0.05, 400);
   target = V3(0, 0, 0);
   hemi = new THREE.HemisphereLight("#ffffff", "#776655", 1);
   sun = new THREE.DirectionalLight("#ffffff", 2);
@@ -290,9 +292,18 @@ export class World {
     this.overlay.update(this.camera);
   }
 
-  resize(stageScale: number) {
+  /** w×h: the view's size in stage units (VIEW_W×VIEW_H or larger, matching the window's shape). */
+  resize(stageScale: number, w = VIEW_W, h = VIEW_H) {
     this.renderer.setPixelRatio(Math.min(2, Math.max(0.5, stageScale * (window.devicePixelRatio || 1))));
-    this.renderer.setSize(VIEW_W, VIEW_H, false);
+    this.renderer.setSize(w, h, false);
+    const aspect = w / h;
+    const designed = VIEW_W / VIEW_H;
+    // a wider view shows more at the sides; a taller one widens the vertical angle so nothing framed is cut off
+    const half = Math.tan(((BASE_FOV / 2) * Math.PI) / 180);
+    this.camera.fov = aspect >= designed ? BASE_FOV : (2 * Math.atan((half * designed) / aspect) * 180) / Math.PI;
+    this.camera.aspect = aspect;
+    this.camera.updateProjectionMatrix();
+    this.overlay.setSize(w, h);
   }
 
   dispose() {

@@ -1,10 +1,12 @@
 # The walkthrough (`/demo`)
 
-A scripted, auto-playing walkthrough of RedPen's four flows. The left of the 1920×1080 stage is a low-poly
+A scripted, auto-playing walkthrough of RedPen's four flows. The left of the stage is a low-poly
 three.js scene (Anjali, her class 8B, a PTM); the right is **the real product UI** — the app's own
 presentational components — reacting at the same moment inside phone and laptop frames.
 
-Open `/demo` (public, no sign-in). The landing page links to it as **Watch the walkthrough**.
+Open `/demo` (public, no sign-in). The stage is designed at 1920×1080 and fills the window: on a wider window
+the 3D view gets wider, on a taller one the main area gets taller (the 3D camera widens its vertical angle so
+shots keep their framing). The device panel stays 806 wide. Only beyond 21:9 or 4:3 does it letterbox. The landing page links to it as **Watch the walkthrough**.
 
 ## How it fits together
 

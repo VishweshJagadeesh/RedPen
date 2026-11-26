@@ -32,6 +32,11 @@ export class Overlay {
     private H: number,
   ) {}
 
+  setSize(w: number, h: number) {
+    this.W = w;
+    this.H = h;
+  }
+
   add(html: string, cls: string, pos: OverlayItem["pos"], opts: { anchor?: Anchor; priority?: number } = {}): OverlayItem {
     const el = document.createElement("div");
     el.className = "ol";

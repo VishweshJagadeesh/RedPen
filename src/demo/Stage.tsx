@@ -1,6 +1,7 @@
 "use client";
 /**
- * The walkthrough stage (1920×1080, scaled to fit with letterboxing): top bar with the chapter ribbon and
+ * The walkthrough stage (designed at 1920×1080, scaled to fill the window; it widens or heightens to the window's
+ * shape): top bar with the chapter ribbon and
  * loop pills, the 3D world on the left, the device panel on the right, and the caption and controls below.
  * The chrome is static markup; the player updates it directly each frame (no React renders per frame).
  */
@@ -15,8 +16,14 @@ import { SCENES } from "./scenes";
 import type { DemoData } from "./data/types";
 import "./stage.css";
 
+/** The designed stage; on other window shapes it grows (see fit). */
 const STAGE_W = 1920;
 const STAGE_H = 1080;
+const TOP_H = 84;
+const BOTTOM_H = 96;
+const DEVICE_W = 806;
+const MAX_ASPECT = 21 / 9;
+const MIN_ASPECT = 4 / 3;
 
 declare global {
   interface Window {
@@ -62,13 +69,6 @@ const Icon = {
   check: (
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
       <path d="m5 12.5 4.5 4.5L19 7.5" />
-    </svg>
-  ),
-  nib: (
-    <svg viewBox="0 0 32 32" aria-hidden>
-      <path d="M16 2 7 13l3 13 6 4 6-4 3-13z" fill="currentColor" />
-      <path d="M16 13v9" stroke="#fff" strokeWidth="2.2" strokeLinecap="round" />
-      <circle cx="16" cy="12" r="2.4" fill="#fff" />
     </svg>
   ),
 };
@@ -138,10 +138,19 @@ export default function Stage({ data }: { data: DemoData }) {
     player.onChange = () => setPlaying(player.state.playing);
 
     const fit = () => {
-      const s = Math.min(window.innerWidth / STAGE_W, window.innerHeight / STAGE_H);
+      // The stage takes the window's shape (no black bars): extra width goes to the 3D view, extra height to
+      // the main area. Beyond 21:9 or 4:3 it stops growing and letterboxes instead.
+      const vw = window.innerWidth;
+      const vh = window.innerHeight;
+      const aspect = Math.min(MAX_ASPECT, Math.max(MIN_ASPECT, vw / vh));
+      const W = aspect >= STAGE_W / STAGE_H ? Math.round(STAGE_H * aspect) : STAGE_W;
+      const H = aspect >= STAGE_W / STAGE_H ? STAGE_H : Math.round(STAGE_W / aspect);
+      const s = Math.min(vw / W, vh / H);
       const stage = stageRef.current!;
-      stage.style.transform = `translate(${(window.innerWidth - STAGE_W * s) / 2}px,${(window.innerHeight - STAGE_H * s) / 2}px) scale(${s})`;
-      world.resize(s);
+      stage.style.setProperty("--W", `${W}px`);
+      stage.style.setProperty("--H", `${H}px`);
+      stage.style.transform = `translate(${(vw - W * s) / 2}px,${(vh - H * s) / 2}px) scale(${s})`;
+      world.resize(s, W - DEVICE_W, H - TOP_H - BOTTOM_H);
       player.scale = s;
       player.fitCaption();
     };
@@ -270,7 +279,9 @@ export default function Stage({ data }: { data: DemoData }) {
             Back
           </Link>
           <div className="rp-brand">
-            <span className="rp-brand-icon">{Icon.nib}</span>
+            <span className="rp-brand-icon" aria-hidden>
+              R
+            </span>
             RedPen
           </div>
           <nav className="rp-ribbon" aria-label="Chapters">
