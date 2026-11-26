@@ -5,7 +5,7 @@
  * the walkthrough drives every state change from its timeline.
  */
 import { useMemo } from "react";
-import { BellRing, Check, Lock } from "lucide-react";
+import { Check, Lock } from "lucide-react";
 import { AppShell } from "@/components/layout/AppShell";
 import { PageHeader } from "@/components/shared/States";
 import { UploadWizard } from "@/components/grading/UploadWizard";
@@ -53,10 +53,11 @@ function LockScreen({ s }: { s: Extract<Screen, { kind: "lock" }> }) {
       {s.notification && (
         <div className="demo-notif" data-demo-id="lock-notification">
           <div className="demo-notif-head">
-            <span className="demo-notif-app">
-              <BellRing aria-hidden />
+            {/* the app's own mark, as in its header */}
+            <span className="demo-notif-app" aria-hidden>
+              R
             </span>
-            <b>Kaksha</b>
+            <b>RedPen</b>
             <span className="demo-notif-when">now</span>
           </div>
           <div className="demo-notif-title">Weekly Test 4 · 8B</div>

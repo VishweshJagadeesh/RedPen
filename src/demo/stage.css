@@ -163,8 +163,7 @@ body [role="dialog"] { animation: dv-pop 0.28s cubic-bezier(0.2, 0.9, 0.3, 1.1) 
 .demo-notif { margin-top: 40px; width: 320px; background: rgba(255, 255, 255, 0.94); color: #1f2430; border-radius: 22px; padding: 14px 16px; box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35); animation: demo-notif 0.6s cubic-bezier(0.2, 1.3, 0.4, 1) both; }
 @keyframes demo-notif { from { opacity: 0; transform: translateY(-24px) scale(0.94); } to { opacity: 1; transform: none; } }
 .demo-notif-head { display: flex; align-items: center; gap: 8px; font-size: 15px; }
-.demo-notif-app { width: 26px; height: 26px; border-radius: 8px; background: #1f7a6d; color: #fff; display: grid; place-items: center; }
-.demo-notif-app svg { width: 15px; height: 15px; }
+.demo-notif-app { width: 26px; height: 26px; border-radius: 7px; background: var(--primary, #c4302b); color: #fff; display: grid; place-items: center; font-size: 15px; font-weight: 700; line-height: 1; }
 .demo-notif-when { margin-left: auto; font-size: 14px; color: #6d6f78; }
 .demo-notif-title { margin-top: 8px; font-size: 17px; font-weight: 700; }
 .demo-notif-body { font-size: 17px; }
