@@ -175,6 +175,10 @@ data first. Use `npm run e2e:only` to skip the build.
 
 Grading runs as short per-sheet requests driven by the progress screen, so it fits serverless time limits.
 
+Functions are pinned to the database's region in `vercel.json` (`"regions": ["sin1"]`, Singapore, next to the Neon
+database in `aws-ap-southeast-1`). Every page makes several database round trips, so keep these two in the same region;
+if the database moves, change the region to match.
+
 ## Project layout
 
 ```
