@@ -116,6 +116,24 @@ export class PointerRenderer {
     return r;
   }
 
+  private onScreen(frame: FrameRef, r: DOMRect) {
+    const win = frame.doc.defaultView;
+    const cx = r.left + r.width / 2;
+    const cy = r.top + r.height / 2;
+    return !!win && cx >= 0 && cy >= 0 && cx <= win.innerWidth && cy <= win.innerHeight;
+  }
+
+  /** Nothing else (a dialog, an overlay) sits on top of the element's centre. */
+  private uncovered(frame: FrameRef, id: Target, r: DOMRect) {
+    const cx = r.left + r.width / 2;
+    const cy = r.top + r.height / 2;
+    const parent = id!.startsWith("^");
+    let el = frame.doc.querySelector(`[data-demo-id="${CSS.escape(parent ? id!.slice(1) : id!)}"]`) as HTMLElement | null;
+    if (el && parent) el = el.parentElement;
+    const top = frame.doc.elementFromPoint(cx, cy);
+    return !!el && !!top && (el === top || el.contains(top) || top.contains(el));
+  }
+
   private point(frame: FrameRef | null, id: Target, scale: number, hover = false): { x: number; y: number } | null {
     if (!frame || !id) return null;
     const r = this.rect(frame, id);
@@ -153,6 +171,8 @@ export class PointerRenderer {
       pos = { x: from.x + (to.x - from.x) * u, y: from.y + (to.y - from.y) * u + Math.sin(u * Math.PI) * -18 };
       if (u >= 1) this.last = to;
     }
+    // the cursor never leaves the device screen (a target that is gone falls back to an older point)
+    if (o) pos = { x: clamp(pos.x, o.x + 6, o.x + o.w - 14), y: clamp(pos.y, o.y + 6, o.y + o.h - 18) };
     const first = script.moves[0];
     const visible = cursorAllowed && script.usesCursor && first && now >= first.t0 - 0.4;
     const pressing = script.presses.some((p) => p.kind === "click" && now >= p.t && now < p.t + 0.18);
@@ -170,7 +190,12 @@ export class PointerRenderer {
         continue;
       }
       const r = this.rect(frame, p.id);
-      if (!r || !o) continue;
+      // only mark what is on screen: nothing for an element that is gone or scrolled away
+      const onScreen = !!r && !!o && this.onScreen(frame, r);
+      if (!r || !o || !onScreen) {
+        if (el) el.style.opacity = "0";
+        continue;
+      }
       if (!el) {
         el = document.createElement("div");
         el.className = `ptr-press ${p.kind}`;
@@ -178,13 +203,15 @@ export class PointerRenderer {
         this.dom.fx.appendChild(el);
         this.pressEls.set(p, el);
       }
+      el.style.opacity = "1";
       el.style.transform = `translate(${(o.x + r.left).toFixed(1)}px,${(o.y + r.top).toFixed(1)}px)`;
       el.style.width = `${r.width}px`;
       el.style.height = `${r.height}px`;
       const hl = el.firstElementChild as HTMLElement;
       const rip = el.lastElementChild as HTMLElement;
       const press = age < 0.22 ? 1 : Math.max(0, 1 - (age - 0.22) / 0.3);
-      hl.style.opacity = String(0.9 * press);
+      // the box only while nothing (say, the dialog this click opened) covers the element; the ripple stays
+      hl.style.opacity = String(this.uncovered(frame, p.id, r) ? 0.9 * press : 0);
       const rx = p.kind === "click" && this.last ? this.last.x - (o.x + r.left) : r.width / 2;
       const ry = p.kind === "click" && this.last ? this.last.y - (o.y + r.top) : r.height / 2;
       const k = clamp(age / 0.6);

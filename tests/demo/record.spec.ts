@@ -63,7 +63,7 @@ test.describe("frames", () => {
     const ffmpeg = spawn(
       "ffmpeg",
       ["-y", "-loglevel", "error", "-f", "image2pipe", "-framerate", String(FPS), "-c:v", "mjpeg", "-i", "-",
-        "-c:v", "libvpx-vp9", "-b:v", "0", "-crf", "30", "-row-mt", "1", "-deadline", "realtime", "-cpu-used", "8",
+        "-c:v", "libvpx-vp9", "-b:v", "0", "-crf", "36", "-row-mt", "1", "-deadline", "good", "-cpu-used", "5",
         "-pix_fmt", "yuv420p", "demo.webm"],
       { stdio: ["pipe", "inherit", "inherit"] },
     );
