@@ -94,7 +94,8 @@ Register anything else you add with `ctx.tl.onCleanup(fn)`.
 `p=0` start paused. Changing the hash re-seeks. `window.__demo` exposes `{ ready, state, scenes, go, seek,
 play, pause, totalSeconds }`.
 
-Keyboard: ←/→ previous/next scene, Space play/pause, R restart, H hide the controls.
+Keyboard: ←/→ previous/next scene, Space play/pause, R restart, H hide the controls (and the Back link).
+The **Back** link at the left of the top bar returns to the landing page.
 
 Reduced motion (`prefers-reduced-motion`): the timeline is the same; each scene holds one still camera (its
 `stillCam`, or its final framing), camera moves between scenes cut instead of blending, particles are cut to a

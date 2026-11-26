@@ -4,6 +4,7 @@
  * loop pills, the 3D world on the left, the device panel on the right, and the caption and controls below.
  * The chrome is static markup; the player updates it directly each frame (no React renders per frame).
  */
+import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { DevicePanel, type FrameRegistry } from "./device/DevicePanel";
 import { DemoStore } from "./device/store";
@@ -37,6 +38,11 @@ declare global {
 }
 
 const Icon = {
+  back: (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+      <path d="M19 12H5M11 18l-6-6 6-6" />
+    </svg>
+  ),
   prev: (
     <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden>
       <path d="M15 5 7 12l8 7z" />
@@ -160,7 +166,11 @@ export default function Stage({ data }: { data: DemoData }) {
         player.togglePlay();
         e.preventDefault();
       } else if (e.key === "r" || e.key === "R") player.restart();
-      else if (e.key === "h" || e.key === "H") chromeRef.current.controls?.classList.toggle("hidden");
+      else if (e.key === "h" || e.key === "H") {
+        // hides the controls and the back link, for clean recordings
+        const hidden = chromeRef.current.controls?.classList.toggle("hidden");
+        chromeRef.current.back?.classList.toggle("hidden", hidden);
+      }
     };
     window.addEventListener("keydown", onKey);
 
@@ -255,6 +265,10 @@ export default function Stage({ data }: { data: DemoData }) {
     <div className="rp-root">
       <div className="rp-stage" ref={stageRef} id="rp-stage">
         <header className="rp-top">
+          <Link href="/" className="rp-back" ref={set("back")} aria-label="Back to the RedPen home page">
+            {Icon.back}
+            Back
+          </Link>
           <div className="rp-brand">
             <span className="rp-brand-icon">{Icon.nib}</span>
             RedPen
